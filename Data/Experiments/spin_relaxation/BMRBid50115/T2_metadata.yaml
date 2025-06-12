@@ -1,0 +1,36 @@
+Experiment_ID: '8'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '800'
+    Manufacturer: Bruker
+    Model: Avance
+Name: Het. Nuc. T2 relaxation
+Sample_component:
+-   Concentration_val: '1'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-13C; U-15N]'
+    Mol_common_name: entity_1
+    Type: null
+-   Concentration_val: '20'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium phosphate
+    Type: null
+-   Concentration_val: '50'
+    Concentration_val_units: uM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: DSS
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: '% v/v'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: D2O
+    Type: null
+-   Concentration_val: '25'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium chloride
+    Type: null
+Sample_condition_variable:
+    ph: '7.0'
+    temperature: '298'

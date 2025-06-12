@@ -1,0 +1,37 @@
+DOI: 10.5281/zenodo.15393821
+
+SOFTWARE: gromacs
+TRJ: replica_01_AMBER03WS_md_1500ns.xtc
+TPR: replica_01_AMBER03WS_md_1500ns.tpr  
+PREEQTIME: 0
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4PSwater.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION: https://doi.org/10.26434/chemrxiv-2025-m5m0p
+AUTHORS_CONTACT: Samuli Ollila
+
+SYSTEM: ChiZ1-64
+SOFTWARE_VERSION:
+
+FF: AMBER03WS
+FF_SOURCE: 
+FF_DATE:
+
+CPT:
+LOG:
+TOP:
+GRO:
+
+TYPEOFSYSTEM: protein

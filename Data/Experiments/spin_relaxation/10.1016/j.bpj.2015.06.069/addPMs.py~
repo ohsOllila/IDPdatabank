@@ -1,0 +1,21 @@
+def insert_pm_symbols(line):
+    # Split by whitespace, preserving numeric parts
+    parts = line.strip().split()
+    
+    if len(parts) < 3:
+        return line  # return unchanged if not enough parts
+    
+    # First two parts are residue and first value
+    modified = parts[:2]
+    
+    # Insert ± between every two following numbers
+    for i in range(2, len(parts), 2):
+        if i + 1 < len(parts):
+            modified.append(f"{parts[i]} ± {parts[i+1]}")
+        else:
+            modified.append(parts[i])  # add remaining if odd number
+
+    return "  ".join(modified)
+
+with open("EN2_exp/EN2_R1_exp.dat", "r", encoding="utf-8") as f:
+    lines = f.readlines()
