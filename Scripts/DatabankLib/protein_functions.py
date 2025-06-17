@@ -1,4 +1,5 @@
 import os
+import subprocess
 import numpy as np
 import pandas as pd
 import glob
@@ -888,6 +889,7 @@ def extract_sequence_from_pdb(pdb_file):
                     sequence.append(aa)
     return ''.join(sequence)
 
+
 def extract_sequence_from_gro(gro_file):
     sequence = []
     seen_residues = set()
@@ -905,6 +907,7 @@ def extract_sequence_from_gro(gro_file):
                 aa = AA_THREE_TO_ONE.get(res_name, 'X')
                 sequence.append(aa)
     return ''.join(sequence)
+
 
 def make_fasta(input_file, output_file=None):
     input_path = Path(input_file)
@@ -926,3 +929,88 @@ def make_fasta(input_file, output_file=None):
             fasta.write(sequence[i:i+80] + "\n")
 
     return output_file
+    
+    
+# 17.06.2025
+# added during NMRLipids meeting in Bergen
+# by Tobi R
+# FUNCTION TO CALCULATE THE SAXS SCATTERING PROFILE OF THE TRJ
+#	needs an external version of crysol 
+#		https://www.embl-hamburg.de/biosaxs/crysol.html
+#		tested with version: crysol, ATSAS 3.1.3 (r14636)
+#	INPUT: 
+#		- gro_file; xtc_file: gro file and xtc file (nojump) for MDAnalysis
+#	OUTPUT:
+#		-averaged SAXS profile (q-space) with standard deviation
+#		-pandas dataframe
+#		-3 columns (q in 1/A; mean in a.u.; sd in a.u.)
+
+def calculate_SAXS_profile_crysol(gro_file, xtc_file,dt_analysis_ps=100):
+    # Load structure and trajectory / xtc contains inly protein and is no jump
+    u = mda.Universe(gro_file, xtc_file)
+    
+    # Timesteps between analyzed frames (dt_analysis_ps) should be roughly 100 ps
+    # 	find out the timestep in the trajectory 
+    dt_trj_ps = u.trajectory.dt
+    # get ab inzterval for frame analysis
+    analysis_frame_interval = round(dt_analysis_ps/dt_trj_ps,0)
+    
+    # create pandas dataframe which stores the calculated SAXS profiles
+    profiles = pd.DataFrame()
+    
+    # iterate over individul frames
+    for ts in u.trajectory:
+        # CHECK, IF CONSIDERED - only when frame_idx%analysis_frame_interval = 0
+        frame_idx = ts.frame  # Get current frame index
+        
+        if frame_idx%analysis_frame_interval == 0:
+            # PDB OUT
+            # write out single PDB files
+            filName_PDB = "frame_"+str(frame_idx)+".pdb"
+            u.atoms.write(filName_PDB)
+            # for some reason crysol expects a different naming of some atoms in pdb
+            #	so fox this. I use sed from command line, since this is much faster than 
+            #		any pthon tool
+            #	use subprocess for that
+            # ILE fix
+            subprocess.run("sed -i 's/CD  ILE/CD1 ILE/' "+ filName_PDB, shell=True)
+            subprocess.run("sed -i 's/HD1 ILE/HD11 ILE/'" + filName_PDB, shell=True)
+            subprocess.run("sed -i 's/HD2 ILE/HD12 ILE/'"+ filName_PDB, shell=True)
+            subprocess.run("sed -i 's/HD3 ILE/HD13 ILE/'"+ filName_PDB, shell=True)
+            # TERMINI fix
+            subprocess.run("sed -i 's/OC1/OXT/' "+ filName_PDB, shell=True)
+            subprocess.run("sed -i 's/OT1/OXT/' "+ filName_PDB, shell=True)
+            subprocess.run("sed -i '/.*OC2*/d' "+ filName_PDB, shell=True)
+            subprocess.run("sed -i '/.*OT2*/d' "+ filName_PDB, shell=True)
+            
+            # RUN CRYSOL
+            OUT = subprocess.run("crysol "+ filName_PDB +" -lm 50 -fb 18 -ns 101 -p profile_"+str(frame_idx), shell=True)
+            
+            # READ SAXS PROFILE FILE
+            data = np.loadtxt("profile_"+str(frame_idx)+".abs",skiprows=1)
+            tab = pd.DataFrame(data)
+            tab.columns = ["q","Inten"]
+            
+            # SAVE FILES IN DATAFRAME
+            prof_I = tab["Inten"]
+            profiles = pd.concat([profiles,prof_I],axis=1)
+            
+            # CLEAN UP 
+            os.remove("frame_"+str(frame_idx)+".pdb")
+            os.remove("profile_"+str(frame_idx)+".alm")
+            os.remove("profile_"+str(frame_idx)+".log")
+            os.remove("profile_"+str(frame_idx)+".int")
+            os.remove("profile_"+str(frame_idx)+".abs")
+    
+    # GET AVERAGE AND SD SAXS PROFILE 
+    # calculate the mean profile and the corresponding sd
+    profile_mean = profiles.mean(axis=1)
+    profile_sd = profiles.std(axis=1)
+    
+    print(profiles)
+    
+    # merge data and set column names
+    res = pd.DataFrame([tab["q"],profile_mean,profile_sd]).transpose()
+    res.columns = ["q[1/A]","mean_Inten[a.u.]","sd_Inten[a.u.]"]
+    
+    return(res)
