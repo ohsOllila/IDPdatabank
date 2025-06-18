@@ -13,6 +13,7 @@ from pathlib import Path
 import yaml
 import requests
 import re
+import maicos
 from typing import List, Dict, Optional
 
 def calculate_contact_probabilities(gro_file, xtc_file, cutoff):
@@ -1013,4 +1014,44 @@ def calculate_SAXS_profile_crysol(gro_file, xtc_file,dt_analysis_ps=100):
     res = pd.DataFrame([tab["q"],profile_mean,profile_sd]).transpose()
     res.columns = ["q[1/A]","mean_Inten[a.u.]","sd_Inten[a.u.]"]
     
+    return(res)
+
+
+# 18.06.2025
+# added during NMRLipids meeting in Bergen
+# by Tobi R
+# FUNCTION TO CALCULATE THE SAXS SCATTERING PROFILE OF THE TRJ
+#	needs the python package MAICoS
+#		https://gitlab.com/maicos-devel/maicos
+#		https://maicos.readthedocs.io/en/main/analysis-modules/saxs.html
+#	INPUT: 
+#		- gro_file; xtc_file: gro file and xtc file (nojump) for MDAnalysis
+#	OUTPUT:
+#		-SAXS profile (q-space) of the trajectory
+#		-pandas dataframe
+#		-2 columns (q in 1/A; mean in a.u.)
+
+def calculate_SAXS_profile_maicos(gro_file, xtc_file):
+    # Load structure and trajectory / xtc contains inly protein and is no jump
+    u = mda.Universe(gro_file, xtc_file)
+    
+    # run the program:
+    #	-since we use nojump simulations, we can set unwrap to false:
+    #	- since most scattering profiles of IDPs are not larger than q=0.5, adjust:
+    #		- qmax = 0.5 / qmin = 0 / dq = 0.05
+    #	-see MAICoS documentation: https://maicos.readthedocs.io/en/main/analysis-modules/saxs.html
+    # create the object
+    SAXS = maicos.Saxs(atomgroup=u.atoms,unwrap=False,qmin=0,qmax=0.5005,dq=0.0025)
+    
+    # run the analzsis
+    profile = SAXS.run()
+    
+    # extract the profile:
+    scattering_vectors = profile.results.scattering_vectors
+    intensity = profile.results.scattering_intensities
+    
+    #merge data for return and set column names
+    res = pd.DataFrame([scattering_vectors,intensity]).transpose()
+    res.columns = ["q[1/A]","mean_Inten[a.u.]"]
+
     return(res)
