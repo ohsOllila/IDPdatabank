@@ -1,18 +1,11 @@
 import os
 import numpy as np
 import pandas as pd
-import glob
 import MDAnalysis as mda
 from MDAnalysis.analysis import distances
-import matplotlib.pyplot as plt
-import csv
 from scipy import optimize
-import requests
-from pathlib import Path
-import yaml
-import requests
-import re
 from typing import List, Dict, Optional
+
 
 def calculate_contact_probabilities(gro_file, xtc_file, cutoff):
     u = mda.Universe(gro_file, xtc_file)
