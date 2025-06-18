@@ -44,22 +44,30 @@ class Simulation:
     
     def _initialize_buffer(self) -> None:
         """Initialize buffer manager with simulation data if available."""
-        # Check if buffer data exists in the simulation info
-        buffer_data = self.info.get("BUFFER", {})
+        count_water = self.composition.get("SOL", {}).get("COUNT", 0)
+        if count_water == 0:
+            raise ValueError(
+                "No water found in simulation composition. I don't know what to do now."
+            )
+        buffer_data = {
+            k: v for k, v in self.composition.items() if k not in ["PROTEIN", "SOL"]
+        }  #
         ph = buffer_data.get("ph", 7.0)  # Default to neutral pH if not specified
-        
-        self.buffer_manager = BufferManager(ph=ph)
-        
+
+        self.buffer_manager = SimulationBufferManager(ph=ph)
+
         # Add buffer components if they exist
-        components = buffer_data.get("components", [])
+        components = buffer_data.keys()
         for comp in components:
-            name = comp.get("name")
-            concentration = comp.get("concentration")
-            unit = comp.get("unit", "M")  # Default to Molar if not specified
-            
+            name = comp
+            count = buffer_data[comp].get("COUNT")
+            concentration = self.buffer_manager._get_concentration_in_molar_from_count(
+                count, count_water
+            )
+
             if name is not None and concentration is not None:
-                self.buffer_manager.add_component(name, float(concentration), unit)
-    
+                self.buffer_manager.add_component(name, float(concentration), "M")
+
     def calculate_ionic_strength(self, component: str) -> float:
         """
         Calculate ionic strength for a buffer component.
