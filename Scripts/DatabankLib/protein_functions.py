@@ -945,7 +945,7 @@ def make_fasta(input_file, output_file=None):
 #		-pandas dataframe
 #		-3 columns (q in 1/A; mean in a.u.; sd in a.u.)
 
-def calculate_SAXS_profile_crysol(gro_file, xtc_file,dt_analysis_ps=100):
+def calculate_SAXS_profile_crysol(gro_file, xtc_file,dt_analysis_ps=1000):
     # Load structure and trajectory / xtc contains inly protein and is no jump
     u = mda.Universe(gro_file, xtc_file)
     
