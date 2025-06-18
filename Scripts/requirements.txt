@@ -7,3 +7,5 @@ scipy>=1.7.0
 matplotlib>=3.4.0
 MDAnalysis>=2.0.0
 requests>=2.26.0
+biopython==1.85
+colorlog==6.9.0
