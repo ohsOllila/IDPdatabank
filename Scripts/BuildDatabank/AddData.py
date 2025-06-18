@@ -192,47 +192,102 @@ if __name__ == "__main__":
         )
         quit(2)
 
-    # Check link status and download files
+    # two new imports to extract compressed files 
+    import zipfile
+    import tarfile
 
+    # Check link status and download files
     try:
         download_links = []
+        download_files = [] #new variable for downloads
+        failed_files = []   #add a new variable for files that failed
+
         for fi in files:
             logger.info(f"Validating file: {fi}..")
-            _x = resolve_download_file_url(sim["DOI"], fi, validate_uri=True)
-            download_links.append(_x)
+            try:
+                url = resolve_download_file_url(sim["DOI"], fi, validate_uri=True)
+                download_links.append(url)
+                download_files.append(fi)
+            except URLError as e:  # create new exceptions because resolve_download_file_url will fail if files donwt exist
+                if "NOT FOUND" in str(e.reason).upper():
+                    logger.warning(f"File '{fi}' not on Zenodo, try to extract from archive.")
+                    failed_files.append(fi)
+                else:
+                    raise e
+            except HTTPError as e:
+                if e.code == 404:
+                    logger.warning(f"File '{fi}' not on Zenodo, try to extract from archive.")
+                    failed_files.append(fi)
+                else:
+                    raise e
 
-        logger.info(f"Now downloading {len(files)} files ...")
+        logger.info(f"Downloading {len(download_files)} files")
+        for url, fi in zip(download_links, download_files):
+            dest_path = os.path.join(dir_tmp, fi)
+            download_resource_from_uri(url, dest_path, override_if_exists=args.no_cache)
 
-        for url, fi in zip(download_links, files):
-            download_resource_from_uri(
-                url, os.path.join(dir_tmp, fi), override_if_exists=args.no_cache
-            )
+        logger.info(f"Downloaded {len(download_files)} files")
 
-        logger.info(f"Download of {len(files)} files was successful")
+        # find compressed archive file (zip or tar)
+        archive_files = [f for f in download_files if f.endswith((".zip", ".tar", ".tar.gz", ".tgz", ".tar.bz2"))]
+        for archive in archive_files:
+            archive_path = os.path.join(dir_tmp, archive)
+            if not os.path.isfile(archive_path):
+                logger.warning(f"Archive file '{archive}' not found, skip ...")
+                continue
+
+            logger.info(f"Extract missing files from archive: {archive_path}")
+
+            extracted = []
+            try:
+                if archive.endswith(".zip"):
+                    with zipfile.ZipFile(archive_path, "r") as zf:
+                        zip_contents = zf.namelist()
+                        for missing_file in failed_files[:]:
+                            if missing_file in zip_contents:
+                                logger.info(f"Extracting {missing_file} from zip file")
+                                zf.extract(missing_file, path=dir_tmp)
+                                failed_files.remove(missing_file)
+                                extracted.append(missing_file)
+                elif archive.endswith((".tar", ".tar.gz", ".tgz", ".tar.bz2")):
+                    with tarfile.open(archive_path, "r:*") as tf:
+                        tar_contents = tf.getnames()
+                        for missing_file in failed_files[:]:
+                            if missing_file in tar_contents:
+                                logger.info(f"Extracting {missing_file} from tar archive")
+                                tf.extract(missing_file, path=dir_tmp)
+                                failed_files.remove(missing_file)
+                                extracted.append(missing_file)
+            except (zipfile.BadZipFile, tarfile.TarError) as ex:
+                logger.error(f"Could not extract '{archive_path}': {type(ex).__name__} - {ex}")
+                quit(3)
+
+            if extracted:
+                logger.info(f"Successfully downloaded: {extracted}")
+            else:
+                logger.warning(f"No files downloaded from {archive}")
+
+        if failed_files:
+            logger.error(f"Files could not be downloaded: {failed_files}")
+            quit(3)
 
     except HTTPError as e:
-        if e.code == 404:
-            logger.error(
-                f"ressource not found on server '{e.url}' (404)."
-                " Wrong DOI link or file name?"
-            )
-        else:
-            logger.error(f"HTTPError {e.code} while trying to "
-                         f"download the file '{e.url}'")
+        logger.error(f"HTTPError {e.code} while trying to download: {e.url}")
         quit(3)
     except URLError as e:
         logger.error(
-            f"couldn't resolve network adress: {e.reason}."
-            " Please check your internet connection."
+            f"Couldn't resolve network address: {e.reason}. "
+            "Please check your internet connection."
         )
         quit(3)
     except Exception as e:
         logger.error(
-            f"'{type(e).__name__}' while attempting to download ressources, aborting"
+            f"'{type(e).__name__}' while attempting to download resources, aborting"
         )
         logger.error(traceback.format_exc())
         quit(3)
 
+    ####################################################
     # -- Calculate hash of downloaded files
 
     sim_hashes = deepcopy(sim)
