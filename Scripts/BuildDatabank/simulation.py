@@ -8,11 +8,11 @@ class Simulation:
     """
     Handles simulation data processing using composition for buffer and file operations.
     """
-    
+
     def __init__(self, info_path: str) -> None:
         """
         Initialize the Simulation with path to info file.
-        
+
         Args:
             info_path: Path to the simulation info YAML file
         """
@@ -22,26 +22,26 @@ class Simulation:
         self.info: Dict[str, Any] = {}
         self.composition: Dict[str, Any] = {}
         self.sequence: str = ""
-        
+
         self._initialize()
-    
+
     def _initialize(self) -> None:
         """Initialize simulation data and buffer."""
         try:
             # Load simulation info
             self.info = self.file_handler.read_yaml(self.info_path)
             self.composition = self.info.get("COMPOSITION", {})
-            
+
             # Extract sequence
             protein_data = self.composition.get("PROTEIN", {})
             self.sequence = protein_data.get("SEQUENCE", "")
-            
+
             # Initialize buffer if buffer data is available
             self._initialize_buffer()
-            
+
         except Exception as e:
-            raise RuntimeError(f"Error initializing simulation: {str(e)}")
-    
+            raise RuntimeError(f"Error initializing simulation: {e}")
+
     def _initialize_buffer(self) -> None:
         """Initialize buffer manager with simulation data if available."""
         count_water = self.composition.get("SOL", {}).get("COUNT", 0)
@@ -71,27 +71,27 @@ class Simulation:
     def calculate_ionic_strength(self, component: str) -> float:
         """
         Calculate ionic strength for a buffer component.
-        
+
         Args:
             component: Name of the buffer component
-            
+
         Returns:
             float: Ionic strength value
-            
+
         Raises:
             RuntimeError: If buffer manager is not initialized
         """
         if not self.buffer_manager:
             raise RuntimeError("Buffer manager not initialized")
-            
+
         return self.buffer_manager.calculate_ionic_strength(component)
-    
+
     def get_buffer_ph(self) -> float:
         """Get the pH of the buffer."""
         if not self.buffer_manager:
             raise RuntimeError("Buffer manager not initialized")
         return self.buffer_manager.ph
-    
+
     def get_sequence(self) -> str:
         """Get the protein sequence."""
         return self.sequence
