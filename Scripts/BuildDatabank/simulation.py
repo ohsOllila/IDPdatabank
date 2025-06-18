@@ -18,7 +18,7 @@ class Simulation:
         """
         self.info_path = Path(info_path)
         self.file_handler = FileHandler()
-        self.buffer_manager: Optional[BufferManager] = None
+        self.buffer_manager: Optional[SimulationBufferManager] = None
         self.info: Dict[str, Any] = {}
         self.composition: Dict[str, Any] = {}
         self.sequence: str = ""
