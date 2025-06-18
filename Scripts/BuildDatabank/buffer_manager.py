@@ -152,3 +152,31 @@ class BufferManager:
             raise ValueError(f"Unknown component: {component}")
 
         return buffer_molecule_data[component]
+
+
+class SimulationBufferManager(BufferManager):
+    """
+    Specialized BufferManager for simulation purposes.
+    """
+
+    def __init__(self, ph: float = 0.0):
+        super().__init__(ph)
+        # Add any simulation-specific initialization here
+
+    def _get_concentration_in_molar_from_count(
+        self, count_component: int, count_water: int
+    ) -> float:
+        """Calculate the concentration of a component in the simulation."""
+        # Water concentration is 55.5 M
+        # we get molar concentration in M.
+        water_concentration = 55.5
+        return count_component / count_water * water_concentration
+
+    # Override any methods you need to change
+    def calculate_ionic_strength(
+        self, component: str, concentration_component: float
+    ) -> float:
+        """Override the base implementation for simulation-specific logic."""
+        # Your simulation-specific implementation here
+        charge = self._get_charges_at_ph(component, self.ph)
+        return 0.5 * charge[0] ** 2 * concentration_component
