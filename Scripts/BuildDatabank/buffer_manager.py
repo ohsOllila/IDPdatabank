@@ -124,6 +124,16 @@ class BufferManager:
                 "charges": [1, -1],
                 "stoichiometry": [1, 1],
             },
+            "SOD": {
+                "ph_dependent": False,
+                "charges": [1],
+                "stoichiometry": [1],
+            },
+            "CLA": {
+                "ph_dependent": False,
+                "charges": [-1],
+                "stoichiometry": [1],
+            },
             "HEPES": {
                 "ph_dependent": True,
                 "ph_ranges": [
