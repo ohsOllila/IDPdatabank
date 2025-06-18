@@ -969,9 +969,11 @@ def calculate_SAXS_profile_crysol(gro_file, xtc_file,dt_analysis_ps=100):
             # write out single PDB files
             filName_PDB = "frame_"+str(frame_idx)+".pdb"
             u.atoms.write(filName_PDB)
-            # for some reason crysol expects a different naming of some atoms in pdb
-            #	so fox this. I use sed from command line, since this is much faster than 
-            #		any pthon tool
+            # for some reason, crysol expects a different naming of some atoms in pdb
+            #	known issues for
+            #		ILE and termini
+            #	so for this I use sed from command line, since this is much faster than 
+            #		any python tool
             #	use subprocess for that
             # ILE fix
             subprocess.run("sed -i 's/CD  ILE/CD1 ILE/' "+ filName_PDB, shell=True)
@@ -1008,11 +1010,9 @@ def calculate_SAXS_profile_crysol(gro_file, xtc_file,dt_analysis_ps=100):
     profile_mean = profiles.mean(axis=1)
     profile_sd = profiles.std(axis=1)
     
-    print(profiles)
-    
     # merge data and set column names
     res = pd.DataFrame([tab["q"],profile_mean,profile_sd]).transpose()
-    res.columns = ["q[1/A]","mean_Inten[a.u.]","sd_Inten[a.u.]"]
+    res.columns = ["q[1/A]","mean_I(q)[a.u.]","sd_I(q)[a.u.]"]
     
     return(res)
 
@@ -1025,23 +1025,40 @@ def calculate_SAXS_profile_crysol(gro_file, xtc_file,dt_analysis_ps=100):
 #		https://gitlab.com/maicos-devel/maicos
 #		https://maicos.readthedocs.io/en/main/analysis-modules/saxs.html
 #	INPUT: 
-#		- gro_file; xtc_file: gro file and xtc file (nojump) for MDAnalysis
+#		- gro_file; xtc_file: gro file and xtc file (nojump!!!) for MDAnalysis
+#		- water_shell: if submitted as interger or float, all atoms within this
+#					   value (distance to protein) will be considered for the
+#					   hydration shell; otherwise only protein is considered 
+#		- output_file: if true, file of calculated data will be saved
 #	OUTPUT:
 #		-SAXS profile (q-space) of the trajectory
 #		-pandas dataframe
 #		-2 columns (q in 1/A; mean in a.u.)
 
-def calculate_SAXS_profile_maicos(gro_file, xtc_file):
-    # Load structure and trajectory / xtc contains inly protein and is no jump
+def calculate_SAXS_profile_maicos(gro_file, xtc_file,water_shell=None,output_file=False):
+    # Load structure and trajectory
     u = mda.Universe(gro_file, xtc_file)
+    
+    # consider hydration shell or not
+    #	considered: if hydration_shell is an integer or float
+    #				--> this value will be used for cutoff (in A)
+    #	not considered: any other datatype
+    if type(water_shell) == int or type(water_shell)==float:
+        protein = u.select_atoms("protein")
+        int_water = u.select_atoms("(around "+str(water_shell)+" protein) and (not type DUMMY)", updating=True)
+        sel_atoms = protein + int_water
+        print("  NOTE: Water shell is considered.")
+    else:
+        sel_atoms = u.select_atoms("protein")
+        print("  NOTE: Water shell is NOT considered.")
     
     # run the program:
     #	-since we use nojump simulations, we can set unwrap to false:
-    #	- since most scattering profiles of IDPs are not larger than q=0.5, adjust:
-    #		- qmax = 0.5 / qmin = 0 / dq = 0.05
+    #	-since most scattering profiles of IDPs are not larger than q=0.5, adjust:
+    #		qmax = 0.5 / qmin = 0 / dq = 0.0025
     #	-see MAICoS documentation: https://maicos.readthedocs.io/en/main/analysis-modules/saxs.html
     # create the object
-    SAXS = maicos.Saxs(atomgroup=u.atoms,unwrap=False,qmin=0,qmax=0.5005,dq=0.0025)
+    SAXS = maicos.Saxs(atomgroup=sel_atoms,unwrap=False,qmin=0,qmax=0.5005,dq=0.0025,jitter=10**(-3))
     
     # run the analzsis
     profile = SAXS.run()
@@ -1050,8 +1067,12 @@ def calculate_SAXS_profile_maicos(gro_file, xtc_file):
     scattering_vectors = profile.results.scattering_vectors
     intensity = profile.results.scattering_intensities
     
+    # check, if data should be saved
+    if output_file:
+        SAXS.save()
+    
     #merge data for return and set column names
     res = pd.DataFrame([scattering_vectors,intensity]).transpose()
-    res.columns = ["q[1/A]","mean_Inten[a.u.]"]
+    res.columns = ["q[1/A]","I(q)[a.u.]"]
 
     return(res)
