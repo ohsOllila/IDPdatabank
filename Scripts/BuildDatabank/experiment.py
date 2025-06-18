@@ -1,7 +1,7 @@
 from typing import Dict, Any, Optional
 from pathlib import Path
-from .buffer_manager import BufferManager
-from .file_handler import FileHandler
+from buffer_manager import BufferManager
+from file_handler import FileHandler
 
 
 class Experiment:
