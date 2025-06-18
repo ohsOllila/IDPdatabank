@@ -194,44 +194,44 @@ if __name__ == "__main__":
 
     # Check link status and download files
 
-##    try:
-##        download_links = []
-##        for fi in files:
-##            logger.info(f"Validating file: {fi}..")
-##            _x = resolve_download_file_url(sim["DOI"], fi, validate_uri=True)
-##            download_links.append(_x)
+    try:
+        download_links = []
+        for fi in files:
+            logger.info(f"Validating file: {fi}..")
+            _x = resolve_download_file_url(sim["DOI"], fi, validate_uri=True)
+            download_links.append(_x)
 
-##        logger.info(f"Now downloading {len(files)} files ...")
+        logger.info(f"Now downloading {len(files)} files ...")
 
-##        for url, fi in zip(download_links, files):
-##            download_resource_from_uri(
-##                url, os.path.join(dir_tmp, fi), override_if_exists=args.no_cache
-##            )
+        for url, fi in zip(download_links, files):
+            download_resource_from_uri(
+                url, os.path.join(dir_tmp, fi), override_if_exists=args.no_cache
+            )
 
-##        logger.info(f"Download of {len(files)} files was successful")
+        logger.info(f"Download of {len(files)} files was successful")
 
-##    except HTTPError as e:
-##        if e.code == 404:
-##            logger.error(
-##                f"ressource not found on server '{e.url}' (404)."
-##                " Wrong DOI link or file name?"
-##            )
-##        else:
-##            logger.error(f"HTTPError {e.code} while trying to "
-##                         f"download the file '{e.url}'")
-##        quit(3)
-##    except URLError as e:
-##        logger.error(
-##            f"couldn't resolve network adress: {e.reason}."
-##            " Please check your internet connection."
-##        )
-##        quit(3)
-##    except Exception as e:
-##        logger.error(
-##            f"'{type(e).__name__}' while attempting to download ressources, aborting"
-##        )
-##        logger.error(traceback.format_exc())
-##        quit(3)
+    except HTTPError as e:
+        if e.code == 404:
+            logger.error(
+                f"ressource not found on server '{e.url}' (404)."
+                " Wrong DOI link or file name?"
+            )
+        else:
+            logger.error(f"HTTPError {e.code} while trying to "
+                         f"download the file '{e.url}'")
+        quit(3)
+    except URLError as e:
+        logger.error(
+            f"couldn't resolve network adress: {e.reason}."
+            " Please check your internet connection."
+        )
+        quit(3)
+    except Exception as e:
+        logger.error(
+            f"'{type(e).__name__}' while attempting to download ressources, aborting"
+        )
+        logger.error(traceback.format_exc())
+        quit(3)
 
     # -- Calculate hash of downloaded files
 
