@@ -34,8 +34,7 @@ def align_and_evaluate_protein_sequences(
     # You can choose between global (Needleman-Wunsch) and local (Smith-Waterman) alignment.
     # Global alignment (default for PairwiseAligner) attempts to align the entire sequences.
     # Local alignment finds the best matching sub-regions.
-    # For global alignment:
-    aligner.mode = "global"
+    aligner.mode = "local"
 
     # 2. Perform the alignment
     # The align method returns an iterator of Alignment objects.
