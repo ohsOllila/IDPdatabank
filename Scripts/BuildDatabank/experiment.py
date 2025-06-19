@@ -43,6 +43,17 @@ class Experiment:
                     self.buffer_manager.calculate_ionic_strength(key)
                 )
             self.ionic_strength = simulation_ionic_strength
+            self.temperature = (
+                float(self.metadata["Sample_condition_variable"]["temperature"])
+                if "temperature" in self.metadata["Sample_condition_variable"]
+                else None
+            )
+            self.ph = (
+                float(self.metadata["Sample_condition_variable"]["ph"])
+                if "ph" in self.metadata["Sample_condition_variable"]
+                else None
+            )
+
     def _load_spin_relaxation_data(self) -> None:
         """Load data specific to spin relaxation experiments."""
         t1_metadata_file = self.path / "T1_metadata.yaml"
