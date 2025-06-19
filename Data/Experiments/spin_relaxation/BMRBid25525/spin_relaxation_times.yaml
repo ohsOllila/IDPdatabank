@@ -1,0 +1,99 @@
+10MET:
+    600.0:
+        T1:
+            error: 0.078
+            value: 0.571
+        T2:
+            error: 0.006
+            value: 0.118
+        hetNOE:
+            error: 0.104
+            value: 0.425
+2ASN:
+    600.0:
+        T1:
+            error: 0.15
+            value: 0.725
+        T2:
+            error: 0.039
+            value: 0.229
+        hetNOE:
+            error: 0.041
+            value: -0.061
+3HIS:
+    600.0:
+        T1:
+            error: 0.084
+            value: 0.607
+        T2:
+            error: 0.02
+            value: 0.121
+        hetNOE:
+            error: 0.01
+            value: 0.556
+4TRP:
+    600.0:
+        T1:
+            error: 0.085
+            value: 0.681
+        T2:
+            error: 0.032
+            value: 0.135
+        hetNOE:
+            error: 0.099
+            value: 0.426
+5ALA:
+    600.0:
+        T1:
+            error: 0.195
+            value: 0.777
+        T2:
+            error: 0.047
+            value: 0.079
+        hetNOE:
+            error: 0.077
+            value: 0.387
+6VAL:
+    600.0:
+        T1:
+            error: 0.098
+            value: 0.646
+        T2:
+            error: 0.035
+            value: 0.085
+        hetNOE:
+            error: 0.083
+            value: 0.454
+7GLY:
+    600.0:
+        T1:
+            error: 0.19
+            value: 0.683
+        T2:
+            error: 0.033
+            value: 0.1
+        hetNOE:
+            error: 0.125
+            value: 0.504
+8HIS:
+    600.0:
+        T1:
+            error: 0.129
+            value: 0.588
+        T2:
+            error: 0.008
+            value: 0.084
+        hetNOE:
+            error: 0.087
+            value: 0.454
+9LEU:
+    600.0:
+        T1:
+            error: 0.14
+            value: 0.69
+        T2:
+            error: 0.05
+            value: 0.126
+        hetNOE:
+            error: 0.095
+            value: 0.635
