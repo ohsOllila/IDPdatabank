@@ -1,0 +1,1159 @@
+100LYS:
+    600.0:
+        T1:
+            error: 0.00682
+            value: 1.68195
+        T2:
+            error: 0.02334
+            value: 4.59895
+101ALA:
+    600.0:
+        T1:
+            error: 0.00664
+            value: 1.64519
+        T2:
+            error: 0.02286
+            value: 4.05442
+        hetNOE:
+            error: 0.00047
+            value: 0.20688
+105VAL:
+    600.0:
+        T1:
+            error: 0.00439
+            value: 1.48438
+        T2:
+            error: 0.01598
+            value: 3.3506
+        hetNOE:
+            error: 0.00252
+            value: 0.01002
+10LEU:
+    600.0:
+        T1:
+            error: 0.01105
+            value: 1.51319
+        T2:
+            error: 0.06187
+            value: 9.35223
+        hetNOE:
+            error: 0.0183
+            value: 0.60116
+114PHE:
+    600.0:
+        T1:
+            error: 0.00442
+            value: 1.55268
+        T2:
+            error: 0.01579
+            value: 3.3543
+        hetNOE:
+            error: 0.0108
+            value: 0.07394
+115GLU:
+    600.0:
+        T1:
+            error: 0.00526
+            value: 1.56767
+        T2:
+            error: 0.01782
+            value: 3.44651
+        hetNOE:
+            error: 0.01519
+            value: 0.07345
+117ILE:
+    600.0:
+        T1:
+            error: 0.00472
+            value: 1.50471
+        T2:
+            error: 0.01636
+            value: 3.22982
+        hetNOE:
+            error: 0.01444
+            value: 0.04781
+118ASP:
+    600.0:
+        T1:
+            error: 0.00489
+            value: 1.56632
+        T2:
+            error: 0.01693
+            value: 3.34869
+        hetNOE:
+            error: 0.01484
+            value: 0.02628
+11LYS:
+    600.0:
+        T1:
+            error: 0.01836
+            value: 1.53318
+        T2:
+            error: 0.11732
+            value: 11.23718
+        hetNOE:
+            error: 0.02149
+            value: 0.70603
+120ASP:
+    600.0:
+        T1:
+            error: 0.00432
+            value: 1.54818
+        T2:
+            error: 0.01418
+            value: 3.33157
+        hetNOE:
+            error: 0.01725
+            value: 0.06577
+121ASP:
+    600.0:
+        T1:
+            error: 0.00411
+            value: 1.52272
+        T2:
+            error: 0.01421
+            value: 3.16354
+        hetNOE:
+            error: 0.01174
+            value: 0.051
+126GLU:
+    600.0:
+        T1:
+            error: 0.00333
+            value: 1.37534
+        T2:
+            error: 0.01221
+            value: 2.67267
+        hetNOE:
+            error: 0.00937
+            value: -0.16924
+127VAL:
+    600.0:
+        T1:
+            error: 0.00364
+            value: 1.32153
+        T2:
+            error: 0.01464
+            value: 2.95242
+        hetNOE:
+            error: 0.00236
+            value: -0.24021
+128GLU:
+    600.0:
+        T1:
+            error: 0.00369
+            value: 1.35863
+        T2:
+            error: 0.01355
+            value: 2.93953
+        hetNOE:
+            error: 0.01284
+            value: -0.34037
+129GLU:
+    600.0:
+        hetNOE:
+            error: 0.01178
+            value: -0.31494
+12GLU:
+    600.0:
+        T1:
+            error: 0.01377
+            value: 1.60358
+        T2:
+            error: 0.07233
+            value: 9.1051
+        hetNOE:
+            error: 0.01941
+            value: 0.58415
+134GLU:
+    600.0:
+        T1:
+            error: 0.00306
+            value: 1.32794
+        T2:
+            error: 0.01092
+            value: 2.30284
+135ALA:
+    600.0:
+        T1:
+            error: 0.00294
+            value: 1.23652
+        T2:
+            error: 0.01161
+            value: 2.38873
+        hetNOE:
+            error: 0.00584
+            value: -0.43691
+138PHE:
+    600.0:
+        T1:
+            error: 0.00318
+            value: 1.26217
+        T2:
+            error: 0.01235
+            value: 2.08387
+        hetNOE:
+            error: 0.00769
+            value: -0.42343
+13MET:
+    600.0:
+        T1:
+            error: 0.01579
+            value: 1.44067
+        T2:
+            error: 0.09502
+            value: 9.63251
+        hetNOE:
+            error: 0.04811
+            value: 0.68523
+140GLU:
+    600.0:
+        T1:
+            error: 0.00286
+            value: 1.26494
+        T2:
+            error: 0.01077
+            value: 2.19976
+        hetNOE:
+            error: 0.00872
+            value: -0.42138
+141GLU:
+    600.0:
+        hetNOE:
+            error: 0.00854
+            value: -0.43657
+14ALA:
+    600.0:
+        T1:
+            error: 0.00983
+            value: 1.50041
+        T2:
+            error: 0.05639
+            value: 9.59264
+        hetNOE:
+            error: 0.01924
+            value: 0.7201
+151GLU:
+    600.0:
+        T1:
+            error: 0.00327
+            value: 1.29827
+        T2:
+            error: 0.01205
+            value: 2.19739
+152ILE:
+    600.0:
+        T1:
+            error: 0.00299
+            value: 1.22971
+        T2:
+            error: 0.01195
+            value: 2.51198
+        hetNOE:
+            error: 0.00741
+            value: -0.53211
+153GLU:
+    600.0:
+        T1:
+            error: 0.00313
+            value: 1.28766
+        T2:
+            error: 0.01131
+            value: 2.38118
+        hetNOE:
+            error: 0.00775
+            value: -0.52455
+155ASP:
+    600.0:
+        T1:
+            error: 0.00278
+            value: 1.27918
+        T2:
+            error: 0.01015
+            value: 2.3844
+        hetNOE:
+            error: 0.00282
+            value: -0.45493
+156ILE:
+    600.0:
+        T1:
+            error: 0.00282
+            value: 1.21288
+        T2:
+            error: 0.01095
+            value: 2.20536
+        hetNOE:
+            error: 0.00732
+            value: -0.46218
+157ILE:
+    600.0:
+        T1:
+            error: 0.00358
+            value: 1.26718
+        T2:
+            error: 0.01344
+            value: 2.24128
+        hetNOE:
+            error: 0.01519
+            value: -0.54678
+158ASP:
+    600.0:
+        T1:
+            error: 0.00384
+            value: 1.29446
+        T2:
+            error: 0.01369
+            value: 2.39158
+        hetNOE:
+            error: 0.01225
+            value: -0.50483
+163ASP:
+    600.0:
+        T1:
+            error: 0.00337
+            value: 1.33612
+        T2:
+            error: 0.01251
+            value: 1.87153
+        hetNOE:
+            error: 0.01186
+            value: -0.39164
+164TYR:
+    600.0:
+        T1:
+            error: 0.00323
+            value: 1.27387
+        T2:
+            error: 0.01222
+            value: 1.67596
+        hetNOE:
+            error: 0.01006
+            value: -0.37959
+165ASP:
+    600.0:
+        hetNOE:
+            error: 0.00992
+            value: -0.45535
+166ASP:
+    600.0:
+        T1:
+            error: 0.00284
+            value: 1.30826
+        T2:
+            error: 0.01036
+            value: 1.70457
+167GLU:
+    600.0:
+        hetNOE:
+            error: 0.00683
+            value: -0.6962
+169GLU:
+    600.0:
+        T1:
+            error: 0.00213
+            value: 1.2645
+        T2:
+            error: 0.00783
+            value: 1.51611
+16VAL:
+    600.0:
+        T1:
+            error: 0.015
+            value: 1.59534
+        T2:
+            error: 0.12001
+            value: 14.16852
+        hetNOE:
+            error: 0.02403
+            value: 0.73324
+172LYS:
+    600.0:
+        T1:
+            error: 0.00183
+            value: 0.94864
+        T2:
+            error: 0.00767
+            value: 1.07272
+        hetNOE:
+            error: 0.01482
+            value: -1.40559
+17GLU:
+    600.0:
+        T1:
+            error: 0.01799
+            value: 1.53744
+        T2:
+            error: 0.12722
+            value: 12.44221
+        hetNOE:
+            error: 0.03473
+            value: 0.83985
+18ILE:
+    600.0:
+        T1:
+            error: 0.02196
+            value: 1.58272
+        T2:
+            error: 0.1395
+            value: 10.82105
+        hetNOE:
+            error: 0.02865
+            value: 0.75894
+19ALA:
+    600.0:
+        T1:
+            error: 0.0163
+            value: 1.67229
+        T2:
+            error: 0.09184
+            value: 10.67352
+        hetNOE:
+            error: 0.00909
+            value: 0.77072
+20HIS:
+    600.0:
+        T1:
+            error: 0.02578
+            value: 1.5633
+        T2:
+            error: 0.15325
+            value: 10.41448
+        hetNOE:
+            error: 0.02575
+            value: 0.75061
+21GLU:
+    600.0:
+        T1:
+            error: 0.0153
+            value: 1.51444
+        T2:
+            error: 0.1052
+            value: 11.43324
+        hetNOE:
+            error: 0.03051
+            value: 0.83047
+22LEU:
+    600.0:
+        T1:
+            error: 0.01974
+            value: 1.55063
+        T2:
+            error: 0.08643
+            value: 6.87579
+        hetNOE:
+            error: 0.1777
+            value: 0.74654
+23PHE:
+    600.0:
+        T1:
+            error: 0.02746
+            value: 1.62548
+        T2:
+            error: 0.16754
+            value: 10.77651
+        hetNOE:
+            error: 0.00708
+            value: 0.72968
+24GLU:
+    600.0:
+        T1:
+            error: 0.01705
+            value: 1.58363
+        T2:
+            error: 0.10361
+            value: 10.61656
+        hetNOE:
+            error: 0.01313
+            value: 0.68415
+25GLU:
+    600.0:
+        T1:
+            error: 0.01985
+            value: 1.53044
+        T2:
+            error: 0.12779
+            value: 10.53542
+        hetNOE:
+            error: 0.02457
+            value: 0.6628
+26HIS:
+    600.0:
+        T1:
+            error: 0.02608
+            value: 1.58214
+        T2:
+            error: 0.13921
+            value: 9.478
+        hetNOE:
+            error: 0.06755
+            value: 0.72298
+27LYS:
+    600.0:
+        T1:
+            error: 0.04688
+            value: 1.6149
+        T2:
+            error: 0.33331
+            value: 12.34904
+        hetNOE:
+            error: 0.04007
+            value: 0.84171
+28LYS:
+    600.0:
+        T1:
+            error: 0.0139
+            value: 1.33918
+        T2:
+            error: 0.11652
+            value: 12.77032
+        hetNOE:
+            error: 0.01813
+            value: 0.69827
+2ILE:
+    600.0:
+        T1:
+            error: 0.05477
+            value: 1.4253
+        T2:
+            error: 0.30166
+            value: 8.4516
+        hetNOE:
+            error: 0.15816
+            value: 0.68977
+30VAL:
+    600.0:
+        T1:
+            error: 0.0244
+            value: 1.60411
+        T2:
+            error: 0.17681
+            value: 12.72958
+        hetNOE:
+            error: 0.03751
+            value: 0.72425
+32PHE:
+    600.0:
+        T1:
+            error: 0.0192
+            value: 1.47422
+        T2:
+            error: 0.14704
+            value: 12.51045
+        hetNOE:
+            error: 0.02882
+            value: 0.78693
+33GLN:
+    600.0:
+        T1:
+            error: 0.01247
+            value: 1.45971
+        T2:
+            error: 0.0921
+            value: 11.67439
+        hetNOE:
+            error: 0.01216
+            value: 0.79805
+34GLU:
+    600.0:
+        T1:
+            error: 0.01357
+            value: 1.36078
+        T2:
+            error: 0.11535
+            value: 13.10607
+        hetNOE:
+            error: 0.01512
+            value: 0.67544
+35LEU:
+    600.0:
+        T1:
+            error: 0.01347
+            value: 1.49329
+        T2:
+            error: 0.10171
+            value: 11.44168
+        hetNOE:
+            error: 0.0306
+            value: 0.78881
+36LEU:
+    600.0:
+        T1:
+            error: 0.01284
+            value: 1.51389
+        T2:
+            error: 0.08636
+            value: 11.55448
+        hetNOE:
+            error: 0.04509
+            value: 0.74181
+37ASN:
+    600.0:
+        T1:
+            error: 0.01192
+            value: 1.41674
+        T2:
+            error: 0.09323
+            value: 12.49751
+        hetNOE:
+            error: 0.02437
+            value: 0.71539
+38GLU:
+    600.0:
+        T1:
+            error: 0.00986
+            value: 1.4244
+        T2:
+            error: 0.06514
+            value: 9.55092
+3LYS:
+    600.0:
+        T1:
+            error: 0.01642
+            value: 1.43863
+        T2:
+            error: 0.10805
+            value: 10.78835
+        hetNOE:
+            error: 0.00643
+            value: 0.51546
+40ALA:
+    600.0:
+        T1:
+            error: 0.01197
+            value: 1.49834
+        T2:
+            error: 0.08178
+            value: 11.18291
+        hetNOE:
+            error: 0.05047
+            value: 0.80142
+41SER:
+    600.0:
+        T1:
+            error: 0.00839
+            value: 1.36545
+        T2:
+            error: 0.06742
+            value: 12.32895
+        hetNOE:
+            error: 0.01361
+            value: 0.72637
+42LEU:
+    600.0:
+        T1:
+            error: 0.01037
+            value: 1.47101
+        T2:
+            error: 0.07716
+            value: 11.72776
+        hetNOE:
+            error: 0.03825
+            value: 0.67875
+44GLY:
+    600.0:
+        T1:
+            error: 0.01471
+            value: 1.36814
+        T2:
+            error: 0.11368
+            value: 11.7633
+        hetNOE:
+            error: 0.02127
+            value: 0.67199
+45VAL:
+    600.0:
+        T1:
+            error: 0.01104
+            value: 1.33938
+        T2:
+            error: 0.09309
+            value: 11.60907
+        hetNOE:
+            error: 0.01091
+            value: 0.71625
+46LYS:
+    600.0:
+        T1:
+            error: 0.01043
+            value: 1.3658
+        T2:
+            error: 0.06683
+            value: 9.97798
+        hetNOE:
+            error: 0.02319
+            value: 0.61021
+47LYS:
+    600.0:
+        T1:
+            error: 0.01227
+            value: 1.64267
+        T2:
+            error: 0.06413
+            value: 9.36195
+        hetNOE:
+            error: 0.02283
+            value: 0.66378
+48GLU:
+    600.0:
+        T1:
+            error: 0.01083
+            value: 1.67962
+        T2:
+            error: 0.05646
+            value: 9.51432
+        hetNOE:
+            error: 0.02247
+            value: 0.67778
+49GLU:
+    600.0:
+        T1:
+            error: 0.01139
+            value: 1.60634
+        T2:
+            error: 0.06165
+            value: 9.5921
+        hetNOE:
+            error: 0.02919
+            value: 0.70744
+4GLN:
+    600.0:
+        T1:
+            error: 0.01762
+            value: 1.47582
+        T2:
+            error: 0.12228
+            value: 11.12748
+        hetNOE:
+            error: 0.07197
+            value: 0.50044
+50LEU:
+    600.0:
+        T1:
+            error: 0.01274
+            value: 1.60694
+        T2:
+            error: 0.07035
+            value: 9.43753
+        hetNOE:
+            error: 0.01042
+            value: 0.63728
+51GLY:
+    600.0:
+        T1:
+            error: 0.00952
+            value: 1.61448
+        T2:
+            error: 0.04554
+            value: 7.7278
+        hetNOE:
+            error: 0.02195
+            value: 0.55136
+52ASP:
+    600.0:
+        T1:
+            error: 0.03607
+            value: 1.47687
+        T2:
+            error: 0.20668
+            value: 9.00673
+        hetNOE:
+            error: 0.0638
+            value: 0.47921
+53ARG:
+    600.0:
+        T1:
+            error: 0.01265
+            value: 1.63652
+        T2:
+            error: 0.06887
+            value: 9.6348
+        hetNOE:
+            error: 0.00796
+            value: 0.58764
+54ILE:
+    600.0:
+        T1:
+            error: 0.01302
+            value: 1.4308
+        T2:
+            error: 0.10329
+            value: 12.39629
+        hetNOE:
+            error: 0.02932
+            value: 0.67354
+56GLN:
+    600.0:
+        T1:
+            error: 0.01121
+            value: 1.35889
+        T2:
+            error: 0.09531
+            value: 13.35708
+        hetNOE:
+            error: 0.00636
+            value: 0.66415
+57PHE:
+    600.0:
+        T1:
+            error: 0.01304
+            value: 1.43803
+        T2:
+            error: 0.09913
+            value: 12.40143
+        hetNOE:
+            error: 0.0281
+            value: 0.71822
+58TYR:
+    600.0:
+        T1:
+            error: 0.01414
+            value: 1.44416
+        T2:
+            error: 0.10969
+            value: 12.99889
+        hetNOE:
+            error: 0.03503
+            value: 0.74199
+5TYR:
+    600.0:
+        T1:
+            error: 0.01858
+            value: 1.44358
+        T2:
+            error: 0.10905
+            value: 9.09519
+        hetNOE:
+            error: 0.05287
+            value: 0.62779
+60ASP:
+    600.0:
+        T1:
+            error: 0.01251
+            value: 1.41377
+        T2:
+            error: 0.10441
+            value: 13.33449
+        hetNOE:
+            error: 0.02446
+            value: 0.74414
+62ASN:
+    600.0:
+        T1:
+            error: 0.02388
+            value: 1.34234
+        T2:
+            error: 0.329
+            value: 21.55506
+        hetNOE:
+            error: 0.05961
+            value: 0.76508
+63ILE:
+    600.0:
+        T1:
+            error: 0.02874
+            value: 1.2478
+        T2:
+            error: 0.38098
+            value: 18.86243
+        hetNOE:
+            error: 0.07014
+            value: 0.75188
+64ASP:
+    600.0:
+        T1:
+            error: 0.03271
+            value: 1.46355
+        T2:
+            error: 0.21051
+            value: 9.3615
+        hetNOE:
+            error: 0.0855
+            value: 0.55216
+66ARG:
+    600.0:
+        T1:
+            error: 0.02524
+            value: 1.46673
+        T2:
+            error: 0.19313
+            value: 12.59668
+        hetNOE:
+            error: 0.03165
+            value: 0.78933
+67PHE:
+    600.0:
+        T1:
+            error: 0.02461
+            value: 1.71115
+        T2:
+            error: 0.14157
+            value: 10.6203
+        hetNOE:
+            error: 0.08793
+            value: 0.87069
+68LEU:
+    600.0:
+        T1:
+            error: 0.01726
+            value: 1.47519
+        T2:
+            error: 0.11293
+            value: 10.93778
+        hetNOE:
+            error: 0.05666
+            value: 0.78983
+69ALA:
+    600.0:
+        T1:
+            error: 0.01633
+            value: 1.5317
+        T2:
+            error: 0.10113
+            value: 9.57966
+        hetNOE:
+            error: 0.01616
+            value: 0.69907
+6SER:
+    600.0:
+        T1:
+            error: 0.03081
+            value: 1.59456
+        T2:
+            error: 0.15756
+            value: 9.00956
+        hetNOE:
+            error: 0.03308
+            value: 0.63611
+71SER:
+    600.0:
+        T1:
+            error: 0.03321
+            value: 1.45987
+        T2:
+            error: 0.20384
+            value: 10.06416
+        hetNOE:
+            error: 0.0337
+            value: 0.57995
+72ASP:
+    600.0:
+        T1:
+            error: 0.03206
+            value: 1.59107
+        T2:
+            error: 0.17751
+            value: 9.5487
+        hetNOE:
+            error: 0.02671
+            value: 0.7207
+73GLN:
+    600.0:
+        T1:
+            error: 0.02475
+            value: 1.48871
+        T2:
+            error: 0.19112
+            value: 13.12466
+        hetNOE:
+            error: 0.04908
+            value: 0.66631
+74THR:
+    600.0:
+        T1:
+            error: 0.01969
+            value: 1.22024
+        T2:
+            error: 0.17382
+            value: 12.7929
+        hetNOE:
+            error: 0.02834
+            value: 0.6786
+75TRP:
+    600.0:
+        T1:
+            error: 0.02356
+            value: 1.46682
+        T2:
+            error: 0.14529
+            value: 10.55604
+        hetNOE:
+            error: 0.12077
+            value: 0.87984
+76GLY:
+    600.0:
+        T1:
+            error: 0.02416
+            value: 1.55757
+        T2:
+            error: 0.14259
+            value: 10.1579
+        hetNOE:
+            error: 0.02064
+            value: 0.79108
+79SER:
+    600.0:
+        T1:
+            error: 0.01909
+            value: 1.40933
+        T2:
+            error: 0.15363
+            value: 12.69619
+        hetNOE:
+            error: 0.05553
+            value: 0.73692
+7GLN:
+    600.0:
+        T1:
+            error: 0.02009
+            value: 1.59528
+        T2:
+            error: 0.11629
+            value: 9.78065
+        hetNOE:
+            error: 0.02545
+            value: 0.7688
+80TRP:
+    600.0:
+        T1:
+            error: 0.01534
+            value: 1.58859
+        T2:
+            error: 0.09699
+            value: 11.06915
+        hetNOE:
+            error: 0.02026
+            value: 0.75725
+81TYR:
+    600.0:
+        T1:
+            error: 0.01618
+            value: 1.54105
+        T2:
+            error: 0.1049
+            value: 10.27878
+        hetNOE:
+            error: 0.00989
+            value: 0.74202
+84ASP:
+    600.0:
+        T1:
+            error: 0.00588
+            value: 1.47634
+        T2:
+            error: 0.02342
+            value: 4.0859
+        hetNOE:
+            error: 0.007
+            value: 0.17947
+85GLN:
+    600.0:
+        T1:
+            error: 0.00535
+            value: 1.46835
+        T2:
+            error: 0.02178
+            value: 4.32749
+86LEU:
+    600.0:
+        T1:
+            error: 0.00511
+            value: 1.4347
+        T2:
+            error: 0.01874
+            value: 3.33845
+        hetNOE:
+            error: 0.00314
+            value: -0.04303
+89GLU:
+    600.0:
+        T1:
+            error: 0.00488
+            value: 1.43481
+        T2:
+            error: 0.01751
+            value: 3.15425
+        hetNOE:
+            error: 0.02784
+            value: -0.0771
+8GLU:
+    600.0:
+        T1:
+            error: 0.00922
+            value: 1.60512
+        T2:
+            error: 0.04845
+            value: 9.32522
+        hetNOE:
+            error: 0.02293
+            value: 0.6666
+90THR:
+    600.0:
+        T1:
+            error: 0.00664
+            value: 1.38443
+        T2:
+            error: 0.02487
+            value: 3.17121
+        hetNOE:
+            error: 0.00592
+            value: -0.1732
+91GLN:
+    600.0:
+        T1:
+            error: 0.00651
+            value: 1.38362
+        T2:
+            error: 0.02485
+            value: 3.37413
+        hetNOE:
+            error: 0.00502
+            value: -0.22013
+93THR:
+    600.0:
+        T1:
+            error: 0.00749
+            value: 1.37895
+        T2:
+            error: 0.0297
+            value: 3.48766
+        hetNOE:
+            error: 0.01736
+            value: -0.14788
+94VAL:
+    600.0:
+        T1:
+            error: 0.0054
+            value: 1.38695
+        T2:
+            error: 0.02158
+            value: 3.30489
+        hetNOE:
+            error: 0.00553
+            value: -0.13812
+96ALA:
+    600.0:
+        T1:
+            error: 0.00668
+            value: 1.46315
+        T2:
+            error: 0.02414
+            value: 3.75828
+        hetNOE:
+            error: 0.00612
+            value: 0.0289
+97LYS:
+    600.0:
+        hetNOE:
+            error: 0.0398
+            value: 0.27646
+9GLU:
+    600.0:
+        T1:
+            error: 0.01275
+            value: 1.55737
+        T2:
+            error: 0.07258
+            value: 9.12793
+        hetNOE:
+            error: 0.03095
+            value: 0.63149

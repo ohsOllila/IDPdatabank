@@ -1,0 +1,784 @@
+18GLU:
+    800.20376094:
+        T1:
+            error: 0.003
+            value: 0.643
+        T2:
+            error: 0.005
+            value: 0.236
+        hetNOE:
+            error: 0.0089
+            value: 0.4647
+19ASN:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.647
+        T2:
+            error: 0.003
+            value: 0.202
+        hetNOE:
+            error: 0.0363
+            value: 0.4812
+20LEU:
+    800.20376094:
+        T1:
+            error: 0.006
+            value: 0.628
+        T2:
+            error: 0.002
+            value: 0.228
+        hetNOE:
+            error: 0.0767
+            value: 0.5843
+21TYR:
+    800.20376094:
+        T1:
+            error: 0.005
+            value: 0.619
+        T2:
+            error: 0.0
+            value: 0.189
+        hetNOE:
+            error: 0.0347
+            value: 0.608
+22PHE:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.607
+        T2:
+            error: 0.001
+            value: 0.211
+        hetNOE:
+            error: 0.0468
+            value: 0.5982
+23GLN:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.629
+        T2:
+            error: 0.003
+            value: 0.228
+        hetNOE:
+            error: 0.0788
+            value: 0.5807
+24GLY:
+    800.20376094:
+        T1:
+            error: 0.013
+            value: 0.676
+        T2:
+            error: 0.001
+            value: 0.223
+        hetNOE:
+            error: 0.0393
+            value: 0.4722
+25GLY:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.654
+        T2:
+            error: 0.0
+            value: 0.233
+        hetNOE:
+            error: 0.0152
+            value: 0.4557
+26GLN:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.661
+        T2:
+            error: 0.002
+            value: 0.217
+        hetNOE:
+            error: 0.0472
+            value: 0.4027
+27TYR:
+    800.20376094:
+        T1:
+            error: 0.0
+            value: 0.632
+        T2:
+            error: 0.002
+            value: 0.218
+        hetNOE:
+            error: 0.0572
+            value: 0.5721
+28VAL:
+    800.20376094:
+        T1:
+            error: 0.006
+            value: 0.647
+        T2:
+            error: 0.003
+            value: 0.21
+        hetNOE:
+            error: 0.0012
+            value: 0.4287
+29PRO:
+    800.20376094:
+        T1:
+            error: 0.0
+            value: 0.0
+        T2:
+            error: 0.0
+            value: 0.0
+30ASN:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.669
+        T2:
+            error: 0.001
+            value: 0.181
+        hetNOE:
+            error: 0.0489
+            value: 0.576
+31GLY:
+    800.20376094:
+        T1:
+            error: 0.007
+            value: 0.675
+        T2:
+            error: 0.002
+            value: 0.205
+        hetNOE:
+            error: 0.0562
+            value: 0.5119
+32TRP:
+    800.20376094:
+        T1:
+            error: 0.002
+            value: 0.642
+        T2:
+            error: 0.0
+            value: 0.216
+        hetNOE:
+            error: 0.001
+            value: 0.477
+33GLN:
+    800.20376094:
+        T1:
+            error: 0.003
+            value: 0.627
+        T2:
+            error: 0.001
+            value: 0.208
+        hetNOE:
+            error: 0.0484
+            value: 0.5459
+34VAL:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.652
+        T2:
+            error: 0.001
+            value: 0.209
+        hetNOE:
+            error: 0.0127
+            value: 0.4354
+35PRO:
+    800.20376094:
+        T1:
+            error: 0.0
+            value: 0.0
+        T2:
+            error: 0.0
+            value: 0.0
+36ALA:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.663
+        T2:
+            error: 0.002
+            value: 0.224
+        hetNOE:
+            error: 0.0
+            value: 0.4273
+37TYR:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.676
+        T2:
+            error: 0.001
+            value: 0.183
+        hetNOE:
+            error: 0.0063
+            value: 0.4549
+38GLY:
+    800.20376094:
+        T1:
+            error: 0.0
+            value: 0.639
+        T2:
+            error: 0.003
+            value: 0.204
+        hetNOE:
+            error: 0.0015
+            value: 0.5099
+39VAL:
+    800.20376094:
+        T1:
+            error: 0.003
+            value: 0.639
+        T2:
+            error: 0.0
+            value: 0.195
+        hetNOE:
+            error: 0.0362
+            value: 0.5766
+40TYR:
+    800.20376094:
+        T1:
+            error: 0.003
+            value: 0.618
+        T2:
+            error: 0.001
+            value: 0.212
+        hetNOE:
+            error: 0.0173
+            value: 0.5048
+41GLY:
+    800.20376094:
+        T1:
+            error: 0.0
+            value: 0.643
+        T2:
+            error: 0.001
+            value: 0.206
+        hetNOE:
+            error: 0.0099
+            value: 0.4244
+42GLN:
+    800.20376094:
+        T1:
+            error: 0.008
+            value: 0.646
+        T2:
+            error: 0.0
+            value: 0.207
+        hetNOE:
+            error: 0.016
+            value: 0.5821
+43PRO:
+    800.20376094:
+        T1:
+            error: 0.0
+            value: 0.0
+        T2:
+            error: 0.0
+            value: 0.0
+44TRP:
+    800.20376094:
+        T1:
+            error: 0.006
+            value: 0.621
+        T2:
+            error: 0.001
+            value: 0.181
+        hetNOE:
+            error: 0.0482
+            value: 0.6324
+45SER:
+    800.20376094:
+        T1:
+            error: 0.004
+            value: 0.617
+        T2:
+            error: 0.0
+            value: 0.192
+        hetNOE:
+            error: 0.0421
+            value: 0.5613
+46GLN:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.625
+        T2:
+            error: 0.003
+            value: 0.232
+        hetNOE:
+            error: 0.003
+            value: 0.443
+47GLN:
+    800.20376094:
+        T1:
+            error: 0.003
+            value: 0.645
+        T2:
+            error: 0.002
+            value: 0.239
+        hetNOE:
+            error: 0.0516
+            value: 0.5346
+48GLY:
+    800.20376094:
+        T1:
+            error: 0.002
+            value: 0.669
+        T2:
+            error: 0.001
+            value: 0.26
+        hetNOE:
+            error: 0.0662
+            value: 0.4537
+49PHE:
+    800.20376094:
+        T1:
+            error: 0.002
+            value: 0.644
+        T2:
+            error: 0.002
+            value: 0.251
+        hetNOE:
+            error: 0.0613
+            value: 0.5137
+50ASN:
+    800.20376094:
+        T1:
+            error: 0.003
+            value: 0.654
+        T2:
+            error: 0.0
+            value: 0.261
+        hetNOE:
+            error: 0.009
+            value: 0.3799
+51GLN:
+    800.20376094:
+        T1:
+            error: 0.002
+            value: 0.667
+        T2:
+            error: 0.002
+            value: 0.268
+        hetNOE:
+            error: 0.0862
+            value: 0.4986
+52THR:
+    800.20376094:
+        T1:
+            error: 0.002
+            value: 0.656
+        T2:
+            error: 0.004
+            value: 0.287
+        hetNOE:
+            error: 0.0248
+            value: 0.3513
+53GLN:
+    800.20376094:
+        T1:
+            error: 0.006
+            value: 0.659
+        T2:
+            error: 0.001
+            value: 0.281
+        hetNOE:
+            error: 0.08
+            value: 0.3741
+54SER:
+    800.20376094:
+        T1:
+            error: 0.006
+            value: 0.725
+        T2:
+            error: 0.002
+            value: 0.26
+        hetNOE:
+            error: 0.0491
+            value: 0.3717
+55SER:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.728
+        T2:
+            error: 0.001
+            value: 0.244
+        hetNOE:
+            error: 0.0502
+            value: 0.3747
+56ALA:
+    800.20376094:
+        T1:
+            error: 0.003
+            value: 0.693
+        T2:
+            error: 0.001
+            value: 0.256
+        hetNOE:
+            error: 0.0586
+            value: 0.377
+57PRO:
+    800.20376094:
+        T1:
+            error: 0.0
+            value: 0.0
+        T2:
+            error: 0.0
+            value: 0.0
+58TRP:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.644
+        T2:
+            error: 0.001
+            value: 0.184
+        hetNOE:
+            error: 0.0055
+            value: 0.3998
+59MET:
+    800.20376094:
+        T1:
+            error: 0.003
+            value: 0.624
+        T2:
+            error: 0.007
+            value: 0.231
+        hetNOE:
+            error: 0.0386
+            value: 0.5645
+60GLY:
+    800.20376094:
+        T1:
+            error: 0.003
+            value: 0.702
+        T2:
+            error: 0.003
+            value: 0.256
+        hetNOE:
+            error: 0.0723
+            value: 0.438
+61PRO:
+    800.20376094:
+        T1:
+            error: 0.0
+            value: 0.0
+        T2:
+            error: 0.0
+            value: 0.0
+62ASN:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.687
+        T2:
+            error: 0.001
+            value: 0.209
+        hetNOE:
+            error: 0.012
+            value: 0.3659
+63TYR:
+    800.20376094:
+        T1:
+            error: 0.002
+            value: 0.642
+        T2:
+            error: 0.0
+            value: 0.216
+        hetNOE:
+            error: 0.001
+            value: 0.477
+64SER:
+    800.20376094:
+        T1:
+            error: 0.007
+            value: 0.681
+        T2:
+            error: 0.003
+            value: 0.216
+        hetNOE:
+            error: 0.0517
+            value: 0.4863
+65VAL:
+    800.20376094:
+        T1:
+            error: 0.003
+            value: 0.686
+        T2:
+            error: 0.003
+            value: 0.284
+        hetNOE:
+            error: 0.0108
+            value: 0.3493
+66PRO:
+    800.20376094:
+        T1:
+            error: 0.0
+            value: 0.0
+        T2:
+            error: 0.0
+            value: 0.0
+67PRO:
+    800.20376094:
+        T1:
+            error: 0.0
+            value: 0.0
+        T2:
+            error: 0.0
+            value: 0.0
+68PRO:
+    800.20376094:
+        T1:
+            error: 0.0
+            value: 0.0
+        T2:
+            error: 0.0
+            value: 0.0
+69GLN:
+    800.20376094:
+        T1:
+            error: 0.0
+            value: 0.697
+        T2:
+            error: 0.0
+            value: 0.278
+        hetNOE:
+            error: 0.0129
+            value: 0.2783
+70GLY:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.733
+        T2:
+            error: 0.0
+            value: 0.32
+        hetNOE:
+            error: 0.0052
+            value: 0.1455
+71GLN:
+    800.20376094:
+        T1:
+            error: 0.002
+            value: 0.736
+        T2:
+            error: 0.008
+            value: 0.315
+        hetNOE:
+            error: 0.0785
+            value: 0.2414
+72ASN:
+    800.20376094:
+        T1:
+            error: 0.004
+            value: 0.755
+        T2:
+            error: 0.004
+            value: 0.321
+        hetNOE:
+            error: 0.0224
+            value: 0.1377
+73GLY:
+    800.20376094:
+        T1:
+            error: 0.007
+            value: 0.767
+        T2:
+            error: 0.004
+            value: 0.341
+        hetNOE:
+            error: 0.0054
+            value: 0.0749
+74SER:
+    800.20376094:
+        T1:
+            error: 0.003
+            value: 0.723
+        T2:
+            error: 0.004
+            value: 0.324
+        hetNOE:
+            error: 0.026
+            value: 0.1505
+75MET:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.715
+        T2:
+            error: 0.0
+            value: 0.355
+        hetNOE:
+            error: 0.0428
+            value: 0.2249
+76LEU:
+    800.20376094:
+        T1:
+            error: 0.005
+            value: 0.711
+        T2:
+            error: 0.003
+            value: 0.315
+        hetNOE:
+            error: 0.0264
+            value: 0.0881
+77PRO:
+    800.20376094:
+        T1:
+            error: 0.0
+            value: 0.0
+        T2:
+            error: 0.0
+            value: 0.0
+78SER:
+    800.20376094:
+        T1:
+            error: 0.0
+            value: 0.722
+        T2:
+            error: 0.001
+            value: 0.318
+        hetNOE:
+            error: 0.0616
+            value: 0.2981
+79GLN:
+    800.20376094:
+        T1:
+            error: 0.01
+            value: 0.717
+        T2:
+            error: 0.002
+            value: 0.325
+        hetNOE:
+            error: 0.0385
+            value: 0.3602
+80PRO:
+    800.20376094:
+        T1:
+            error: 0.0
+            value: 0.0
+        T2:
+            error: 0.0
+            value: 0.0
+81ALA:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.706
+        T2:
+            error: 0.0
+            value: 0.312
+        hetNOE:
+            error: 0.0194
+            value: 0.1011
+82GLY:
+    800.20376094:
+        T1:
+            error: 0.004
+            value: 0.728
+        T2:
+            error: 0.0
+            value: 0.311
+        hetNOE:
+            error: 0.064
+            value: 0.2744
+83TYR:
+    800.20376094:
+        T1:
+            error: 0.003
+            value: 0.647
+        T2:
+            error: 0.001
+            value: 0.288
+        hetNOE:
+            error: 0.0111
+            value: 0.2834
+84ARG:
+    800.20376094:
+        T1:
+            error: 0.003
+            value: 0.651
+        T2:
+            error: 0.001
+            value: 0.316
+        hetNOE:
+            error: 0.0264
+            value: 0.2241
+85VAL:
+    800.20376094:
+        T1:
+            error: 0.002
+            value: 0.663
+        T2:
+            error: 0.001
+            value: 0.331
+        hetNOE:
+            error: 0.0528
+            value: 0.2506
+86ALA:
+    800.20376094:
+        T1:
+            error: 0.002
+            value: 0.667
+        T2:
+            error: 0.004
+            value: 0.302
+        hetNOE:
+            error: 0.0241
+            value: 0.2037
+87GLY:
+    800.20376094:
+        T1:
+            error: 0.007
+            value: 0.745
+        T2:
+            error: 0.002
+            value: 0.379
+        hetNOE:
+            error: 0.0301
+            value: 0.1408
+88TYR:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.677
+        T2:
+            error: 0.003
+            value: 0.319
+        hetNOE:
+            error: 0.0056
+            value: 0.3201
+89GLU:
+    800.20376094:
+        T1:
+            error: 0.002
+            value: 0.706
+        T2:
+            error: 0.005
+            value: 0.416
+        hetNOE:
+            error: 0.0887
+            value: 0.1743
+90THR:
+    800.20376094:
+        T1:
+            error: 0.005
+            value: 0.796
+        T2:
+            error: 0.006
+            value: 0.459
+        hetNOE:
+            error: 0.1209
+            value: -0.5401
+91GLN:
+    800.20376094:
+        T1:
+            error: 0.001
+            value: 0.967
+        T2:
+            error: 0.003
+            value: 0.673
+        hetNOE:
+            error: 0.07
+            value: -0.7071
