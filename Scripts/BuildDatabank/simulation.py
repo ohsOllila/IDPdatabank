@@ -9,14 +9,14 @@ class Simulation:
     Handles simulation data processing using composition for buffer and file operations.
     """
 
-    def __init__(self, info_path: str) -> None:
+    def __init__(self, path: str) -> None:
         """
         Initialize the Simulation with path to info file.
 
         Args:
-            info_path: Path to the simulation info YAML file
+            path: Path to the simulation info YAML file
         """
-        self.info_path = Path(info_path)
+        self.path = Path(path)
         self.file_handler = FileHandler()
         self.buffer_manager: Optional[SimulationBufferManager] = None
         self.info: Dict[str, Any] = {}
@@ -29,7 +29,7 @@ class Simulation:
         """Initialize simulation data and buffer."""
         try:
             # Load simulation info
-            self.info = self.file_handler.read_yaml(self.info_path)
+            self.info = self.file_handler.read_yaml(self.path)
             self.composition = self.info.get("COMPOSITION", {})
 
             # Extract sequence
