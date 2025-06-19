@@ -43,7 +43,7 @@ def align_and_evaluate_protein_sequences(
     alignments = list(aligner.align(seq1_str, seq2_str))
 
     if not alignments:
-        warnings.warn("No alignment found.")
+        warnings.warn(f"No alignment found for sequences {seq1_str} and {seq2_str}.")
         return None
 
     # Get the best (first) alignment
