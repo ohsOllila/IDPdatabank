@@ -81,6 +81,31 @@ class BufferManager:
 
         raise ValueError(f"No pH range found for {molecule_name} at pH {ph_value}")
 
+    def _get_stoichiometry_at_ph(
+        self, molecule_name: str, ph_value: float
+    ) -> List[int]:
+        """Get stoichiometry for a molecule at a specific pH."""
+        molecule_data = self._get_buffer_molecule_data(molecule_name)
+
+        if not molecule_data["ph_dependent"]:
+            return molecule_data["stoichiometry"]
+
+        ranges = molecule_data["ph_ranges"]
+        # Binary search for the correct pH range
+        left, right = 0, len(ranges) - 1
+
+        while left <= right:
+            mid = (left + right) // 2
+            range_data = ranges[mid]
+            if range_data["min_ph"] <= ph_value <= range_data["max_ph"]:
+                return range_data["stoichiometry"]
+            elif ph_value < range_data["min_ph"]:
+                right = mid - 1
+            else:
+                left = mid + 1
+
+        raise ValueError(f"No pH range found for {molecule_name} at pH {ph_value}")
+
     def _get_conversion_factor(self, unit: str) -> float:
         """Convert concentration units to Molar."""
         unit = unit.lower()
