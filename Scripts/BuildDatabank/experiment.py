@@ -36,6 +36,13 @@ class Experiment:
         if self.metadata:
             self._initialize_buffer()
 
+            simulation_ions = self.buffer_manager.get_all_components()
+            simulation_ionic_strength = 0
+            for key in simulation_ions.keys():
+                simulation_ionic_strength += (
+                    self.buffer_manager.calculate_ionic_strength(key)
+                )
+            self.ionic_strength = simulation_ionic_strength
     def _load_spin_relaxation_data(self) -> None:
         """Load data specific to spin relaxation experiments."""
         t1_metadata_file = self.path / "T1_metadata.yaml"
