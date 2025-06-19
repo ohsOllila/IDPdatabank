@@ -37,3 +37,21 @@ class FileHandler:
     def join_path(*args: str) -> str:
         """Join path components."""
         return os.path.join(*args)
+
+    @staticmethod
+    def write_yaml(file_path: str, data: Dict[str, Any]) -> None:
+        """
+        Write a dictionary to a YAML file.
+
+        Args:
+            file_path: Path to the YAML file
+            data: Dictionary to write to the file
+
+        Raises:
+            RuntimeError: If there's an error writing the file
+        """
+        try:
+            with open(file_path, "w") as file:
+                yaml.safe_dump(data, file)
+        except Exception as e:
+            raise RuntimeError(f"Failed to write YAML data to {file_path}: {str(e)}")
