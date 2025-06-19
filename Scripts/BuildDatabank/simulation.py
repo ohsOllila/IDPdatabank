@@ -22,6 +22,7 @@ class Simulation:
         self.info: Dict[str, Any] = {}
         self.composition: Dict[str, Any] = {}
         self.sequence: str = ""
+        self.ionic_strength: Optional[float] = None
 
         self._initialize()
 
@@ -38,6 +39,17 @@ class Simulation:
 
             # Initialize buffer if buffer data is available
             self._initialize_buffer()
+
+            # calculate the ionic strength
+            simulation_ions = self.buffer_manager.get_all_components()
+            simulation_ionic_strength = 0
+            for key, val in simulation_ions.items():
+                simulation_ionic_strength += (
+                    self.buffer_manager.calculate_ionic_strength(
+                        key, val["concentration_val"]
+                    )
+                )
+            self.ionic_strength = simulation_ionic_strength
 
         except Exception as e:
             raise RuntimeError(f"Error initializing simulation: {e}")
