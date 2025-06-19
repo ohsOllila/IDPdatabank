@@ -53,7 +53,10 @@ class BufferManager:
         concentration = self._get_concentration_in_molar(component)
 
         # Calculate ionic strength: I = 0.5 * Σ(ci * zi²)
-        return 0.5 * sum(concentration * (z**2) for z in charges)
+        ionic_strength = 0.0
+        for i, j in zip(stoichiometry, charges):
+            ionic_strength += 0.5 * concentration * i * j**2
+        return ionic_strength
 
     def _get_charges_at_ph(self, molecule_name: str, ph_value: float) -> List[int]:
         """Get charges for a molecule at a specific pH."""
