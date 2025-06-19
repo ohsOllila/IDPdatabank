@@ -43,7 +43,7 @@ class Experiment:
 
         # Load sequence data
         if self.file_handler.file_exists(sequence_file):
-            self.sequence = self.file_handler.read_yaml(sequence_file)
+            self.sequence = self.file_handler.read_yaml(sequence_file)["sequence"][0]
 
         # Load T1 metadata
         if self.file_handler.file_exists(t1_metadata_file):
