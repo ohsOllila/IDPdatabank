@@ -1,4 +1,5 @@
 from typing import Dict, List, Optional, Union, Any
+from buffer_molecule_data import BUFFER_MOLECULE_DATA
 
 
 class BufferManager:
@@ -112,46 +113,22 @@ class BufferManager:
 
     @staticmethod
     def _get_buffer_molecule_data(component: str) -> Dict[str, Any]:
-        """Get buffer molecule data."""
-        buffer_molecule_data = {
-            "LysRS residues 1-72": {
-                "ph_dependent": False,
-                "charges": [0],
-                "stoichiometry": [1],
-            },
-            "sodium chloride": {
-                "ph_dependent": False,
-                "charges": [1, -1],
-                "stoichiometry": [1, 1],
-            },
-            "SOD": {
-                "ph_dependent": False,
-                "charges": [1],
-                "stoichiometry": [1],
-            },
-            "CLA": {
-                "ph_dependent": False,
-                "charges": [-1],
-                "stoichiometry": [1],
-            },
-            "HEPES": {
-                "ph_dependent": True,
-                "ph_ranges": [
-                    {"min_ph": 0, "max_ph": 7.5, "charges": [0]},
-                    {"min_ph": 7.6, "max_ph": 14, "charges": [1]},
-                ],
-                "stoichiometry": [1],
-            },
-            "DTT": {"ph_dependent": False, "charges": [0], "stoichiometry": [1]},
-            "PMSF": {"ph_dependent": False, "charges": [0], "stoichiometry": [1]},
-            "D2O": {"ph_dependent": False, "charges": [0], "stoichiometry": [1]},
-            "H2O": {"ph_dependent": False, "charges": [0], "stoichiometry": [1]},
-        }
+        """
+        Get buffer molecule data from the BUFFER_MOLECULE_DATA dictionary.
 
-        if component not in buffer_molecule_data:
+        Args:
+            component: Name of the buffer component to look up
+
+        Returns:
+            Dict containing the component's data
+
+        Raises:
+            ValueError: If the component is not found in BUFFER_MOLECULE_DATA
+        """
+        if component not in BUFFER_MOLECULE_DATA:
             raise ValueError(f"Unknown component: {component}")
 
-        return buffer_molecule_data[component]
+        return BUFFER_MOLECULE_DATA[component]
 
 
 class SimulationBufferManager(BufferManager):
