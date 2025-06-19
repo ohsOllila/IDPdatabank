@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import glob
 import MDAnalysis as mda
+import mdtraj
 from MDAnalysis.analysis import distances
 import matplotlib.pyplot as plt
 import csv
@@ -941,6 +942,8 @@ def make_fasta(input_file, output_file=None):
 #		tested with version: crysol, ATSAS 3.1.3 (r14636)
 #	INPUT: 
 #		- gro_file; xtc_file: gro file and xtc file (nojump) for MDAnalysis
+#		- dt_analysis_ps: sets a value in ps. This will be (roughlz) the 
+#			time steps for analzsis
 #	OUTPUT:
 #		-averaged SAXS profile (q-space) with standard deviation
 #		-pandas dataframe
@@ -950,10 +953,13 @@ def calculate_SAXS_profile_crysol(gro_file, xtc_file,dt_analysis_ps=100):
     # Load structure and trajectory / xtc contains inly protein and is no jump
     u = mda.Universe(gro_file, xtc_file)
     
+    # only select protein atoms
+    protein_atoms = u.select_atoms("protein")
+    
     # Timesteps between analyzed frames (dt_analysis_ps) should be roughly 100 ps
     # 	find out the timestep in the trajectory 
     dt_trj_ps = u.trajectory.dt
-    # get ab inzterval for frame analysis
+    # get ab interval for frame analysis
     analysis_frame_interval = round(dt_analysis_ps/dt_trj_ps,0)
     
     # create pandas dataframe which stores the calculated SAXS profiles
@@ -968,7 +974,7 @@ def calculate_SAXS_profile_crysol(gro_file, xtc_file,dt_analysis_ps=100):
             # PDB OUT
             # write out single PDB files
             filName_PDB = "frame_"+str(frame_idx)+".pdb"
-            u.atoms.write(filName_PDB)
+            protein_atoms.write(filName_PDB)
             # for some reason, crysol expects a different naming of some atoms in pdb
             #	known issues for
             #		ILE and termini
@@ -1074,5 +1080,66 @@ def calculate_SAXS_profile_maicos(gro_file, xtc_file,water_shell=None,output_fil
     #merge data for return and set column names
     res = pd.DataFrame([scattering_vectors,intensity]).transpose()
     res.columns = ["q[1/A]","I(q)[a.u.]"]
+    
+    return(res)
+    
+    
+# 19.06.2025
+# added during NMRLipids meeting in Bergen
+# by Tobi R
+# FUNCTION TO CALCULATE THE AVERAGED CHEMICAL SHIFTS OF THE TRJ
+#	needs the python package mdtraj
+#		https://www.mdtraj.org/1.9.8.dev0/installation.html
+#	needs the external program sparta+
+#		- https://spin.niddk.nih.gov/bax-apps/software/SPARTA+/
+#		- path to sparta+ needs to be added to $PATH 
+#		- after running install.com, the output needs to be added to ".cshrc"
+#			in yout "~/" path // 
+#			if it does not exist, create it and add lines
+#	INPUT: 
+#		- gro_file; xtc_file: gro file and xtc file (nojump!!!) for MDAnalysis
+#		- dt_analysis_ps: sets a value in ps. This will be (roughlz) the 
+#			time steps for analzsis
+#	OUTPUT:
+#		-table of averaged chemical shifts with standard deviation over trj
+#		-pandas dataframe
+#		-3 columns (atom/nuclei name; mean chemical shift, standard deviation(sd) of chemical shift)
 
+def calculate_ChemShifts_sparta(gro_file, xtc_file, dt_analysis_ps=100):
+    # in this function we use mdtraj and NOT MDAnalysis
+    
+    # LOAD DATA
+    # load trj with  mdtraj
+    traj = mdtraj.load(xtc_file, top=gro_file)
+    
+    # GET PROTEINE ONLY TRJ
+    idx_prot_atoms = traj.topology.select('protein')
+    # slice trajectory to keep only protein atoms
+    traj_just_prot = traj.atom_slice(idx_prot_atoms)
+    
+    # ADJUST TIME STEPS FOR ANALYSIS
+    # timesteps between analyzed frames (dt_analysis_ps) should be roughly 100 ps
+    # 	find out the timestep in the trajectory 
+    dt_trj_ps = traj_just_prot.time[1]-traj_just_prot.time[0]
+    # get ab interval for frame analysis
+    analysis_frame_interval = int(round(dt_analysis_ps/dt_trj_ps,0))
+    # apply to trajectory
+    traj_just_prot = traj_just_prot[::analysis_frame_interval]
+    
+    # RUN SPARTA
+    ChemShifts_all_frames = mdtraj.chemical_shifts_spartaplus(traj_just_prot, rename_HN=True)
+    
+    # AVERAGE RESULTS
+    # shift_all_frames is a pandas dataframe:
+    #	rows are the individual atoms/nuclei in the protein
+    #	columns are the individual frames of the traj
+    # so calculate the mean/sd over each row
+    mean_ChemShifts = ChemShifts_all_frames.mean(axis=1)
+    # get SD
+    sd_ChemShifts = ChemShifts_all_frames.std(axis=1)
+    
+    # PREPARE DATA FOR RETURN
+    res = pd.DataFrame([mean_ChemShifts,sd_ChemShifts]).transpose()
+    res.columns = ["meanChemShifts[ppm]","SDChemShifts[ppm]"]
+    
     return(res)
