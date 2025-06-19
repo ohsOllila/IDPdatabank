@@ -23,6 +23,8 @@ class Experiment:
         self.buffer_manager: Optional[BufferManager] = None
         self.sequence: Dict[str, Any] = {}
         self.metadata: Dict[str, Any] = {}
+        self.ionic_strength: Optional[float] = None
+        self.temperature: Optional[float] = None
 
         self._initialize()
 
