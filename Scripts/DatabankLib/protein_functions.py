@@ -442,28 +442,46 @@ def extract_data_from_BMRB(ID, datatype):
     data = []
     x = requests.get("http://api.bmrb.io/v2/entry/" + ID + "?saveframe_category=" + datatype)
     data.append (x.json())
+
     for entry in data:
         for entry_id, entry_content in entry.items():
-            for noe in entry_content.get(datatype, []):
+            for noe in entry_content.get(datatype, []): # this line gives error in 2 BMRB entries. ex. AttributeError: 'str' object has no attribute 'get'"
                 for loop in noe.get('loops', []):
 
                     if datatype == 'heteronucl_NOEs' and loop.get('category') == '_Heteronucl_NOE':
                         rel_data = loop.get('data', [])
                         for i in rel_data:
                             residue = i[5] + i[6]
+                            # Parse the “value” field (should always be numeric)
+                            value = float(i[19])
+                            # Now safely parse the “error” field
+                            try:
+                                error_value = float(i[20])
+                            except (ValueError, TypeError):
+                                # '.' or other non-numeric → treat as missing
+                                error_value = None # or 0.0 or 'NA' depending on how you want to handle it.... not sure what is best 
+
                             output[residue] = {
-                                'value': float(i[19]),
-                                'error': float(i[20])
-                                }
+                                'value': value,
+                                'error': error_value
+                            }
+
                         return output
 
                     if datatype == 'heteronucl_T1_relaxation' and loop.get('category') == '_T1':
                         rel_data = loop.get('data', [])
                         for i in rel_data:
                             residue = i[5] + i[6]
+                            value = float(i[10])
+                            # Now safely parse the “error” field
+                            try:
+                                error_value = float(i[11])
+                            except (ValueError, TypeError):
+                                error_value = None
+
                             output[residue] = {
-                                'value': float(i[10]),
-                                'error': float(i[11])
+                                'value': value,
+                                'error': error_value
                                 }
                         return output
 
@@ -471,9 +489,15 @@ def extract_data_from_BMRB(ID, datatype):
                         rel_data = loop.get('data', [])
                         for i in rel_data:
                             residue = i[5] + i[6]
+                            value = float(i[10])
+                            # Now safely parse the “error” field
+                            try:
+                                error_value = float(i[11])
+                            except (ValueError, TypeError):
+                                error_value = None
                             output[residue] = {
-                                'value': float(i[10]),
-                                'error': float(i[11])
+                                'value': value,
+                                'error': error_value
                                 }
                         return output
                         
@@ -775,24 +799,52 @@ def get_data_from_BMRB(BMRBid):
                 'error' : experimental_data_tmp['T1'][residue]['error'],
             }
 
+    # for residue in experimental_data_tmp['T2']:
+    #     if not residue in experimental_data:
+    #         experimental_data[residue] = {magnetic_field['T2']: {}}
+    #     if units['T2'] == 'ms':
+    #         experimental_data_tmp['T2'][residue]['value'] = 0.001 * experimental_data_tmp['T2'][residue]['value']
+    #         experimental_data_tmp['T2'][residue]['error'] = 0.001 * experimental_data_tmp['T2'][residue]['error']
+    #     experimental_data[residue][magnetic_field['T2']]['T2'] = {   # there is an error here when pulling data. ex. KeyError: 600.00 
+    #         'value' : experimental_data_tmp['T2'][residue]['value'],
+    #         'error' : experimental_data_tmp['T2'][residue]['error'],
+    #     }
     for residue in experimental_data_tmp['T2']:
-        if not residue in experimental_data:
-            experimental_data[residue] = {magnetic_field['T2']: {}}
+        if residue not in experimental_data:
+            experimental_data[residue] = {}
+
+        if magnetic_field['T2'] not in experimental_data[residue]:
+            experimental_data[residue][magnetic_field['T2']] = {}
+
         if units['T2'] == 'ms':
-            experimental_data_tmp['T2'][residue]['value'] = 0.001 * experimental_data_tmp['T2'][residue]['value']
-            experimental_data_tmp['T2'][residue]['error'] = 0.001 * experimental_data_tmp['T2'][residue]['error']
+            experimental_data_tmp['T2'][residue]['value'] *= 0.001
+            experimental_data_tmp['T2'][residue]['error'] *= 0.001
+
         experimental_data[residue][magnetic_field['T2']]['T2'] = {
-            'value' : experimental_data_tmp['T2'][residue]['value'],
-            'error' : experimental_data_tmp['T2'][residue]['error'],
+            'value': experimental_data_tmp['T2'][residue]['value'],
+            'error': experimental_data_tmp['T2'][residue]['error'],
         }
 
+    # for residue in experimental_data_tmp['hetNOE']:
+    #     if not residue in experimental_data:
+    #         experimental_data[residue] = {magnetic_field['hetNOE']: {}}
+    #     experimental_data[residue][magnetic_field['hetNOE']]['hetNOE'] = {
+    #         'value' : experimental_data_tmp['hetNOE'][residue]['value'],
+    #         'error' : experimental_data_tmp['hetNOE'][residue]['error'],
+    #     }
+
     for residue in experimental_data_tmp['hetNOE']:
-        if not residue in experimental_data:
-            experimental_data[residue] = {magnetic_field['hetNOE']: {}}
+        if residue not in experimental_data:
+            experimental_data[residue] = {}
+
+        if magnetic_field['hetNOE'] not in experimental_data[residue]:
+            experimental_data[residue][magnetic_field['hetNOE']] = {}
+
         experimental_data[residue][magnetic_field['hetNOE']]['hetNOE'] = {
-            'value' : experimental_data_tmp['hetNOE'][residue]['value'],
-            'error' : experimental_data_tmp['hetNOE'][residue]['error'],
+            'value': experimental_data_tmp['hetNOE'][residue]['value'],
+            'error': experimental_data_tmp['hetNOE'][residue]['error'],
         }
+
 
     exp_data_path = '../../Data/Experiments/spin_relaxation/BMRBid' + BMRBid
     if (not os.path.isdir(exp_data_path)):
@@ -810,25 +862,47 @@ def get_data_from_BMRB(BMRBid):
 
 def extract_magnetic_field(ID, datatype):
     data = []
-    x = requests.get("http://api.bmrb.io/v2/entry/" + ID + "?saveframe_category=" + datatype)
-    data.append (x.json())
+    #Include error handling so that if the data does not exist the code does not fail with relaxation_list = first_entry[key][datatype][0]\nIndexError: list index out of range
+    try:
+        x = requests.get("http://api.bmrb.io/v2/entry/" + ID + "?saveframe_category=" + datatype)
+        if x.status_code != 200: #if HTTP status code is not "OK"
+            print(f"[WARNING] Request failed for BMRB {ID} with status code {x.status_code}")
+            return None
+        data.append(x.json())
 
-    first_entry = data[0]
-    key = next(iter(first_entry))  # e.g., '19993'
-    relaxation_list = first_entry[key][datatype][0]
-    tags = relaxation_list['tags']
-    # Extract values from tags
-    spectrometer_freq = None
-    t1_units = None
+        first_entry = data[0]
+        key = next(iter(first_entry), None)  # e.g., '19993'
+        if not key:
+            print(f"[WARNING] No top-level key in JSON for BMRB {ID}")
+            return None
 
-    for tag in tags:
-        if tag[0] == 'Spectrometer_frequency_1H':
-            spectrometer_freq = float(tag[1])
-#        elif tag[0] == 'T1_val_units':
-#            t1_units = tag[1]
+        if datatype not in first_entry[key] or not first_entry[key][datatype]:
+            print(f"[WARNING] No data found for datatype '{datatype}' in BMRB {ID}")
+            return None
+        relaxation_list = first_entry[key][datatype][0]
+        tags = relaxation_list['tags']
+        # Extract values from tags
+        spectrometer_freq = None
+        t1_units = None
+
+        for tag in tags:
+            if tag[0] == 'Spectrometer_frequency_1H':
+                try:
+                    spectrometer_freq = float(tag[1])
+                except (ValueError, TypeError):
+                    print(f"[WARNING] Invalid spectrometer frequency in BMRB {ID}")
+                    return None
+
+        if spectrometer_freq is None:
+            print(f"[WARNING] Spectrometer_frequency_1H not found in BMRB {ID}")
+            return None
+
+        return float(spectrometer_freq)
+
+    except Exception as e:
+        print(f"[ERROR] Failed to extract magnetic field for BMRB {ID}: {e}")
+        return None
     
-    return float(spectrometer_freq)
-
 
 def extract_units(ID, datatype):
     # Navigate to the 'tags' list
