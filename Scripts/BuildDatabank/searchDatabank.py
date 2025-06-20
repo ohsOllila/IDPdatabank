@@ -38,6 +38,7 @@ def main():
     simulations = []
 
     for simulation_readme in simulation_readmes:
+        print(simulation_readme)
         simulation = Simulation(simulation_readme)
         simulations.append(simulation)
 
