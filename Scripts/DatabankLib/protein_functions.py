@@ -1111,7 +1111,7 @@ def calculate_ChemShifts_sparta(gro_file, xtc_file, dt_analysis_ps=100):
     # LOAD DATA
     # load trj with  mdtraj
     traj = mdtraj.load(xtc_file, top=gro_file)
-    
+
     # GET PROTEINE ONLY TRJ
     idx_prot_atoms = traj.topology.select('protein')
     # slice trajectory to keep only protein atoms
@@ -1125,6 +1125,11 @@ def calculate_ChemShifts_sparta(gro_file, xtc_file, dt_analysis_ps=100):
     analysis_frame_interval = int(round(dt_analysis_ps/dt_trj_ps,0))
     # apply to trajectory
     traj_just_prot = traj_just_prot[::analysis_frame_interval]
+
+    
+    print('loaded')
+    
+    
     
     # RUN SPARTA
     ChemShifts_all_frames = mdtraj.chemical_shifts_spartaplus(traj_just_prot, rename_HN=True)
