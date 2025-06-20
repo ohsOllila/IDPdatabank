@@ -1,0 +1,51 @@
+Experiment_ID: '14'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '600'
+    Manufacturer: Varian
+    Model: INOVA
+Name: 2D 1H-15N Het NOE
+Sample_component:
+-   Concentration_val: '0.4'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-99% 13C; U-99% 15N]'
+    Mol_common_name: Shc-PTB
+    Type: null
+-   Concentration_val: '0.8'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: Integrin_beta3
+    Type: null
+-   Concentration_val: '5'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: DTT
+    Type: null
+-   Concentration_val: '50'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium chloride
+    Type: null
+-   Concentration_val: '50'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium phosphate
+    Type: null
+-   Concentration_val: '1'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: DSS
+    Type: null
+-   Concentration_val: '93'
+    Concentration_val_units: '%'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: H2O
+    Type: null
+-   Concentration_val: '7'
+    Concentration_val_units: '%'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: D2O
+    Type: null
+Sample_condition_variable:
+    ph: '6.5'
+    temperature: '273'

@@ -1,0 +1,36 @@
+Experiment_ID: '20'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '500'
+    Manufacturer: Bruker
+    Model: DMX
+Name: '{1H}-15N NOE'
+Sample_component:
+-   Concentration_val: '1.5'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-98% 13C; U-98% 15N]'
+    Mol_common_name: Gag polyprotein (Pr55Gag)
+    Type: null
+-   Concentration_val: '3.2'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: ZINC ION
+    Type: null
+-   Concentration_val: '0.5'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: DSS
+    Type: null
+-   Concentration_val: '90'
+    Concentration_val_units: '%'
+    Isotopic_labeling: null
+    Mol_common_name: H2O
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: '%'
+    Isotopic_labeling: null
+    Mol_common_name: D2O
+    Type: null
+Sample_condition_variable:
+    ph: '5.8'
+    temperature: '288'
