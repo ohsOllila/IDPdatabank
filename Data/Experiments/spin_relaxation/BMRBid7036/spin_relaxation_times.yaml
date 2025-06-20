@@ -1,0 +1,432 @@
+10PRO:
+    800.154:
+        T1:
+            error: null
+            value: 0.448783579
+        T2:
+            error: null
+            value: 0.060086626000000004
+11PHE:
+    800.154:
+        T1:
+            error: null
+            value: 0.442015701
+        T2:
+            error: null
+            value: 0.062547301
+12SER:
+    800.154:
+        T1:
+            error: null
+            value: 0.348979
+        T2:
+            error: null
+            value: 0.06749112100000002
+13SER:
+    800.154:
+        T1:
+            error: null
+            value: 0.466001219
+        T2:
+            error: null
+            value: 0.04197696100000001
+14VAL:
+    800.154:
+        T1:
+            error: null
+            value: 0.392523318
+        T2:
+            error: null
+            value: 0.046166291000000005
+15THR:
+    800.154:
+        T1:
+            error: null
+            value: 0.443793993
+        T2:
+            error: null
+            value: 0.061184748
+16GLU:
+    800.154:
+        T1:
+            error: null
+            value: 0.454173139
+        T2:
+            error: null
+            value: 0.055235080000000006
+17GLU:
+    800.154:
+        T1:
+            error: null
+            value: 0.41068418300000004
+        T2:
+            error: null
+            value: 0.07592515899999999
+18GLU:
+    800.154:
+        T1:
+            error: null
+            value: 0.472737682
+        T2:
+            error: null
+            value: 0.06797479099999999
+1GLY:
+    800.154:
+        T1:
+            error: null
+            value: 0.322838621
+        T2:
+            error: null
+            value: 0.07097935
+20ASN:
+    800.154:
+        T1:
+            error: null
+            value: 0.466366514
+        T2:
+            error: null
+            value: 0.059205471
+21PHE:
+    800.154:
+        T1:
+            error: null
+            value: 0.45241046
+        T2:
+            error: null
+            value: 0.061506766
+22GLU:
+    800.154:
+        T1:
+            error: null
+            value: 0.440458729
+        T2:
+            error: null
+            value: 0.061667443
+23LYS:
+    800.154:
+        T1:
+            error: null
+            value: 0.47567296900000006
+        T2:
+            error: null
+            value: 0.054441276000000004
+24GLY:
+    800.154:
+        T1:
+            error: null
+            value: 0.427822031
+        T2:
+            error: null
+            value: 0.056933856
+25GLU:
+    800.154:
+        T1:
+            error: null
+            value: 0.443036009
+        T2:
+            error: null
+            value: 0.059654949000000006
+26THR:
+    800.154:
+        T1:
+            error: null
+            value: 0.48439829500000003
+        T2:
+            error: null
+            value: 0.063341727
+27MET:
+    800.154:
+        T1:
+            error: null
+            value: 0.38058314000000004
+        T2:
+            error: null
+            value: 0.050309675
+28GLU:
+    800.154:
+        T1:
+            error: null
+            value: 0.47218873000000006
+        T2:
+            error: null
+            value: 0.057686435
+29VAL:
+    800.154:
+        T1:
+            error: null
+            value: 0.475792231
+        T2:
+            error: null
+            value: 0.051463253
+2SER:
+    800.154:
+        T1:
+            error: null
+            value: 0.43105611699999996
+        T2:
+            error: null
+            value: 0.064612597
+30ILE:
+    800.154:
+        T1:
+            error: null
+            value: 0.405455829
+        T2:
+            error: null
+            value: 0.06650619399999999
+32LYS:
+    800.154:
+        T1:
+            error: null
+            value: 0.474921661
+        T2:
+            error: null
+            value: 0.058917685
+33PRO:
+    800.154:
+        T1:
+            error: null
+            value: 0.46143339200000005
+        T2:
+            error: null
+            value: 0.054809593999999996
+34GLU:
+    800.154:
+        T1:
+            error: null
+            value: 0.427658681
+        T2:
+            error: null
+            value: 0.050200625000000006
+36ASP:
+    800.154:
+        T1:
+            error: null
+            value: 0.46455370799999995
+        T2:
+            error: null
+            value: 0.063771244
+37PRO:
+    800.154:
+        T1:
+            error: null
+            value: 0.449961956
+        T2:
+            error: null
+            value: 0.088323449
+38GLU:
+    800.154:
+        T1:
+            error: null
+            value: 0.46584139599999996
+        T2:
+            error: null
+            value: 0.05910526
+39TRP:
+    800.154:
+        T1:
+            error: null
+            value: 0.46664961899999996
+        T2:
+            error: null
+            value: 0.061564836
+3HIS:
+    800.154:
+        T1:
+            error: null
+            value: 0.426255842
+        T2:
+            error: null
+            value: 0.058903746
+40TRP:
+    800.154:
+        T1:
+            error: null
+            value: 0.46464023400000004
+        T2:
+            error: null
+            value: 0.054498173000000004
+41LYS:
+    800.154:
+        T1:
+            error: null
+            value: 0.453939127
+        T2:
+            error: null
+            value: 0.059665579
+42CYS:
+    800.154:
+        T1:
+            error: null
+            value: 0.450062506
+        T2:
+            error: null
+            value: 0.059866319
+43LYS:
+    800.154:
+        T1:
+            error: null
+            value: 0.39415137800000005
+        T2:
+            error: null
+            value: 0.056692963
+44ASN:
+    800.154:
+        T1:
+            error: null
+            value: 0.471694178
+        T2:
+            error: null
+            value: 0.065279683
+45ALA:
+    800.154:
+        T1:
+            error: null
+            value: 0.447259282
+        T2:
+            error: null
+            value: 0.077602635
+46ARG:
+    800.154:
+        T1:
+            error: null
+            value: 0.469960917
+        T2:
+            error: null
+            value: 0.06967185000000001
+47GLY:
+    800.154:
+        T1:
+            error: null
+            value: 0.308219395
+        T2:
+            error: null
+            value: 0.115789823
+48GLN:
+    800.154:
+        T1:
+            error: null
+            value: 0.43327382799999997
+        T2:
+            error: null
+            value: 0.061197133
+49VAL:
+    800.154:
+        T1:
+            error: null
+            value: 0.454113939
+        T2:
+            error: null
+            value: 0.054292422
+4VAL:
+    800.154:
+        T1:
+            error: null
+            value: 0.44348699199999997
+        T2:
+            error: null
+            value: 0.062073903
+50GLY:
+    800.154:
+        T1:
+            error: null
+            value: 0.466390937
+        T2:
+            error: null
+            value: 0.056589351
+52VAL:
+    800.154:
+        T1:
+            error: null
+            value: 0.42893090300000003
+        T2:
+            error: null
+            value: 0.057583902000000006
+53PRO:
+    800.154:
+        T1:
+            error: null
+            value: 0.432737583
+        T2:
+            error: null
+            value: 0.057022756
+54LYS:
+    800.154:
+        T1:
+            error: null
+            value: 0.437089491
+        T2:
+            error: null
+            value: 0.054666938000000005
+55ASN:
+    800.154:
+        T1:
+            error: null
+            value: 0.39762943500000003
+        T2:
+            error: null
+            value: 0.06513537100000001
+56TYR:
+    800.154:
+        T1:
+            error: null
+            value: 0.446694962
+        T2:
+            error: null
+            value: 0.060138732
+57VAL:
+    800.154:
+        T1:
+            error: null
+            value: 0.46183876500000004
+        T2:
+            error: null
+            value: 0.070197712
+58VAL:
+    800.154:
+        T1:
+            error: null
+            value: 0.441805229
+        T2:
+            error: null
+            value: 0.073075929
+59VAL:
+    800.154:
+        T1:
+            error: null
+            value: 0.318821132
+        T2:
+            error: null
+            value: 0.156605697
+5VAL:
+    800.154:
+        T1:
+            error: null
+            value: 0.435611405
+        T2:
+            error: null
+            value: 0.061350218
+6GLN:
+    800.154:
+        T1:
+            error: null
+            value: 0.42269242300000004
+        T2:
+            error: null
+            value: 0.061368250000000006
+7THR:
+    800.154:
+        T1:
+            error: null
+            value: 0.496005452
+        T2:
+            error: null
+            value: 0.060970097
+9TYR:
+    800.154:
+        T1:
+            error: null
+            value: 0.47038363099999997
+        T2:
+            error: null
+            value: 0.058242924
