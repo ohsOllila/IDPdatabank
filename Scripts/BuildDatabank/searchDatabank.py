@@ -13,11 +13,20 @@ logger = setup_colored_logging(__name__)
 experiment_types = ["spin_relaxation"]  # will be extended
 
 
-def main():
+def get_config_path_os():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    # Go up one level (from module_a to my_project) and then into data
+    IDP_DATABANK_DATA_PATH = os.path.join(current_dir, "../../", "Data")
+    return os.path.abspath(IDP_DATABANK_DATA_PATH)
+
+
+def searchDatabank():
     comparator = ParameterComparator()
-    IDP_DATABANK_PATH = "Data"
-    IDP_DATABANK_EXPERIMENTS_PATH = os.path.join(IDP_DATABANK_PATH, "Experiments")
-    IDP_DATABANK_SIMULATIONS_PATH = os.path.join(IDP_DATABANK_PATH, "Simulations")
+
+    IDP_DATABANK_EXPERIMENTS_PATH = os.path.join(get_config_path_os(), "Experiments")
+    IDP_DATABANK_SIMULATIONS_PATH = os.path.join(get_config_path_os(), "Simulations")
+
+    logger.info(f"IDP_DATABANK_EXPERIMENTS_PATH: {IDP_DATABANK_EXPERIMENTS_PATH}")
 
     simulation_readmes = glob.glob(
         os.path.join(IDP_DATABANK_SIMULATIONS_PATH, "**/README.yaml"),
