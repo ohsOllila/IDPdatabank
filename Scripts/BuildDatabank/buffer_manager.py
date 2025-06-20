@@ -51,9 +51,11 @@ class BufferManager:
 
         charges = self._get_charges_at_ph(component, self.ph)
         concentration = self._get_concentration_in_molar(component)
+        stoichiometry = self._get_stoichiometry_at_ph(component, self.ph)
 
         # Calculate ionic strength: I = 0.5 * Σ(ci * zi²)
         ionic_strength = 0.0
+
         for i, j in zip(stoichiometry, charges):
             ionic_strength += 0.5 * concentration * i * j**2
         return ionic_strength

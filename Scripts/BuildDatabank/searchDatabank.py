@@ -10,17 +10,23 @@ from parameter_comparator import ParameterComparator, Threshold, ThresholdType
 # Set up colored logging
 logger = setup_colored_logging(__name__)
 
-# Configure warnings to use colored output
-setup_colored_warnings()
-
 experiment_types = ["spin_relaxation"]  # will be extended
 
 
-def main():
+def get_config_path_os():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    # Go up one level (from module_a to my_project) and then into data
+    IDP_DATABANK_DATA_PATH = os.path.join(current_dir, "../../", "Data")
+    return os.path.abspath(IDP_DATABANK_DATA_PATH)
+
+
+def searchDatabank():
     comparator = ParameterComparator()
-    IDP_DATABANK_PATH = "Data"
-    IDP_DATABANK_EXPERIMENTS_PATH = os.path.join(IDP_DATABANK_PATH, "Experiments")
-    IDP_DATABANK_SIMULATIONS_PATH = os.path.join(IDP_DATABANK_PATH, "Simulations")
+
+    IDP_DATABANK_EXPERIMENTS_PATH = os.path.join(get_config_path_os(), "Experiments")
+    IDP_DATABANK_SIMULATIONS_PATH = os.path.join(get_config_path_os(), "Simulations")
+
+    logger.info(f"IDP_DATABANK_EXPERIMENTS_PATH: {IDP_DATABANK_EXPERIMENTS_PATH}")
 
     simulation_readmes = glob.glob(
         os.path.join(IDP_DATABANK_SIMULATIONS_PATH, "**/README.yaml"),
@@ -46,6 +52,7 @@ def main():
     experiment_types = ["spin_relaxation"]
     for experiment_readme in experiment_readmes:
         experiment_readme_dir = os.path.dirname(experiment_readme)
+        logger.info(f"Initializing experiment {experiment_readme_dir}")
         experiment = Experiment(
             experiment_type="spin_relaxation", path=experiment_readme_dir
         )
@@ -80,6 +87,7 @@ def main():
 
         for experiment in experiments:
 
+            logger.info(f"Checking experiment {experiment.path}")
             # we first check for the exact sequence match
             # if not, we do an alignment, spit out alignment score. the exact threshold will
             # be determined later.
@@ -170,7 +178,7 @@ def main():
             )
 
         logger.info(
-            f"Would append this to the info file \n{simulation.path}\n {experiment_types_dict}"
+            f"Appending to the info file: \n{simulation.path}\n {experiment_types_dict}"
         )
 
         simulation.info["EXPERIMENT"] = experiment_types_dict
@@ -180,4 +188,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    searchDatabank()

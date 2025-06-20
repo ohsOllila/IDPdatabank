@@ -1,15 +1,11 @@
 """
 General utilities for the IDP Databank project.
 
-This module provides shared functionality including logging configuration,
-file operations, and other common utilities used across the codebase.
+This module provides shared functionality including logging configuration and other common utilities used across the codebase.
 """
 
 import logging
 import colorlog
-from pathlib import Path
-from typing import Optional, Dict, Any, Union
-import yaml
 
 
 def setup_colored_logging(
@@ -80,67 +76,3 @@ def setup_colored_warnings():
         py_warnings_logger.addHandler(handler)
 
     py_warnings_logger.propagate = False  # Prevent double-logging
-
-
-class FileHandler:
-    """
-    Handles file operations including reading and writing YAML files.
-    """
-
-    @staticmethod
-    def read_yaml(file_path: Union[str, Path]) -> Dict[str, Any]:
-        """
-        Read and parse a YAML file.
-
-        Args:
-            file_path: Path to the YAML file
-
-        Returns:
-            Parsed YAML content as a dictionary
-
-        Raises:
-            RuntimeError: If there's an error reading or parsing the file
-        """
-        try:
-            with open(file_path, "r") as file:
-                return yaml.safe_load(file)
-        except Exception as e:
-            raise RuntimeError(f"Failed to read YAML file {file_path}: {str(e)}")
-
-    @staticmethod
-    def write_yaml(file_path: Union[str, Path], data: Dict[str, Any]) -> None:
-        """
-        Write a dictionary to a YAML file.
-
-        Args:
-            file_path: Path to the YAML file
-            data: Dictionary to write to the file
-
-        Raises:
-            RuntimeError: If there's an error writing the file
-        """
-        try:
-            with open(file_path, "w") as file:
-                yaml.safe_dump(data, file)
-        except Exception as e:
-            raise RuntimeError(f"Failed to write YAML data to {file_path}: {str(e)}")
-
-    @staticmethod
-    def join_paths(*args: str) -> str:
-        """
-        Join path components using the appropriate path separator.
-
-        Args:
-            *args: Path components to join
-
-        Returns:
-            str: Joined path
-        """
-        return str(Path(*args))
-
-
-# Set up default logging when module is imported
-setup_colored_warnings()
-
-# Export commonly used functions and classes
-__all__ = ["setup_colored_logging", "setup_colored_warnings", "FileHandler"]
