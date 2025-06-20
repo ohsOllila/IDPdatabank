@@ -452,8 +452,12 @@ def extract_data_from_BMRB(ID, datatype):
                         rel_data = loop.get('data', [])
                         for i in rel_data:
                             residue = i[5] + i[6]
-                            # Parse the “value” field (should always be numeric)
-                            value = float(i[19])
+                            # Parse the “value” field (should always be numeric), but handle errors just in case
+                            try:
+
+                                value = float(i[19])
+                            except (ValueError, TypeError):
+                                value = None
                             # Now safely parse the “error” field
                             try:
                                 error_value = float(i[20])
@@ -472,7 +476,11 @@ def extract_data_from_BMRB(ID, datatype):
                         rel_data = loop.get('data', [])
                         for i in rel_data:
                             residue = i[5] + i[6]
-                            value = float(i[10])
+                            # The value may have entires of '.'
+                            try:
+                                value = float(i[10])
+                            except (ValueError, TypeError):
+                                value = None
                             # Now safely parse the “error” field
                             try:
                                 error_value = float(i[11])
@@ -489,7 +497,11 @@ def extract_data_from_BMRB(ID, datatype):
                         rel_data = loop.get('data', [])
                         for i in rel_data:
                             residue = i[5] + i[6]
-                            value = float(i[10])
+                            # The value may have entires of '.'
+                            try:
+                                value = float(i[10])
+                            except (ValueError, TypeError):
+                                value = None
                             # Now safely parse the “error” field
                             try:
                                 error_value = float(i[11])
@@ -513,9 +525,9 @@ def get_conditions_from_BMRB(BMRBid):
         execStr = (f"mkdir {exp_data_path}")
         os.system(execStr)
 
-    T1names = ['Het. Nuc. T1 relaxation', '2D 1H-15N HSQC-T1']
-    T2names = ['Het. Nuc. T2 relaxation', '2D 1H-15N HSQC -T2']
-    netNOEnames = ['15N-(1H) NOE', '2D 1H-15N HSQC-NOE']
+    T1names = ['Het. Nuc. T1 relaxation', '2D 1H-15N HSQC-T1', 'T1/R1 relaxation', '15N R1', 'sqct1etf3gpsitc3d', 'Het. Nuc. T1 relaxation', '2D 1H-15N HSQC-T1', '15N T1', 'hsqct1etf3gpsitc3d.nlf', 'T1_relaxation_800', 'R1-measurement', 'T1', '3D 1H-15N t1 interleaved', '2D 15N HSQC T1', '2D 1H-15N R1 relaxation', 'T2 (H[n[T2(N)]])', '2D 1H-15N HSQC T1', '2D 1H-15N HSQC R1', '2D 15N-T1', '15N T1 relaxation', '15N T1 experiment', '"T1, T2, NOE"', '2D 1H-15N T1-HSQC', 'T1 experiments', '2D 1H-15N HSQC R1 edited', '2D R1 15','1H correlation']
+    T2names = ['Het. Nuc. T2 relaxation', '2D 1H-15N HSQC -T2', 'T2/R2 relaxation', '15N R2', 'hsqct2etf3gpsitc3d', 'Het. Nuc. T2 relaxation', '2D 1H-15N HSQC -T2', '15N T2', 'hsqct2etf3gpsitc3d.ac', 'T2_relaxation_800', 'R2 measurement', 'T2', '3D 1H-15N t2 interleaved', '2D 15N HSQC T2', '2D 1H-15N R2 relaxation', 'T1 (H[n[T1(N)]])', '2D 1H-15N HSQC T2', '2D 1H-15N HSQC R2', '2D 15N-T2', '15N T2 relaxation', '15N T2 experiment', '"T1, T2, NOE"', '2D 1H-15N T2-HSQC', 'T2 experiments', '2D 1H-15N HSQC R2 edited', '2D R2 15N', '1H correlation']
+    netNOEnames = ['15N-(1H) NOE', '2D 1H-15N HSQC-NOE','15N-(1H) NOE', 'hsqcnoef3gpsi', '1H 15N het NOE', '1H-15N heteronoe', '2D 1H-15N HSQC-NOE', '{1H}-15N NOE', 'HetNOE_relaxation_800', 'hetNOE measurement', 'HTNOE 1', '2D 1H-15N NOE with saturation', 'HETERONOE', '2D 15N HSQC Heteronuclear NOE', '2D 1H-15N heteronuclear NOE', '"1H,15N NOE"', '2D 1H-15N HSQC NOE', '2D 1H-15N HSQC hNOE', '2D 15N-HET-NOE', '2D 15N- HET-NOE', 'heteronuclear 1H-15N NOE', '"T1, T2, NOE"', '15N-1H NOE', '2D 1H-15N Het NOE', 'Heteronuclear NOE ratio', '2D NOE 15N', '1H correlation']
     
     for i in data[0]:
         print(i['Name'])
@@ -792,23 +804,25 @@ def get_data_from_BMRB(BMRBid):
             experimental_data[residue] = {magnetic_field['T1']: {}}
             #print(experimental_data)
             if units['T1'] == 'ms':
-                experimental_data_tmp['T1'][residue]['value'] = 0.001 * experimental_data_tmp['T1'][residue]['value']
-                experimental_data_tmp['T1'][residue]['error'] = 0.001 * experimental_data_tmp['T1'][residue]['error']
+                #Handle errors for value and error if missing in data
+                if experimental_data_tmp['T1'][residue]['value'] is not None:
+                    experimental_data_tmp['T1'][residue]['value'] *= 0.001
+                else:
+                    print(f"[WARNING] 'value' is None for residue {residue} in T1 data ({BMRBid})")
+                    experimental_data_tmp['T1'][residue]['value'] = None  # or 0.0, or skip?
+                
+                if experimental_data_tmp['T1'][residue]['error'] is not None:
+                    experimental_data_tmp['T1'][residue]['error'] *= 0.001
+                else:
+                    print(f"[WARNING] 'error' is None for residue {residue} in T1 data ({BMRBid})")
+                    experimental_data_tmp['T1'][residue]['error'] = None  # or 0.0, or skip?
+
             experimental_data[residue][magnetic_field['T1']]['T1'] = {
                 'value' : experimental_data_tmp['T1'][residue]['value'],
                 'error' : experimental_data_tmp['T1'][residue]['error'],
             }
 
-    # for residue in experimental_data_tmp['T2']:
-    #     if not residue in experimental_data:
-    #         experimental_data[residue] = {magnetic_field['T2']: {}}
-    #     if units['T2'] == 'ms':
-    #         experimental_data_tmp['T2'][residue]['value'] = 0.001 * experimental_data_tmp['T2'][residue]['value']
-    #         experimental_data_tmp['T2'][residue]['error'] = 0.001 * experimental_data_tmp['T2'][residue]['error']
-    #     experimental_data[residue][magnetic_field['T2']]['T2'] = {   # there is an error here when pulling data. ex. KeyError: 600.00 
-    #         'value' : experimental_data_tmp['T2'][residue]['value'],
-    #         'error' : experimental_data_tmp['T2'][residue]['error'],
-    #     }
+
     for residue in experimental_data_tmp['T2']:
         if residue not in experimental_data:
             experimental_data[residue] = {}
@@ -817,8 +831,17 @@ def get_data_from_BMRB(BMRBid):
             experimental_data[residue][magnetic_field['T2']] = {}
 
         if units['T2'] == 'ms':
-            experimental_data_tmp['T2'][residue]['value'] *= 0.001
-            experimental_data_tmp['T2'][residue]['error'] *= 0.001
+            #Handle errors for value and error if missing in data
+            if experimental_data_tmp['T2'][residue]['value'] is not None:
+                experimental_data_tmp['T2'][residue]['value'] *= 0.001
+            else:
+                print(f"[WARNING] 'value' is None for residue {residue} in T2 data ({BMRBid})")
+                experimental_data_tmp['T2'][residue]['value'] = None  # or 0.0, or skip?
+            if experimental_data_tmp['T2'][residue]['error'] is not None:
+                experimental_data_tmp['T2'][residue]['error'] *= 0.001
+            else:
+                print(f"[WARNING] 'error' is None for residue {residue} in T2 data ({BMRBid})")
+                experimental_data_tmp['T2'][residue]['error'] = None  # or 0.0, or skip?
 
         experimental_data[residue][magnetic_field['T2']]['T2'] = {
             'value': experimental_data_tmp['T2'][residue]['value'],

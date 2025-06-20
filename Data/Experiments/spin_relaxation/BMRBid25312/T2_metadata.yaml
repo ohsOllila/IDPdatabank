@@ -1,0 +1,26 @@
+Experiment_ID: '9'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '600'
+    Manufacturer: Bruker
+    Model: Avance
+Name: T1 (H[n[T1(N)]])
+Sample_component:
+-   Concentration_val: '1.0'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-15N]'
+    Mol_common_name: MBD1_CXXC1
+    Type: null
+-   Concentration_val: '250.0'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: NaCl
+    Type: null
+-   Concentration_val: '10.0'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: tris(hydroxymethyl)aminomethane
+    Type: null
+Sample_condition_variable:
+    ph: '7.500'
+    temperature: '293.000'

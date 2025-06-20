@@ -1,0 +1,21 @@
+Experiment_ID: '2'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: null
+    Manufacturer: null
+    Model: null
+Name: 15N T2 relaxation
+Sample_component:
+-   Concentration_val: '0.6'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-99% 15N]'
+    Mol_common_name: kinase associated protein phosphatase
+    Type: null
+-   Concentration_val: '120'
+    Concentration_val_units: mM
+    Isotopic_labeling: null
+    Mol_common_name: NaCl
+    Type: null
+Sample_condition_variable:
+    ph: null
+    temperature: null

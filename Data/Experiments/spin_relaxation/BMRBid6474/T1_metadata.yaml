@@ -1,0 +1,21 @@
+Experiment_ID: '1'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: null
+    Manufacturer: null
+    Model: null
+Name: 15N T1 relaxation
+Sample_component:
+-   Concentration_val: '0.53'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-15N]'
+    Mol_common_name: Kinase Interacting FHA (KI-FHA) domain from KAPP
+    Type: null
+-   Concentration_val: '2.1'
+    Concentration_val_units: mM
+    Isotopic_labeling: null
+    Mol_common_name: CLV1 pT868 peptide
+    Type: null
+Sample_condition_variable:
+    ph: '6.3'
+    temperature: '295'

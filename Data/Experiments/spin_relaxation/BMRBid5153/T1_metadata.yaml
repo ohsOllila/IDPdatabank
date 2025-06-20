@@ -1,0 +1,56 @@
+Experiment_ID: '1'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '600'
+    Manufacturer: Varian
+    Model: Inova
+Name: 15N T1 relaxation
+Sample_component:
+-   Concentration_val: '0.3'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-98% 15N; U-98% 2H]'
+    Mol_common_name: N-terminal domain of Tissue Inhibitor of Metalloproteinases-1
+    Type: null
+-   Concentration_val: '0.3'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-98% 15N; U-98% 2H]'
+    Mol_common_name: MatrixMetalloProteinases-3(catalytic domain)
+    Type: null
+-   Concentration_val: '20'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-2H]'
+    Mol_common_name: Tris
+    Type: null
+-   Concentration_val: '125'
+    Concentration_val_units: mM
+    Isotopic_labeling: null
+    Mol_common_name: NaCl
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: mM
+    Isotopic_labeling: null
+    Mol_common_name: CaCl2
+    Type: null
+-   Concentration_val: '1'
+    Concentration_val_units: mM
+    Isotopic_labeling: null
+    Mol_common_name: NaN3
+    Type: null
+-   Concentration_val: '50'
+    Concentration_val_units: mM
+    Isotopic_labeling: null
+    Mol_common_name: ZnCl2
+    Type: null
+-   Concentration_val: '93'
+    Concentration_val_units: '%'
+    Isotopic_labeling: null
+    Mol_common_name: H2O
+    Type: null
+-   Concentration_val: '7'
+    Concentration_val_units: '%'
+    Isotopic_labeling: null
+    Mol_common_name: D2O
+    Type: null
+Sample_condition_variable:
+    ph: '6.22'
+    temperature: '307'
