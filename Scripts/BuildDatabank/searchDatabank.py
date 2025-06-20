@@ -178,7 +178,7 @@ def searchDatabank():
             )
 
         logger.info(
-            f"Would append this to the info file \n{simulation.path}\n {experiment_types_dict}"
+            f"Appending to the info file: \n{simulation.path}\n {experiment_types_dict}"
         )
 
         simulation.info["EXPERIMENT"] = experiment_types_dict
