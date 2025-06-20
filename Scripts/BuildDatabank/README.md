@@ -2,7 +2,7 @@
 
 ## Overview
 
-The BuildDatabank module is a Python package designed to manage, process, and analyze experimental and simulation data for Intrinsically Disordered Proteins (IDPs). It provides tools for handling buffer compositions, comparing experimental and simulation conditions, and matching protein sequences. The module (tries to)adheres to the "Composition over Inheritance" principle, favoring flexible component composition over deep inheritance hierarchies.
+The BuildDatabank module is a Python package designed to manage, process, and analyze experimental and simulation data for Intrinsically Disordered Proteins (IDPs). It provides tools for handling buffer compositions, comparing experimental and simulation conditions, and matching protein sequences. The module (tries to) adheres to the "Composition over Inheritance" principle, favoring flexible component composition over deep inheritance hierarchies.
 
 ## Key Features
 
@@ -33,30 +33,6 @@ The BuildDatabank module is a Python package designed to manage, process, and an
 4. **Search Functionality**
    - `searchDatabank.py`: Main script for searching and matching experimental data with simulations
    - `searchDatabank_we.py`: Alternative implementation with different matching criteria
-
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone [repository-url]
-   cd idpdatabank_bkav
-   ```
-
-2. Create and activate a virtual environment (recommended):
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Install the package in development mode:
-   ```bash
-   pip install -e .
-   ```
 
 ## Usage
 
@@ -271,18 +247,16 @@ We welcome contributions! Here's how to get started:
 - Add tests for new features
 - Update documentation when making API changes
 
-## License
+## Technical details
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### Ionic strength calculation
 
-## Contact
+Ionic strength is defined as I = 0.5 * Σ(ci * zi²), where ci is the concentration of ion i and zi is the charge of ion i. For the experiments and simulations, the ionic strength is calculated in a slightly different way.
 
-For questions or support, please contact:
-- Email: [your-email@example.com](mailto:your-email@example.com)
-- Issue Tracker: [GitHub Issues](https://github.com/yourusername/idpdatabank_bkav/issues)
+An example reference calculation is done here: https://en.wikipedia.org/wiki/Ionic_strength
 
-## Acknowledgments
+For the simulations, we are calculating the concentration of each ion (eg. Na⁺, Cl⁻) from the number of atoms of each ion in the simulation box. Thus, the stoichiometry of the ion is already included in the calculation of the ion concentration.
 
-- Built with ❤️ by [Your Name/Team]
-- Thanks to all contributors who have helped improve this project
-- Inspired by [relevant projects or papers]
+For the experiments, we only have the concentration of the salt (eg. CaCl₂). For dealing with this, we are using the stoichiometry of the salt to calculate the concentration of each ion (eg. Ca²⁺, 2 x Cl⁻). 
+
+The stoichiometry of the salt is defined in the buffer_molecule_data.py file.
