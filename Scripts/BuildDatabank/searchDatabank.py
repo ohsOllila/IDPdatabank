@@ -10,9 +10,6 @@ from parameter_comparator import ParameterComparator, Threshold, ThresholdType
 # Set up colored logging
 logger = setup_colored_logging(__name__)
 
-# Configure warnings to use colored output
-setup_colored_warnings()
-
 experiment_types = ["spin_relaxation"]  # will be extended
 
 
