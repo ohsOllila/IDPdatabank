@@ -52,6 +52,7 @@ def searchDatabank():
     experiment_types = ["spin_relaxation"]
     for experiment_readme in experiment_readmes:
         experiment_readme_dir = os.path.dirname(experiment_readme)
+        logger.info(f"Initializing experiment {experiment_readme_dir}")
         experiment = Experiment(
             experiment_type="spin_relaxation", path=experiment_readme_dir
         )
@@ -86,6 +87,7 @@ def searchDatabank():
 
         for experiment in experiments:
 
+            logger.info(f"Checking experiment {experiment.path}")
             # we first check for the exact sequence match
             # if not, we do an alignment, spit out alignment score. the exact threshold will
             # be determined later.
@@ -186,4 +188,4 @@ def searchDatabank():
 
 
 if __name__ == "__main__":
-    main()
+    searchDatabank()
