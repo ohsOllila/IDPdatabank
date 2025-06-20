@@ -14,69 +14,79 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+import zipfile
+from pathlib import Path
+
 def download_resource_from_uri(
     uri: str, dest: str, override_if_exists: bool = False
 ) -> int:
     """
-    :meta private:
-    Download file resource [from uri] to given file destination using urllib
-
-    Args:
-        uri (str): file URL
-        dest (str): file destination path
-        override_if_exists (bool, optional): Override dest. file if exists.
-                                             Defaults to False.
-
-    Raises:
-        Exception: HTTPException: An error occured during download
+    Download file resource [from uri] to given file destination using urllib.
+    Supports nested paths like "archive.zip/file.itp".
 
     Returns:
         code (int): 0 - OK, 1 - skipped, 2 - redownloaded
     """
-    # TODO verify file size before skipping already existing download!
-
     class RetrieveProgressBar(tqdm):
-        # uses tqdm.update(), see docs https://github.com/tqdm/tqdm#hooks-and-callbacks
         def update_retrieve(self, b=1, bsize=1, tsize=None):
             if tsize is not None:
                 self.total = tsize
             return self.update(b * bsize - self.n)
 
-    fi_name = uri.split("/")[-1]
+    dest_path = Path(dest)
+    dest_str = str(dest_path)
 
-    # check if dest path already exists
-    if not override_if_exists and os.path.isfile(dest):
-        socket.setdefaulttimeout(10)  # seconds
+    # Determine if we are working with a nested path like zip/file.txt
+    if dest_path.suffix == ".zip" or "/" not in dest_str:
+        zip_name = dest_str  # downloading a top-level file (possibly a .zip)
+        inner_file = None
+    else:
+        parts = dest_path.parts
+        zip_name = str(parts[0])  # e.g. test.zip
+        inner_file = str(Path(*parts[1:]))  # e.g. bilayer.top
 
-        # compare filesize
-        fi_size = urllib.request.urlopen(uri).length  # download size
-        if fi_size == os.path.getsize(dest):
-            logger.info(f"{dest}: file already exists, skipping")
-            return 1
+    # Download ZIP if necessary
+    zip_download_needed = not os.path.isfile(zip_name) or override_if_exists
+    zip_size_expected = urllib.request.urlopen(uri).length
+
+    if not override_if_exists and os.path.isfile(zip_name):
+        local_size = os.path.getsize(zip_name)
+        if local_size == zip_size_expected:
+            logger.info(f"{zip_name}: file already exists, skipping download.")
+            zip_download_needed = False
         else:
-            logger.warning(
-                f"{fi_name} filesize mismatch of local "
-                f"file '{fi_name}', redownloading ..."
-            )
-            return 2
+            logger.warning(f"{zip_name}: local file size mismatch, redownloading...")
 
-    # download
-    socket.setdefaulttimeout(10)  # seconds
+    if zip_download_needed:
+        with RetrieveProgressBar(
+            unit="B", unit_scale=True, unit_divisor=1024, miniters=1,
+            desc=os.path.basename(zip_name)
+        ) as u:
+            urllib.request.urlretrieve(uri, zip_name, reporthook=u.update_retrieve)
 
-    url_size = urllib.request.urlopen(uri).length  # download size
+    if inner_file:
+        # Extract file from downloaded zip
+        if not os.path.isfile(zip_name):
+            raise FileNotFoundError(f"Expected ZIP archive '{zip_name}' does not exist.")
 
-    with RetrieveProgressBar(
-        unit="B", unit_scale=True, unit_divisor=1024, miniters=1, desc=fi_name
-    ) as u:
-        _ = urllib.request.urlretrieve(uri, dest, reporthook=u.update_retrieve)
+        try:
+            with zipfile.ZipFile(zip_name, 'r') as zf:
+                if inner_file not in zf.namelist():
+                    raise FileNotFoundError(f"'{inner_file}' not found in archive '{zip_name}'")
 
-    # check if the file is fully downloaded
-    size = os.path.getsize(dest)
+                # Create parent dirs if needed
+                dest_path.parent.mkdir(parents=True, exist_ok=True)
 
-    if url_size != size:
-        raise Exception(f"downloaded filsize mismatch ({size}/{url_size} B)")
+                # Extract to temp and move to final destination
+                extracted_path = zf.extract(inner_file)
+                os.rename(extracted_path, dest_str)
+                logger.info(f"Extracted '{inner_file}' from '{zip_name}' to '{dest_str}'")
+
+        except zipfile.BadZipFile:
+            raise RuntimeError(f"'{zip_name}' is not a valid zip file.")
 
     return 0
+
 
 
 def resolve_doi_url(doi: str, validate_uri: bool = True) -> str:
