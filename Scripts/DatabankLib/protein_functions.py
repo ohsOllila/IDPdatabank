@@ -1,8 +1,17 @@
+import os
+import subprocess
 import numpy as np
 import pandas as pd
 import MDAnalysis as mda
+import mdtraj
 from MDAnalysis.analysis import distances
 from scipy import optimize
+import requests
+from pathlib import Path
+import yaml
+import requests
+import re
+import maicos
 from typing import List, Dict, Optional
 
 
@@ -986,6 +995,7 @@ def extract_sequence_from_pdb(pdb_file):
     return "".join(sequence)
 
 
+
 def extract_sequence_from_gro(gro_file):
     sequence = []
     seen_residues = set()
@@ -1005,6 +1015,7 @@ def extract_sequence_from_gro(gro_file):
                 aa = AA_THREE_TO_ONE.get(res_name, "X")
                 sequence.append(aa)
     return "".join(sequence)
+
 
 
 def make_fasta(input_file, output_file=None):
@@ -1027,3 +1038,220 @@ def make_fasta(input_file, output_file=None):
             fasta.write(sequence[i : i + 80] + "\n")
 
     return output_file
+    
+    
+# 17.06.2025
+# added during NMRLipids meeting in Bergen
+# by Tobi R
+# FUNCTION TO CALCULATE THE SAXS SCATTERING PROFILE OF THE TRJ
+#	needs an external version of crysol 
+#		https://www.embl-hamburg.de/biosaxs/crysol.html
+#		tested with version: crysol, ATSAS 3.1.3 (r14636)
+#	INPUT: 
+#		- gro_file; xtc_file: gro file and xtc file (nojump) for MDAnalysis
+#		- dt_analysis_ps: sets a value in ps. This will be (roughlz) the 
+#			time steps for analzsis
+#	OUTPUT:
+#		-averaged SAXS profile (q-space) with standard deviation
+#		-pandas dataframe
+#		-3 columns (q in 1/A; mean in a.u.; sd in a.u.)
+
+def calculate_SAXS_profile_crysol(gro_file, xtc_file,dt_analysis_ps=1000):
+    # Load structure and trajectory / xtc contains inly protein and is no jump
+    u = mda.Universe(gro_file, xtc_file)
+    
+    # only select protein atoms
+    protein_atoms = u.select_atoms("protein")
+    
+    # Timesteps between analyzed frames (dt_analysis_ps) should be roughly 100 ps
+    # 	find out the timestep in the trajectory 
+    dt_trj_ps = u.trajectory.dt
+    # get ab interval for frame analysis
+    analysis_frame_interval = round(dt_analysis_ps/dt_trj_ps,0)
+    
+    # create pandas dataframe which stores the calculated SAXS profiles
+    profiles = pd.DataFrame()
+    
+    # iterate over individul frames
+    for ts in u.trajectory:
+        # CHECK, IF CONSIDERED - only when frame_idx%analysis_frame_interval = 0
+        frame_idx = ts.frame  # Get current frame index
+        
+        if frame_idx%analysis_frame_interval == 0:
+            # PDB OUT
+            # write out single PDB files
+            filName_PDB = "frame_"+str(frame_idx)+".pdb"
+            protein_atoms.write(filName_PDB)
+            # for some reason, crysol expects a different naming of some atoms in pdb
+            #	known issues for
+            #		ILE and termini
+            #	so for this I use sed from command line, since this is much faster than 
+            #		any python tool
+            #	use subprocess for that
+            # ILE fix
+            subprocess.run("sed -i 's/CD  ILE/CD1 ILE/' "+ filName_PDB, shell=True)
+            subprocess.run("sed -i 's/HD1 ILE/HD11 ILE/'" + filName_PDB, shell=True)
+            subprocess.run("sed -i 's/HD2 ILE/HD12 ILE/'"+ filName_PDB, shell=True)
+            subprocess.run("sed -i 's/HD3 ILE/HD13 ILE/'"+ filName_PDB, shell=True)
+            # TERMINI fix
+            subprocess.run("sed -i 's/OC1/OXT/' "+ filName_PDB, shell=True)
+            subprocess.run("sed -i 's/OT1/OXT/' "+ filName_PDB, shell=True)
+            subprocess.run("sed -i '/.*OC2*/d' "+ filName_PDB, shell=True)
+            subprocess.run("sed -i '/.*OT2*/d' "+ filName_PDB, shell=True)
+            
+            # RUN CRYSOL
+            OUT = subprocess.run("crysol "+ filName_PDB +" -lm 50 -fb 18 -ns 101 -p profile_"+str(frame_idx), shell=True)
+            
+            # READ SAXS PROFILE FILE
+            data = np.loadtxt("profile_"+str(frame_idx)+".abs",skiprows=1)
+            tab = pd.DataFrame(data)
+            tab.columns = ["q","Inten"]
+            
+            # SAVE FILES IN DATAFRAME
+            prof_I = tab["Inten"]
+            profiles = pd.concat([profiles,prof_I],axis=1)
+            
+            # CLEAN UP 
+            os.remove("frame_"+str(frame_idx)+".pdb")
+            os.remove("profile_"+str(frame_idx)+".alm")
+            os.remove("profile_"+str(frame_idx)+".log")
+            os.remove("profile_"+str(frame_idx)+".int")
+            os.remove("profile_"+str(frame_idx)+".abs")
+    
+    # GET AVERAGE AND SD SAXS PROFILE 
+    # calculate the mean profile and the corresponding sd
+    profile_mean = profiles.mean(axis=1)
+    profile_sd = profiles.std(axis=1)
+    
+    # merge data and set column names
+    res = pd.DataFrame([tab["q"],profile_mean,profile_sd]).transpose()
+    res.columns = ["q[1/A]","mean_I(q)[a.u.]","sd_I(q)[a.u.]"]
+    
+    return(res)
+
+
+# 18.06.2025
+# added during NMRLipids meeting in Bergen
+# by Tobi R
+# FUNCTION TO CALCULATE THE SAXS SCATTERING PROFILE OF THE TRJ
+#	needs the python package MAICoS
+#		https://gitlab.com/maicos-devel/maicos
+#		https://maicos.readthedocs.io/en/main/analysis-modules/saxs.html
+#	INPUT: 
+#		- gro_file; xtc_file: gro file and xtc file (nojump!!!) for MDAnalysis
+#		- water_shell: if submitted as interger or float, all atoms within this
+#					   value (distance to protein) will be considered for the
+#					   hydration shell; otherwise only protein is considered 
+#		- output_file: if true, file of calculated data will be saved
+#	OUTPUT:
+#		-SAXS profile (q-space) of the trajectory
+#		-pandas dataframe
+#		-2 columns (q in 1/A; mean in a.u.)
+
+def calculate_SAXS_profile_maicos(gro_file, xtc_file,water_shell=None,output_file=False):
+    # Load structure and trajectory
+    u = mda.Universe(gro_file, xtc_file)
+    
+    # consider hydration shell or not
+    #	considered: if hydration_shell is an integer or float
+    #				--> this value will be used for cutoff (in A)
+    #	not considered: any other datatype
+    if type(water_shell) == int or type(water_shell)==float:
+        protein = u.select_atoms("protein")
+        int_water = u.select_atoms("(around "+str(water_shell)+" protein) and (not type DUMMY)", updating=True)
+        sel_atoms = protein + int_water
+        print("  NOTE: Water shell is considered.")
+    else:
+        sel_atoms = u.select_atoms("protein")
+        print("  NOTE: Water shell is NOT considered.")
+    
+    # run the program:
+    #	-since we use nojump simulations, we can set unwrap to false:
+    #	-since most scattering profiles of IDPs are not larger than q=0.5, adjust:
+    #		qmax = 0.5 / qmin = 0 / dq = 0.0025
+    #	-see MAICoS documentation: https://maicos.readthedocs.io/en/main/analysis-modules/saxs.html
+    # create the object
+    SAXS = maicos.Saxs(atomgroup=sel_atoms,unwrap=False,qmin=0,qmax=0.5005,dq=0.0025,jitter=10**(-3))
+    
+    # run the analzsis
+    profile = SAXS.run()
+    
+    # extract the profile:
+    scattering_vectors = profile.results.scattering_vectors
+    intensity = profile.results.scattering_intensities
+    
+    # check, if data should be saved
+    if output_file:
+        SAXS.save()
+    
+    #merge data for return and set column names
+    res = pd.DataFrame([scattering_vectors,intensity]).transpose()
+    res.columns = ["q[1/A]","I(q)[a.u.]"]
+    
+    return(res)
+    
+    
+# 19.06.2025
+# added during NMRLipids meeting in Bergen
+# by Tobi R
+# FUNCTION TO CALCULATE THE AVERAGED CHEMICAL SHIFTS OF THE TRJ
+#	needs the python package mdtraj
+#		https://www.mdtraj.org/1.9.8.dev0/installation.html
+#	needs the external program sparta+
+#		- https://spin.niddk.nih.gov/bax-apps/software/SPARTA+/
+#		- path to sparta+ needs to be added to $PATH 
+#		- after running install.com, the output needs to be added to ".cshrc"
+#			in yout "~/" path // 
+#			if it does not exist, create it and add lines
+#	INPUT: 
+#		- gro_file; xtc_file: gro file and xtc file (nojump!!!) for MDAnalysis
+#		- dt_analysis_ps: sets a value in ps. This will be (roughlz) the 
+#			time steps for analzsis
+#	OUTPUT:
+#		-table of averaged chemical shifts with standard deviation over trj
+#		-pandas dataframe
+#		-3 columns (atom/nuclei name; mean chemical shift, standard deviation(sd) of chemical shift)
+
+def calculate_ChemShifts_sparta(gro_file, xtc_file, dt_analysis_ps=100):
+    # in this function we use mdtraj and NOT MDAnalysis
+    
+    # LOAD DATA
+    # load trj with  mdtraj
+    traj = mdtraj.load(xtc_file, top=gro_file)
+
+    # GET PROTEINE ONLY TRJ
+    idx_prot_atoms = traj.topology.select('protein')
+    # slice trajectory to keep only protein atoms
+    traj_just_prot = traj.atom_slice(idx_prot_atoms)
+    
+    # ADJUST TIME STEPS FOR ANALYSIS
+    # timesteps between analyzed frames (dt_analysis_ps) should be roughly 100 ps
+    # 	find out the timestep in the trajectory 
+    dt_trj_ps = traj_just_prot.time[1]-traj_just_prot.time[0]
+    # get ab interval for frame analysis
+    analysis_frame_interval = int(round(dt_analysis_ps/dt_trj_ps,0))
+    # apply to trajectory
+    traj_just_prot = traj_just_prot[::analysis_frame_interval]
+
+    
+    print('loaded')
+    
+    
+    
+    # RUN SPARTA
+    ChemShifts_all_frames = mdtraj.chemical_shifts_spartaplus(traj_just_prot, rename_HN=True)
+    
+    # AVERAGE RESULTS
+    # shift_all_frames is a pandas dataframe:
+    #	rows are the individual atoms/nuclei in the protein
+    #	columns are the individual frames of the traj
+    # so calculate the mean/sd over each row
+    mean_ChemShifts = ChemShifts_all_frames.mean(axis=1)
+    # get SD
+    sd_ChemShifts = ChemShifts_all_frames.std(axis=1)
+    
+    # PREPARE DATA FOR RETURN
+    res = pd.DataFrame([mean_ChemShifts,sd_ChemShifts]).transpose()
+    res.columns = ["meanChemShifts[ppm]","SDChemShifts[ppm]"]
+    
+    return(res)
