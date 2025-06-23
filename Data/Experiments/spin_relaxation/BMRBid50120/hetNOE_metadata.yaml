@@ -1,0 +1,46 @@
+Experiment_ID: '4'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '800'
+    Manufacturer: Bruker
+    Model: AVANCE III HD
+Name: 15N-(1H) NOE
+Sample_component:
+-   Concentration_val: '0.5'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-99% 15N]'
+    Mol_common_name: entity_1
+    Type: null
+-   Concentration_val: '50'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium chloride
+    Type: null
+-   Concentration_val: '20'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium phosphate
+    Type: null
+-   Concentration_val: '90'
+    Concentration_val_units: '%'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: H2O
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: '%'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: D2O
+    Type: null
+-   Concentration_val: '0.01'
+    Concentration_val_units: '%'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium azide
+    Type: null
+-   Concentration_val: '20'
+    Concentration_val_units: uM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: DSS
+    Type: null
+Sample_condition_variable:
+    ph: '6.0'
+    temperature: '298'

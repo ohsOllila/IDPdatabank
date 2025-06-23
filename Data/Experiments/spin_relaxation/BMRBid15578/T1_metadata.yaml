@@ -1,0 +1,26 @@
+Experiment_ID: '22'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '700'
+    Manufacturer: Bruker
+    Model: Avance
+Name: 2D 1H-15N HSQC T1
+Sample_component:
+-   Concentration_val: null
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-13C; U-15N]'
+    Mol_common_name: Full_Length Protein
+    Type: null
+-   Concentration_val: null
+    Concentration_val_units: mM
+    Isotopic_labeling: null
+    Mol_common_name: Cadmium ion
+    Type: null
+-   Concentration_val: '300'
+    Concentration_val_units: mM
+    Isotopic_labeling: null
+    Mol_common_name: NaCl
+    Type: null
+Sample_condition_variable:
+    ph: '7.2'
+    temperature: '298'

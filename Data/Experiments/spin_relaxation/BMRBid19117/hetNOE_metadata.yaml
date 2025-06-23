@@ -1,0 +1,26 @@
+Experiment_ID: '14'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '900'
+    Manufacturer: Varian
+    Model: VNMRS
+Name: Heteronuclear NOE ratio
+Sample_component:
+-   Concentration_val: '1'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: Domain_11
+    Type: null
+-   Concentration_val: '93'
+    Concentration_val_units: '%'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: H2O
+    Type: null
+-   Concentration_val: '7'
+    Concentration_val_units: '%'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: D2O
+    Type: null
+Sample_condition_variable:
+    ph: '4'
+    temperature: '310.15'

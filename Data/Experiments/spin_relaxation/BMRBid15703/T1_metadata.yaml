@@ -1,0 +1,36 @@
+Experiment_ID: '6'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '600'
+    Manufacturer: Bruker
+    Model: Avance
+Name: T1
+Sample_component:
+-   Concentration_val: '0.65'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-15N]'
+    Mol_common_name: CD69
+    Type: null
+-   Concentration_val: '1'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium azide
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: '%'
+    Isotopic_labeling: '[U-99% 2H]'
+    Mol_common_name: D2O
+    Type: null
+-   Concentration_val: '50'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium chloride
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: MES
+    Type: null
+Sample_condition_variable:
+    ph: '5.8'
+    temperature: '300'

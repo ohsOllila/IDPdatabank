@@ -1,0 +1,36 @@
+Experiment_ID: '44'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '600'
+    Manufacturer: Bruker
+    Model: AVANCE III
+Name: 1H-15N heteronoe
+Sample_component:
+-   Concentration_val: '0.16'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-100% 13C; U-100% 15N; U-80% 2H]'
+    Mol_common_name: H2A
+    Type: null
+-   Concentration_val: '0.16'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-100% 13C; U-100% 15N; U-80% 2H]'
+    Mol_common_name: H2B
+    Type: null
+-   Concentration_val: '0.16'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: H3
+    Type: null
+-   Concentration_val: '0.16'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: H4
+    Type: null
+-   Concentration_val: '0.08'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: 145 bp DNA
+    Type: null
+Sample_condition_variable:
+    ph: '6'
+    temperature: '293'

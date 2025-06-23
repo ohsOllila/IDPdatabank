@@ -1,0 +1,21 @@
+Experiment_ID: '38'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '800'
+    Manufacturer: Bruker
+    Model: AVANCE
+Name: HTNOE 1
+Sample_component:
+-   Concentration_val: '20'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: Sodium phosphate
+    Type: null
+-   Concentration_val: '0.3'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-13C; U-15N]'
+    Mol_common_name: nc2
+    Type: null
+Sample_condition_variable:
+    ph: '6.000'
+    temperature: '283.000'
