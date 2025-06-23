@@ -19,7 +19,6 @@ Engine-specific dictionaries have a fixed subfield types:
     + structure
     + topology
     + trajectory
-    + compressed
     + energy
     + None
 - EXTENSION
@@ -174,11 +173,6 @@ gromacs_dict = {
     "BATCHID": {
         "REQUIRED": False,
         "TYPE": "string"
-    },
-    "COMPRESSED": {
-        "REQUIRED": False,
-        "TYPE": "file",
-        "EXTENSION": ("zip", "tar", "tar.gz", "tgz", "tar.bz2"),
     }
 }
 
@@ -273,11 +267,6 @@ amber_dict = {
     "COMPOSITION": {
         "REQUIRED": True,
         "TYPE": "dictionary",
-    },
-    "COMPRESSED": {
-        "REQUIRED": False,
-        "TYPE": "file",
-        "EXTENSION": ("zip", "tar", "tar.gz", "tgz", "tar.bz2"),
     }
 }
 # NAMD
@@ -382,11 +371,6 @@ namd_dict = {
     "COMPOSITION": {
         "REQUIRED": True,
         "TYPE": "dictionary",
-    },
-    "COMPRESSED": {
-        "REQUIRED": False,
-        "TYPE": "file",
-        "EXTENSION": ("zip", "tar", "tar.gz", "tgz", "tar.bz2"),
     }
 }
 # CHARMM
@@ -502,11 +486,6 @@ openmm_dict = {
     "COMPOSITION": {
         "REQUIRED": True,
         "TYPE": "dictionary",
-    },
-    "COMPRESSED": {
-        "REQUIRED": False,
-        "TYPE": "file",
-        "EXTENSION": ("zip", "tar", "tar.gz", "tgz", "tar.bz2"),
     }
 }
 

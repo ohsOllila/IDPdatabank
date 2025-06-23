@@ -17,6 +17,20 @@ logger = logging.getLogger(__name__)
 import zipfile
 from pathlib import Path
 
+def get_zip_path_if_any(file_path: str) -> Path | None:
+    """
+    Given a file path like 'test.zip/folder/file.xtc',
+    detect if it starts with a zip archive name (.zip extension).
+    
+    Returns:
+        Path to the zip archive (e.g., Path('test.zip')) if found,
+        else None.
+    """
+    parts = Path(file_path).parts
+    for part in parts:
+        if part.endswith(".zip"):
+            return Path(part)
+    return None
 
 def download_resource_from_uri(
     uri: str, dest: str, override_if_exists: bool = False
@@ -46,8 +60,56 @@ def download_resource_from_uri(
                 self.total = tsize
             return self.update(b * bsize - self.n)
 
+    dest = Path(dest)
+
+    # If file is inside a zip (e.g. test.zip/some/file.top)
+    parts = dest.parts
+    zip_index = next((i for i, p in enumerate(parts) if p.endswith(".zip")), None)
+
+    if zip_index is not None:
+        zip_path = Path(*parts[: zip_index + 1])
+        file_inside_zip = str(Path(*parts[zip_index + 1:]))
+
+        # Make sure zip is downloaded
+        zip_dest_path = zip_path
+        zip_url = "/".join(uri.split("/")[: -len(file_inside_zip.split("/"))])
+        zip_uri = zip_url + "/" + zip_path.name
+
+        # Only download if needed
+        if not zip_dest_path.exists() or override_if_exists:
+            zip_dest_path.parent.mkdir(parents=True, exist_ok=True)
+            logger.info(f"Downloading zip archive from: {zip_uri}")
+            with RetrieveProgressBar(
+                unit="B", unit_scale=True, unit_divisor=1024, miniters=1, desc=zip_path.name
+            ) as u:
+                urllib.request.urlretrieve(zip_uri, zip_dest_path, reporthook=u.update_retrieve)
+            logger.info(f"Zip file downloaded at: {zip_dest_path}")
+        else:
+            logger.info(f"{zip_dest_path}: zip file already exists, skipping download")
+
+        # Extract only the needed file
+        extract_path = zip_path.parent / file_inside_zip
+
+        # If the parent is a file (e.g. test_top.zip), raise a clearer error or adjust path
+        if extract_path.parent.is_file():
+            raise FileExistsError(f"Cannot create directory {extract_path.parent} — a file with the same name exists.")
+
+        extract_path.parent.mkdir(parents=True, exist_ok=True)
+
+
+        with zipfile.ZipFile(zip_dest_path, 'r') as zf:
+            if file_inside_zip not in zf.namelist():
+                raise FileNotFoundError(f"{file_inside_zip} not found in {zip_dest_path}")
+            with zf.open(file_inside_zip) as source, open(extract_path, 'wb') as target:
+                target.write(source.read())
+
+        logger.info(f"Extracted {file_inside_zip} to {extract_path}")
+        return 0
+    
+    # If it's a regular file (not inside a zip)
     fi_name = uri.split("/")[-1]
 
+    # --- No zip in dest, proceed normally ---
     # check if dest path already exists
     if not override_if_exists and os.path.isfile(dest):
         socket.setdefaulttimeout(10)  # seconds
