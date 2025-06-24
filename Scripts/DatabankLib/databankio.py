@@ -9,6 +9,11 @@ import socket
 import urllib.error
 from tqdm import tqdm
 import urllib.request
+import urllib.error
+from urllib.parse import urlparse
+import ssl
+import json
+
 
 import logging
 logger = logging.getLogger(__name__)
@@ -90,7 +95,7 @@ def download_resource_from_uri(
         # Extract only the needed file
         extract_path = zip_path.parent / file_inside_zip
 
-        # If the parent is a file (e.g. test_top.zip), raise a clearer error or adjust path
+        # If the parent is a file (e.g. test.zip), raise a clearer error or adjust path
         if extract_path.parent.is_file():
             raise FileExistsError(f"Cannot create directory {extract_path.parent} — a file with the same name exists.")
 
@@ -109,7 +114,8 @@ def download_resource_from_uri(
     # If it's a regular file (not inside a zip)
     fi_name = uri.split("/")[-1]
 
-    # --- No zip in dest, proceed normally ---
+    # No zip in dest, proceed normally
+
     # check if dest path already exists
     if not override_if_exists and os.path.isfile(dest):
         socket.setdefaulttimeout(10)  # seconds
@@ -169,7 +175,17 @@ def resolve_download_file_url(
         sleep429=5) -> str:
     """
     :meta private:
-    Resolve file URI from supported DOI with given filename
+    Returns full doi link of given ressource, also checks if URL is valid.
+
+
+    Steps:
+    1) Resolve DOI via https://doi.org to get final domain.
+    2) Check if domain is a Dataverse by querying /api/info/version.
+    3) If Dataverse:
+       - Try direct file DOI access
+       - If fails, query dataset metadata to find file by name.
+    4) If Zenodo, construct direct Zenodo file URL.
+    5) Validate final URL if requested.
 
     Args:
         doi (str): DOI string
@@ -186,89 +202,91 @@ def resolve_download_file_url(
         str: file URI
     """
 
-    # Extract only the top-level filename, e.g., "file.zip" from "file.zip/folder/file.txt"
     archive_name = fi_name.split('/')[0]
-    
+
+
     if "zenodo" in doi.lower():
         zenodo_entry_number = doi.split(".")[2]
         uri = "https://zenodo.org/record/" + zenodo_entry_number + "/files/" + archive_name
 
         # check if ressource exists, may throw exception
         if validate_uri:
-            try:
-                socket.setdefaulttimeout(10)  # seconds
-                _ = urllib.request.urlopen(uri, timeout=10)
-            except TimeoutError:
-                raise RuntimeError(f"Cannot open {uri}. Timeout error.")
-            except urllib.error.HTTPError as hte:
-                if hte.code == 429:
-                    if sleep429/5 > 10:
-                        raise TimeoutError(
-                            "Too many iteration of increasing waiting time!")
-                    logger.warning(f"HTTP error returned from URI: {uri}")
-                    logger.warning(f"Site returns 429 code."
-                                   f" Try to sleep {sleep429} seconds and repeat!")
-                    time.sleep(sleep429)
-                    return resolve_download_file_url(doi, fi_name, validate_uri,
-                                                     sleep429=sleep429+5)
-                else:
-                    raise hte
+            _validate_url(uri, sleep429, doi, fi_name)
         return uri
-    elif "10.17617" in doi:
-        uri = "https://edmond.mpg.de/api/datasets/:persistentId/?persistentId=doi:" + doi
 
-        # did not see a direct way with the api to grab an individual file, so look through metadata to find fileid from name
-        try:
-            with urllib.request.urlopen(uri) as response:
-                dataset_metadata = json.loads(response.read().decode())
-                # Save metadata to file as a check 
-                # with open("edmond_metadata.json", "w", encoding="utf-8") as out_file:
-                #     json.dump(dataset_metadata, out_file, indent=2)
-        
-        except Exception as e:
-            raise RuntimeError(f"Could not fetch metadata from Edmond: {e}")
+    # Step 1: Resolve DOI to get final URL and domain
+    try:
+        resolved_url = urllib.request.urlopen(f"https://doi.org/{doi}").geturl()
+    except Exception as e:
+        raise RuntimeError(f"Could not resolve DOI {doi}: {e}")
 
-        try: # try to look for file by supplied file nsma 
-            files = dataset_metadata['data']['latestVersion']['files']
-            # print("files:", files)
-            file_id = None
-            for f in files:
-                if f['dataFile']['filename'] == archive_name:
-                    file_id = f['dataFile']['id']
-                    # print("file_id:\n", file_id)
-                    break
-        except KeyError as e:
-            raise RuntimeError(f"Unexpected metadata structure: {e}")
-        
-        if not archive_name:
-            raise FileNotFoundError(f"File '{archive_name}' not found in dataset {doi}, might be zipped")
-        
-        # new uri for the file
-        uri = f"https://edmond.mpg.de/api/access/datafile/{file_id}"
+    domain = urlparse(resolved_url).netloc
+    logger.info(f"DOI resolved to domain: {domain}")
 
-        # check if ressource exists, may throw exception (copied from above, can likely condense)
+    # Step 2: Confirm Dataverse instance via /api/info/version
+    api_version_url = f"https://{domain}/api/info/version"
+    try:
+        # SSL context to avoid certificate issues (use cautiously)
+        ssl_context = ssl._create_unverified_context()
+        with urllib.request.urlopen(api_version_url, context=ssl_context) as response:
+            version_info = json.loads(response.read().decode())
+            if version_info.get("status") != "OK":
+                raise RuntimeError(f"Dataverse API version check failed at {api_version_url}")
+    except Exception as e:
+        raise NotImplementedError(f"Domain '{domain}' is not a recognized Dataverse instance: {e}")
+
+    # Step 3a: Try direct file DOI access 
+    file_uri = f"https://{domain}/api/access/datafile/:persistentId?persistentId=doi:{doi}"
+    try:
         if validate_uri:
-            try:
-                socket.setdefaulttimeout(10)  # seconds
-                _ = urllib.request.urlopen(uri, timeout=10)
-            except TimeoutError:
-                raise RuntimeError(f"Cannot open {uri}. Timeout error.")
-            except urllib.error.HTTPError as hte:
-                if hte.code == 429:
-                    if sleep429/5 > 10:
-                        raise TimeoutError(
-                            "Too many iteration of increasing waiting time!")
-                    logger.warning(f"HTTP error returned from URI: {uri}")
-                    logger.warning(f"Site returns 429 code."
-                                   f" Try to sleep {sleep429} seconds and repeat!")
-                    time.sleep(sleep429)
-                    return resolve_download_file_url(doi, fi_name, validate_uri,
-                                                     sleep429=sleep429+5)
-                else:
-                    raise hte
-        return uri
+            _validate_url(file_uri, sleep429, doi, fi_name)
+        return file_uri
+    except urllib.error.HTTPError as e:
+        if e.code != 404:
+            raise  # only continue if 404
 
-    else:
-        raise NotImplementedError(
-            "Repository not validated. Please upload the data for example to zenodo.org or edmonds"
-        )
+    # Step 3b: Fall back to dataset metadata lookup
+    dataset_uri = f"https://{domain}/api/datasets/:persistentId/?persistentId=doi:{doi}"
+    try:
+        with urllib.request.urlopen(dataset_uri, context=ssl_context) as response:
+            metadata = json.loads(response.read().decode())
+    except Exception as e:
+        raise RuntimeError(f"Could not fetch dataset metadata from {domain}: {e}")
+
+    try:
+        files = metadata['data']['latestVersion']['files']
+    except KeyError:
+        raise RuntimeError(f"Unexpected metadata structure from {domain}")
+
+    file_id = None
+    for f in files:
+        if f['dataFile']['filename'] == archive_name:
+            file_id = f['dataFile']['id']
+            break
+    if not file_id:
+        raise FileNotFoundError(f"File '{archive_name}' not found in dataset DOI {doi}")
+
+    uri = f"https://{domain}/api/access/datafile/{file_id}"
+    if validate_uri:
+        _validate_url(uri, sleep429, doi, fi_name)
+
+    return uri
+
+
+def _validate_url(uri, sleep429, doi, fi_name):
+    """Helper to validate URL existence and handle 429 rate limits with retry."""
+    socket.setdefaulttimeout(10)
+    try:
+        urllib.request.urlopen(uri, timeout=10)
+    except TimeoutError:
+        raise RuntimeError(f"Cannot open {uri}. Timeout error.")
+    except urllib.error.HTTPError as hte:
+        if hte.code == 429:
+            if sleep429 / 5 > 10:
+                raise TimeoutError("Too many retries for HTTP 429 rate limit.")
+            logger.warning(f"HTTP 429 from {uri}. Sleeping {sleep429} seconds and retrying.")
+            time.sleep(sleep429)
+            # Recursive retry
+            return _validate_url(uri, sleep429 + 5, doi, fi_name)
+        else:
+            raise
