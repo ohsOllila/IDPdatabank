@@ -9,33 +9,124 @@ import socket
 import urllib.error
 from tqdm import tqdm
 import urllib.request
-import urllib.error
 from urllib.parse import urlparse
 import ssl
 import json
-
+import libarchive # for archive extraction
+import tempfile  # for temporary folders for nested archive extraction
 
 import logging
 logger = logging.getLogger(__name__)
 
-
-import zipfile
 from pathlib import Path
 
-def get_zip_path_if_any(file_path: str) -> Path | None:
+# Supported archive extensions. Note that I only tested on .zip
+ARCHIVE_EXTENSIONS = (".zip", ".tar", ".tar.gz", ".tgz", ".7z")
+
+def extract_file_from_archive(archive_path: Path, target_path: str, dest_dir: Path):
     """
-    Given a file path like 'test.zip/folder/file.xtc',
-    detect if it starts with a zip archive name (.zip extension).
-    
+    Extract a single file from an archive and save it with a flattened filename.
+
+    Parameters:
+    archive_path : Path
+        The path to the archive file (e.g., .zip, .tar.gz) to extract from.
+    target_path : str
+        The relative path of the file inside the archive to extract.
+    dest_dir : Path
+        The destination directory to which the file should be written. The directory
+        will be created if it does not exist.
+
     Returns:
-        Path to the zip archive (e.g., Path('test.zip')) if found,
-        else None.
+    None
+
+    Raises:
+    FileNotFoundError
+        If the specified `target_path` is not found in the archive.
     """
-    parts = Path(file_path).parts
-    for part in parts:
-        if part.endswith(".zip"):
-            return Path(part)
-    return None
+    with libarchive.file_reader(str(archive_path)) as entries:
+        for entry in entries:
+            if entry.pathname == target_path:
+                dest_dir.mkdir(parents=True, exist_ok=True)
+                output_file = dest_dir / Path(target_path).name
+                with open(output_file, 'wb') as f:
+                    for block in entry.get_blocks():
+                        f.write(block)
+                return
+    raise FileNotFoundError(f"'{target_path}' not found in archive {archive_path}")
+
+
+    
+def find_archive_in_path(file_path: Path) -> tuple[Path | None, str | None]:
+    """
+    Given a path potentially containing nested archives,
+    find the first archive part and the relative path inside it.
+
+    This is necessary because I first locate the outermost archive, and then process inner archives step-by-step
+
+    E.g., given 'data.zip/data/inner.zip/file.txt', it returns:
+        (Path('data.zip'), 'data/inner.zip/file.txt')
+
+    Returns:
+        Tuple of (archive_path, file_inside) or (None, None) if no archive found.
+    """
+    parts = file_path.parts
+    for i, part in enumerate(parts):
+        if part.endswith(ARCHIVE_EXTENSIONS):
+            archive_path = Path(*parts[:i + 1])
+            file_inside = str(Path(*parts[i + 1:]))
+            return archive_path, file_inside
+    return None, None
+
+def extract_nested_file_from_archives(archive_path: Path, nested_path: str, dest_path: Path):
+    """
+    Recursively extract a file nested inside potentially multiple layers
+    of archives.
+
+    For example, if nested_path is 'data/inner.zip/file.txt', it:
+    1) Extracts 'inner.zip' from 'archive_path' to a temp location,
+    2) Extracts 'file.txt' from 'inner.zip' to dest_dir.
+
+    Parameters:
+        archive_path: Path to the outer archive file.
+        nested_path: Path inside the archive(s) pointing to the target file.
+        dest_dir: Directory where the final extracted file will be saved.
+
+    Raises:
+        FileNotFoundError: If any nested archive or target file is not found.
+    """
+    parts = Path(nested_path).parts
+    current_archive = archive_path
+
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        # Iterate through parts, extract nested archives step-by-step
+        last_archive_idx = -1
+        for i in range(len(parts) - 1):
+            nested_archive_name = str(Path(*parts[:i + 1]))
+
+            if not nested_archive_name.endswith(ARCHIVE_EXTENSIONS): # Skip if not an archive file extension
+                continue
+            
+            # Temporary file to hold the nested archive extracted from current_archive
+            tmp_nested_archive_path = Path(tmp_dir) / f"nested_{i}{Path(nested_archive_name).suffix}"
+            found = False
+            with libarchive.file_reader(str(current_archive)) as entries:
+                for entry in entries:
+                    if entry.pathname == nested_archive_name:
+                        found = True
+                        with open(tmp_nested_archive_path, 'wb') as f:
+                            for block in entry.get_blocks():
+                                f.write(block)
+                        break
+            if not found:
+                raise FileNotFoundError(f"Nested archive '{nested_archive_name}' not found in archive {current_archive}")
+
+            current_archive = tmp_nested_archive_path
+            last_archive_idx = i # keep track of where the last archive ends, so you extract the full correct remaining path
+
+        # Extract the final file (flattened) look for full remaining inner path
+        final_inner_path = str(Path(*parts[last_archive_idx + 1:]))
+        extract_file_from_archive(current_archive, final_inner_path, dest_path)
+
 
 def download_resource_from_uri(
     uri: str, dest: str, override_if_exists: bool = False
@@ -66,55 +157,31 @@ def download_resource_from_uri(
             return self.update(b * bsize - self.n)
 
     dest = Path(dest)
+    archive_path, file_inside = find_archive_in_path(dest)
 
-    # If file is inside a zip (e.g. test.zip/some/file.top)
-    parts = dest.parts
-    zip_index = next((i for i, p in enumerate(parts) if p.endswith(".zip")), None)
-
-    if zip_index is not None:
-        zip_path = Path(*parts[: zip_index + 1])
-        file_inside_zip = str(Path(*parts[zip_index + 1:]))
-
-        # Make sure zip is downloaded
-        zip_dest_path = zip_path
-        zip_url = "/".join(uri.split("/")[: -len(file_inside_zip.split("/"))])
-        zip_uri = zip_url + "/" + zip_path.name
-
-        # Only download if needed
-        if not zip_dest_path.exists() or override_if_exists:
-            zip_dest_path.parent.mkdir(parents=True, exist_ok=True)
-            logger.info(f"Downloading zip archive from: {zip_uri}")
+    if archive_path is not None:
+        archive_uri = uri
+        if not archive_path.exists() or override_if_exists:
+            archive_path.parent.mkdir(parents=True, exist_ok=True)
+            logger.info(f"Downloading archive from: {archive_uri}")
             with RetrieveProgressBar(
-                unit="B", unit_scale=True, unit_divisor=1024, miniters=1, desc=zip_path.name
+                unit="B", unit_scale=True, unit_divisor=1024, miniters=1, desc=archive_path.name
             ) as u:
-                urllib.request.urlretrieve(zip_uri, zip_dest_path, reporthook=u.update_retrieve)
-            logger.info(f"Zip file downloaded at: {zip_dest_path}")
+                urllib.request.urlretrieve(archive_uri, archive_path, reporthook=u.update_retrieve)
+            logger.info(f"Archive downloaded at: {archive_path}")
         else:
-            logger.info(f"{zip_dest_path}: zip file already exists, skipping download")
+            logger.info(f"{archive_path}: archive already exists, skipping download")
 
-        # Extract only the needed file
-        extract_path = zip_path.parent / file_inside_zip
+        # Handle nested archives extraction recursively
+        extract_nested_file_from_archives(archive_path, file_inside, archive_path.parent)
 
-        # If the parent is a file (e.g. test.zip), raise a clearer error or adjust path
-        if extract_path.parent.is_file():
-            raise FileExistsError(f"Cannot create directory {extract_path.parent} — a file with the same name exists.")
-
-        extract_path.parent.mkdir(parents=True, exist_ok=True)
-
-
-        with zipfile.ZipFile(zip_dest_path, 'r') as zf:
-            if file_inside_zip not in zf.namelist():
-                raise FileNotFoundError(f"{file_inside_zip} not found in {zip_dest_path}")
-            with zf.open(file_inside_zip) as source, open(extract_path, 'wb') as target:
-                target.write(source.read())
-
-        logger.info(f"Extracted {file_inside_zip} to {extract_path}")
+        logger.info(f"Extracted {file_inside} to {dest}")
         return 0
     
     # If it's a regular file (not inside a zip)
     fi_name = uri.split("/")[-1]
 
-    # No zip in dest, proceed normally
+    # No compressed files in dest, proceed normally
 
     # check if dest path already exists
     if not override_if_exists and os.path.isfile(dest):
@@ -134,9 +201,7 @@ def download_resource_from_uri(
 
     # download
     socket.setdefaulttimeout(10)  # seconds
-
     url_size = urllib.request.urlopen(uri).length  # download size
-
     with RetrieveProgressBar(
         unit="B", unit_scale=True, unit_divisor=1024, miniters=1, desc=fi_name
     ) as u:
