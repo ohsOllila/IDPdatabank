@@ -1,0 +1,21 @@
+Experiment_ID: '14'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: null
+    Manufacturer: null
+    Model: null
+Name: 2D 1H-15N HSQC NOE
+Sample_component:
+-   Concentration_val: null
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-13C; U-15N]'
+    Mol_common_name: CAT_DOMAIN
+    Type: null
+-   Concentration_val: '300'
+    Concentration_val_units: mM
+    Isotopic_labeling: null
+    Mol_common_name: NaCl
+    Type: null
+Sample_condition_variable:
+    ph: null
+    temperature: null

@@ -1,0 +1,21 @@
+Experiment_ID: '13'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '500'
+    Manufacturer: Bruker
+    Model: Avance
+Name: hsqct1etf3gpsitc3d.nlf
+Sample_component:
+-   Concentration_val: '20'
+    Concentration_val_units: uM
+    Isotopic_labeling: '[U-99% 15N]'
+    Mol_common_name: WT TDP-43_267-414
+    Type: null
+-   Concentration_val: '20'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: MES
+    Type: null
+Sample_condition_variable:
+    ph: '6.1'
+    temperature: '283'

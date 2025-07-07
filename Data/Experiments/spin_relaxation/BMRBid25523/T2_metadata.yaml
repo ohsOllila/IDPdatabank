@@ -1,0 +1,36 @@
+Experiment_ID: '7'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '600'
+    Manufacturer: Bruker
+    Model: Avance
+Name: 2D 15N-T2
+Sample_component:
+-   Concentration_val: '5.0'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: entity
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium acetate
+    Type: null
+-   Concentration_val: '1.6'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: DSS
+    Type: null
+-   Concentration_val: '60'
+    Concentration_val_units: '%'
+    Isotopic_labeling: '[U-99% 2H]'
+    Mol_common_name: TFE
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: '%'
+    Isotopic_labeling: '[U-100% 2H]'
+    Mol_common_name: D2O
+    Type: null
+Sample_condition_variable:
+    ph: '4.0'
+    temperature: '273'

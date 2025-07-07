@@ -1,0 +1,231 @@
+10ILE:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.41
+        T2:
+            error: 0.3
+            value: 10.8
+        hetNOE:
+            error: 0.04
+            value: 0.71
+11GLU:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.38
+        T2:
+            error: 0.3
+            value: 11.2
+        hetNOE:
+            error: 0.03
+            value: 0.7
+12GLY:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.27
+        T2:
+            error: 0.3
+            value: 10.2
+        hetNOE:
+            error: 0.04
+            value: 0.71
+13GLY:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.43
+        T2:
+            error: 0.3
+            value: 11.1
+        hetNOE:
+            error: 0.04
+            value: 0.7
+14TRP:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.41
+        T2:
+            error: 0.3
+            value: 10.5
+        hetNOE:
+            error: 0.05
+            value: 0.77
+15THR:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.35
+        T2:
+            error: 0.3
+            value: 10.5
+        hetNOE:
+            error: 0.03
+            value: 0.7
+16GLY:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.4
+        T2:
+            error: 0.3
+            value: 10.9
+        hetNOE:
+            error: 0.03
+            value: 0.72
+17MET:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.48
+        T2:
+            error: 0.4
+            value: 12.1
+        hetNOE:
+            error: 0.04
+            value: 0.77
+18ILE:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.43
+        T2:
+            error: 0.3
+            value: 10.8
+        hetNOE:
+            error: 0.04
+            value: 0.78
+19ASP:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.41
+        T2:
+            error: 0.3
+            value: 10.7
+        hetNOE:
+            error: 0.03
+            value: 0.72
+20GLY:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.43
+        T2:
+            error: 0.3
+            value: 10.5
+        hetNOE:
+            error: 0.04
+            value: 0.74
+21TRP:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.41
+        T2:
+            error: 0.3
+            value: 11.3
+        hetNOE:
+            error: 0.04
+            value: 0.73
+22TYR:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.43
+        T2:
+            error: 0.3
+            value: 11.1
+        hetNOE:
+            error: 0.04
+            value: 0.74
+23GLY:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.42
+        T2:
+            error: 0.3
+            value: 9.4
+        hetNOE:
+            error: 0.03
+            value: 0.64
+3PHE:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.46
+        T2:
+            error: 0.3
+            value: 10.0
+        hetNOE:
+            error: 0.04
+            value: 0.79
+4GLY:
+    600.0:
+        T1:
+            error: 0.05
+            value: 1.53
+        T2:
+            error: 0.3
+            value: 11.0
+        hetNOE:
+            error: 0.05
+            value: 0.83
+5ALA:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.46
+        T2:
+            error: 0.4
+            value: 11.8
+        hetNOE:
+            error: 0.03
+            value: 0.73
+6ILE:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.44
+        T2:
+            error: 0.3
+            value: 10.7
+        hetNOE:
+            error: 0.04
+            value: 0.73
+7ALA:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.42
+        T2:
+            error: 0.3
+            value: 10.8
+        hetNOE:
+            error: 0.03
+            value: 0.71
+8GLY:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.4
+        T2:
+            error: 0.3
+            value: 11.0
+        hetNOE:
+            error: 0.04
+            value: 0.77
+9PHE:
+    600.0:
+        T1:
+            error: 0.04
+            value: 1.37
+        T2:
+            error: 0.3
+            value: 11.2
+        hetNOE:
+            error: 0.04
+            value: 0.68

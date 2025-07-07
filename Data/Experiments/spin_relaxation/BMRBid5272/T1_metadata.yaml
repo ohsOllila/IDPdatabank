@@ -1,0 +1,11 @@
+Experiment_ID: '7'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: null
+    Manufacturer: null
+    Model: null
+Name: 15N T1
+Sample_component: []
+Sample_condition_variable:
+    ph: null
+    temperature: null

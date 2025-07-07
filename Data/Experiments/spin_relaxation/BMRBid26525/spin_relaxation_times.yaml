@@ -1,0 +1,392 @@
+10ARG:
+    600.0:
+        T1:
+            error: 0.03
+            value: 2.418
+        T2:
+            error: 0.06
+            value: 4.957
+11THR:
+    600.0:
+        T1:
+            error: 0.026
+            value: 2.429
+        T2:
+            error: 0.051
+            value: 5.086
+13PHE:
+    600.0:
+        T1:
+            error: 0.022
+            value: 2.282
+        T2:
+            error: 0.055
+            value: 5.104
+15TYR:
+    600.0:
+        T1:
+            error: 0.023
+            value: 2.298
+        T2:
+            error: 0.05
+            value: 5.037
+16GLU:
+    600.0:
+        T1:
+            error: 0.021
+            value: 2.175
+        T2:
+            error: 0.059
+            value: 4.865
+17GLY:
+    600.0:
+        T1:
+            error: 0.025
+            value: 2.236
+        T2:
+            error: 0.087
+            value: 4.973
+18THR:
+    600.0:
+        T1:
+            error: 0.026
+            value: 2.472
+        T2:
+            error: 0.052
+            value: 5.687
+19ASN:
+    600.0:
+        T1:
+            error: 0.017
+            value: 2.074
+        T2:
+            error: 0.035
+            value: 4.627
+20ASN:
+    600.0:
+        T1:
+            error: 0.027
+            value: 2.134
+        T2:
+            error: 0.08
+            value: 4.898
+21ASP:
+    600.0:
+        T1:
+            error: 0.02
+            value: 2.238
+        T2:
+            error: 0.057
+            value: 5.025
+23LEU:
+    600.0:
+        T1:
+            error: 0.037
+            value: 2.39
+        T2:
+            error: 0.078
+            value: 4.75
+24THR:
+    600.0:
+        T1:
+            error: 0.022
+            value: 2.025
+        T2:
+            error: 0.051
+            value: 4.115
+25PHE:
+    600.0:
+        T1:
+            error: 0.024
+            value: 2.453
+        T2:
+            error: 0.065
+            value: 5.367
+26LYS:
+    600.0:
+        T1:
+            error: 0.029
+            value: 2.312
+        T2:
+            error: 0.082
+            value: 4.971
+27GLU:
+    600.0:
+        T1:
+            error: 0.02
+            value: 2.295
+        T2:
+            error: 0.042
+            value: 5.103
+28GLY:
+    600.0:
+        T1:
+            error: 0.028
+            value: 2.396
+        T2:
+            error: 0.07
+            value: 4.856
+29GLU:
+    600.0:
+        T1:
+            error: 0.02
+            value: 2.303
+        T2:
+            error: 0.054
+            value: 5.052
+31ILE:
+    600.0:
+        T1:
+            error: 0.03
+            value: 2.334
+        T2:
+            error: 0.18
+            value: 4.835
+33LEU:
+    600.0:
+        T1:
+            error: 0.027
+            value: 2.421
+        T2:
+            error: 0.126
+            value: 5.552
+34ILE:
+    600.0:
+        T1:
+            error: 0.036
+            value: 2.261
+        T2:
+            error: 0.213
+            value: 5.102
+35SER:
+    600.0:
+        T1:
+            error: 0.023
+            value: 2.297
+        T2:
+            error: 0.175
+            value: 5.434
+37GLU:
+    600.0:
+        T1:
+            error: 0.02
+            value: 2.164
+        T2:
+            error: 0.079
+            value: 4.657
+38THR:
+    600.0:
+        T1:
+            error: 0.03
+            value: 2.052
+        T2:
+            error: 0.067
+            value: 4.221
+39GLY:
+    600.0:
+        T1:
+            error: 0.032
+            value: 2.222
+        T2:
+            error: 0.182
+            value: 4.301
+40GLU:
+    600.0:
+        T1:
+            error: 0.017
+            value: 2.114
+        T2:
+            error: 0.045
+            value: 4.644
+41ALA:
+    600.0:
+        T1:
+            error: 0.02
+            value: 2.125
+        T2:
+            error: 0.062
+            value: 4.685
+43TRP:
+    600.0:
+        T1:
+            error: 0.026
+            value: 2.305
+        T2:
+            error: 0.054
+            value: 4.973
+45ARG:
+    600.0:
+        T1:
+            error: 0.031
+            value: 2.326
+        T2:
+            error: 0.064
+            value: 5.308
+46GLY:
+    600.0:
+        T1:
+            error: 0.029
+            value: 2.409
+        T2:
+            error: 0.063
+            value: 5.36
+47GLU:
+    600.0:
+        T1:
+            error: 0.025
+            value: 2.347
+        T2:
+            error: 0.057
+            value: 5.138
+48LEU:
+    600.0:
+        T1:
+            error: 0.031
+            value: 2.403
+        T2:
+            error: 0.118
+            value: 4.91
+49ASN:
+    600.0:
+        T1:
+            error: 0.042
+            value: 2.342
+        T2:
+            error: 0.283
+            value: 5.441
+50GLY:
+    600.0:
+        T1:
+            error: 0.026
+            value: 2.239
+        T2:
+            error: 0.079
+            value: 5.046
+51LYS:
+    600.0:
+        T1:
+            error: 0.019
+            value: 2.287
+        T2:
+            error: 0.059
+            value: 4.713
+53GLY:
+    600.0:
+        T1:
+            error: 0.024
+            value: 2.335
+        T2:
+            error: 0.103
+            value: 4.87
+54VAL:
+    600.0:
+        T1:
+            error: 0.029
+            value: 2.457
+        T2:
+            error: 0.258
+            value: 5.2
+55PHE:
+    600.0:
+        T1:
+            error: 0.026
+            value: 2.183
+        T2:
+            error: 0.099
+            value: 4.696
+57ASP:
+    600.0:
+        T1:
+            error: 0.023
+            value: 2.327
+        T2:
+            error: 0.048
+            value: 5.331
+58ASN:
+    600.0:
+        T1:
+            error: 0.02
+            value: 2.129
+        T2:
+            error: 0.041
+            value: 4.628
+59PHE:
+    600.0:
+        T1:
+            error: 0.033
+            value: 2.352
+        T2:
+            error: 0.068
+            value: 5.041
+5ALA:
+    600.0:
+        T1:
+            error: 0.022
+            value: 1.29
+        T2:
+            error: 0.055
+            value: 2.579
+60ALA:
+    600.0:
+        T1:
+            error: 0.027
+            value: 2.385
+        T2:
+            error: 0.072
+            value: 4.981
+61VAL:
+    600.0:
+        T1:
+            error: 0.024
+            value: 2.328
+        T2:
+            error: 0.086
+            value: 4.776
+63ILE:
+    600.0:
+        T1:
+            error: 0.032
+            value: 2.302
+        T2:
+            error: 0.078
+            value: 4.753
+64ASN:
+    600.0:
+        T1:
+            error: 0.016
+            value: 1.972
+        T2:
+            error: 0.038
+            value: 3.831
+6LYS:
+    600.0:
+        T1:
+            error: 0.025
+            value: 1.621
+        T2:
+            error: 0.072
+            value: 3.307
+7GLU:
+    600.0:
+        T1:
+            error: 0.022
+            value: 2.134
+        T2:
+            error: 0.074
+            value: 4.263
+8TYR:
+    600.0:
+        T1:
+            error: 0.025
+            value: 2.268
+        T2:
+            error: 0.053
+            value: 4.818
+9CYS:
+    600.0:
+        T1:
+            error: 0.03
+            value: 2.39
+        T2:
+            error: 0.069
+            value: 5.017

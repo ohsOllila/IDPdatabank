@@ -1,0 +1,36 @@
+Experiment_ID: '3'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '800'
+    Manufacturer: Bruker
+    Model: Ascend
+Name: 1H-15N heteronoe
+Sample_component:
+-   Concentration_val: '360'
+    Concentration_val_units: uM
+    Isotopic_labeling: '[U-99% 15N]'
+    Mol_common_name: RelA dimerization domain
+    Type: null
+-   Concentration_val: '396'
+    Concentration_val_units: uM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: p50 dimerization domain
+    Type: null
+-   Concentration_val: '20'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: TRIS
+    Type: null
+-   Concentration_val: '50'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium chloride
+    Type: null
+-   Concentration_val: '20'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: beta-mercaptoethanol
+    Type: null
+Sample_condition_variable:
+    ph: '6.8'
+    temperature: '298'
