@@ -1,0 +1,58 @@
+##################################################################################
+## Mandatory fields for the metadata template.
+# This template is used to describe the metadata of a protein metadata.yaml file
+# in a standardized way.
+##################################################################################
+NMRlipids:
+  id: string
+  name: string
+
+# Chemical identifiers for the molecule serving as a unique identifier
+  # The identifier.org prefix is used to look up the identifier in the 
+  # identifiers.org database.
+  # The value is the unique identifier for the protein in that database
+  # For example,uniprot:Q86WV6 means that the protein can be 
+  # found at 	https://identifiers.org/uniprot:Q86WV6
+  # The identifiers are used to link the molecule to other databases and resources
+  # All identifier fields are optional, but at least one should be provided.
+
+# Bioschema properties for the protein
+# These properties are used to describe the protein in a standardized way
+# and are used by the Bioschemas community to improve discoverability
+# and interoperability of molecular data.
+# The properties are based on the Bioschemas Molecule schemas
+# https://bioschemas.org/profiles/SequenceRange/0.2-DRAFT
+# and
+# https://bioschemas.org/profiles/Protein/0.11-RELEASE
+bioschema_protein_properties:
+  name: string
+  # Bioschemas Protein: For proteins, it is recommended to use this property to specify the taxon/organism corresponding to a genome including a expressed gene that can be translated to this protein. For taxon/organism, it is a good practice to use hasCategoryCode to point to a controlled vacabulary such as NCBI taxon or UniProt Taxonomy.
+  taxonomicRange:
+  # Either a url or a file path to the 2D or 3D structure of the protein
+  image: string
+  description: string
+  # sequence as  { "@value": "MPHSSLHPSIPCPRGHGAQKAALVLLSACLVTLWGLGEPPEHTLRYLVLHLASLQLGLLLNGVCSLAEELRHIHSRYRGSYWRTVRACLGCPLRRGALLLLSIYFYYSLPNAVGPPFTWMLALLGLSQALNILLGLKGLAPAEISAVCEKGNFNVAHGLAWSYYIGYLRLILPELQARIRTYNQHYNNLLRGAVSQRLYILLPLDCGVPDNLSMADPNIRFLDKLPQQTGDHAGIKDRVYSNSIYELLENGQRAGTCVLEYATPLQTLFAMSQYSQAGFSREDRLEQAKLFCRTLEDILADAPESQNNCRLIAYQEPADDSSFSLSQEVLRHLRQEEKEEVTVGSLKTSAVPSTSTMSQEPELLISGMEKPLPLRTDFS" 
+  # }
+  hasBioPolymerSequence: string
+  alternateName:
+    - string
+  sameAs:
+    #key names must correspond to the identifier.org prefix
+    # test lookup at https://identifiers.org/[prefix]/[value]
+    uniprot: string
+    ensembl: string
+    refseq: string
+    ncbiprotein: string
+    pdb: string
+    ped.ensemble: string
+
+bioschema_protein_properties:
+  rangeStart: integer
+  rangeEnd: integer
+  sameAs:
+    #key names must correspond to the identifier.org prefix
+    #test lookup at https://identifiers.org/[prefix]/[value]
+    ensembl: string
+
+# Additonal properties for the molecule, not covered by bioschema_properties
+properties:
