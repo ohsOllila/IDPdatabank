@@ -1,0 +1,31 @@
+Experiment_ID: '9'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '800'
+    Manufacturer: Bruker
+    Model: AVANCE III
+Name: T2/R2 relaxation
+Sample_component:
+-   Concentration_val: '0.135'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-100% 13C; U-100% 15N]'
+    Mol_common_name: apo Bromodomain 1 (BD1) of BRD4
+    Type: null
+-   Concentration_val: '20'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium phosphate
+    Type: null
+-   Concentration_val: '100'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium chloride
+    Type: null
+-   Concentration_val: '1'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: TCEP
+    Type: null
+Sample_condition_variable:
+    ph: '6.8'
+    temperature: '303'

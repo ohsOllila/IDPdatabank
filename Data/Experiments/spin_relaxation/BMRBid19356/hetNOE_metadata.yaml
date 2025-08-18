@@ -1,0 +1,26 @@
+Experiment_ID: '5'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '600'
+    Manufacturer: Bruker
+    Model: AVANCE
+Name: HETERONOE
+Sample_component:
+-   Concentration_val: '0.30'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-15N]'
+    Mol_common_name: Nchi2
+    Type: null
+-   Concentration_val: '50.00'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: Glycine
+    Type: null
+-   Concentration_val: '0.05'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: DSS
+    Type: null
+Sample_condition_variable:
+    ph: '2.500'
+    temperature: '318.000'

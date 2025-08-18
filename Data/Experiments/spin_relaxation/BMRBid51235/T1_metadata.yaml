@@ -1,0 +1,26 @@
+Experiment_ID: '5'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '750'
+    Manufacturer: Bruker
+    Model: AVANCE IIIHD
+Name: T1/R1 relaxation
+Sample_component:
+-   Concentration_val: '1.5'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-99% 15N]'
+    Mol_common_name: CI2_L49I
+    Type: null
+-   Concentration_val: '50'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: MES
+    Type: null
+-   Concentration_val: '0.02'
+    Concentration_val_units: '%'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium azide
+    Type: null
+Sample_condition_variable:
+    ph: '6.25'
+    temperature: '298'

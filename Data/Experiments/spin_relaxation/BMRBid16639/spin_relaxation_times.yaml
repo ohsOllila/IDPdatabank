@@ -1,0 +1,760 @@
+10ALA:
+    500.0:
+        T1:
+            error: 0.08
+            value: 2.58
+        T2:
+            error: 0.25
+            value: 8.1
+10ASN:
+    500.0:
+        T1:
+            error: 0.31
+            value: 3.49
+        T2:
+            error: 0.42
+            value: 10.36
+11SER:
+    500.0:
+        T1:
+            error: 0.53
+            value: 4.88
+        T2:
+            error: 0.42
+            value: 6.13
+11THR:
+    500.0:
+        T1:
+            error: 0.27
+            value: 3.05
+        T2:
+            error: 0.49
+            value: 12.3
+12SER:
+    500.0:
+        T1:
+            error: 0.39
+            value: 4.42
+        T2:
+            error: 0.32
+            value: 5.51
+12VAL:
+    500.0:
+        T1:
+            error: 0.12
+            value: 2.63
+        T2:
+            error: 0.37
+            value: 8.87
+13THR:
+    500.0:
+        T1:
+            error: 0.31
+            value: 3.6
+        T2:
+            error: 0.21
+            value: 5.1
+13VAL:
+    500.0:
+        T1:
+            error: 0.1
+            value: 2.8
+        T2:
+            error: 0.31
+            value: 8.94
+14CYS:
+    500.0:
+        T1:
+            error: 0.24
+            value: 3.16
+        T2:
+            error: 0.2
+            value: 5.79
+14TYR:
+    500.0:
+        T1:
+            error: 0.11
+            value: 2.59
+        T2:
+            error: 0.46
+            value: 8.44
+15GLN:
+    500.0:
+        T1:
+            error: 0.27
+            value: 3.87
+        T2:
+            error: 0.67
+            value: 9.76
+15ILE:
+    500.0:
+        T1:
+            error: 0.16
+            value: 2.84
+        T2:
+            error: 0.13
+            value: 5.3
+16GLY:
+    500.0:
+        T1:
+            error: 0.14
+            value: 2.98
+        T2:
+            error: 0.47
+            value: 10.29
+17GLN:
+    500.0:
+        T1:
+            error: 0.2
+            value: 3.04
+        T2:
+            error: 0.21
+            value: 4.86
+17GLU:
+    500.0:
+        T1:
+            error: 0.1
+            value: 2.7
+        T2:
+            error: 0.18
+            value: 8.53
+18ARG:
+    500.0:
+        T1:
+            error: 0.08
+            value: 2.57
+        T2:
+            error: 0.16
+            value: 7.53
+18LEU:
+    500.0:
+        T1:
+            error: 0.26
+            value: 3.34
+        T2:
+            error: 0.22
+            value: 5.08
+19TRP:
+    500.0:
+        T1:
+            error: 0.2
+            value: 3.07
+        T2:
+            error: 0.14
+            value: 4.74
+19VAL:
+    500.0:
+        T1:
+            error: 0.13
+            value: 2.56
+        T2:
+            error: 0.37
+            value: 8.45
+20ALA:
+    500.0:
+        T1:
+            error: 0.17
+            value: 2.94
+        T2:
+            error: 0.11
+            value: 4.76
+20LYS:
+    500.0:
+        T1:
+            error: 0.11
+            value: 2.7
+        T2:
+            error: 0.29
+            value: 7.86
+21CYS:
+    500.0:
+        T1:
+            error: 0.17
+            value: 2.94
+        T2:
+            error: 0.14
+            value: 5.2
+21ILE:
+    500.0:
+        T1:
+            error: 0.15
+            value: 2.58
+        T2:
+            error: 1.01
+            value: 14.08
+22ASP:
+    500.0:
+        T1:
+            error: 0.16
+            value: 2.98
+        T2:
+            error: 0.13
+            value: 4.61
+22GLN:
+    500.0:
+        T1:
+            error: 0.09
+            value: 2.74
+        T2:
+            error: 0.75
+            value: 12.28
+23ASN:
+    500.0:
+        T1:
+            error: 0.13
+            value: 2.79
+        T2:
+            error: 0.16
+            value: 4.43
+23GLU:
+    500.0:
+        T1:
+            error: 0.16
+            value: 2.64
+        T2:
+            error: 0.34
+            value: 9.77
+24ASP:
+    500.0:
+        T1:
+            error: 0.17
+            value: 2.67
+        T2:
+            error: 0.21
+            value: 4.74
+24LYS:
+    500.0:
+        T1:
+            error: 0.12
+            value: 2.53
+        T2:
+            error: 0.27
+            value: 9.26
+25PHE:
+    500.0:
+        T1:
+            error: 0.12
+            value: 2.41
+        T2:
+            error: 0.72
+            value: 14.24
+26ASP:
+    500.0:
+        T1:
+            error: 0.18
+            value: 2.86
+        T2:
+            error: 0.2
+            value: 5.91
+26LYS:
+    500.0:
+        T1:
+            error: 0.27
+            value: 3.52
+        T2:
+            error: 0.66
+            value: 11.65
+27CYS:
+    500.0:
+        T1:
+            error: 0.21
+            value: 3.0
+        T2:
+            error: 0.15
+            value: 4.58
+28GLY:
+    500.0:
+        T1:
+            error: 0.22
+            value: 3.31
+        T2:
+            error: 0.55
+            value: 9.43
+29ASP:
+    500.0:
+        T1:
+            error: 0.51
+            value: 4.78
+        T2:
+            error: 0.43
+            value: 6.72
+29MET:
+    500.0:
+        T1:
+            error: 0.15
+            value: 2.79
+        T2:
+            error: 0.41
+            value: 7.66
+30GLY:
+    500.0:
+        T1:
+            error: 0.2
+            value: 3.19
+        T2:
+            error: 0.22
+            value: 5.16
+30LEU:
+    500.0:
+        T1:
+            error: 0.13
+            value: 2.43
+        T2:
+            error: 0.57
+            value: 8.04
+31HIS:
+    500.0:
+        T1:
+            error: 0.21
+            value: 2.8
+        T2:
+            error: 0.67
+            value: 14.39
+31SER:
+    500.0:
+        T1:
+            error: 0.27
+            value: 3.56
+        T2:
+            error: 0.24
+            value: 4.85
+32ASP:
+    500.0:
+        T1:
+            error: 0.18
+            value: 3.13
+        T2:
+            error: 0.23
+            value: 6.28
+33ASP:
+    500.0:
+        T1:
+            error: 0.16
+            value: 3.13
+        T2:
+            error: 0.6
+            value: 20.41
+33GLU:
+    500.0:
+        T1:
+            error: 0.2
+            value: 3.0
+        T2:
+            error: 0.17
+            value: 5.46
+34LYS:
+    500.0:
+        T1:
+            error: 0.12
+            value: 2.6
+        T2:
+            error: 0.37
+            value: 10.21
+34TRP:
+    500.0:
+        T1:
+            error: 0.19
+            value: 2.91
+        T2:
+            error: 0.16
+            value: 5.08
+35VAL:
+    500.0:
+        T1:
+            error: 0.06
+            value: 2.8
+        T2:
+            error: 0.29
+            value: 9.62
+36GLN:
+    500.0:
+        T1:
+            error: 0.52
+            value: 4.72
+        T2:
+            error: 0.51
+            value: 11.16
+36SER:
+    500.0:
+        T1:
+            error: 0.15
+            value: 2.42
+        T2:
+            error: 0.64
+            value: 11.03
+37ARG:
+    500.0:
+        T1:
+            error: 0.25
+            value: 3.3
+        T2:
+            error: 0.18
+            value: 4.89
+37PHE:
+    500.0:
+        T1:
+            error: 0.09
+            value: 2.82
+        T2:
+            error: 0.34
+            value: 7.48
+38CYS:
+    500.0:
+        T1:
+            error: 0.21
+            value: 2.77
+        T2:
+            error: 0.15
+            value: 3.91
+38PHE:
+    500.0:
+        T1:
+            error: 0.16
+            value: 3.0
+        T2:
+            error: 0.5
+            value: 9.27
+39ARG:
+    500.0:
+        T1:
+            error: 0.34
+            value: 2.93
+        T2:
+            error: 0.2
+            value: 4.04
+39CYS:
+    500.0:
+        T1:
+            error: 0.14
+            value: 2.98
+        T2:
+            error: 0.37
+            value: 7.89
+3CYS:
+    500.0:
+        T1:
+            error: 0.23
+            value: 3.0
+        T2:
+            error: 0.92
+            value: 13.18
+40GLY:
+    500.0:
+        T1:
+            error: 0.19
+            value: 1.54
+        T2:
+            error: 0.16
+            value: 2.39
+40LYS:
+    500.0:
+        T1:
+            error: 0.12
+            value: 2.86
+        T2:
+            error: 0.3
+            value: 8.33
+41ASN:
+    500.0:
+        T1:
+            error: 0.11
+            value: 3.01
+        T2:
+            error: 0.67
+            value: 11.17
+43GLU:
+    500.0:
+        T1:
+            error: 0.25
+            value: 3.3
+        T2:
+            error: 0.41
+            value: 9.75
+44LYS:
+    500.0:
+        T1:
+            error: 0.14
+            value: 2.95
+        T2:
+            error: 0.09
+            value: 8.94
+45LYS:
+    500.0:
+        T1:
+            error: 0.38
+            value: 3.54
+        T2:
+            error: 0.49
+            value: 8.98
+46CYS:
+    500.0:
+        T1:
+            error: 0.12
+            value: 2.84
+        T2:
+            error: 0.4
+            value: 8.83
+47SER:
+    500.0:
+        T1:
+            error: 0.15
+            value: 2.6
+        T2:
+            error: 0.31
+            value: 8.08
+48TYR:
+    500.0:
+        T1:
+            error: 0.09
+            value: 2.92
+        T2:
+            error: 0.22
+            value: 8.88
+49THR:
+    500.0:
+        T1:
+            error: 0.16
+            value: 2.98
+        T2:
+            error: 0.67
+            value: 8.6
+4LYS:
+    500.0:
+        T1:
+            error: 0.44
+            value: 3.7
+        T2:
+            error: 0.34
+            value: 8.53
+50GLU:
+    500.0:
+        T1:
+            error: 0.12
+            value: 2.56
+        T2:
+            error: 0.46
+            value: 9.43
+51ASP:
+    500.0:
+        T1:
+            error: 0.06
+            value: 2.37
+        T2:
+            error: 0.29
+            value: 8.06
+52ALA:
+    500.0:
+        T1:
+            error: 0.14
+            value: 2.45
+        T2:
+            error: 0.59
+            value: 9.6
+53GLN:
+    500.0:
+        T1:
+            error: 0.12
+            value: 2.63
+        T2:
+            error: 0.26
+            value: 8.3
+54CYS:
+    500.0:
+        T1:
+            error: 0.11
+            value: 2.6
+        T2:
+            error: 0.34
+            value: 11.56
+55ILE:
+    500.0:
+        T1:
+            error: 0.13
+            value: 2.64
+        T2:
+            error: 0.2
+            value: 10.51
+58THR:
+    500.0:
+        T1:
+            error: 0.13
+            value: 2.83
+        T2:
+            error: 0.2
+            value: 8.69
+59ILE:
+    500.0:
+        T1:
+            error: 0.11
+            value: 2.63
+        T2:
+            error: 0.18
+            value: 8.37
+5LEU:
+    500.0:
+        T1:
+            error: 0.11
+            value: 2.6
+        T2:
+            error: 0.37
+            value: 11.27
+60GLU:
+    500.0:
+        T1:
+            error: 0.14
+            value: 2.73
+        T2:
+            error: 0.24
+            value: 7.42
+61VAL:
+    500.0:
+        T1:
+            error: 0.12
+            value: 2.53
+        T2:
+            error: 0.17
+            value: 8.11
+63LYS:
+    500.0:
+        T1:
+            error: 0.21
+            value: 3.39
+        T2:
+            error: 0.36
+            value: 9.39
+64CYS:
+    500.0:
+        T1:
+            error: 0.38
+            value: 3.77
+        T2:
+            error: 0.88
+            value: 10.47
+65PHE:
+    500.0:
+        T1:
+            error: 0.1
+            value: 2.84
+        T2:
+            error: 0.24
+            value: 9.88
+66LYS:
+    500.0:
+        T1:
+            error: 0.06
+            value: 2.8
+        T2:
+            error: 0.65
+            value: 12.34
+67GLU:
+    500.0:
+        T1:
+            error: 0.42
+            value: 4.09
+        T2:
+            error: 0.82
+            value: 13.79
+6SER:
+    500.0:
+        T1:
+            error: 0.28
+            value: 3.25
+        T2:
+            error: 0.24
+            value: 5.08
+79SER:
+    500.0:
+        T1:
+            error: 0.34
+            value: 3.86
+        T2:
+            error: 1.07
+            value: 10.6
+7PHE:
+    500.0:
+        T1:
+            error: 0.16
+            value: 2.78
+        T2:
+            error: 0.14
+            value: 5.0
+7VAL:
+    500.0:
+        T1:
+            error: 0.18
+            value: 2.61
+        T2:
+            error: 0.53
+            value: 11.98
+80ASP:
+    500.0:
+        T1:
+            error: 0.41
+            value: 3.7
+        T2:
+            error: 0.7
+            value: 9.19
+81VAL:
+    500.0:
+        T1:
+            error: 0.06
+            value: 2.9
+        T2:
+            error: 0.27
+            value: 9.3
+82LYS:
+    500.0:
+        T1:
+            error: 0.24
+            value: 3.21
+        T2:
+            error: 0.41
+            value: 10.03
+84CYS:
+    500.0:
+        T1:
+            error: 0.08
+            value: 2.71
+        T2:
+            error: 0.27
+            value: 8.97
+85ALA:
+    500.0:
+        T1:
+            error: 0.15
+            value: 2.96
+        T2:
+            error: 0.15
+            value: 6.77
+8GLN:
+    500.0:
+        T1:
+            error: 0.22
+            value: 3.07
+        T2:
+            error: 0.19
+            value: 5.28
+8LYS:
+    500.0:
+        T1:
+            error: 0.08
+            value: 2.62
+        T2:
+            error: 0.12
+            value: 7.79
+9CYS:
+    500.0:
+        T1:
+            error: 0.21
+            value: 3.12
+        T2:
+            error: 0.12
+            value: 5.86
+9LYS:
+    500.0:
+        T1:
+            error: 0.25
+            value: 3.37
+        T2:
+            error: 0.72
+            value: 11.82

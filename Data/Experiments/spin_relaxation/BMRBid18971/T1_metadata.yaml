@@ -1,0 +1,46 @@
+Experiment_ID: '32'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '900'
+    Manufacturer: Varian
+    Model: Direct Drive
+Name: 2D 1H-15N R1 relaxation
+Sample_component:
+-   Concentration_val: '1.61'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-99% 15N]'
+    Mol_common_name: Nedd4 WW3* domain
+    Type: null
+-   Concentration_val: '4.38'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: alpha ENaC PY peptide
+    Type: null
+-   Concentration_val: '20'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium phosphate
+    Type: null
+-   Concentration_val: '0.1'
+    Concentration_val_units: '%'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium azide
+    Type: null
+-   Concentration_val: '1'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: TSP
+    Type: null
+-   Concentration_val: '93'
+    Concentration_val_units: '%'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: H2O
+    Type: null
+-   Concentration_val: '7'
+    Concentration_val_units: '%'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: D2O
+    Type: null
+Sample_condition_variable:
+    ph: '6.5'
+    temperature: '298'

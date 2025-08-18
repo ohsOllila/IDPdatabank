@@ -1,0 +1,51 @@
+Experiment_ID: '8'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '900'
+    Manufacturer: Bruker
+    Model: Avance III
+Name: 1H-15N heteronoe
+Sample_component:
+-   Concentration_val: '0.225'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-15N; U-2H]'
+    Mol_common_name: cAMP-dependent protein kinase A Inhibitor alpha (PKIA)
+    Type: null
+-   Concentration_val: '20'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: potassium phosphate
+    Type: null
+-   Concentration_val: '90'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: potassium chloride
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: magnesium chloride
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: DTT
+    Type: null
+-   Concentration_val: '1'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium azide
+    Type: null
+-   Concentration_val: 0.15-0.3
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-2H]'
+    Mol_common_name: cAMP-dependent protein kinase A catalytic subunit alpha (PKA-C)
+    Type: null
+-   Concentration_val: '12'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: AMPPNP
+    Type: null
+Sample_condition_variable:
+    ph: '6.5'
+    temperature: '300'

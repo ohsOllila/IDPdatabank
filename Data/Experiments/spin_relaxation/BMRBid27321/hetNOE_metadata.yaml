@@ -1,0 +1,51 @@
+Experiment_ID: '16'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '800'
+    Manufacturer: Agilent
+    Model: INOVA
+Name: HetNOE_relaxation_800
+Sample_component:
+-   Concentration_val: '0.3'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-100% 15N]'
+    Mol_common_name: hZIP4 intracellular loop 2
+    Type: null
+-   Concentration_val: '20'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: HEPES
+    Type: null
+-   Concentration_val: '20'
+    Concentration_val_units: '% v/v'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: glycerol
+    Type: null
+-   Concentration_val: '5'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: TCEP
+    Type: null
+-   Concentration_val: '0.02'
+    Concentration_val_units: '% w/v'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium azide
+    Type: null
+-   Concentration_val: '7'
+    Concentration_val_units: '% v/v'
+    Isotopic_labeling: '[U-100% 2H]'
+    Mol_common_name: D2O
+    Type: null
+-   Concentration_val: '73'
+    Concentration_val_units: '% v/v'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: H2O
+    Type: null
+-   Concentration_val: '1'
+    Concentration_val_units: tablet/10mL
+    Isotopic_labeling: natural abundance
+    Mol_common_name: protease inhibitors (Roche)
+    Type: null
+Sample_condition_variable:
+    ph: '7.0'
+    temperature: '283'
