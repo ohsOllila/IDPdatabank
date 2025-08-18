@@ -61,8 +61,50 @@ for system in systems:
             os.system(execStr)
 
 
-    ## Calculate contact probailities
+    ## Calculate SAXS
+
+    SAXS_file = dataFolder + 'SAXS.yaml'
+    if (not os.path.isfile(SAXS_file)):
+        SAXS = calculate_SAXS_profile_crysol(gro_fname, trj_fname)
+        #print(SAXS)
+
+        SAXS_data = SAXS.to_dict(orient='records')
+
+        # Save as YAML
+        with open(SAXS_file, 'w') as file:
+            yaml.dump(SAXS_data, file, sort_keys=False)
+
             
+    SAXS_file_MAICoS = dataFolder + 'SAXS_MAICoS.yaml'
+    if (not os.path.isfile(SAXS_file_MAICoS)):
+        SAXS_MAICoS = calculate_SAXS_profile_maicos(gro_fname, trj_fname)
+        #print(SAXS)
+
+        data_MAICoS = SAXS_MAICoS.to_dict(orient='records')
+
+        # Save as YAML
+        with open(SAXS_file_MAICoS, 'w') as file:
+            yaml.dump(data_MAICoS, file, sort_keys=False)
+
+            
+    chemical_shift_file = dataFolder + 'chemical_shifts_sparta.yaml'
+    if (not os.path.isfile(chemical_shift_file)):
+        chemical_shifts = calculate_ChemShifts_sparta(gro_fname, trj_fname)
+        print(chemical_shifts)
+
+        chemical_shift_data = chemical_shifts.to_dict()
+
+        # Save as YAML
+        with open(chemical_shift_file, 'w') as file:
+            yaml.dump( chemical_shift_data, file, sort_keys=False)
+
+
+
+
+            
+        
+    ## Calculate contact probailities
+        
     # Define cutoff distance (in Angstroms)
     cutoff = 15.0  # Adjust as needed
     if (not os.path.isfile(dataFolder + "Contact_map.png")):
@@ -86,81 +128,7 @@ for system in systems:
         )
         os.system(execStr)
 
-    ## Calculate backbone NH bond correlation fucntions
-
-
-    #BMRBid = '50115'
-    #experimental_data_tmp = {
-    #    'T1': extract_data_from_BMRB(BMRBid, 'heteronucl_T1_relaxation'),
-    #    'T2': extract_data_from_BMRB(BMRBid, 'heteronucl_T2_relaxation'),
-    #    'hetNOE': extract_data_from_BMRB(BMRBid, 'heteronucl_NOEs')
-    #}
-
-    #magnetic_field = {
-    #    'T1': extract_magnetic_field(BMRBid, 'heteronucl_T1_relaxation'),
-    #    'T2': extract_magnetic_field(BMRBid, 'heteronucl_T2_relaxation'),
-    #    'hetNOE': extract_magnetic_field(BMRBid, 'heteronucl_NOEs')
-    #}
-
-    #if not magnetic_field['T1'] ==  magnetic_field['T1'] ==  magnetic_field['T1']:
-    #    print('WARNING: magnetic fields of T1, T2, and hetNOE are not equal')
-
-    #print(magnetic_field['T1'], magnetic_field['T1'], magnetic_field['T1'])
-    
-    #units = {
-    #    'T1': extract_units(BMRBid, 'heteronucl_T1_relaxation'),
-    #    'T2': extract_units(BMRBid, 'heteronucl_T2_relaxation')
-    #}
-
-    #experimental_data = {}
-    #for residue in experimental_data_tmp['T1']:
-    #    if not residue in experimental_data:
-    #        experimental_data[residue] = {magnetic_field['T1']: {}}
-    #        print(experimental_data)
-    #        if units['T1'] == 'ms':
-    #            experimental_data_tmp['T1'][residue]['value'] = 0.001 * experimental_data_tmp['T1'][residue]['value']
-    #            experimental_data_tmp['T1'][residue]['error'] = 0.001 * experimental_data_tmp['T1'][residue]['error']
-    #            experimental_data[residue][magnetic_field['T1']]['T1'] = {
-    #                'value' : experimental_data_tmp['T1'][residue]['value'],
-    #                'error' : experimental_data_tmp['T1'][residue]['error'],
-    #            }
-
-    #for residue in experimental_data_tmp['T2']:
-    #    if not residue in experimental_data:
-    #        experimental_data[residue] = {magnetic_field['T2']: {}}
-    #    if units['T2'] == 'ms':
-    #        experimental_data_tmp['T2'][residue]['value'] = 0.001 * experimental_data_tmp['T2'][residue]['value']
-    #        experimental_data_tmp['T2'][residue]['error'] = 0.001 * experimental_data_tmp['T2'][residue]['error']
-    #    experimental_data[residue][magnetic_field['T2']]['T2'] = {
-    #        'value' : experimental_data_tmp['T2'][residue]['value'],
-    #        'error' : experimental_data_tmp['T2'][residue]['error'],
-    #    }
-
-    #for residue in experimental_data_tmp['hetNOE']:
-    #    if not residue in experimental_data:
-    #        experimental_data[residue] = {magnetic_field['hetNOE']: {}}
-    #    experimental_data[residue][magnetic_field['T1']]['hetNOE'] = {
-    #        'value' : experimental_data_tmp['hetNOE'][residue]['value'],
-    #        'error' : experimental_data_tmp['hetNOE'][residue]['error'],
-    #    }
-
-#<
-    #if units['T2'] == 'ms':
-    #    for residue in experimental_data_tmp['T2']:
-    #        experimental_data_tmp['T2'][residue]['value'] =  0.001 * experimental_data_tmp['T2'][residue]['value']
-
-    
-    #exp_data_path = '../../Data/Experiments/spin_relaxation/BMRBid' + BMRBid
-    #if (not os.path.isdir(exp_data_path)):
-    #    execStr = (f"mkdir {exp_data_path}")
-    #    os.system(execStr)
-
-
-    # experimental_spin_relaxation_times_file = exp_data_path + '/spin_relaxation_times.yaml'
-    # with open(experimental_spin_relaxation_times_file, 'w') as file:
-    #     yaml.dump(experimental_data, file, sort_keys=True, default_flow_style=False, indent=4)
-
-        
+            
     list_of_correlation_functions = calculate_backbone_NH_correlation_functions(gro_fname,trj_fname,top_fname,dataFolder)
 
     #correlation_function = dataFolder + 'correlation_functions/NHrotaCF_11HIP.xvg'
@@ -197,7 +165,7 @@ for system in systems:
             if residue[0] == "_":
                 residue = residue[1:]
 
-            relaxation_results = calc_relax_time(
+            relaxation_results = calc_dynamic_landscape(
                 correlation_function,
                 biggest_corr_time,
                 smallest_corr_time,
@@ -223,67 +191,52 @@ for system in systems:
             yaml.dump(clean_dynamic_landscape, file, sort_keys=True, default_flow_style=False, indent=4)
 
 
-    with open(dynamic_landscape_file, "r") as file:
-        dynamic_landscape = yaml.safe_load(file)
-
-    
-    magnetic_field = 800
-    magnetic_field=magnetic_field*2*np.pi/gammaH*10**6
-    print(magnetic_field)
-    spin_relaxation_times = {}    
-
-    #print(dynamic_landscape)
-
-    
-    ### Populate spin relaxation times
-    for residue in dynamic_landscape:
-        T1, T2, NOE = get_relaxation_N(magnetic_field,dynamic_landscape[residue]['weights'],dynamic_landscape[residue]['timescales'])
-        spin_relaxation_times[residue] = {
-            'T1': T1,
-            'T2': T2,
-            'hetNOE': NOE
-        }
-
-    clean_spin_relaxation_times = convert_numpy(spin_relaxation_times)
-    print(clean_spin_relaxation_times)
-
-
+    if not os.path.exists(spin_relaxation_time_file):
             
-    with open(spin_relaxation_time_file, 'w') as file:
-        yaml.dump(clean_spin_relaxation_times, file, sort_keys=True, default_flow_style=False, indent=4)
+        with open(dynamic_landscape_file, "r") as file:
+            dynamic_landscape = yaml.safe_load(file)
+
+        
+        magnetic_field = 800
+        #magnetic_field=magnetic_field*2*np.pi/gammaH*10**6
+        print(magnetic_field)
+        spin_relaxation_times = {}    
+
+        #print(dynamic_landscape)
 
 
-    with open(spin_relaxation_time_file, "r") as file:
-        spin_relaxation_times = yaml.safe_load(file)
+        ### Populate spin relaxation times
+        for residue in dynamic_landscape:
+            T1, T2, NOE = get_relaxation_N(magnetic_field,dynamic_landscape[residue]['weights'],dynamic_landscape[residue]['timescales'])
+            if residue not in spin_relaxation_times:
+                spin_relaxation_times[residue] = {}
+                spin_relaxation_times[residue][magnetic_field] = {
+                    'T1': {
+                        'value': T1
+                        },
+                    'T2': {
+                        'value': T2
+                        },
+                    'hetNOE': {
+                        'value': NOE
+                        }
+                }
 
-    differences = {}
-    for residue in spin_relaxation_times:
-        try:
-            differences[residue] = {
-                'R1': 1/spin_relaxation_times[residue]['T1'] - 1/experimental_data[residue]['T1']['value'],
-                'R2': 1/spin_relaxation_times[residue]['T2'] - 1/experimental_data[residue]['T2']['value'],
-                'hetNOE': spin_relaxation_times[residue]['hetNOE'] - experimental_data[residue]['hetNOE']['value']
-            }
-        except:
-            print('Calculation of difference failed for ' + residue)
+        clean_spin_relaxation_times = convert_numpy(spin_relaxation_times)
+        print(clean_spin_relaxation_times)
 
-    RMSDs = {}
 
-    values = []
-    for residue in differences:
-        values.append(differences[residue]['R1']**2)
-    RMSDs['R1'] = np.sqrt(sum(values) / len(values))
+        with open(spin_relaxation_time_file, 'w') as file:
+            yaml.dump(clean_spin_relaxation_times, file, sort_keys=True, default_flow_style=False, indent=4)
 
-    values = []
-    for residue in differences:
-        values.append(differences[residue]['R2']**2)
-    RMSDs['R2'] =  np.sqrt(sum(values) / len(values))
 
-    values = []
-    for residue in differences:
-        values.append(differences[residue]['hetNOE']**2)
-    RMSDs['hetNOE'] =  np.sqrt(sum(values) / len(values))
+    matched_readme_file = dataFolder + '/README_matched.yaml'
 
-    #print(differences)
-    
-    print(RMSDs)
+    with open(matched_readme_file, "r") as file:
+        matched_readme = yaml.safe_load(file)
+
+    if len(matched_readme['EXPERIMENT']['spin_relaxation']['path']) > 0: # 'EXPERIMENT' in matched_readme and 'spin_relaxation' in matched_readme['EXPERIMENT']:
+        print(matched_readme['EXPERIMENT']['spin_relaxation']['path'])
+        experimental_data_file = databankPath + '/Data/Experiments/spin_relaxation/' + matched_readme['EXPERIMENT']['spin_relaxation']['path'][0] + '/spin_relaxation_times.yaml'
+        rmsd = calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_data_file)
+        print(rmsd)

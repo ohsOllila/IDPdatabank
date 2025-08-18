@@ -1,0 +1,43 @@
+DOI: 10.5281/zenodo.13235553
+SOFTWARE: gromacs
+TRJ:
+- - md_calmodulin_DESamber_model10_nojump.xtc
+TPR:
+- - md_calmodulin_DESamber_model10_nosolvent.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+COMPOSITION:
+  PROTEIN:
+    SEQUENCE: ADQLTEEQIAEFKEAFSLFDKDGDGTITTKELGTVMRSLGQNPTEAELQDMINEVDADGNGTIDFPEFLTMMARKMKDTDSEEEIREAFRVFDKDGNGYISAAELRHVMTNLGEKLTDEEVDEMIREADIDGDGQVNYEEFVQMMTAK
+  SOL:
+    NAME: SOL
+    MAPPING: mappingTIP4PSwater.yaml
+    COUNT: 32084
+  POT:
+    NAME: K
+    MAPPING: mappingK.yaml
+    COUNT: 84
+  CLA:
+    NAME: CL
+    MAPPING: mappingCLAecc.yaml
+    COUNT: 60
+DIR_WRK: /home/sosamuli/temp/tmpData/
+PUBLICATION: https://doi.org/10.26434/chemrxiv-2024-h3pmt-v2
+AUTHORS_CONTACT: Samuli Ollila
+SYSTEM: Calmodulin
+SOFTWARE_VERSION: null
+FF: DESamber
+FF_SOURCE: null
+FF_DATE: null
+CPT: null
+LOG: null
+TOP:
+- - md_calmodulin_DESamber_model10.top
+GRO:
+- - md_calmodulin_DESamber_model10.gro
+TYPEOFSYSTEM: protein
+TRAJECTORY_SIZE: 866440672
+TRJLENGTH: 1000010.0
+TEMPERATURE: 296.0
+NUMBER_OF_ATOMS: 2262
+DATEOFRUNNING: 18/06/2025

@@ -33,6 +33,11 @@ BUFFER_MOLECULE_DATA: Dict[str, Dict[str, Any]] = {
         "charges": [1],
         "stoichiometry": [1],
     },
+    "POT": {
+        "ph_dependent": False,
+        "charges": [1],
+        "stoichiometry": [1],
+    },
     "CLA": {
         "ph_dependent": False,
         "charges": [-1],
