@@ -1212,7 +1212,7 @@ def calculate_SAXS_profile_maicos(gro_file, xtc_file,water_shell=None,output_fil
 #		-pandas dataframe
 #		-3 columns (atom/nuclei name; mean chemical shift, standard deviation(sd) of chemical shift)
 
-def calculate_ChemShifts_sparta(gro_file, xtc_file, dt_analysis_ps=100):
+def calculate_ChemShifts_sparta(gro_file, xtc_file, dt_analysis_ps=1000):
     # in this function we use mdtraj and NOT MDAnalysis
     
     # LOAD DATA
@@ -1255,3 +1255,48 @@ def calculate_ChemShifts_sparta(gro_file, xtc_file, dt_analysis_ps=100):
     res.columns = ["meanChemShifts[ppm]","SDChemShifts[ppm]"]
     
     return(res)
+
+def calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_data_file):
+
+    with open(spin_relaxation_time_file, "r") as file:
+        spin_relaxation_times = yaml.safe_load(file)
+
+    with open(experimental_data_file, "r") as file:
+        experimental_data = yaml.safe_load(file)
+
+    print(experimental_data)
+        
+    differences = {}
+    for residue in spin_relaxation_times:
+        for magnetic_field in spin_relaxation_times[residue]:
+            print(residue,magnetic_field)
+            try:
+                differences[residue] = {
+                    'R1': 1/spin_relaxation_times[residue][magnetic_field]['T1']['value'] - 1/experimental_data[residue][magnetic_field]['T1']['value'],
+                    'R2': 1/spin_relaxation_times[residue][magnetic_field]['T2']['value'] - 1/experimental_data[residue][magnetic_field]['T2']['value'],
+                    'hetNOE': spin_relaxation_times[residue][magnetic_field]['hetNOE']['value'] - experimental_data[residue][magnetic_field]['hetNOE']['value']
+                }
+            except:
+                print('Calculation of difference failed for ' + residue)
+
+    RMSDs = {}
+
+    values = []
+    for residue in differences:
+        values.append(differences[residue]['R1']**2)
+    RMSDs['R1'] = np.sqrt(sum(values) / len(values))
+
+    values = []
+    for residue in differences:
+        values.append(differences[residue]['R2']**2)
+    RMSDs['R2'] =  np.sqrt(sum(values) / len(values))
+
+    values = []
+    for residue in differences:
+        values.append(differences[residue]['hetNOE']**2)
+    RMSDs['hetNOE'] =  np.sqrt(sum(values) / len(values))
+
+    #print(differences)
+    
+    return(RMSDs)
+    
