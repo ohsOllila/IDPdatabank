@@ -13,6 +13,9 @@ import requests
 import re
 import maicos
 from typing import List, Dict, Optional
+from collections import defaultdict
+import matplotlib.pyplot as plt
+import math
 
 
 def calculate_contact_probabilities(gro_file, xtc_file, cutoff):
@@ -170,6 +173,7 @@ def calculate_backbone_NH_correlation_functions(
         os.system(execStr)
     except:
         pass
+    #print(gro_file, NHindex_file)
     resids = make_index_file_for_backbone_nh_pairs(gro_file, NHindex_file)
     list_of_correlation_functions = []
     for resname in resids:
@@ -188,7 +192,7 @@ def make_index_file_for_backbone_nh_pairs(gro_file, output_ndx):
     u = mda.Universe(gro_file)
 
     # Ensure hydrogens are present
-    if not any(atom.name == "H" for atom in u.atoms):
+    if not any(atom.name == "H" for atom in u.atoms) and not any(atom.name == "HN" for atom in u.atoms):
         raise ValueError(
             "Hydrogen atoms not found. Ensure the gro file includes hydrogens."
         )
@@ -198,12 +202,18 @@ def make_index_file_for_backbone_nh_pairs(gro_file, output_ndx):
     with open(output_ndx, "w") as ndx:
         pair_count = 0
 
+
         for res in u.select_atoms("protein").residues:
             try:
                 N_atom = res.atoms.select_atoms("name N")[0]
                 H_atom = res.atoms.select_atoms("name H")[0]
             except IndexError:
-                continue  # Skip residues without N or H (e.g., termini or incomplete)
+                #pass #continue  # Skip residues without N or H (e.g., termini or incomplete)
+                try:
+                    N_atom = res.atoms.select_atoms("name N")[0]
+                    H_atom = res.atoms.select_atoms("name HN")[0]
+                except IndexError:
+                    continue  # Skip residues without N or H (e.g., termini or incomplete)
 
             resid = res.resid
             resname = str(res.resid) + res.resname
@@ -383,24 +393,25 @@ def get_relaxation_N(magnetic_field, Coeffs, Ctimes):
     Jn = 0
 
     m = len(Ctimes)
+    CtimesSeconds = np.zeros(m)
     for i in range(0, m):
-        Ctimes[i] = Ctimes[i] * 10 ** (-9)
+        CtimesSeconds[i] = Ctimes[i] * 10 ** (-9)
         # print(Ctimes[i],Coeffs[i])
         w = 0
 
-        J0 = J0 + 2 * Coeffs[i] * Ctimes[i] / (1.0 + w * w * Ctimes[i] * Ctimes[i])
+        J0 = J0 + 2 * Coeffs[i] * CtimesSeconds[i] / (1.0 + w * w * CtimesSeconds[i] * CtimesSeconds[i])
 
         w = wh - wn
-        JhMn = JhMn + 2 * Coeffs[i] * Ctimes[i] / (1.0 + w * w * Ctimes[i] * Ctimes[i])
+        JhMn = JhMn + 2 * Coeffs[i] * CtimesSeconds[i] / (1.0 + w * w * CtimesSeconds[i] * CtimesSeconds[i])
 
         w = wn
-        Jn = Jn + 2 * Coeffs[i] * Ctimes[i] / (1.0 + w * w * Ctimes[i] * Ctimes[i])
+        Jn = Jn + 2 * Coeffs[i] * CtimesSeconds[i] / (1.0 + w * w * CtimesSeconds[i] * CtimesSeconds[i])
 
         w = wh
-        Jh = Jh + 2 * Coeffs[i] * Ctimes[i] / (1.0 + w * w * Ctimes[i] * Ctimes[i])
+        Jh = Jh + 2 * Coeffs[i] * CtimesSeconds[i] / (1.0 + w * w * CtimesSeconds[i] * CtimesSeconds[i])
 
         w = wn + wh
-        JhPn = JhPn + 2 * Coeffs[i] * Ctimes[i] / (1.0 + w * w * Ctimes[i] * Ctimes[i])
+        JhPn = JhPn + 2 * Coeffs[i] * CtimesSeconds[i] / (1.0 + w * w * CtimesSeconds[i] * CtimesSeconds[i])
 
     mu = 4 * np.pi * 10 ** (-7)  # magnetic constant of vacuum permeability
     h_planck = 1.055 * 10 ** (-34)
@@ -1266,6 +1277,7 @@ def calculate_SAXS_profile_maicos(gro_file, xtc_file,water_shell=None,output_fil
     #		qmax = 0.5 / qmin = 0 / dq = 0.0025
     #	-see MAICoS documentation: https://maicos.readthedocs.io/en/main/analysis-modules/saxs.html
     # create the maicos object
+    #print(sel_atoms)
     SAXS = maicos.Saxs(atomgroup=sel_atoms,unwrap=False,qmin=0,qmax=0.5005,dq=0.0025,jitter=10**(-3))
     
     # run the analysis
@@ -1490,3 +1502,91 @@ def calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_d
     
     return(RMSDs)
     
+
+
+def convert_original_to_nested_dict(data: dict) -> dict:
+    """
+    Convert the original nested dict:
+    {'meanChemShifts[ppm]': {(1, 'C'): 174.59, (1, 'CA'): 58.19, ...}}
+
+    directly into:
+    {
+      1: {"C": 174.59, "CA": 58.19, "CB": 63.19},
+      2: {"C": 174.76, "N": 120.67}
+    }
+    """
+    inner_dict = next(iter(data.values()))
+    nested_dict = defaultdict(dict)
+    for (residue, atom), value in inner_dict.items():
+        nested_dict[residue][atom] = value
+    return dict(nested_dict)
+
+
+
+def parse_star_file(filename):
+    """
+    Parses chemical shift data from a NMR-star file
+    """
+    atom_map = {
+        "C": "C",
+        "CA": "CA",
+        "CB": "CB",
+        "HA": "HA",
+        "H": "HA",
+        "HA2": "HA",
+        "HA3": "HA",
+        "Hα": "HA"
+    }
+    shifts = {}
+    with open(filename, "r") as f:
+        lines = f.readlines()
+    current_loop = []
+    in_loop = False
+    tags = []
+    for line in lines:
+        line = line.strip()
+        if line.startswith("loop_"):
+            in_loop = True
+            current_loop = []
+            tags = []
+        elif in_loop and line.startswith("_Atom_chem_shift"):
+            tags.append(line)
+        elif in_loop and line == "stop_":
+            # Parse collected loop
+            for row in current_loop:
+                if len(row) != len(tags):
+                    continue
+                try:
+                    row_dict = dict(zip(tags, row))
+                    res = int(row_dict["_Atom_chem_shift.Seq_ID"])
+                    atom = row_dict["_Atom_chem_shift.Atom_ID"]
+                    val = float(row_dict["_Atom_chem_shift.Val"])
+                    mapped_atom = atom_map.get(atom.upper(), None)
+                    if mapped_atom:
+                        shifts.setdefault(res, {})[mapped_atom] = val
+                except Exception:
+                    continue
+            in_loop = False
+        elif in_loop:
+            # Split line into fields
+            row = line.split()
+            if row:
+                current_loop.append(row)
+    return shifts
+
+
+def compute_rmsd_chemical_shift(sim_data, exp_data, nuclei, residues):
+    rmsd_per_nucleus = {}
+    for nucleus in nuclei:
+        diff_sq = []
+        for res in residues:
+            sim_val = sim_data.get(res, {}).get(nucleus, None)
+            exp_val = exp_data.get(res, {}).get(nucleus, None)
+            if sim_val is not None and exp_val is not None:
+                diff_sq.append((sim_val - exp_val)**2)
+        if diff_sq:
+            rmsd_per_nucleus[nucleus] = math.sqrt(np.mean(diff_sq))
+        else:
+            rmsd_per_nucleus[nucleus] = None
+    return rmsd_per_nucleus
+

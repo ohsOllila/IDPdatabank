@@ -54,9 +54,13 @@ def searchDatabank():
     for experiment_readme in experiment_readmes:
         experiment_readme_dir = os.path.dirname(experiment_readme)
         logger.info(f"Initializing experiment {experiment_readme_dir}")
-        experiment = Experiment(
-            experiment_type="spin_relaxation", path=experiment_readme_dir
-        )
+        try:
+            experiment = Experiment(
+                experiment_type="spin_relaxation", path=experiment_readme_dir
+            )
+        except Exception as e:
+            print(f"❌ Failed experiment {experiment_readme} because of error: {e}")
+            continue
         if experiment.metadata == {}:
             logger.warning(
                 f"Experiment metadata for {experiment.path} is empty. Cannot match"
@@ -184,7 +188,7 @@ def searchDatabank():
 
         simulation.info["EXPERIMENT"] = experiment_types_dict
 
-        temp_path = simulation.path.with_name("README_matched.yaml")
+        temp_path = simulation.path.with_name("README.yaml")
         simulation.file_handler.write_yaml(temp_path, simulation.info)
 
 

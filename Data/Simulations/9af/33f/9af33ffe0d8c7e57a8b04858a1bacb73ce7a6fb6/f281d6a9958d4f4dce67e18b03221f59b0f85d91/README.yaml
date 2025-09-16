@@ -1,0 +1,58 @@
+AUTHORS_CONTACT: Samuli Ollila
+COMPOSITION:
+  PROTEIN:
+    SEQUENCE: MAAVQAAEVKVDGSEPKLSKNELKRRLKAEKKVAEKEAKQKELSEKQLSQATAAATNXTTDNGVGPEEESVD
+  SOD:
+    COUNT: 0
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 62325
+    MAPPING: mappingOPCwater.yaml
+    NAME: SOL
+CPT: null
+DATEOFRUNNING: 09/09/2025
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.15283154
+EXPERIMENT:
+  spin_relaxation:
+    alignment_score:
+    - 340.0
+    ionic_strength:
+    - 0.1
+    ionic_strength_match:
+    - false
+    path:
+    - BMRBid19993
+    ph:
+    - 7.0
+    ph_match:
+    - true
+    sequence:
+    - MAAVQAAEVKVDGSEPKLSKNELKRRLKAEKKVAEKEAKQKELSEKQLSQATAAATNHTTDNGVGPEEESVD
+    temperature:
+    - 303.0
+    temperature_match:
+    - true
+FF: null
+FF_DATE: null
+FF_SOURCE: null
+GRO: null
+ID: 15
+LOG: null
+NUMBER_OF_ATOMS: 1100
+PREEQTIME: 0
+PUBLICATION: https://doi.org/10.26434/chemrxiv-2025-m5m0p
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: KRS1-72
+TEMPERATURE: 303.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - replica_05_DESAMBER_md_2000ns.tpr
+TRAJECTORY_SIZE: 861839740
+TRJ:
+- - replica_05_DESAMBER_md_2000ns.xtc
+TRJLENGTH: 2000010.0
+TYPEOFSYSTEM: protein

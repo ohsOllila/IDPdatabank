@@ -7,8 +7,8 @@
 from DatabankLib.protein_functions import *
 import yaml
 
-databankPath = "/home/sosamuli/work/NMRlipids/IDPsimBank/"  # this is the local path for the cloned Databank
-os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPsimBank/"
+databankPath = "/home/sosamuli/work/NMRlipids/IDPdatabank/"  # this is the local path for the cloned Databank
+os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPdatabank/"
 
 
 # These two lines include core Databank routines and Databank API
@@ -44,6 +44,10 @@ for system in systems:
 
     trj_fname_noPBC = dataFolder + 'traj_noPBC.xtc'
 
+    try:
+        MDAuni = system2MDanalysisUniverse(system)
+    except:
+        pass
 
 
     if (not os.path.isfile(gro_fname)):
@@ -53,19 +57,12 @@ for system in systems:
         )
         os.system(execStr)
 
-        if (not os.path.isfile(trj_fname_noPBC)):
-            execStr = (
-                f"echo Protein Protein | {trjconvCOMMAND} -f {trj_fname} "
-                f"-s {top_fname} -o {trj_fname_noPBC} -center -pbc mol"
-            )
-            os.system(execStr)
-
 
     ## Calculate SAXS
 
     SAXS_file = dataFolder + 'SAXS.yaml'
     if (not os.path.isfile(SAXS_file)):
-        SAXS = calculate_SAXS_profile_crysol(gro_fname, trj_fname)
+        SAXS = calculate_SAXS_profile_crysol(gro_fname, trj_fname,1000)
         #print(SAXS)
 
         SAXS_data = SAXS.to_dict(orient='records')
@@ -77,26 +74,35 @@ for system in systems:
             
     SAXS_file_MAICoS = dataFolder + 'SAXS_MAICoS.yaml'
     if (not os.path.isfile(SAXS_file_MAICoS)):
-        SAXS_MAICoS = calculate_SAXS_profile_maicos(gro_fname, trj_fname)
-        #print(SAXS)
+        try:
+            SAXS_MAICoS = calculate_SAXS_profile_maicos(gro_fname, trj_fname)
+            #print(SAXS)
 
-        data_MAICoS = SAXS_MAICoS.to_dict(orient='records')
+            data_MAICoS = SAXS_MAICoS.to_dict(orient='records')
 
-        # Save as YAML
-        with open(SAXS_file_MAICoS, 'w') as file:
-            yaml.dump(data_MAICoS, file, sort_keys=False)
+            # Save as YAML
+            with open(SAXS_file_MAICoS, 'w') as file:
+                yaml.dump(data_MAICoS, file, sort_keys=False)
+        except:
+            print("MAICOS CALCULATION FAILED")
 
             
     chemical_shift_file = dataFolder + 'chemical_shifts_sparta.yaml'
     if (not os.path.isfile(chemical_shift_file)):
         chemical_shifts = calculate_ChemShifts_sparta(gro_fname, trj_fname)
-        print(chemical_shifts)
+        #print(chemical_shifts)
 
         chemical_shift_data = chemical_shifts.to_dict()
 
+        #print(chemical_shift_data)
         # Save as YAML
+
+        chemical_shift_data_dict = convert_original_to_nested_dict(chemical_shift_data)
+
+        #print(chemical_shift_data_dict)
+        
         with open(chemical_shift_file, 'w') as file:
-            yaml.dump( chemical_shift_data, file, sort_keys=False)
+            yaml.dump( chemical_shift_data_dict, file, sort_keys=False)
 
 
 
@@ -123,14 +129,20 @@ for system in systems:
     ## Calculate radius of gyration
     rog_file = dataFolder + "gyrate.xvg"
     if (not os.path.isfile(rog_file)):
+
+        if (not os.path.isfile(trj_fname_noPBC)):
+            execStr = (
+                f"echo Protein Protein | {trjconvCOMMAND} -f {trj_fname} "
+                f"-s {top_fname} -o {trj_fname_noPBC} -center -pbc mol"
+            )
+            os.system(execStr)
+        
         execStr = (
             f"echo Protein | gmx gyrate -s {top_fname} -f {trj_fname_noPBC} -o {rog_file}"
         )
         os.system(execStr)
 
             
-    list_of_correlation_functions = calculate_backbone_NH_correlation_functions(gro_fname,trj_fname,top_fname,dataFolder)
-
     #correlation_function = dataFolder + 'correlation_functions/NHrotaCF_11HIP.xvg'
     #correlation_function_data = read_correlation_function(correlation_function)
     #print(correlation_function_data[1])
@@ -158,6 +170,10 @@ for system in systems:
 
         dynamic_landscape = {}
 
+
+        list_of_correlation_functions = calculate_backbone_NH_correlation_functions(gro_fname,trj_fname,top_fname,dataFolder)        
+
+        
         for correlation_function in list_of_correlation_functions:
             print(correlation_function)
             residue = correlation_function[-9:-4]
@@ -197,29 +213,32 @@ for system in systems:
             dynamic_landscape = yaml.safe_load(file)
 
         
-        magnetic_field = 800
+        magnetic_fields = [800, 600]
         #magnetic_field=magnetic_field*2*np.pi/gammaH*10**6
-        print(magnetic_field)
+        print('Calculating for ', magnetic_fields, ' MHz magnetic fields')
         spin_relaxation_times = {}    
 
         #print(dynamic_landscape)
 
-
-        ### Populate spin relaxation times
-        for residue in dynamic_landscape:
-            T1, T2, NOE = get_relaxation_N(magnetic_field,dynamic_landscape[residue]['weights'],dynamic_landscape[residue]['timescales'])
-            if residue not in spin_relaxation_times:
-                spin_relaxation_times[residue] = {}
+        for magnetic_field in magnetic_fields:
+            ### Populate spin relaxation times
+            print(magnetic_field)
+            print(dynamic_landscape)
+            for residue in dynamic_landscape:
+                T1, T2, NOE = get_relaxation_N(magnetic_field,dynamic_landscape[residue]['weights'],dynamic_landscape[residue]['timescales'])
+                print(T1, T2, NOE)
+                if residue not in spin_relaxation_times:
+                    spin_relaxation_times[residue] = {}
                 spin_relaxation_times[residue][magnetic_field] = {
                     'T1': {
                         'value': T1
-                        },
+                    },
                     'T2': {
                         'value': T2
-                        },
+                    },
                     'hetNOE': {
                         'value': NOE
-                        }
+                    }
                 }
 
         clean_spin_relaxation_times = convert_numpy(spin_relaxation_times)
@@ -230,13 +249,13 @@ for system in systems:
             yaml.dump(clean_spin_relaxation_times, file, sort_keys=True, default_flow_style=False, indent=4)
 
 
-    matched_readme_file = dataFolder + '/README_matched.yaml'
+#    matched_readme_file = dataFolder + '/README_matched.yaml'
 
-    with open(matched_readme_file, "r") as file:
-        matched_readme = yaml.safe_load(file)
+#    with open(matched_readme_file, "r") as file:
+#        matched_readme = yaml.safe_load(file)
 
-    if len(matched_readme['EXPERIMENT']['spin_relaxation']['path']) > 0: # 'EXPERIMENT' in matched_readme and 'spin_relaxation' in matched_readme['EXPERIMENT']:
-        print(matched_readme['EXPERIMENT']['spin_relaxation']['path'])
-        experimental_data_file = databankPath + '/Data/Experiments/spin_relaxation/' + matched_readme['EXPERIMENT']['spin_relaxation']['path'][0] + '/spin_relaxation_times.yaml'
-        rmsd = calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_data_file)
-        print(rmsd)
+#    if len(matched_readme['EXPERIMENT']['spin_relaxation']['path']) > 0: # 'EXPERIMENT' in matched_readme and 'spin_relaxation' in matched_readme['EXPERIMENT']:
+#        print(matched_readme['EXPERIMENT']['spin_relaxation']['path'])
+#        experimental_data_file = databankPath + '/Data/Experiments/spin_relaxation/' + matched_readme['EXPERIMENT']['spin_relaxation']['path'][0] + '/spin_relaxation_times.yaml'
+#        rmsd = calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_data_file)
+#        print(rmsd)

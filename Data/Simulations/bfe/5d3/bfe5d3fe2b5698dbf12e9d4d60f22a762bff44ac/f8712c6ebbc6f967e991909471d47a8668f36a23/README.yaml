@@ -1,37 +1,58 @@
-DOI: 10.5281/zenodo.15393821
-SOFTWARE: gromacs
-TRJ:
-- - replica_01_AMBER03WS_md_1500ns.xtc
-TPR:
-- - replica_01_AMBER03WS_md_1500ns.tpr
-PREEQTIME: 0
-TIMELEFTOUT: 0
+AUTHORS_CONTACT: Samuli Ollila
 COMPOSITION:
+  CLA:
+    COUNT: 13
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
   PROTEIN:
     SEQUENCE: SNAMTPVRPPXTPDPLNLRGPLDGPRWRRAEPAQSRRPGRSRPGGAPLRYXRTGVGMSRTGXGSRPV
   SOL:
-    NAME: SOL
-    MAPPING: mappingTIP4PSwater.yaml
     COUNT: 13868
-  CLA:
-    NAME: CL
-    MAPPING: mappingCLAecc.yaml
-    COUNT: 13
-DIR_WRK: /home/sosamuli/temp/tmpData/
-PUBLICATION: https://doi.org/10.26434/chemrxiv-2025-m5m0p
-AUTHORS_CONTACT: Samuli Ollila
-SYSTEM: ChiZ1-64
-SOFTWARE_VERSION: null
-FF: AMBER03WS
-FF_SOURCE: null
-FF_DATE: null
+    MAPPING: mappingTIP4PSwater.yaml
+    NAME: SOL
 CPT: null
-LOG: null
-TOP: null
+DATEOFRUNNING: 09/09/2025
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.15393821
+EXPERIMENT:
+  spin_relaxation:
+    alignment_score:
+    - 346.0
+    ionic_strength:
+    - 0.095
+    ionic_strength_match:
+    - false
+    path:
+    - BMRBid50115
+    ph:
+    - 7.0
+    ph_match:
+    - true
+    sequence:
+    - SNAMTPVRPPHTPDPLNLRGPLDGPRWRRAEPAQSRRPGRSRPGGAPLRYHRTGVGMSRTGHGSRPV
+    temperature:
+    - 298.0
+    temperature_match:
+    - true
+FF: AMBER03WS
+FF_DATE: null
+FF_SOURCE: null
 GRO: null
-TYPEOFSYSTEM: protein
-TRAJECTORY_SIZE: 609546048
-TRJLENGTH: 1500010.0
-TEMPERATURE: 303.0
+ID: 29
+LOG: null
 NUMBER_OF_ATOMS: 1038
-DATEOFRUNNING: 31/05/2025
+PREEQTIME: 0
+PUBLICATION: https://doi.org/10.26434/chemrxiv-2025-m5m0p
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: ChiZ1-64
+TEMPERATURE: 303.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - replica_01_AMBER03WS_md_1500ns.tpr
+TRAJECTORY_SIZE: 609546048
+TRJ:
+- - replica_01_AMBER03WS_md_1500ns.xtc
+TRJLENGTH: 1500010.0
+TYPEOFSYSTEM: protein

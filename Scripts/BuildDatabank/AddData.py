@@ -362,13 +362,13 @@ if __name__ == "__main__":
     # Make protein gro file
 
     protein = os.path.join(dir_tmp, "protein.gro")  # structure regenerated from top
-    if not os.path.exists(protein):
-        exec_str = (
-            f"echo Protein | gmx trjconv -s {top} -f {traj} -dump 0 -o {protein}"
-        )
-        #print(exec_str)
-        logger.debug(exec_str)
-        os.system(exec_str)               
+    #if not os.path.exists(protein):
+    exec_str = (
+        f"echo Protein | gmx trjconv -s {top} -f {traj} -dump 0 -o {protein}"
+    )
+    #print(exec_str)
+    logger.debug(exec_str)
+    os.system(exec_str)               
         
     if fail_from_top:
         try:
@@ -437,10 +437,14 @@ if __name__ == "__main__":
         except:
             struc = gro
 
-        
     # At last, we create universe from just a structure!
     logger.info(f"Making Universe from {struc}..")
     u0 = Universe(struc)
+
+    try:
+        u
+    except:
+        u = u0
 
     lipids = []
 
