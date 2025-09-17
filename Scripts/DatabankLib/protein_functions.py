@@ -1466,6 +1466,19 @@ def calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_d
     with open(experimental_data_file, "r") as file:
         experimental_data = yaml.safe_load(file)
 
+    # Round fields in experimental data
+    rounded_data = []
+    for residue, field_dict in sorted_exp:
+        new_field_dict = {}
+        for field, values in field_dict.items():
+            # round the second-level key
+            rounded_field = round(field)
+            new_field_dict[rounded_field] = values
+        rounded_data.append((residue, new_field_dict))
+
+    experimental_data = rounded_data
+
+        
     print(experimental_data)
         
     differences = {}

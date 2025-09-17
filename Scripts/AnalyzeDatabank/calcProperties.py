@@ -7,8 +7,12 @@
 from DatabankLib.protein_functions import *
 import yaml
 
-databankPath = "/home/sosamuli/work/NMRlipids/IDPdatabank/"  # this is the local path for the cloned Databank
-os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPdatabank/"
+#databankPath = "/home/sosamuli/work/NMRlipids/IDPdatabank/"  # this is the local path for the cloned Databank
+#os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPdatabank/"
+
+databankPath = "/home/sosamuli/work/NMRlipids/IDPsimBank/"  # this is the local path for the cloned Databank
+os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPsimBank/"
+
 
 
 # These two lines include core Databank routines and Databank API
@@ -44,18 +48,18 @@ for system in systems:
 
     trj_fname_noPBC = dataFolder + 'traj_noPBC.xtc'
 
-    try:
-        MDAuni = system2MDanalysisUniverse(system)
-    except:
-        pass
+    #try:
+    #    MDAuni = system2MDanalysisUniverse(system)
+    #except:
+    #    pass
 
 
-    if (not os.path.isfile(gro_fname)):
-        execStr = (
-            f"echo Protein Protein | {trjconvCOMMAND} -f {trj_fname} "
-            f"-s {top_fname} -o {gro_fname} -dump 0 -center -pbc mol"
-        )
-        os.system(execStr)
+    #if (not os.path.isfile(gro_fname)):
+    #    execStr = (
+    #        f"echo Protein Protein | {trjconvCOMMAND} -f {trj_fname} "
+    #        f"-s {top_fname} -o {gro_fname} -dump 0 -center -pbc mol"
+    #    )
+    #    os.system(execStr)
 
 
     ## Calculate SAXS
@@ -73,20 +77,20 @@ for system in systems:
 
             
     SAXS_file_MAICoS = dataFolder + 'SAXS_MAICoS.yaml'
-    if (not os.path.isfile(SAXS_file_MAICoS)):
-        try:
-            SAXS_MAICoS = calculate_SAXS_profile_maicos(gro_fname, trj_fname)
-            #print(SAXS)
+    #if (not os.path.isfile(SAXS_file_MAICoS)):
+    #    try:
+    #        SAXS_MAICoS = calculate_SAXS_profile_maicos(gro_fname, trj_fname)
+    #        #print(SAXS)
+    #
+    #        data_MAICoS = SAXS_MAICoS.to_dict(orient='records')
+    #
+    #        # Save as YAML
+    #        with open(SAXS_file_MAICoS, 'w') as file:
+    #            yaml.dump(data_MAICoS, file, sort_keys=False)
+    #    except:
+    #        print("MAICOS CALCULATION FAILED")
 
-            data_MAICoS = SAXS_MAICoS.to_dict(orient='records')
-
-            # Save as YAML
-            with open(SAXS_file_MAICoS, 'w') as file:
-                yaml.dump(data_MAICoS, file, sort_keys=False)
-        except:
-            print("MAICOS CALCULATION FAILED")
-
-            
+    print('Calculate chemical shifts')
     chemical_shift_file = dataFolder + 'chemical_shifts_sparta.yaml'
     if (not os.path.isfile(chemical_shift_file)):
         chemical_shifts = calculate_ChemShifts_sparta(gro_fname, trj_fname)
@@ -103,29 +107,29 @@ for system in systems:
         
         with open(chemical_shift_file, 'w') as file:
             yaml.dump( chemical_shift_data_dict, file, sort_keys=False)
-
-
-
-
-            
-        
+       
+    print('Calculate chemical shifts')
     ## Calculate contact probailities
-        
+
+    print('Calculate contact maps')
     # Define cutoff distance (in Angstroms)
     cutoff = 15.0  # Adjust as needed
     if (not os.path.isfile(dataFolder + "Contact_map.png")):
         probabilities_df = calculate_contact_probabilities(gro_fname, trj_fname, cutoff)
         create_contact_map_plot(probabilities_df, dataFolder + "Contact_map.png")
 
+    print('Calculate distance maps')
     ## Calculate distance maps
-    if (not os.path.isfile(dataFolder + "Distance_map.png")):
-        probabilities_df = calculate_distances(gro_fname, trj_fname)
-        create_distance_map_plot(probabilities_df, dataFolder + "Distance_map.png")
+    #if (not os.path.isfile(dataFolder + "Distance_map.png")):
+    #    probabilities_df = calculate_distances(gro_fname, trj_fname)
+    #    create_distance_map_plot(probabilities_df, dataFolder + "Distance_map.png")
 
+    print('Calculate backbone correlations')
     ## Calculate backbone correlations
     if (not os.path.isfile(dataFolder + "Backbone_correlations.png")):
         probabilities_df = calculate_backbone_correlations(gro_fname, trj_fname,dataFolder + "Backbone_correlations.png")
 
+    print('Calculate radius of gyration')
     ## Calculate radius of gyration
     rog_file = dataFolder + "gyrate.xvg"
     if (not os.path.isfile(rog_file)):
@@ -165,7 +169,7 @@ for system in systems:
     dynamic_landscape_file = dataFolder + 'dynamic_landscape_Coeffs.yaml'
     spin_relaxation_time_file = dataFolder + 'spin_relaxation_times.yaml'
 
-
+    print('Calculate dynamic landscape')
     if not os.path.exists(dynamic_landscape_file):
 
         dynamic_landscape = {}
@@ -249,13 +253,19 @@ for system in systems:
             yaml.dump(clean_spin_relaxation_times, file, sort_keys=True, default_flow_style=False, indent=4)
 
 
-#    matched_readme_file = dataFolder + '/README_matched.yaml'
+    #    matched_readme_file = dataFolder + '/README_matched.yaml'
 
-#    with open(matched_readme_file, "r") as file:
-#        matched_readme = yaml.safe_load(file)
+    #    with open(matched_readme_file, "r") as file:
+    #        matched_readme = yaml.safe_load(file)
+    
+    #        experimental_data_file = databankPath + '/Data/Experiments/spin_relaxation/' + matched_readme['EXPERIMENT']['spin_relaxation']['path'][0] + '/spin_relaxation_times.yaml'
 
-#    if len(matched_readme['EXPERIMENT']['spin_relaxation']['path']) > 0: # 'EXPERIMENT' in matched_readme and 'spin_relaxation' in matched_readme['EXPERIMENT']:
-#        print(matched_readme['EXPERIMENT']['spin_relaxation']['path'])
-#        experimental_data_file = databankPath + '/Data/Experiments/spin_relaxation/' + matched_readme['EXPERIMENT']['spin_relaxation']['path'][0] + '/spin_relaxation_times.yaml'
-#        rmsd = calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_data_file)
-#        print(rmsd)
+    #    try:
+    exp_spin_relax_file = databankPath + '/Data/Experiments/spin_relaxation/' + system['EXPERIMENT']['spin_relaxation']['path'][0] + '/spin_relaxation_times.yaml'
+    rmsd = calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,exp_spin_relax_file)
+    print(rmsd)
+
+        
+    #except:
+    #    print('RMSD calculation failed')
+    #    continue
