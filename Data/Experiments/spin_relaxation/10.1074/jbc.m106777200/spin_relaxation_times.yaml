@@ -1,0 +1,418 @@
+3:
+  600.0:
+    T1:
+      error: null
+      value: 1.6630303030303029
+    T2:
+      error: null
+      value: 1.9340490797546013
+    hetNOE:
+      error: null
+      value: -0.324773413897281
+4:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: -0.31208459214501516
+5:
+  600.0:
+    T1:
+      error: null
+      value: 1.561212121212121
+    T2:
+      error: null
+      value: 3.9079754601226995
+    hetNOE:
+      error: null
+      value: -0.028700906344410915
+6:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: 0.1743202416918429
+7:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: -0.1006042296072508
+8:
+  600.0:
+    T1:
+      error: null
+      value: 2.027878787878788
+    T2:
+      error: null
+      value: 3.1303680981595092
+    hetNOE:
+      error: null
+      value: 0.17009063444108763
+9:
+  600.0:
+    T1:
+      error: null
+      value: 1.6715151515151514
+    T2:
+      error: null
+      value: 3.8680981595092025
+    hetNOE:
+      error: null
+      value: -0.0033232628398791597
+10:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: 0.3984894259818731
+11:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: 0.013595166163141936
+12:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: 4.326687116564417
+    hetNOE:
+      error: null
+      value: 0.14471299093655576
+13:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: 0.02628398791540787
+14:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: 0.3138972809667674
+15:
+  600.0:
+    T1:
+      error: null
+      value: 1.7309090909090907
+    T2:
+      error: null
+      value: 3.76840490797546
+    hetNOE:
+      error: null
+      value: 0.11510574018126885
+16:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: 0.009365558912386662
+17:
+  600.0:
+    T1:
+      error: null
+      value: 2.1636363636363636
+    T2:
+      error: null
+      value: 4.705521472392638
+    hetNOE:
+      error: null
+      value: 0.03474320241691842
+18:
+  600.0:
+    T1:
+      error: null
+      value: 1.476363636363636
+    T2:
+      error: null
+      value: 4.346625766871165
+    hetNOE:
+      error: null
+      value: -0.007552870090634434
+19:
+  600.0:
+    T1:
+      error: null
+      value: 1.8496969696969696
+    T2:
+      error: null
+      value: 4.406441717791411
+    hetNOE:
+      error: null
+      value: 0.15317220543806653
+20:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: 0.03897280966767369
+21:
+  600.0:
+    T1:
+      error: null
+      value: 2.0787878787878786
+    T2:
+      error: null
+      value: 5.542944785276074
+    hetNOE:
+      error: null
+      value: 0.08126888217522654
+22:
+  600.0:
+    T1:
+      error: null
+      value: 1.6884848484848483
+    T2:
+      error: null
+      value: 5.7024539877300615
+    hetNOE:
+      error: null
+      value: 0.10241691842900302
+23:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: 0.15317220543806653
+24:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: 0.10241691842900302
+25:
+  600.0:
+    T1:
+      error: null
+      value: 2.1127272727272723
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: 0.022054380664652595
+26:
+  600.0:
+    T1:
+      error: null
+      value: 1.6375757575757575
+    T2:
+      error: null
+      value: 4.326687116564417
+    hetNOE:
+      error: null
+      value: 0.05166163141993951
+27:
+  600.0:
+    T1:
+      error: null
+      value: 1.8496969696969696
+    T2:
+      error: null
+      value: 3.9877300613496933
+    hetNOE:
+      error: null
+      value: 0.05166163141993951
+28:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: -0.12598187311178255
+29:
+  600.0:
+    T1:
+      error: null
+      value: 1.4933333333333332
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: -0.016012084592145093
+30:
+  600.0:
+    T1:
+      error: null
+      value: 1.5866666666666664
+    T2:
+      error: null
+      value: 3.2699386503067482
+    hetNOE:
+      error: null
+      value: 0.10241691842900302
+31:
+  600.0:
+    T1:
+      error: null
+      value: 1.4678787878787878
+    T2:
+      error: null
+      value: 3.1901840490797544
+    hetNOE:
+      error: null
+      value: 0.11933534743202412
+32:
+  600.0:
+    T1:
+      error: null
+      value: 2.0448484848484845
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: 0.06435045317220545
+33:
+  600.0:
+    T1:
+      error: null
+      value: 1.858181818181818
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: -0.02447129909365564
+34:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: 0.12779456193353467
+35:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: -0.0033232628398791597
+36:
+  600.0:
+    T1:
+      error: null
+      value: null
+    T2:
+      error: null
+      value: 4.506134969325153
+    hetNOE:
+      error: null
+      value: 0.05166163141993951
+37:
+  600.0:
+    T1:
+      error: null
+      value: 1.7987878787878786
+    T2:
+      error: null
+      value: null
+    hetNOE:
+      error: null
+      value: 0.3308157099697885
+38:
+  600.0:
+    T1:
+      error: null
+      value: 2.121212121212121
+    T2:
+      error: null
+      value: 4.904907975460122
+    hetNOE:
+      error: null
+      value: 0.11933534743202412
+39:
+  600.0:
+    T1:
+      error: null
+      value: 1.8072727272727271
+    T2:
+      error: null
+      value: 3.6288343558282206
+    hetNOE:
+      error: null
+      value: 0.04743202416918424
+40:
+  600.0:
+    T1:
+      error: null
+      value: 1.7818181818181817
+    T2:
+      error: null
+      value: 5.124233128834356
+    hetNOE:
+      error: null
+      value: 0.09818731117824775
