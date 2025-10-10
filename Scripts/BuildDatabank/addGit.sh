@@ -1,0 +1,9 @@
+git add Data/Simulations/*/*/*/*/README.yaml
+git add Data/Simulations/*/*/*/*/Backbone*
+git add Data/Simulations/*/*/*/*/Contact*
+git add Data/Simulations/*/*/*/*/SAXS.yaml
+git add Data/Simulations/*/*/*/*/chemical_shifts_sparta.yaml
+git add Data/Simulations/*/*/*/*/dynamic_landscape_Coeffs.yaml
+git add Data/Simulations/*/*/*/*/gyrate.xvg
+git add Data/Simulations/*/*/*/*/spin_relaxation_times.yaml
+git add Data/Simulations/*/*/*/*/Distance_map.png

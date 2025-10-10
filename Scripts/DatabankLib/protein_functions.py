@@ -558,7 +558,7 @@ def extract_data_from_BMRB(ID, datatype):
     return []
 
 
-def get_conditions_from_BMRB(BMRBid):
+def get_spin_relaxation_conditions_from_BMRB(BMRBid):
     data = []
     x = requests.get("http://api.bmrb.io/v2/entry/" + BMRBid + "/experiments")
     data.append(x.json())
@@ -596,6 +596,25 @@ def get_conditions_from_BMRB(BMRBid):
 
 
 #    print(data[0]['Het. Nuc. T1 relaxation'])
+
+
+def get_chemical_shift_conditions_from_BMRB(BMRBid,chemical_shift_experiment):
+    data = []
+    x = requests.get("http://api.bmrb.io/v2/entry/" + BMRBid + "/experiments")
+    data.append(x.json())
+
+    exp_data_path = "../../Data/Experiments/chemical_shift/BMRBid" + BMRBid
+    if not os.path.isdir(exp_data_path):
+        execStr = f"mkdir {exp_data_path}"
+        os.system(execStr)
+
+    for i in data[0]:
+        print(i["Name"], chemical_shift_experiment)
+        if i["Name"] == chemical_shift_experiment:
+            metadata_file = exp_data_path + "/chemical_shift_metadata.yaml"
+            with open(metadata_file, "w") as file:
+                yaml.dump(i, file, sort_keys=True, default_flow_style=False, indent=4)
+            print("Chemical shift metadata stored in ", metadata_file)
 
 
 def extract_bmrb_fasta(entry_id):
@@ -678,7 +697,7 @@ def extract_bmrb_fasta(entry_id):
     return fasta
 
 
-def extract_fasta_from_bmrb(bmrb_id: str) -> List[str]:
+def extract_fasta_from_bmrb(bmrb_id: str, experiment_type) -> List[str]:
     """
     Extract FASTA sequences from a BMRB entry.
 
@@ -712,7 +731,7 @@ def extract_fasta_from_bmrb(bmrb_id: str) -> List[str]:
         if not sequences:
             raise ValueError(f"No sequence data found for BMRB ID: {bmrb_id}")
 
-        exp_data_path = "../../Data/Experiments/spin_relaxation/BMRBid" + bmrb_id
+        exp_data_path = "../../Data/Experiments/" + experiment_type + "/BMRBid" + bmrb_id
         if not os.path.isdir(exp_data_path):
             execStr = f"mkdir {exp_data_path}"
             os.system(execStr)
@@ -865,7 +884,7 @@ def save_fasta_sequences(sequences: List[str], filename: str) -> None:
             f.write("\n")
 
 
-def get_data_from_BMRB(BMRBid):
+def get_spin_relaxations_from_BMRB(BMRBid):
 
     print("Getting experimental data from BMRBid: ", BMRBid)
     experimental_data_tmp = {
@@ -1466,33 +1485,46 @@ def calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_d
     with open(experimental_data_file, "r") as file:
         experimental_data = yaml.safe_load(file)
 
-    # Round fields in experimental data
-    rounded_data = []
-    for residue, field_dict in sorted_exp:
-        new_field_dict = {}
-        for field, values in field_dict.items():
-            # round the second-level key
-            rounded_field = round(field)
-            new_field_dict[rounded_field] = values
-        rounded_data.append((residue, new_field_dict))
+    rounded_data = {}
+    for residue, freq_dict in experimental_data.items():
+        new_freq_dict = {}
+        for freq, values in freq_dict.items():
+            rounded_freq = round(float(freq))
+            new_freq_dict[rounded_freq] = values
+        rounded_data[residue] = new_freq_dict
 
     experimental_data = rounded_data
-
-        
-    print(experimental_data)
+    #print(experimental_data)
         
     differences = {}
     for residue in spin_relaxation_times:
         for magnetic_field in spin_relaxation_times[residue]:
-            print(residue,magnetic_field)
+            #print(residue,magnetic_field)
             try:
                 differences[residue] = {
                     'R1': 1/spin_relaxation_times[residue][magnetic_field]['T1']['value'] - 1/experimental_data[residue][magnetic_field]['T1']['value'],
                     'R2': 1/spin_relaxation_times[residue][magnetic_field]['T2']['value'] - 1/experimental_data[residue][magnetic_field]['T2']['value'],
                     'hetNOE': spin_relaxation_times[residue][magnetic_field]['hetNOE']['value'] - experimental_data[residue][magnetic_field]['hetNOE']['value']
                 }
+                continue
             except:
-                print('Calculation of difference failed for ' + residue)
+                pass
+            #print(experimental_data.keys())
+            #print(experimental_data[int(re.sub(r"\D", "", residue))])
+            try:
+                #print(residue + " " + re.sub(r"\D", "", residue))
+                #print(experimental_data[int(re.sub(r"\D", "", residue))])
+                differences[residue] = {
+                    'R1': 1/spin_relaxation_times[residue][magnetic_field]['T1']['value'] - 1/experimental_data[int(re.sub(r"\D", "", residue))][magnetic_field]['T1']['value'],
+                    'R2': 1/spin_relaxation_times[residue][magnetic_field]['T2']['value'] - 1/experimental_data[int(re.sub(r"\D", "", residue))][magnetic_field]['T2']['value'],
+                    'hetNOE': spin_relaxation_times[residue][magnetic_field]['hetNOE']['value'] - experimental_data[int(re.sub(r"\D", "", residue))][magnetic_field]['hetNOE']['value']
+                }
+                continue
+            except:
+                pass
+
+            print('Calculation of difference failed for ' + residue + " " + re.sub(r"\D", "", residue))
+            continue
 
     RMSDs = {}
 
@@ -1511,7 +1543,7 @@ def calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_d
         values.append(differences[residue]['hetNOE']**2)
     RMSDs['hetNOE'] =  np.sqrt(sum(values) / len(values))
 
-    #print(differences)
+    RMSDs['differences'] = differences
     
     return(RMSDs)
     
@@ -1545,10 +1577,11 @@ def parse_star_file(filename):
         "CA": "CA",
         "CB": "CB",
         "HA": "HA",
-        "H": "HA",
+        "H": "H",
         "HA2": "HA",
         "HA3": "HA",
-        "Hα": "HA"
+        "Hα": "HA",
+        "N":"N",
     }
     shifts = {}
     with open(filename, "r") as f:
@@ -1588,18 +1621,154 @@ def parse_star_file(filename):
     return shifts
 
 
+#def compute_rmsd_chemical_shift(sim_data, exp_data, nuclei, residues):
+#    rmsd_per_nucleus = {}
+#    for nucleus in nuclei:
+#        diff_sq = []
+#        for res in residues:
+#            sim_val = sim_data.get(res, {}).get(nucleus, None)
+#            exp_val = exp_data.get(res, {}).get(nucleus, None)
+#            if sim_val is not None and exp_val is not None:
+#                diff_sq.append((sim_val - exp_val)**2)
+#        if diff_sq:
+#            rmsd_per_nucleus[nucleus] = math.sqrt(np.mean(diff_sq))
+#        else:
+#            rmsd_per_nucleus[nucleus] = None
+#    return rmsd_per_nucleus
+
 def compute_rmsd_chemical_shift(sim_data, exp_data, nuclei, residues):
-    rmsd_per_nucleus = {}
+    """
+    Compute RMSD values of chemical shifts per nucleus, along with per-residue differences.
+
+    Parameters
+    ----------
+    sim_data : dict
+        Dictionary with simulated chemical shifts.
+        Format: {residue_number: {nucleus: value}}
+    exp_data : dict
+        Dictionary with experimental chemical shifts.
+        Format: {residue_number: {nucleus: value}}
+    nuclei : list of str
+        List of nucleus types to evaluate (e.g. ["C", "CA", "CB"]).
+    residues : list of int
+        Residues to consider for the RMSD calculation.
+
+    Returns
+    -------
+    dict
+        Dictionary with the following structure:
+        {
+            "C": <RMSD value for nucleus C>,
+            "CA": <RMSD value for nucleus CA>,
+            ...
+            "differences": {
+                <residue_number>: {
+                    "C": <sim - exp>,
+                    "CA": <sim - exp>,
+                    ...
+                },
+                ...
+            }
+        }
+
+        Notes:
+        - RMSDs are computed as sqrt(mean((sim - exp)^2)) across the selected residues.
+        - If a simulated or experimental value is missing, the difference is stored as None
+          and excluded from the RMSD calculation.
+    """
+    result = {"differences": {}}
+
+    # Initialize empty difference dict for each residue
+    for res in residues:
+        result["differences"][res] = {}
+
+    # Compute per-nucleus RMSD and per-residue differences
     for nucleus in nuclei:
         diff_sq = []
         for res in residues:
             sim_val = sim_data.get(res, {}).get(nucleus, None)
             exp_val = exp_data.get(res, {}).get(nucleus, None)
+
             if sim_val is not None and exp_val is not None:
-                diff_sq.append((sim_val - exp_val)**2)
+                diff = sim_val - exp_val
+                diff_sq.append(diff**2)
+                result["differences"][res][nucleus] = diff
+            else:
+                result["differences"][res][nucleus] = None
+
+        # Store RMSD for this nucleus at the top level
         if diff_sq:
-            rmsd_per_nucleus[nucleus] = math.sqrt(np.mean(diff_sq))
+            result[nucleus] = math.sqrt(np.mean(diff_sq))
         else:
-            rmsd_per_nucleus[nucleus] = None
-    return rmsd_per_nucleus
+            result[nucleus] = None
+
+    return result
+
+def download_NMR_star_file(BMRBid):
+    bmrb_url = "https://bmrb.io/ftp/pub/bmrb/entry_directories/bmr" + BMRBid +"/bmr" + BMRBid + "_3.str"
+    exp_data_path = '../../Data/Experiments/chemical_shift/BMRBid' + BMRBid
+    os.makedirs(exp_data_path, exist_ok=True)
+    bmrb_local_file = exp_data_path + "/bmr" + BMRBid + ".str"
+
+    if not os.path.exists(bmrb_local_file):
+        print("Downloading BMRB NMR-STAR file...")
+        r = requests.get(bmrb_url)
+        r.raise_for_status()
+        with open(bmrb_local_file, "wb") as f:
+            f.write(r.content)
+                
+        print("NMR-star file downloaded to ", bmrb_local_file)
+
+    return bmrb_local_file
+
+
+def extract_chemical_shift_experiment_name_from_star(star_file_path):
+    """
+    Extracts all experiment names from the _Chem_shift_experiment loop of an NMR-STAR file.
+    Handles both quoted and unquoted experiment names.
+
+    Parameters
+    ----------
+    star_file_path : str
+        Path to the NMR-STAR file.
+
+    Returns
+    -------
+    list[str]
+        List of extracted experiment names (empty list if none found).
+    """
+    with open(star_file_path, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+
+    in_chem_shift_loop = False
+    experiment_names = []
+
+    for line in lines:
+        line = line.strip()
+
+        # Activate only after finding the Chem_shift_experiment section
+        if line.startswith("_Chem_shift_experiment.Experiment_ID"):
+            in_chem_shift_loop = True
+            continue
+
+        # Stop reading once we reach the end of the loop
+        if in_chem_shift_loop and line.startswith("stop_"):
+            break
+
+        # Skip headers
+        if in_chem_shift_loop and line.startswith("_Chem_shift_experiment."):
+            continue
+
+        # Match data lines: first column = ID (integer)
+        if in_chem_shift_loop and re.match(r"^\d+\s+", line):
+            # Split safely by whitespace but preserve quoted strings if any
+            parts = re.findall(r"(?:'[^']*'|\"[^\"]*\"|\S+)", line)
+            if len(parts) >= 2:
+                name = parts[1].strip("'\"")  # remove quotes if present
+                experiment_names.append(name)
+
+    return experiment_names
+
+
+
 

@@ -34,13 +34,21 @@ def searchDatabank():
     )
     logger.info(f"Simulation readmes:\n {simulation_readmes}")
 
-    # for now just look at the spin relaxation experiments
-    experiment_readmes = glob.glob(
-        os.path.join(IDP_DATABANK_EXPERIMENTS_PATH, "**/spin_relaxation_times.yaml"),
-        recursive=True,
-    )
-    logger.info(f"Experiment readmes:\n {experiment_readmes}")
+    ## for now just look at the spin relaxation experiments
+    #experiment_readmes = glob.glob(
+    #    os.path.join(IDP_DATABANK_EXPERIMENTS_PATH, "**/spin_relaxation_times.yaml"),
+    #    recursive=True,
+    #)
 
+    experiment_readmes = [
+    f
+    for pattern in ["**/spin_relaxation_times.yaml", "**/chemical_shifts.yaml"]
+    for f in glob.glob(os.path.join(IDP_DATABANK_EXPERIMENTS_PATH, pattern), recursive=True)
+    ]
+
+
+    logger.info(f"Experiment readmes:\n {experiment_readmes}")
+    
     simulations = []
 
     for simulation_readme in simulation_readmes:
@@ -50,16 +58,21 @@ def searchDatabank():
 
     # TODO: extend the experiments beyond the spin_relaxation
     experiments = []
-    experiment_types = ["spin_relaxation"]
+    experiment_types = ["spin_relaxation", "chemical_shift"]
     for experiment_readme in experiment_readmes:
         experiment_readme_dir = os.path.dirname(experiment_readme)
         logger.info(f"Initializing experiment {experiment_readme_dir}")
+        if "spin_relaxation" in experiment_readme_dir:
+            experiment_type = "spin_relaxation"
+        if "chemical_shift" in experiment_readme_dir:
+            experiment_type = "chemical_shift"
         try:
             experiment = Experiment(
-                experiment_type="spin_relaxation", path=experiment_readme_dir
+                experiment_type, path=experiment_readme_dir
             )
         except Exception as e:
             print(f"❌ Failed experiment {experiment_readme} because of error: {e}")
+            print(f"Experiment type: ", experiment_type)
             continue
         if experiment.metadata == {}:
             logger.warning(
@@ -69,6 +82,9 @@ def searchDatabank():
         else:
             experiments.append(experiment)
 
+    for i in experiments:
+        print("THESE ARE EXPERIMENTS!!!!!!!!!!!!!!!:",i.experiment_type)
+            
     for simulation in simulations:
 
         # TODO: will need to loop through all the experiment types, not just spin_relaxation
@@ -139,9 +155,22 @@ def searchDatabank():
                     continue
 
             # matching_experiments.append(experiment)
-            experiment_types_dict[experiment_type]["path"].append(
-                os.path.basename(experiment.path)
-            )
+
+            path_parts = os.path.normpath(experiment.path).split(os.sep)
+            last = os.path.basename(experiment.path)
+
+            # If the last part looks like a DOI (contains a '.'), take the last two parts
+            if '.' in last:
+                selected_path = os.path.join(path_parts[-2], path_parts[-1])
+            else:
+                selected_path = last
+
+            experiment_type = experiment.experiment_type
+            experiment_types_dict[experiment_type]["path"].append(selected_path)
+            
+            #experiment_types_dict[experiment_type]["path"].append(
+            #    os.path.basename(experiment.path)
+            #)
             experiment_ph = experiment.ph
             experiment_types_dict[experiment_type]["ph"].append(experiment_ph)
 

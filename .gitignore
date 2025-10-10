@@ -31,3 +31,5 @@ poetry.lock
 .vscode/
 *.swp
 *.swo
+
+*~

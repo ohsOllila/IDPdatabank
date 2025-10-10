@@ -1,0 +1,381 @@
+[
+  {
+    "ID": 25,
+    "value": 1.2266489322006586,
+    "simulation": [
+      "replica_02",
+      "AMBER99SBWS"
+    ],
+    "Rank": 1.0,
+    "ensemble_comparison": 0,
+    "backbone_comparison": 0
+  },
+  {
+    "ID": 14,
+    "value": 1.2294697761793356,
+    "simulation": [
+      "replica_04",
+      "AMBER03WS"
+    ],
+    "Rank": 2.0,
+    "ensemble_comparison": {
+      "ada_score": 0.061532196631005766,
+      "ata_score": 0.09501541572332556,
+      "rama_score": 0.10877664068994028,
+      "rg_diff": 0.30285416764906703
+    },
+    "backbone_comparison": 0.011910730967154452
+  },
+  {
+    "ID": 31,
+    "value": 1.2486189711820865,
+    "simulation": [
+      "replica_03",
+      "AMBER03WS"
+    ],
+    "Rank": 3.0,
+    "ensemble_comparison": {
+      "ada_score": 0.05467775732359318,
+      "ata_score": 0.09232075175810042,
+      "rama_score": 0.11071021720755903,
+      "rg_diff": -0.19620548061998555
+    },
+    "backbone_comparison": 0.010943603346664475
+  },
+  {
+    "ID": 9,
+    "value": 1.2943408348618293,
+    "simulation": [
+      "replica_01",
+      "CHARMM36M"
+    ],
+    "Rank": 4.0,
+    "ensemble_comparison": {
+      "ada_score": 0.16781140152489388,
+      "ata_score": 0.15823743210118035,
+      "rama_score": 0.17739704852047392,
+      "rg_diff": -0.19795564788175501
+    },
+    "backbone_comparison": 0.03727153994425051
+  },
+  {
+    "ID": 23,
+    "value": 1.3199397582687797,
+    "simulation": [
+      "replica_02",
+      "AMBER03WS"
+    ],
+    "Rank": 5.0,
+    "ensemble_comparison": {
+      "ada_score": 0.05162932983451553,
+      "ata_score": 0.102175838099869,
+      "rama_score": 0.11775258098446371,
+      "rg_diff": 0.157139430586561
+    },
+    "backbone_comparison": 0.012546483327444723
+  },
+  {
+    "ID": 8,
+    "value": 1.3315297985312773,
+    "simulation": [
+      "replica_05",
+      "CHARMM36M"
+    ],
+    "Rank": 6.0,
+    "ensemble_comparison": {
+      "ada_score": 0.17517375439170846,
+      "ata_score": 0.17555192104806325,
+      "rama_score": 0.17184409613447763,
+      "rg_diff": -0.2480153397661049
+    },
+    "backbone_comparison": 0.04203051893861165
+  },
+  {
+    "ID": 17,
+    "value": 1.3358286993995867,
+    "simulation": [
+      "replica_02",
+      "CHARMM36M"
+    ],
+    "Rank": 7.0,
+    "ensemble_comparison": {
+      "ada_score": 0.15565290334997423,
+      "ata_score": 0.15102453254818837,
+      "rama_score": 0.16011768249254607,
+      "rg_diff": -0.3247682257524447
+    },
+    "backbone_comparison": 0.04213263915813309
+  },
+  {
+    "ID": 49,
+    "value": 1.3876149001600535,
+    "simulation": [
+      "replica_01",
+      "AMBER99SBWS"
+    ],
+    "Rank": 8.0,
+    "ensemble_comparison": {
+      "ada_score": 0.03301592551590734,
+      "ata_score": 0.061909197174528384,
+      "rama_score": 0.06393341451483835,
+      "rg_diff": 0.06341740108246263
+    },
+    "backbone_comparison": 0.01250559175063925
+  },
+  {
+    "ID": 37,
+    "value": 1.4133287231236766,
+    "simulation": [
+      "replica_05",
+      "AMBER03WS"
+    ],
+    "Rank": 9.0,
+    "ensemble_comparison": {
+      "ada_score": 0.08633226888566264,
+      "ata_score": 0.12087324803711631,
+      "rama_score": 0.13640859610687814,
+      "rg_diff": -0.1361805176511961
+    },
+    "backbone_comparison": 0.01791259053400747
+  },
+  {
+    "ID": 27,
+    "value": 1.4299454780551522,
+    "simulation": [
+      "replica_05",
+      "AMBER99SBWS"
+    ],
+    "Rank": 10.0,
+    "ensemble_comparison": {
+      "ada_score": 0.07891765249636612,
+      "ata_score": 0.10068973900523093,
+      "rama_score": 0.10299555340320661,
+      "rg_diff": 0.1914169826972245
+    },
+    "backbone_comparison": 0.02291263019278739
+  },
+  {
+    "ID": 39,
+    "value": 1.4335477694715992,
+    "simulation": [
+      "replica_03",
+      "CHARMM36M"
+    ],
+    "Rank": 11.0,
+    "ensemble_comparison": {
+      "ada_score": 0.1954847478569564,
+      "ata_score": 0.18355155172592108,
+      "rama_score": 0.18782337885060726,
+      "rg_diff": 0.32880168216112327
+    },
+    "backbone_comparison": 0.046284604870694704
+  },
+  {
+    "ID": 40,
+    "value": 1.470186281986961,
+    "simulation": [
+      "replica_04",
+      "CHARMM36M"
+    ],
+    "Rank": 12.0,
+    "ensemble_comparison": {
+      "ada_score": 0.30841683132871056,
+      "ata_score": 0.21592391907202543,
+      "rama_score": 0.20773193383370936,
+      "rg_diff": 0.5239996308615604
+    },
+    "backbone_comparison": 0.12154048795495095
+  },
+  {
+    "ID": 21,
+    "value": 1.4735420714330785,
+    "simulation": [
+      "replica_04",
+      "AMBER99SBWS"
+    ],
+    "Rank": 13.0,
+    "ensemble_comparison": {
+      "ada_score": 0.04533379516446727,
+      "ata_score": 0.06542048887404132,
+      "rama_score": 0.07797249464210514,
+      "rg_diff": -0.013680620042427538
+    },
+    "backbone_comparison": 0.012280138811969358
+  },
+  {
+    "ID": 45,
+    "value": 1.5084159659368905,
+    "simulation": [
+      "replica_03",
+      "AMBER99SBWS"
+    ],
+    "Rank": 14.0,
+    "ensemble_comparison": {
+      "ada_score": 0.022911482519192457,
+      "ata_score": 0.0471868786170237,
+      "rama_score": 0.04641865844393802,
+      "rg_diff": -0.0040164501088357785
+    },
+    "backbone_comparison": 0.009127480673419949
+  },
+  {
+    "ID": 38,
+    "value": 1.5121807530286133,
+    "simulation": [
+      "replica_02",
+      "AMBER99SB-DISP"
+    ],
+    "Rank": 15.0,
+    "ensemble_comparison": {
+      "ada_score": 0.06522582363962087,
+      "ata_score": 0.09235057950450999,
+      "rama_score": 0.10727706313979833,
+      "rg_diff": -0.28362422646903473
+    },
+    "backbone_comparison": 0.014738903701534701
+  },
+  {
+    "ID": 15,
+    "value": 1.592749850341912,
+    "simulation": [
+      "replica_05",
+      "DESAMBER"
+    ],
+    "Rank": 16.0,
+    "ensemble_comparison": {
+      "ada_score": 0.08474324714587203,
+      "ata_score": 0.12631725087467266,
+      "rama_score": 0.14974743594576473,
+      "rg_diff": 0.05252887082573854
+    },
+    "backbone_comparison": 0.020715062910449843
+  },
+  {
+    "ID": 13,
+    "value": 1.6127597580493251,
+    "simulation": [
+      "replica_04",
+      "DESAMBER"
+    ],
+    "Rank": 17.0,
+    "ensemble_comparison": {
+      "ada_score": 0.07188589645693888,
+      "ata_score": 0.11777157182894632,
+      "rama_score": 0.1401484698563495,
+      "rg_diff": 0.012510640485749791
+    },
+    "backbone_comparison": 0.021038168562712463
+  },
+  {
+    "ID": 30,
+    "value": 1.6334576734867596,
+    "simulation": [
+      "replica_03",
+      "DESAMBER"
+    ],
+    "Rank": 18.0,
+    "ensemble_comparison": {
+      "ada_score": 0.09011273780992952,
+      "ata_score": 0.12358612354081588,
+      "rama_score": 0.1508633964261783,
+      "rg_diff": -0.0702294974889972
+    },
+    "backbone_comparison": 0.02514447137102564
+  },
+  {
+    "ID": 5,
+    "value": 1.6432637592597767,
+    "simulation": [
+      "replica_01",
+      "DESAMBER"
+    ],
+    "Rank": 19.0,
+    "ensemble_comparison": {
+      "ada_score": 0.092017780535707,
+      "ata_score": 0.1319892409285855,
+      "rama_score": 0.14733205245664896,
+      "rg_diff": 0.010488011189203172
+    },
+    "backbone_comparison": 0.03270132442082856
+  },
+  {
+    "ID": 46,
+    "value": 1.7023847417611595,
+    "simulation": [
+      "replica_01",
+      "AMBER99SB-DISP"
+    ],
+    "Rank": 20.0,
+    "ensemble_comparison": {
+      "ada_score": 0.07300649816978322,
+      "ata_score": 0.1375655637857466,
+      "rama_score": 0.1421377230270802,
+      "rg_diff": -0.10235855379173198
+    },
+    "backbone_comparison": 0.0248343907322525
+  },
+  {
+    "ID": 50,
+    "value": 1.7978078917821563,
+    "simulation": [
+      "replica_03",
+      "AMBER99SB-DISP"
+    ],
+    "Rank": 21.0,
+    "ensemble_comparison": {
+      "ada_score": 0.09563307021200632,
+      "ata_score": 0.13537207096071488,
+      "rama_score": 0.1405805850446312,
+      "rg_diff": -0.03550285611081705
+    },
+    "backbone_comparison": 0.0247050995222605
+  },
+  {
+    "ID": 1,
+    "value": 1.9981303965289356,
+    "simulation": [
+      "replica_02",
+      "DESAMBER"
+    ],
+    "Rank": 22.0,
+    "ensemble_comparison": {
+      "ada_score": 0.13587014423030866,
+      "ata_score": 0.1421080303286291,
+      "rama_score": 0.1601103464608375,
+      "rg_diff": 0.2146968892558747
+    },
+    "backbone_comparison": 0.030319809291025426
+  },
+  {
+    "ID": 26,
+    "value": 2.102497654364585,
+    "simulation": [
+      "replica_04",
+      "AMBER99SB-DISP"
+    ],
+    "Rank": 23.0,
+    "ensemble_comparison": {
+      "ada_score": 0.10980424614795734,
+      "ata_score": 0.16109001486299543,
+      "rama_score": 0.15405763396018882,
+      "rg_diff": 0.10287804337595485
+    },
+    "backbone_comparison": 0.0393584181961401
+  },
+  {
+    "ID": 48,
+    "value": 2.194812179534006,
+    "simulation": [
+      "replica_05",
+      "AMBER99SB-DISP"
+    ],
+    "Rank": 24.0,
+    "ensemble_comparison": {
+      "ada_score": 0.1779283412354497,
+      "ata_score": 0.1743001842251461,
+      "rama_score": 0.1795007898191564,
+      "rg_diff": -0.03076680226388251
+    },
+    "backbone_comparison": 0.04229198930194664
+  }
+]

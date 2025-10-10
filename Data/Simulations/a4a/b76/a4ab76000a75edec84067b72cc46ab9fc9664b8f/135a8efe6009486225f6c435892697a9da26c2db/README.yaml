@@ -1,43 +1,65 @@
-DOI: 10.5281/zenodo.13235553
-SOFTWARE: gromacs
-TRJ:
-- - md_calmodulin_DESamber_model10_nojump.xtc
-TPR:
-- - md_calmodulin_DESamber_model10_nosolvent.tpr
-PREEQTIME: 0
-TIMELEFTOUT: 0
+AUTHORS_CONTACT: Samuli Ollila
 COMPOSITION:
+  CLA:
+    COUNT: 60
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  POT:
+    COUNT: 84
+    MAPPING: mappingK.yaml
+    NAME: K
   PROTEIN:
     SEQUENCE: ADQLTEEQIAEFKEAFSLFDKDGDGTITTKELGTVMRSLGQNPTEAELQDMINEVDADGNGTIDFPEFLTMMARKMKDTDSEEEIREAFRVFDKDGNGYISAAELRHVMTNLGEKLTDEEVDEMIREADIDGDGQVNYEEFVQMMTAK
   SOL:
-    NAME: SOL
-    MAPPING: mappingTIP4PSwater.yaml
     COUNT: 32084
-  POT:
-    NAME: K
-    MAPPING: mappingK.yaml
-    COUNT: 84
-  CLA:
-    NAME: CL
-    MAPPING: mappingCLAecc.yaml
-    COUNT: 60
-DIR_WRK: /home/sosamuli/temp/tmpData/
-PUBLICATION: https://doi.org/10.26434/chemrxiv-2024-h3pmt-v2
-AUTHORS_CONTACT: Samuli Ollila
-SYSTEM: Calmodulin
-SOFTWARE_VERSION: null
-FF: DESamber
-FF_SOURCE: null
-FF_DATE: null
+    MAPPING: mappingTIP4PSwater.yaml
+    NAME: SOL
 CPT: null
-LOG: null
-TOP:
-- - md_calmodulin_DESamber_model10.top
+DATEOFRUNNING: 18/06/2025
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.13235553
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: DESamber
+FF_DATE: null
+FF_SOURCE: null
 GRO:
 - - md_calmodulin_DESamber_model10.gro
-TYPEOFSYSTEM: protein
-TRAJECTORY_SIZE: 866440672
-TRJLENGTH: 1000010.0
-TEMPERATURE: 296.0
+ID: 51
+LOG: null
 NUMBER_OF_ATOMS: 2262
-DATEOFRUNNING: 18/06/2025
+PREEQTIME: 0
+PUBLICATION: https://doi.org/10.26434/chemrxiv-2024-h3pmt-v2
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: Calmodulin
+TEMPERATURE: 296.0
+TIMELEFTOUT: 0
+TOP:
+- - md_calmodulin_DESamber_model10.top
+TPR:
+- - md_calmodulin_DESamber_model10_nosolvent.tpr
+TRAJECTORY_SIZE: 866440672
+TRJ:
+- - md_calmodulin_DESamber_model10_nojump.xtc
+TRJLENGTH: 1000010.0
+TYPEOFSYSTEM: protein

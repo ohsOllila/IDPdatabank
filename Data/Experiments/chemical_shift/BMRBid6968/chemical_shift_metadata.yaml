@@ -1,0 +1,41 @@
+Experiment_ID: '1'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '700'
+    Manufacturer: Bruker
+    Model: Avance
+Name: COCON-IPAP
+Sample_component:
+-   Concentration_val: '1'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-13C; U-15N]'
+    Mol_common_name: intrinsically disordered alpha-synuclein
+    Type: protein
+-   Concentration_val: '20'
+    Concentration_val_units: mM
+    Isotopic_labeling: null
+    Mol_common_name: KPi
+    Type: null
+-   Concentration_val: '0.5'
+    Concentration_val_units: mM
+    Isotopic_labeling: null
+    Mol_common_name: EDTA
+    Type: null
+-   Concentration_val: '200'
+    Concentration_val_units: mM
+    Isotopic_labeling: null
+    Mol_common_name: NaCl
+    Type: null
+-   Concentration_val: '90'
+    Concentration_val_units: '%'
+    Isotopic_labeling: null
+    Mol_common_name: H2O
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: '%'
+    Isotopic_labeling: null
+    Mol_common_name: D2O
+    Type: null
+Sample_condition_variable:
+    ph: '6.5'
+    temperature: '285.5'

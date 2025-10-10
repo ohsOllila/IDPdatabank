@@ -9,11 +9,6 @@ from typing import Dict, Any
 # its charges, and stoichiometry. For pH-dependent components, it includes
 # the pH ranges with their corresponding charges and stoichiometry.
 BUFFER_MOLECULE_DATA: Dict[str, Dict[str, Any]] = {
-    "LysRS residues 1-72": {
-        "ph_dependent": False,
-        "charges": [0],
-        "stoichiometry": [1],
-    },
     "sodium chloride": {
         "ph_dependent": False,
         "charges": [1, -1],

@@ -1,0 +1,26 @@
+Experiment_ID: '1'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '800'
+    Manufacturer: Bruker
+    Model: Avance
+Name: 2D 1H-15N TROSY
+Sample_component:
+-   Concentration_val: '40'
+    Concentration_val_units: uM
+    Isotopic_labeling: '[U-100% 15N]'
+    Mol_common_name: Alpha-synuclein
+    Type: null
+-   Concentration_val: '20'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium phosphate
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: '%'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: D2O
+    Type: null
+Sample_condition_variable:
+    ph: '7.0'
+    temperature: '298'

@@ -1,0 +1,17 @@
+Experiment_ID: 
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '600'
+Name: hetNOE
+Sample_component:
+-   Concentration_val: '0.1'
+    Concentration_val_units: mM
+    Mol_common_name: asyn
+    Type: null
+-   Concentration_val: '100'
+    Concentration_val_units: mM
+    Mol_common_name: sodium chloride
+    Type: null
+Sample_condition_variable:
+    ph: '7.4'
+    temperature: '283.000'

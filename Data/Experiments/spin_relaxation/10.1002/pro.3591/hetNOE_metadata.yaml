@@ -1,0 +1,14 @@
+Experiment_ID: 
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '600'
+Name: 1H-15N heteronoe
+Sample_component:
+-   Concentration_val: '0.4'
+    Concentration_val_units: mM
+    Isotopic_labeling: uniformly labeled 15N/13C 
+    Mol_common_name: ICL2
+    Type: null
+Sample_condition_variable:
+    ph: '7.000'
+    temperature: '283.000'
