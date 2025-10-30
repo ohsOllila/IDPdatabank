@@ -24,12 +24,12 @@ Sample_component:
 -   Concentration_val: '25'
     Concentration_val_units: mM
     Isotopic_labeling: natural abundance
-    Mol_common_name: HEPES NaCl
+    Mol_common_name: HEPES
     Type: null
--   Concentration_val: '50'
+-   Concentration_val: '75'
     Concentration_val_units: mM
     Isotopic_labeling: natural abundance
-    Mol_common_name: NaCl
+    Mol_common_name: sodium chloride
     Type: null
 -   Concentration_val: '0.02'
     Concentration_val_units: '%'

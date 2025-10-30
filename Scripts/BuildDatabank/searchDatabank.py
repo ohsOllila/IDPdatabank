@@ -42,7 +42,7 @@ def searchDatabank():
 
     experiment_readmes = [
     f
-    for pattern in ["**/spin_relaxation_times.yaml", "**/chemical_shifts.yaml"]
+    for pattern in ["**/spin_relaxation_times.yaml", "**/chemical_shifts.yaml", "**/saxs.dat"]
     for f in glob.glob(os.path.join(IDP_DATABANK_EXPERIMENTS_PATH, pattern), recursive=True)
     ]
 
@@ -58,7 +58,7 @@ def searchDatabank():
 
     # TODO: extend the experiments beyond the spin_relaxation
     experiments = []
-    experiment_types = ["spin_relaxation", "chemical_shift"]
+    experiment_types = ["spin_relaxation", "chemical_shift", "saxs"]
     for experiment_readme in experiment_readmes:
         experiment_readme_dir = os.path.dirname(experiment_readme)
         logger.info(f"Initializing experiment {experiment_readme_dir}")
@@ -66,6 +66,8 @@ def searchDatabank():
             experiment_type = "spin_relaxation"
         if "chemical_shift" in experiment_readme_dir:
             experiment_type = "chemical_shift"
+        if "saxs" in experiment_readme_dir:
+            experiment_type = "saxs"
         try:
             experiment = Experiment(
                 experiment_type, path=experiment_readme_dir
@@ -82,9 +84,6 @@ def searchDatabank():
         else:
             experiments.append(experiment)
 
-    for i in experiments:
-        print("THESE ARE EXPERIMENTS!!!!!!!!!!!!!!!:",i.experiment_type)
-            
     for simulation in simulations:
 
         # TODO: will need to loop through all the experiment types, not just spin_relaxation

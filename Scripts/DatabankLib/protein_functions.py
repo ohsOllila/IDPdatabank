@@ -1344,7 +1344,7 @@ def calculate_SAXS_profile_maicos(gro_file, xtc_file,water_shell=None,output_fil
 #		- solves disk space problem
 #		- might be slover than the OUTDATED function
 
-def calculate_ChemShifts_sparta(gro_file, xtc_file, dt_analysis_ps=100,be_quiet=True):
+def calculate_ChemShifts_sparta(gro_file, xtc_file, dt_analysis_ps=100000,be_quiet=True):
     # Load structure and trajectory (PBC: nojump)
     u = mda.Universe(gro_file, xtc_file)
     
@@ -1604,7 +1604,8 @@ def parse_star_file(filename):
                     continue
                 try:
                     row_dict = dict(zip(tags, row))
-                    res = int(row_dict["_Atom_chem_shift.Seq_ID"])
+                    resname = row_dict["_Atom_chem_shift.Comp_ID"]
+                    res = str(int(row_dict["_Atom_chem_shift.Seq_ID"])) + resname
                     atom = row_dict["_Atom_chem_shift.Atom_ID"]
                     val = float(row_dict["_Atom_chem_shift.Val"])
                     mapped_atom = atom_map.get(atom.upper(), None)
@@ -1689,10 +1690,15 @@ def compute_rmsd_chemical_shift(sim_data, exp_data, nuclei, residues):
             sim_val = sim_data.get(res, {}).get(nucleus, None)
             exp_val = exp_data.get(res, {}).get(nucleus, None)
 
+            print(res)
+            
             if sim_val is not None and exp_val is not None:
                 diff = sim_val - exp_val
-                diff_sq.append(diff**2)
-                result["differences"][res][nucleus] = diff
+                if diff < 5:
+                    diff_sq.append(diff**2)
+                    result["differences"][res][nucleus] = diff
+                else:
+                    result["differences"][res][nucleus] = None    
             else:
                 result["differences"][res][nucleus] = None
 
@@ -1711,7 +1717,7 @@ def download_NMR_star_file(BMRBid):
     bmrb_local_file = exp_data_path + "/bmr" + BMRBid + ".str"
 
     if not os.path.exists(bmrb_local_file):
-        print("Downloading BMRB NMR-STAR file...")
+        print("Downloading BMRB NMR-STAR file to ",  bmrb_local_file)
         r = requests.get(bmrb_url)
         r.raise_for_status()
         with open(bmrb_local_file, "wb") as f:
@@ -1769,6 +1775,55 @@ def extract_chemical_shift_experiment_name_from_star(star_file_path):
 
     return experiment_names
 
+
+from Bio import SeqIO
+
+# One-letter to three-letter amino acid code mapping
+AA_MAP = {
+    "A": "ALA", "R": "ARG", "N": "ASN", "D": "ASP", "C": "CYS",
+    "Q": "GLN", "E": "GLU", "G": "GLY", "H": "HIS", "I": "ILE",
+    "L": "LEU", "K": "LYS", "M": "MET", "F": "PHE", "P": "PRO",
+    "S": "SER", "T": "THR", "W": "TRP", "Y": "TYR", "V": "VAL",
+}
+
+
+from io import StringIO
+
+def fasta_string_to_residue_dict(fasta_str):
+    """
+    Converts a raw FASTA sequence (with or without header) into
+    {residue_number: three_letter_code}.
+    """
+    fasta_str = fasta_str.strip().upper()
+
+    # Remove FASTA header if present
+    if fasta_str.startswith(">"):
+        lines = fasta_str.splitlines()[1:]
+        seq = "".join(lines)
+    else:
+        seq = fasta_str.replace("\n", "")
+
+    if not seq:
+        raise ValueError("No sequence data found in FASTA string.")
+
+    # Map residues
+    return {i + 1: AA_MAP.get(res, "UNK") for i, res in enumerate(seq)}
+
+
+
+def fasta_to_residue_dict(fasta_path):
+    """
+    Reads a FASTA file and returns a dictionary:
+    {residue_number: three_letter_code}
+    """
+    # Parse the FASTA file (takes first sequence if multiple)
+    record = next(SeqIO.parse(fasta_path, "fasta"))
+    seq = str(record.seq).upper()
+
+    # Build residue number → 3-letter code dictionary
+    res_dict = {i + 1: AA_MAP.get(res, "UNK") for i, res in enumerate(seq)}
+
+    return res_dict
 
 
 

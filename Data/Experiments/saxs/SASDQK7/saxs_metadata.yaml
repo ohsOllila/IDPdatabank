@@ -1,0 +1,18 @@
+Sample_component:
+-   Concentration_val: '3.8'
+    Concentration_val_units: mg/ml
+    Mol_common_name: alpha-synuclein
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: HEPES
+    Type: null
+-   Concentration_val: '50'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium chloride
+    Type: null
+Sample_condition_variable:
+    ph: '7.4'
+    temperature: '283'

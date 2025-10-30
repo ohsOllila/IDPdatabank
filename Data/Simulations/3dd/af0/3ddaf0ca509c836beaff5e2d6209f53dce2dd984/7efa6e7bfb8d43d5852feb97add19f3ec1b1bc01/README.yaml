@@ -25,6 +25,16 @@ EXPERIMENT:
     sequence: []
     temperature: []
     temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
   spin_relaxation:
     alignment_score:
     - 340.0

@@ -11,11 +11,21 @@ COMPOSITION:
     MAPPING: mappingTIP4PSwater.yaml
     NAME: SOL
 CPT: null
-DATEOFRUNNING: 09/09/2025
+DATEOFRUNNING: 16/10/2025
 DIR_WRK: /home/sosamuli/temp/tmpData/
 DOI: 10.5281/zenodo.15393821
 EXPERIMENT:
   chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
     alignment_score: []
     ionic_strength: []
     ionic_strength_match: []
@@ -44,11 +54,11 @@ EXPERIMENT:
     - 298.0
     temperature_match:
     - true
-FF: AMBER03WS
+FF: null
 FF_DATE: null
 FF_SOURCE: null
 GRO: null
-ID: 29
+ID: 100
 LOG: null
 NUMBER_OF_ATOMS: 1038
 PREEQTIME: 0

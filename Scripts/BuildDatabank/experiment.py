@@ -35,7 +35,10 @@ class Experiment:
 
         if self.experiment_type == "chemical_shift":
             self._load_chemical_shift_data()
-    
+
+        if self.experiment_type == "saxs":
+            self._load_saxs_data()
+            
         if self.metadata:
             self._initialize_buffer()
 
@@ -73,6 +76,19 @@ class Experiment:
     def _load_chemical_shift_data(self) -> None:
         """Load data specific to chemical shift experiments."""
         cs_metadata_file = self.path / "chemical_shift_metadata.yaml"
+        sequence_file = self.path / "fasta.yaml"
+
+        # Load sequence data
+        if self.file_handler.file_exists(sequence_file):
+            self.sequence = self.file_handler.read_yaml(sequence_file)["sequence"][0]
+
+        # Load chemical shift metadata
+        if self.file_handler.file_exists(cs_metadata_file):
+            self.metadata = self.file_handler.read_yaml(cs_metadata_file)
+
+    def _load_saxs_data(self) -> None:
+        """Load data specific to chemical shift experiments."""
+        cs_metadata_file = self.path / "saxs_metadata.yaml"
         sequence_file = self.path / "fasta.yaml"
 
         # Load sequence data

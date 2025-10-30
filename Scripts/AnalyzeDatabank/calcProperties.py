@@ -7,11 +7,11 @@
 from DatabankLib.protein_functions import *
 import yaml
 
-databankPath = "/home/sosamuli/work/NMRlipids/IDPdatabank/"  # this is the local path for the cloned Databank
-os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPdatabank/"
+#databankPath = "/home/sosamuli/work/NMRlipids/IDPdatabank/"  # this is the local path for the cloned Databank
+#os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPdatabank/"
 
-#databankPath = "/home/sosamuli/work/NMRlipids/IDPsimBank/"  # this is the local path for the cloned Databank
-#os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPsimBank/"
+databankPath = "/home/sosamuli/work/NMRlipids/IDPsimBank/"  # this is the local path for the cloned Databank
+os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPsimBank/"
 
 
 
@@ -45,7 +45,8 @@ for system in systems:
     gro_fname = dataFolder + 'protein_centered.gro'
 
     trj_fname_noPBC = dataFolder + 'traj_noPBC.xtc'
-
+    trj_fname_skipped = dataFolder + 'skipped_traj.xtc'
+    nojump_traj = dataFolder + 'skipped_nojump_traj.xtc'
     
     SAXS_file = dataFolder + 'SAXS.yaml'
     SAXS_file_MAICoS = dataFolder + 'SAXS_MAICoS.yaml'
@@ -115,8 +116,25 @@ for system in systems:
             print("MAICOS CALCULATION FAILED")
 
     print('Calculate chemical shifts')
+    fasta = system['COMPOSITION']['PROTEIN']['SEQUENCE']
+    print(fasta)
+    fasta_dict = fasta_string_to_residue_dict(fasta)
+    print(fasta_dict)
+    
     if (not os.path.isfile(chemical_shift_file)):
-        chemical_shifts = calculate_ChemShifts_sparta(gro_fname, trj_fname)
+        if not os.path.exists(trj_fname_skipped):
+            skip_value = 10
+            # Build the command: source GMXRC first, then run gmx
+            cmd = f"""
+            source /usr/local/gromacs/bin/GMXRC && \
+            echo System | gmx trjconv -f {trj_fname} -s {gro_fname} -skip {skip_value} -o {nojump_traj} -pbc nojump  && \
+            echo -e "System\nSystem" | gmx trjconv -f {nojump_traj} -s {gro_fname} -o {trj_fname_skipped} -center
+            """
+            print(cmd)
+            # Run inside a bash shell
+            subprocess.run(cmd, shell=True, executable="/bin/bash", check=True)
+    
+        chemical_shifts = calculate_ChemShifts_sparta(gro_fname, trj_fname_skipped)
         #print(chemical_shifts)
 
         chemical_shift_data = chemical_shifts.to_dict()
@@ -125,8 +143,13 @@ for system in systems:
         # Save as YAML
 
         chemical_shift_data_dict = convert_original_to_nested_dict(chemical_shift_data)
+        fasta = system['COMPOSITION']['PROTEIN']['SEQUENCE']
+        fasta_dict = fasta_string_to_residue_dict(fasta)
 
-        #print(chemical_shift_data_dict)
+        print(fasta_dict)
+        print(chemical_shift_data_dict)
+
+        chemical_shift_data_dict = {f"{num}{fasta_dict.get(num, 'UNK')}": value for num, value in chemical_shift_data_dict.items()}
         
         with open(chemical_shift_file, 'w') as file:
             yaml.dump( chemical_shift_data_dict, file, sort_keys=False)
@@ -297,18 +320,24 @@ for system in systems:
     print('Calculate chemical shift RMSD between simulations and experiments')
     chemical_shift_rmsd_file =  dataFolder + 'chemical_shift_rmsd.yaml'
 
-    #print(system['EXPERIMENT'])
+    print(system['EXPERIMENT']['chemical_shift']['path'])
     chemical_shift_paths = system['EXPERIMENT']['chemical_shift']['path']
     if len(chemical_shift_paths) > 0:
         for BMRBid in chemical_shift_paths:
-            bmrb_local_file = download_NMR_star_file(BMRBid)
-            print(bmrb_local_file)
+            print(BMRBid)
+            id_number = re.search(r'\d+', BMRBid).group()
+            bmrb_local_file = download_NMR_star_file(id_number)
+            if BMRBid == 'BMRBid16300':
+                break
     else:
         print("Trying to get chemical shifts from the spin relaxation data source")
         try:
-            BMRBid = system['EXPERIMENT']['spin_relaxation']['path'][0].replace("BMRBid", "", 1)
-            bmrb_local_file = download_NMR_star_file(BMRBid)
-            ExperimentalFile = True
+            if "BMRBid" in system['EXPERIMENT']['spin_relaxation']['path'][0]:
+                BMRBid = system['EXPERIMENT']['spin_relaxation']['path'][0].replace("BMRBid", "", 1)
+                bmrb_local_file = download_NMR_star_file(BMRBid)
+                ExperimentalFile = True
+            else:
+                pass
         except:
             print('Experimental chemical shift data file not found')
             ExperimentalFile = False
@@ -319,7 +348,7 @@ for system in systems:
         sim_file = os.path.join(dataFolder, 'chemical_shifts_sparta.yaml')
         with open(sim_file) as f:
             raw = yaml.safe_load(f)
-            sim_residues_all.update(int(k) for k in raw.keys())
+            sim_residues_all.update(k for k in raw.keys())
         
 
         # ------------------------
@@ -342,9 +371,10 @@ for system in systems:
             raw = yaml.safe_load(f)
 
         # convert string keys to integers
-        sim_data = {int(k): v for k, v in raw.items()}
+        sim_data = {k: v for k, v in raw.items()}
 
         # compute RMSD
+        print(sim_data, exp_data_filtered,bmrb_local_file)
         chemical_shift_rmsd_vals = compute_rmsd_chemical_shift(sim_data, exp_data_filtered, nuclei, exp_residues)
 
         #print(rmsd_vals)

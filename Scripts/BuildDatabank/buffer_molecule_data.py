@@ -14,6 +14,11 @@ BUFFER_MOLECULE_DATA: Dict[str, Dict[str, Any]] = {
         "charges": [1, -1],
         "stoichiometry": [1, 1],
     },
+    "NaN3 solution": {
+        "ph_dependent": False,
+        "charges": [1, -1],
+        "stoichiometry": [1, 1],
+    },
     "sodium phosphate": {
         "ph_dependent": True,
         "ph_ranges": [

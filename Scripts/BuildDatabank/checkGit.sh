@@ -1,7 +1,7 @@
 git status Data/Simulations/*/*/*/*/README.yaml
 git status Data/Simulations/*/*/*/*/Backbone*
 git status Data/Simulations/*/*/*/*/Contact*
-git status Data/Simulations/*/*/*/*/SAXS.yaml
+git status Data/Simulations/*/*/*/*/SAXS*yaml
 git status Data/Simulations/*/*/*/*/chemical_shifts_sparta.yaml
 git status Data/Simulations/*/*/*/*/dynamic_landscape_Coeffs.yaml
 git status Data/Simulations/*/*/*/*/gyrate.xvg
