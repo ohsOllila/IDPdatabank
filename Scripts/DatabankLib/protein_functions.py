@@ -801,12 +801,13 @@ def _parse_sequences_from_star(star_data: str, bmrb_id: str) -> List[str]:
                 header += f" {entity_name}"
 
             # Format sequence with 80 characters per line (standard FASTA format)
-            formatted_seq = "\n".join(
-                [sequence[i : i + 80] for i in range(0, len(sequence), 80)]
-            )
+            #formatted_seq = "\n".join(
+            #    [sequence[i : i + 80] for i in range(0, len(sequence), 80)]
+            #)
 
             # fasta_entry = f"{header}\n{formatted_seq}"
-            fasta_entry = f"{formatted_seq}"
+            #fasta_entry = f"{formatted_seq}"
+            fasta_entry = f"{sequence}"
             sequences.append(fasta_entry)
 
     # Alternative pattern for older BMRB formats
@@ -829,10 +830,11 @@ def _parse_sequences_from_star(star_data: str, bmrb_id: str) -> List[str]:
                 sequence = "".join(residues)
                 if len(sequence) > 5:
                     header = f">BMRB:{bmrb_id}_Entity:{entity_id}"
-                    formatted_seq = "\n".join(
-                        [sequence[i : i + 80] for i in range(0, len(sequence), 80)]
-                    )
-                    fasta_entry = f"{header}\n{formatted_seq}"
+                    #formatted_seq = "\n".join(
+                    #    [sequence[i : i + 80] for i in range(0, len(sequence), 80)]
+                    #)
+                    #fasta_entry = f"{header}\n{formatted_seq}"
+                    fasta_entry = f"{sequence}"
                     sequences.append(fasta_entry)
 
     return sequences
