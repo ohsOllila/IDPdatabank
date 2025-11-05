@@ -23,32 +23,32 @@ EXPERIMENT:
     - 670.0
     - 670.0
     ionic_strength:
-    - 0.0
     - 0.095
     - 0.02
     - 0.02
     - 0.0
+    - 0.0
     ionic_strength_match:
+    - false
+    - false
+    - false
     - true
-    - false
-    - false
-    - false
     - true
     path:
-    - BMRBid19257
     - BMRBid16300
-    - BMRBid52093
     - BMRBid16543
+    - BMRBid52093
+    - BMRBid19257
     - BMRBid26557
     ph:
-    - 6.2
     - 7.4
-    - 7.0
     - 6.0
     - 7.0
+    - 6.2
+    - 7.0
     ph_match:
-    - false
     - true
+    - false
     - true
     - false
     - true
@@ -59,10 +59,10 @@ EXPERIMENT:
     - MDVFMKGLSKAKEGVVAAAEKTKQGVAEAAGKTKEGVLYVGSKTKEGVVHGVATVAEKTKEQVTNVGGAVVTGVTAVAQKTVEGAGSIAAATGFVKKDQLGKNEEGAPQEGILEDMPVDPDNEAYEMPSEEGYQDYEPEA
     - MDVFMKGLSKAKEGVVAAAEKTKQGVAEAAGKTKEGVLYVGSKTKEGVVHGVATVAEKTKEQVTNVGGAVVTGVTAVAQKTVEGAGSIAAATGFVKKDQLGKNEEGAPQEGILEDMPVDPDNEAYEMPSEEGYQDYEPEA
     temperature:
-    - 277.0
     - 288.2
-    - 298.0
     - 293.0
+    - 298.0
+    - 277.0
     - 273.0
     temperature_match:
     - true
@@ -81,8 +81,8 @@ EXPERIMENT:
     - false
     - false
     path:
-    - SASDQJ7
     - SASDQK7
+    - SASDQJ7
     ph:
     - 7.4
     - 7.4
