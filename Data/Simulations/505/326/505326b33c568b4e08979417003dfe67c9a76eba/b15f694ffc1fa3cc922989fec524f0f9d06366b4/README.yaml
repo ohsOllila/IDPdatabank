@@ -1,0 +1,82 @@
+AUTHORS_CONTACT: Samuli Ollila
+COMPOSITION:
+  CLA:
+    COUNT: 124
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  PROTEIN:
+    SEQUENCE: MAAVQAAEVKVDGSEPKLSKNELKRRLKAEKKVAEKEAKQKELSEKQLSQATAAATNXTTDNGVGPEEESVD
+  SOD:
+    COUNT: 124
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 67579
+    MAPPING: mappingTIP4PSwater.yaml
+    NAME: SOL
+CPT: null
+DATEOFRUNNING: 14/11/2025
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.17600446
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score:
+    - 340.0
+    ionic_strength:
+    - 0.1
+    ionic_strength_match:
+    - true
+    path:
+    - BMRBid19993
+    ph:
+    - 7.0
+    ph_match:
+    - true
+    sequence:
+    - MAAVQAAEVKVDGSEPKLSKNELKRRLKAEKKVAEKEAKQKELSEKQLSQATAAATNHTTDNGVGPEEESVD
+    temperature:
+    - 303.0
+    temperature_match:
+    - true
+FF: null
+FF_DATE: null
+FF_SOURCE: null
+GRO: null
+ID: 129
+LOG: null
+NUMBER_OF_ATOMS: 1348
+PREEQTIME: 0
+PUBLICATION: https://doi.org/10.26434/chemrxiv-2025-m5m0p
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: KRS1-72_salt
+TEMPERATURE: 303.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - KRS1-72_replica_02_AMBER03WS_2000ns.tpr
+TRAJECTORY_SIZE: 1139968304
+TRJ:
+- - KRS1-72_replica_02_AMBER03WS_2000ns.xtc
+TRJLENGTH: 2000010.0
+TYPEOFSYSTEM: protein

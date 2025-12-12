@@ -7,3 +7,4 @@ git add Data/Simulations/*/*/*/*/dynamic_landscape_Coeffs.yaml
 git add Data/Simulations/*/*/*/*/gyrate.xvg
 git add Data/Simulations/*/*/*/*/spin_relaxation_times.yaml
 git add Data/Simulations/*/*/*/*/Distance_map.png
+git add Data/Simulations/*/*/*/*/*rmsd*

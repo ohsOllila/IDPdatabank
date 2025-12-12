@@ -7,3 +7,4 @@ git status Data/Simulations/*/*/*/*/dynamic_landscape_Coeffs.yaml
 git status Data/Simulations/*/*/*/*/gyrate.xvg
 git status Data/Simulations/*/*/*/*/spin_relaxation_times.yaml
 git status Data/Simulations/*/*/*/*/Distance_map.png
+git status Data/Simulations/*/*/*/*/*rmsd*

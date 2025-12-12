@@ -21,7 +21,7 @@ EXPERIMENT:
     ionic_strength:
     - 0.02
     ionic_strength_match:
-    - false
+    - true
     path:
     - BMRBid27321
     ph:
@@ -50,7 +50,7 @@ EXPERIMENT:
     ionic_strength:
     - 0.02
     ionic_strength_match:
-    - false
+    - true
     path:
     - BMRBid27321
     ph:

@@ -7,11 +7,11 @@
 from DatabankLib.protein_functions import *
 import yaml
 
-#databankPath = "/home/sosamuli/work/NMRlipids/IDPdatabank/"  # this is the local path for the cloned Databank
-#os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPdatabank/"
+databankPath = "/home/sosamuli/work/NMRlipids/IDPdatabank/"  # this is the local path for the cloned Databank
+os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPdatabank/"
 
-databankPath = "/home/sosamuli/work/NMRlipids/IDPsimBank/"  # this is the local path for the cloned Databank
-os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPsimBank/"
+#databankPath = "/home/sosamuli/work/NMRlipids/IDPsimBank/"  # this is the local path for the cloned Databank
+#os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPsimBank/"
 
 
 
@@ -40,7 +40,8 @@ for system in systems:
     dataFolder = databankPath + 'Data/Simulations/' + system['path']
 
     print(system['TRJ'][0])
-    trj_fname = dataFolder + system['TRJ'][0][0] 
+    trj_fname_original = dataFolder + system['TRJ'][0][0]
+    trj_fname = dataFolder + 'only_protein.xtc'
     top_fname = dataFolder + system['TPR'][0][0]
     gro_fname = dataFolder + 'protein_centered.gro'
 
@@ -79,8 +80,17 @@ for system in systems:
         try:
             MDAuni = system2MDanalysisUniverse(system)
         except:
+            print("MDanalysis universe creation failed")
             pass
 
+        if (not os.path.isfile(trj_fname)):
+            execStr = (
+                f"echo Protein | {trjconvCOMMAND} -f {trj_fname_original} "
+                f"-s {top_fname} -o {trj_fname}"
+            )
+            os.system(execStr)
+
+        
         if (not os.path.isfile(gro_fname)):
             execStr = (
                 f"echo Protein Protein | {trjconvCOMMAND} -f {trj_fname} "
@@ -88,6 +98,8 @@ for system in systems:
             )
             os.system(execStr)
 
+
+            
 
     ## Calculate SAXS
 
@@ -382,20 +394,30 @@ for system in systems:
         #clean_rmsd = convert_numpy(rmsd)
         with open(chemical_shift_rmsd_file, 'w') as file:
             yaml.dump(chemical_shift_rmsd_vals, file, sort_keys=False, default_flow_style=False, indent=4)
-        
-        #print(f"RMSDs for {sim_file}:")
-        #for nuc, rmsd in rmsd_vals.items():
-        #    if rmsd is not None:
-        #        print(f"  {nuc}: {rmsd:.2f} ppm")
-        #    else:
-        #        print(f"  {nuc}: N/A")
-
-        #avg_rmsd = np.mean([v for v in rmsd_vals.values() if v is not None])
-        #print(f"  Average RMSD: {avg_rmsd:.2f} ppm\n")
-
-        
-
-        #print(rmsd_vals,avg_rmsd)
-        #rmsd = calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,exp_spin_relax_file)
 
 
+    #Values based on Ollila et al. 2018 as calculated below
+    relaxation_accuracies = {
+        "R1": 0.18,
+        "R2": 3.8,
+        "hetNOE": 0.1
+    }
+    
+    spin_relaxation_quality_file =  dataFolder + 'spin_relaxation_quality.yaml'
+    if not os.path.exists(spin_relaxation_quality_file) and ExperimentalFile:
+        evaluate_spin_relaxation_quality(system, relaxation_accuracies)
+
+
+    #From SPARTA+ article
+    atom_accuracies = {
+        'C': 1.5,
+        'CA': 1.0,
+        'CB': 1.3,
+        'H': 0.55,
+        'HA': 0.3,
+        'N': 2.5
+    }
+
+    chemical_shift_quality_file =  dataFolder + 'chemical_shift_quality.yaml'
+    if not os.path.exists(chemical_shift_quality_file) and ExperimentalFile:
+        evaluate_chemical_shift_quality(system, atom_accuracies)

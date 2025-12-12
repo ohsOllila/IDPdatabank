@@ -1,0 +1,39 @@
+DOI: 10.5281/zenodo.17543743
+
+SOFTWARE: gromacs
+TRJ: aSyn_replica_03_DESAMBER_2000ns.xtc
+TPR: aSyn_replica_03_DESAMBER_2000ns.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingOPCwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION: https://doi.org/10.26434/chemrxiv-2025-m5m0p
+AUTHORS_CONTACT: Samuli Ollila
+
+SYSTEM: asyn_salt
+SOFTWARE_VERSION:
+
+FF: 
+FF_SOURCE: 
+FF_DATE:
+
+CPT:
+LOG:
+TOP:
+GRO:
+
+TYPEOFSYSTEM: protein

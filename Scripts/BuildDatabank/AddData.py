@@ -369,7 +369,25 @@ if __name__ == "__main__":
     #print(exec_str)
     logger.debug(exec_str)
     os.system(exec_str)               
-        
+
+    # Make gro file without water
+
+    non_water_tpr = os.path.join(dir_tmp, "non_water.tpr")
+    exec_str = (
+        f"echo non-Water | gmx convert-tpr -s {top} -o {non_water_tpr}"
+    )
+    logger.debug(exec_str)
+    os.system(exec_str)               
+
+    non_water_gro = os.path.join(dir_tmp, "non_water.gro")
+    exec_str = (
+        f"echo System | gmx trjconv -s {non_water_tpr} -f {traj} -dump 0 -o {non_water_gro}"
+    )
+    logger.debug(exec_str)
+    os.system(exec_str)               
+
+    
+    
     if fail_from_top:
         try:
             logger.info(f"MDAnalysis tries to use {top} with only protein and {traj}")
@@ -379,6 +397,18 @@ if __name__ == "__main__":
         except Exception as e:
             logger.warning(str(type(e)) + " => " + str(e))
             fail_from_top = True
+
+        if fail_from_top:
+            try:
+                logger.info(f"MDAnalysis tries to use {top} without water and {traj}")
+                u = Universe(non_water_gro, traj)
+                u.atoms.write(gro, frames=u.trajectory[[0]])
+                fail_from_top = False
+            except Exception as e:
+                logger.warning(str(type(e)) + " => " + str(e))
+                fail_from_top = True
+            
+
 
         
     # if previous fails then try the same from struc + trajectory
@@ -405,13 +435,11 @@ if __name__ == "__main__":
             sim["WARNINGS"]["GROMACS_VERSION"] == "gromacs3"
            ):
             exec_str = (
-                f"executing 'echo System | trjconv -s {top} -f {traj} "
-                f"-dump 0 -o {gro}'"
+                f"echo System | trjconv -s {top} -f {traj} -dump 0 -o {gro}"
             )
         else:
             exec_str = (
-                f"executing 'echo System | gmx trjconv -s {top} -f {traj}"
-                f" -dump 0 -o {gro}'"
+                f"echo System | gmx trjconv -s {top} -f {traj} -dump 0 -o {gro}"
             )
         logger.debug(exec_str)
         os.system(exec_str)

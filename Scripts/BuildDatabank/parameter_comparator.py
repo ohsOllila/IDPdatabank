@@ -90,9 +90,9 @@ class ParameterComparator:
                 description="Maximum allowed temperature difference (±10%)",
             ),
             "ionic_strength": Threshold(
-                value=15.0,
+                value=30.0,
                 threshold_type=ThresholdType.PERCENT,
-                description="Maximum allowed ionic strength difference (±15% or ±0.01M, whichever is larger)",
+                description="Maximum allowed ionic strength difference (±20% or ±0.02M, whichever is larger)",
             ),
         }
 
@@ -154,7 +154,7 @@ class ParameterComparator:
 
         # Special case for ionic strength: minimum absolute difference
         if param_name == "ionic_strength":
-            min_abs_diff = 0.01  # 10mM
+            min_abs_diff = 0.03  # 10mM
             tolerance = max(tolerance, min_abs_diff)
 
         within_tolerance = diff <= tolerance

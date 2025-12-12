@@ -1,0 +1,39 @@
+DOI: 10.5281/zenodo.17700651
+
+SOFTWARE: gromacs
+TRJ: ChiZ_replica_01_CHARMM36M_2000ns.xtc
+TPR: ChiZ_replica_01_CHARMM36M_2000ns.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingOPCwater.yaml
+ SOD:
+  NAME: SOD
+  MAPPING: mappingSOD.yaml
+ CLA:
+  NAME: CLA
+  MAPPING: mappingCLA.yaml
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION: https://doi.org/10.26434/chemrxiv-2025-m5m0p
+AUTHORS_CONTACT: Samuli Ollila
+
+SYSTEM: ChiZ_salt
+SOFTWARE_VERSION:
+
+FF: 
+FF_SOURCE: 
+FF_DATE:
+
+CPT:
+LOG:
+TOP:
+GRO:
+
+TYPEOFSYSTEM: protein

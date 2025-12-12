@@ -17,6 +17,9 @@ from collections import defaultdict
 import matplotlib.pyplot as plt
 import math
 
+import seaborn as sns
+from matplotlib.colors import LinearSegmentedColormap
+
 
 def calculate_contact_probabilities(gro_file, xtc_file, cutoff):
     u = mda.Universe(gro_file, xtc_file)
@@ -1829,3 +1832,246 @@ def fasta_to_residue_dict(fasta_path):
 
 
 
+def percentage_over_accuracy(accuracy,value):
+    ratio = abs(value)/accuracy
+    if ratio > 1:
+        return ratio-1
+    else:
+        return 0
+
+def plot_quality_heatmap(data_dict, save_path, vmax=None):
+    """
+    Create a traffic-light style heatmap showing quality metrics for each residue and nucleus.
+
+    Parameters
+    ----------
+    data_dict : dict
+        Dictionary where keys are residues (e.g., "99GLN") or "Averages",
+        and values are dicts mapping nuclei (e.g., "CA", "N", "Sum") to scores.
+
+    save_path : str
+        Path where the generated heatmap image will be saved.
+
+    vmax : float, optional
+        Maximum value for the color scale. If None, scale automatically to data range.
+        Useful for comparing multiple heatmaps with consistent color limits.
+    """
+
+    # --- Prepare data ---
+    df = pd.DataFrame(data_dict).T
+
+    # Remove "Averages" row temporarily for sorting residues numerically
+    if "Averages" in df.index:
+        averages = df.loc["Averages"]
+        df = df.drop("Averages")
+    else:
+        averages = None
+
+    # Sort residues numerically if possible
+    def residue_sort_key(name):
+        if isinstance(name, str):
+            match = re.match(r"(\d+)", name)
+            if match:
+                return int(match.group(1))
+        return float("inf")
+
+    df = df.loc[sorted(df.index, key=residue_sort_key)]
+
+    # Add Averages back to the end
+    if averages is not None:
+        df.loc["Averages"] = averages
+
+    # --- Transpose for plotting (residues on x-axis, nuclei on y-axis) ---
+    df_t = df.T
+
+    df_t.to_csv(save_path.replace(".png", ".csv"))
+    
+    # --- Plot ---
+    plt.figure(figsize=(10, 5))
+    ax = sns.heatmap(
+        df_t,
+        cmap="RdYlGn_r",        # traffic-light color scheme (green = good, red = bad)
+        cbar=True,
+        linewidths=0.5,
+        vmax=vmax               # 👈 fixed color scale if provided
+    )
+    ax.set_xlabel("Residue")
+    ax.set_ylabel("Nucleus")
+    ax.set_title("Quality Heatmap", fontsize=14)
+    plt.xticks(rotation=90)
+    plt.yticks(rotation=0)
+
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=300, bbox_inches="tight")
+    plt.close()
+
+def evaluate_chemical_shift_quality(system, atom_accuracies):
+    """
+    Evaluate chemical shift quality for a given system.
+
+    Parameters
+    ----------
+    system : dict
+        Dictionary containing simulation info with keys:
+        - 'TRJ': trajectory identifier
+        - 'ID': system ID
+        - 'path': relative path to data folder
+        - 'EXPERIMENT': includes 'chemical_shift' -> 'alignment_score'
+
+    atom_accuracies : dict
+        Mapping from nucleus (e.g. 'C', 'CA', 'N', ...) to accuracy thresholds.
+
+    percentage_over_accuracy : callable
+        Function taking (accuracy, rmsd_value) -> quality percentage.
+
+    plot_quality_heatmap : callable
+        Function taking (data_dict, save_path) to create and save a heatmap.
+
+    Returns
+    -------
+    str
+        Path to the generated quality heatmap file.
+    """
+
+    print(system["TRJ"], system["ID"], system["EXPERIMENT"]["chemical_shift"]["alignment_score"])
+
+    # --- Set up file paths ---
+    data_folder = os.path.join("../../Data/Simulations", system["path"])
+    chemical_shifts_file_rmsd = os.path.join(data_folder, "chemical_shift_rmsd.yaml")
+
+    if not os.path.exists(chemical_shifts_file_rmsd):
+        print(f"⚠️ Missing file: {chemical_shifts_file_rmsd}")
+        return None
+
+    quality_evaluation_file = os.path.join(data_folder, "chemical_shift_quality.yaml")
+    quality_heatmap_file = os.path.join(data_folder, "chemical_shift_quality_heatmap.png")
+
+    # --- Initialize quality dict ---
+    quality = {"Averages": {}}
+
+    # --- Load RMSD data ---
+    with open(chemical_shifts_file_rmsd) as f:
+        rmsds = yaml.safe_load(f)
+
+    # --- Compute quality measures ---
+    for key in rmsds.keys():
+        if key == "differences":
+            for residue, values in rmsds[key].items():
+                if residue not in quality:
+                    quality[residue] = {}
+                res_sum = 0
+                for nuclei, value in values.items():
+                    if value is None:
+                        continue
+                    accuracy = atom_accuracies.get(nuclei)
+                    if accuracy is None:
+                        continue
+                    score = percentage_over_accuracy(accuracy, value)
+                    quality[residue][nuclei] = score
+                    res_sum += score
+                #quality[residue]["Sum"] = res_sum
+        else:
+            value = rmsds[key]
+            if value is None:
+                continue
+            accuracy = atom_accuracies.get(key)
+            if accuracy is None:
+                continue
+            quality["Averages"][key] = percentage_over_accuracy(accuracy, value)
+
+    # --- Write YAML output ---
+    with open(quality_evaluation_file, "w") as f:
+        yaml.dump(quality, f, sort_keys=True)
+
+    # --- Generate heatmap ---
+    print(f"🧩 Generating heatmap: {quality_heatmap_file}")
+    plot_quality_heatmap(quality, quality_heatmap_file,2)
+    print("✅ Heatmap saved successfully.")
+
+    return quality_heatmap_file
+
+def evaluate_spin_relaxation_quality(system, relaxation_accuracies):
+    """
+    Evaluate spin relaxation quality (R1, R2, hetNOE) for a given system.
+
+    Parameters
+    ----------
+    system : dict
+        Dictionary containing simulation info with keys:
+        - 'TRJ': trajectory identifier
+        - 'ID': system ID
+        - 'path': relative path to data folder
+        - 'EXPERIMENT': includes 'relaxation' -> 'alignment_score'
+
+    relaxation_accuracies : dict
+        Mapping from relaxation type ('R1', 'R2', 'hetNOE') to accuracy thresholds.
+
+    percentage_over_accuracy : callable
+        Function taking (accuracy, rmsd_value) -> quality percentage.
+
+    plot_quality_heatmap : callable
+        Function taking (data_dict, save_path) to create and save a heatmap.
+
+    Returns
+    -------
+    str
+        Path to the generated relaxation quality heatmap file.
+    """
+
+    #print(system["TRJ"], system["ID"], system["EXPERIMENT"]["spirelaxation"]["alignment_score"])
+
+    # --- Define paths ---
+    data_folder = os.path.join("../../Data/Simulations", system["path"])
+    relaxation_file_rmsd = os.path.join(data_folder, "spin_relaxation_rmsd.yaml")
+
+    if not os.path.exists(relaxation_file_rmsd):
+        print(f"⚠️ Missing file: {relaxation_file_rmsd}")
+        return None
+
+    quality_file = os.path.join(data_folder, "spin_relaxation_quality.yaml")
+    heatmap_file = os.path.join(data_folder, "spin_relaxation_quality_heatmap.png")
+
+    # --- Initialize output dict ---
+    quality = {"Averages": {}}
+
+    # --- Load RMSD data ---
+    with open(relaxation_file_rmsd) as f:
+        rmsds = yaml.safe_load(f)
+
+    # --- Compute quality measures ---
+    for key in rmsds.keys():
+        if key == "differences":
+            for residue, values in rmsds[key].items():
+                if residue not in quality:
+                    quality[residue] = {}
+                res_sum = 0
+                for relaxation_type, value in values.items():
+                    if value is None:
+                        continue
+                    accuracy = relaxation_accuracies.get(relaxation_type)
+                    if accuracy is None:
+                        continue
+                    score = percentage_over_accuracy(accuracy, value)
+                    quality[residue][relaxation_type] = score
+                    res_sum += score
+                #quality[residue]["Sum"] = res_sum
+        else:
+            # Average metrics (like R1, R2, hetNOE) outside of "differences"
+            value = rmsds[key]
+            if value is None:
+                continue
+            accuracy = relaxation_accuracies.get(key)
+            if accuracy is None:
+                continue
+            quality["Averages"][key] = percentage_over_accuracy(accuracy, value)
+
+    # --- Write YAML output ---
+    with open(quality_file, "w") as f:
+        yaml.dump(quality, f, sort_keys=True)
+
+    # --- Generate heatmap ---
+    print(f"🧩 Generating relaxation heatmap: {heatmap_file}")
+    plot_quality_heatmap(quality, heatmap_file,3)
+    print("✅ Relaxation heatmap saved successfully.")
+
+    return heatmap_file

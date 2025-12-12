@@ -9,11 +9,34 @@ from typing import Dict, Any
 # its charges, and stoichiometry. For pH-dependent components, it includes
 # the pH ranges with their corresponding charges and stoichiometry.
 BUFFER_MOLECULE_DATA: Dict[str, Dict[str, Any]] = {
+    "TRIS": {
+        "ph_dependent": True,
+        "ph_ranges": [
+            {"min_ph": 0, "max_ph": 8.07, "charges": [0], "stoichiometry": [1]},
+            {"min_ph": 8.07, "max_ph": 14, "charges": [1], "stoichiometry": [1]},
+        ],
+    },
+    "TCEP": {
+        "ph_dependent": False,
+        "charges": [0, 0],
+        "stoichiometry": [1, 1],
+    },
+    "glycerol": {
+        "ph_dependent": False,
+        "charges": [0, 0],
+        "stoichiometry": [1, 1],
+    },
     "sodium chloride": {
         "ph_dependent": False,
         "charges": [1, -1],
         "stoichiometry": [1, 1],
     },
+    "sodium azide": {
+        "ph_dependent": False,
+        "charges": [1, -1],
+        "stoichiometry": [1, 1],
+    },
+
     "NaN3 solution": {
         "ph_dependent": False,
         "charges": [1, -1],

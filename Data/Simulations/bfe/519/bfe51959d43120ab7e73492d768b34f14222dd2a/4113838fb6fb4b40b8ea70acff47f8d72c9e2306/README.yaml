@@ -26,15 +26,24 @@ EXPERIMENT:
     temperature: []
     temperature_match: []
   saxs:
-    alignment_score: []
-    ionic_strength: []
-    ionic_strength_match: []
-    path: []
-    ph: []
-    ph_match: []
-    sequence: []
-    temperature: []
-    temperature_match: []
+    alignment_score:
+    - -1
+    ionic_strength:
+    - 0.095
+    ionic_strength_match:
+    - false
+    path:
+    - 10.3390/biom10060946
+    ph:
+    - 7.0
+    ph_match:
+    - true
+    sequence:
+    - SNAMTPVRPPHTPDPLNLRGPLDGPRWRRAEPAQSRRPGRSRPGGAPLRYHRTGVGMSRTGHGSRPV
+    temperature:
+    - 298.0
+    temperature_match:
+    - true
   spin_relaxation:
     alignment_score:
     - -1

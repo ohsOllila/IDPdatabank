@@ -48,7 +48,7 @@ def searchDatabank():
 
 
     logger.info(f"Experiment readmes:\n {experiment_readmes}")
-    
+
     simulations = []
 
     for simulation_readme in simulation_readmes:
@@ -157,9 +157,10 @@ def searchDatabank():
 
             path_parts = os.path.normpath(experiment.path).split(os.sep)
             last = os.path.basename(experiment.path)
+            second_last = path_parts[-2]
 
             # If the last part looks like a DOI (contains a '.'), take the last two parts
-            if '.' in last:
+            if '.' in second_last:
                 selected_path = os.path.join(path_parts[-2], path_parts[-1])
             else:
                 selected_path = last
@@ -202,6 +203,7 @@ def searchDatabank():
             experiment_types_dict[experiment_type]["temperature_match"].append(
                 temperature_result.match
             )
+            print('Ionic results: ', ionic_result)
             experiment_types_dict[experiment_type]["ionic_strength_match"].append(
                 ionic_result.match
             )

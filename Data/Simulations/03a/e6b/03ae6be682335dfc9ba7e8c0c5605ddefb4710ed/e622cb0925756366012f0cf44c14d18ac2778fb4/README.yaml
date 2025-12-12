@@ -30,8 +30,8 @@ EXPERIMENT:
     - 0.0
     ionic_strength_match:
     - false
-    - false
-    - false
+    - true
+    - true
     - true
     - true
     path:
@@ -74,28 +74,37 @@ EXPERIMENT:
     alignment_score:
     - 670.0
     - 670.0
+    - 670.0
     ionic_strength:
     - 0.05
+    - 0.15
     - 0.05
     ionic_strength_match:
     - false
     - false
+    - false
     path:
     - SASDQK7
+    - 10.1038/srep30473
     - SASDQJ7
     ph:
     - 7.4
+    - 7.5
     - 7.4
     ph_match:
+    - true
     - true
     - true
     sequence:
     - MDVFMKGLSKAKEGVVAAAEKTKQGVAEAAGKTKEGVLYVGSKTKEGVVHGVATVAEKTKEQVTNVGGAVVTGVTAVAQKTVEGAGSIAAATGFVKKDQLGKNEEGAPQEGILEDMPVDPDNEAYEMPSEEGYQDYEPEA
     - MDVFMKGLSKAKEGVVAAAEKTKQGVAEAAGKTKEGVLYVGSKTKEGVVHGVATVAEKTKEQVTNVGGAVVTGVTAVAQKTVEGAGSIAAATGFVKKDQLGKNEEGAPQEGILEDMPVDPDNEAYEMPSEEGYQDYEPEA
+    - MDVFMKGLSKAKEGVVAAAEKTKQGVAEAAGKTKEGVLYVGSKTKEGVVHGVATVAEKTKEQVTNVGGAVVTGVTAVAQKTVEGAGSIAAATGFVKKDQLGKNEEGAPQEGILEDMPVDPDNEAYEMPSEEGYQDYEPEA
     temperature:
     - 283.0
+    - 298.0
     - 283.0
     temperature_match:
+    - true
     - true
     - true
   spin_relaxation:
