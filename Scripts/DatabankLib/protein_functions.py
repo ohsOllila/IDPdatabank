@@ -2075,3 +2075,75 @@ def evaluate_spin_relaxation_quality(system, relaxation_accuracies):
     print("✅ Relaxation heatmap saved successfully.")
 
     return heatmap_file
+
+
+import yaml
+from numbers import Number
+
+def compute_residue_nonzero_percentages(input_yaml: str, output_yaml: str) -> None:
+    """
+    Adds `non_zero_percentage` into each residue block of the original YAML.
+    """
+
+    with open(input_yaml, "r") as f:
+        data = yaml.safe_load(f)
+
+    all_percentages = []
+
+    for residue, atoms in data.items():
+
+        # Case 1: residue is a single number
+        if isinstance(atoms, Number):
+            percentage = 100.0 if atoms != 0 else 0.0
+            data[residue] = {
+                "value": atoms,
+                "non_zero_percentage": percentage
+            }
+
+        # Case 2: residue is a dict
+        elif isinstance(atoms, dict):
+            numeric_values = []
+
+            for key, value in atoms.items():
+                if key == "non_zero_percentage":
+                    continue  # avoid double counting if rerun
+
+                if isinstance(value, Number):
+                    numeric_values.append(value)
+                elif isinstance(value, dict):
+                    for v in value.values():
+                        if isinstance(v, Number):
+                            numeric_values.append(v)
+
+            if numeric_values:
+                nonzero_count = sum(1 for v in numeric_values if v != 0)
+                percentage = 100.0 * nonzero_count / len(numeric_values)
+            else:
+                percentage = 0.0
+
+            atoms["non_zero_percentage"] = percentage
+
+        # Case 3: unexpected type
+        else:
+            percentage = 0.0
+
+        all_percentages.append(percentage)
+
+    overall_percentage = (
+        sum(all_percentages) / len(all_percentages)
+        if all_percentages else 0.0
+    )
+
+    # Optional: store global value at top level
+    data["overall_non_zero_percentage"] = overall_percentage
+
+    with open(output_yaml, "w") as f:
+        yaml.safe_dump(data, f, sort_keys=False)
+
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+DOI: 10.5281/zenodo.15966816
+
+SOFTWARE: gromacs
+TRJ: model01_AMBER03WS_md_2000ns.xtc
+TPR: model01_AMBER03WS_md_2000ns.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4PSwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION: 
+AUTHORS_CONTACT: Efstathia Mantzari
+
+SYSTEM: wrapping silk (AcSp1)
+SOFTWARE_VERSION:
+
+FF: 
+FF_SOURCE: 
+FF_DATE:
+
+CPT:
+LOG:
+TOP:
+GRO:
+
+TYPEOFSYSTEM: protein
