@@ -1895,11 +1895,11 @@ def plot_quality_heatmap(data_dict, save_path, vmax=None):
         linewidths=0.5,
         vmax=vmax               # 👈 fixed color scale if provided
     )
-    ax.set_xlabel("Residue")
-    ax.set_ylabel("Nucleus")
-    ax.set_title("Quality Heatmap", fontsize=14)
-    plt.xticks(rotation=90)
-    plt.yticks(rotation=0)
+    ax.set_xlabel("Residue", fontsize=20)
+    ax.set_ylabel("Nucleus", fontsize=20)
+    ax.set_title("Chemical shift quality", fontsize=20)
+    plt.xticks(rotation=90, fontsize=10)
+    plt.yticks(rotation=0, fontsize=18)
 
     plt.tight_layout()
     plt.savefig(save_path, dpi=300, bbox_inches="tight")
