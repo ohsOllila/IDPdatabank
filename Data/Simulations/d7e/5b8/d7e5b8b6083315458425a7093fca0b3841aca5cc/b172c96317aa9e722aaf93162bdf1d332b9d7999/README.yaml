@@ -1,0 +1,72 @@
+AUTHORS_CONTACT: Efstathia Mantzari
+COMPOSITION:
+  CLA:
+    COUNT: 2
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  PROTEIN:
+    SEQUENCE: AGPQGGFGATGGASAGLISRVANALANTSTLRTVLRTGVSQQIASSVVQRAAQSLASTLGVDGNNLARFAVQAVSRLPAGSDTSAYAQAFSSALFNAGVLNASNIDTLGSRVLSALLNGVSSAAQGLGINVDSGSVQSDISSSSSFLSTSSSSASYSQASASSTSGAGYTGPSGPSTGPSGYPGPLGGGAPFGQSGFGGG
+  SOD:
+    COUNT: 0
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 32370
+    MAPPING: mappingTIP4PSwater.yaml
+    NAME: SOL
+CPT: null
+DATEOFRUNNING: 18/02/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.15966816
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: null
+FF_DATE: null
+FF_SOURCE: null
+GRO: null
+LOG: null
+NUMBER_OF_ATOMS: 2639
+PREEQTIME: 0
+PUBLICATION: null
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: wrapping silk (AcSp1)
+TEMPERATURE: 303.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - model01_AMBER03WS_md_2000ns.tpr
+TRAJECTORY_SIZE: 2036637616
+TRJ:
+- - model01_AMBER03WS_md_2000ns.xtc
+TRJLENGTH: 2000010.0
+TYPEOFSYSTEM: protein
