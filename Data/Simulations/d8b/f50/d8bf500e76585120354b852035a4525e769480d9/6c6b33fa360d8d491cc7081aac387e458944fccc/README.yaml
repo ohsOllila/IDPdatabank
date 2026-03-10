@@ -1,0 +1,73 @@
+AUTHORS_CONTACT: Efthathia Mantzari & Samuli Ollila
+COMPOSITION:
+  CLA:
+    COUNT: 196
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  PROTEIN:
+    SEQUENCE: FGYFLLREDAPEPLAQAGTTKVTMSLASINTNSNTKTNAESAKPKEEPKEKPKKEEPKKEEPKKEVTKPKPKPKPKPKPKPKPKPEPKPEPKPEPKPEPKVEEVKKEEPKEEPKKEEAKEEAKEKSAPKQVTTKDIVKEKDKQEESNKTSEGATSEAQAYNPGVSNEFLMKIQTAISSKNRYPKMAQIRGIEGEVLVSFTINADGSVTDIKVVKSNTTDILNHAALEAIKSAAHLFPKPEETVHLKIPIAYSLKED
+  SOD:
+    COUNT: 190
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 262822
+    MAPPING: mappingTIP4PSwater.yaml
+    NAME: SOL
+CPT: null
+DATEOFRUNNING: 20/02/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.18712915
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: AMBER03WS
+FF_DATE: null
+FF_SOURCE: null
+GRO: null
+ID: 218
+LOG: null
+NUMBER_OF_ATOMS: 4079
+PREEQTIME: 0
+PUBLICATION: null
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: TonB
+TEMPERATURE: 303.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - md_TonB_neutralPh_40mm.tpr
+TRAJECTORY_SIZE: 3161317224
+TRJ:
+- - md_TonB_neutralpH_40mm_nojump_nowater_2micro.xtc
+TRJLENGTH: 2000010.0
+TYPEOFSYSTEM: protein

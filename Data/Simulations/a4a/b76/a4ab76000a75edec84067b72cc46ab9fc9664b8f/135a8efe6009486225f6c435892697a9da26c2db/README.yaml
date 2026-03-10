@@ -20,15 +20,24 @@ DIR_WRK: /home/sosamuli/temp/tmpData/
 DOI: 10.5281/zenodo.13235553
 EXPERIMENT:
   chemical_shift:
-    alignment_score: []
-    ionic_strength: []
-    ionic_strength_match: []
-    path: []
-    ph: []
-    ph_match: []
-    sequence: []
-    temperature: []
-    temperature_match: []
+    alignment_score:
+    - -1
+    ionic_strength:
+    - 0.10800000000000001
+    ionic_strength_match:
+    - true
+    path:
+    - BMRBid51526
+    ph:
+    - 7.0
+    ph_match:
+    - true
+    sequence:
+    - ADQLTEEQIAEFKEAFSLFDKDGDGTITTKELGTVMRSLGQNPTEAELQDMINEVDADGNGTIDFPEFLTMMARKMKDTDSEEEIREAFRVFDKDGNGYISAAELRHVMTNLGEKLTDEEVDEMIREADIDGDGQVNYEEFVQMMTAK
+    temperature:
+    - 310.15
+    temperature_match:
+    - true
   saxs:
     alignment_score: []
     ionic_strength: []
@@ -40,15 +49,24 @@ EXPERIMENT:
     temperature: []
     temperature_match: []
   spin_relaxation:
-    alignment_score: []
-    ionic_strength: []
-    ionic_strength_match: []
-    path: []
-    ph: []
-    ph_match: []
-    sequence: []
-    temperature: []
-    temperature_match: []
+    alignment_score:
+    - -1
+    ionic_strength:
+    - 0.10800000000000001
+    ionic_strength_match:
+    - true
+    path:
+    - BMRBid51529
+    ph:
+    - 7.0
+    ph_match:
+    - true
+    sequence:
+    - ADQLTEEQIAEFKEAFSLFDKDGDGTITTKELGTVMRSLGQNPTEAELQDMINEVDADGNGTIDFPEFLTMMARKMKDTDSEEEIREAFRVFDKDGNGYISAAELRHVMTNLGEKLTDEEVDEMIREADIDGDGQVNYEEFVQMMTAK
+    temperature:
+    - 310.15
+    temperature_match:
+    - true
 FF: DESamber
 FF_DATE: null
 FF_SOURCE: null

@@ -1,4 +1,4 @@
-AUTHORS_CONTACT: Efstathia Mantzari
+AUTHORS_CONTACT: Samuli Ollila
 COMPOSITION:
   CLA:
     COUNT: 2
@@ -15,7 +15,7 @@ COMPOSITION:
     MAPPING: mappingTIP4PSwater.yaml
     NAME: SOL
 CPT: null
-DATEOFRUNNING: 18/02/2026
+DATEOFRUNNING: 19/02/2026
 DIR_WRK: /home/sosamuli/temp/tmpData/
 DOI: 10.5281/zenodo.15966816
 EXPERIMENT:
@@ -49,14 +49,15 @@ EXPERIMENT:
     sequence: []
     temperature: []
     temperature_match: []
-FF: null
+FF: AMBER03WS
 FF_DATE: null
 FF_SOURCE: null
 GRO: null
+ID: 184
 LOG: null
 NUMBER_OF_ATOMS: 2639
 PREEQTIME: 0
-PUBLICATION: null
+PUBLICATION: https://doi.org/10.26434/chemrxiv-2025-m5m0p
 SOFTWARE: gromacs
 SOFTWARE_VERSION: null
 SYSTEM: wrapping silk (AcSp1)
