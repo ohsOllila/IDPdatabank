@@ -130,7 +130,7 @@ EXPERIMENT:
     - 283.0
     temperature_match:
     - true
-FF: null
+FF: CHARMM36M
 FF_DATE: null
 FF_SOURCE: null
 GRO: null

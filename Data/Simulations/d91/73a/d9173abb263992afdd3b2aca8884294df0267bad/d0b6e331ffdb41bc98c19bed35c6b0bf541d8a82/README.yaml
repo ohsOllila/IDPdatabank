@@ -71,7 +71,7 @@ EXPERIMENT:
     - 310.15
     temperature_match:
     - true
-FF: calmodulin
+FF: amber99SB-ILDN
 FF_DATE: null
 FF_SOURCE: null
 GRO: null

@@ -126,7 +126,7 @@ EXPERIMENT:
     - 283.0
     temperature_match:
     - true
-FF: null
+FF: AMBER99SBWS
 FF_DATE: null
 FF_SOURCE: null
 GRO: null
