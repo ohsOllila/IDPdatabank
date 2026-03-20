@@ -1,0 +1,77 @@
+AUTHORS_CONTACT: Efstathia Mantzari and Samuli Ollila
+COMPOSITION:
+  CAL:
+    COUNT: 15
+    MAPPING: mappingCALecc.yaml
+    NAME: CA
+  CLA:
+    COUNT: 95
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  PROTEIN:
+    SEQUENCE: KKEEVKKEEVPKPKPKPKPKPKPKKEEVKKEEV
+  SOD:
+    COUNT: 59
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 80901
+    MAPPING: mappingTIP4PSwater.yaml
+    NAME: SOL
+CPT: null
+DATEOFRUNNING: 20/03/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.19133769
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: amberff03ws
+FF_DATE: null
+FF_SOURCE: null
+GRO: null
+ID: 267
+LOG: null
+NUMBER_OF_ATOMS: 762
+PREEQTIME: 0
+PUBLICATION: unpublished
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: Charged sequence with CaCl
+TEMPERATURE: 303.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - KK40_d_ca2+_1000_.tpr
+TRAJECTORY_SIZE: 329494660
+TRJ:
+- - KK40_d_ca2+_1000_nowater.xtc
+TRJLENGTH: 1000010.0
+TYPEOFSYSTEM: protein

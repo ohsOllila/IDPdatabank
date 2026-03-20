@@ -1,4 +1,3 @@
-ID: 241
 AUTHORS_CONTACT: Samuli Ollila
 COMPOSITION:
   CLA:
@@ -58,6 +57,7 @@ FF: amber99SB-ILDN
 FF_DATE: null
 FF_SOURCE: null
 GRO: null
+ID: 241
 LOG: null
 NUMBER_OF_ATOMS: 1451
 PREEQTIME: 0
