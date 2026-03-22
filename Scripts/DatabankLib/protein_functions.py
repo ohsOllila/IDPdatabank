@@ -21,6 +21,13 @@ import seaborn as sns
 from matplotlib.colors import LinearSegmentedColormap
 
 
+from pymol import cmd
+import pymol
+import glob
+
+import matplotlib.image as mpimg
+
+
 def calculate_contact_probabilities(gro_file, xtc_file, cutoff):
     u = mda.Universe(gro_file, xtc_file)
     CAatoms = u.select_atoms("name CA")
@@ -2143,6 +2150,171 @@ def compute_residue_nonzero_percentages(input_yaml: str, output_yaml: str) -> No
 
 
 
+    plt.tight_layout()
+    
+    plt.savefig("combined_ensemble_secondary.png", dpi=300)
+    #plt.show()
+
+
+def calculate_secondary_structures(gro_file, xtc_file):
+
+    import mdtraj
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import matplotlib.image as mpimg
+    from pymol import cmd
+
+    print(xtc_file, gro_file)
+
+    # -------------------------
+    # LOAD TRAJECTORY
+    # -------------------------
+    traj = mdtraj.load(xtc_file, top=gro_file)
+
+    three_to_one = {
+        'ALA': 'A', 'ARG': 'R', 'ASN': 'N', 'ASP': 'D', 'CYS': 'C',
+        'GLU': 'E', 'GLN': 'Q', 'GLY': 'G', 'HIS': 'H', 'ILE': 'I',
+        'LEU': 'L', 'LYS': 'K', 'MET': 'M', 'PHE': 'F', 'PRO': 'P',
+        'SER': 'S', 'THR': 'T', 'TRP': 'W', 'TYR': 'Y', 'VAL': 'V'
+    }
+
+    residue_names = [three_to_one[res.name] for res in traj.topology.residues]
+
+    # -------------------------
+    # DSSP
+    # -------------------------
+    dssp = mdtraj.compute_dssp(traj, simplified=True)
+
+    initial_ss = dssp[0]
+    final_ss = dssp[-1]
+
+    color_map = {'C': 'grey', 'H': 'red', 'E': 'blue'}
+
+    initial_colors = [color_map[s] for s in initial_ss]
+    final_colors = [color_map[s] for s in final_ss]
+
+    # -------------------------
+    # PYMOL ENSEMBLE IMAGE
+    # -------------------------
+    cmd.set("ray_opaque_background", 1)
+
+    obj_name = "traj"
+    cmd.load(gro_file, obj_name)
+    cmd.load_traj(xtc_file, obj_name, state=1, interval=2000)
+
+    cmd.color("blue", obj_name)
+    cmd.set("all_states", "on")
+    cmd.orient()
+    cmd.ray(600, 600)
+
+    pymol_img = "ensemble.png"
+    cmd.png(pymol_img)
+    cmd.delete("all")
+
+    # Convert PyMOL image → matplotlib fig
+    img = mpimg.imread(pymol_img)
+    fig_ensemble, ax_e = plt.subplots(figsize=(6, 6))
+    ax_e.imshow(img)
+    ax_e.axis("off")
+    ax_e.set_title("Conformational Ensemble")
+
+    # -------------------------
+    # COMBINED FIGURE
+    # -------------------------
+    fig_combined = plt.figure(figsize=(18, 7))
+    gs = fig_combined.add_gridspec(3, 1, height_ratios=[2, 1, 1])
+
+    ax_img = fig_combined.add_subplot(gs[0])
+    ax_init = fig_combined.add_subplot(gs[1])
+    ax_final = fig_combined.add_subplot(gs[2])
+
+    ax_img.imshow(img)
+    ax_img.axis("off")
+    ax_img.set_title("Conformational Ensemble")
+
+    for i, c in enumerate(initial_colors):
+        ax_init.bar(i, 1, color=c)
+
+    for i, c in enumerate(final_colors):
+        ax_final.bar(i, 1, color=c)
+
+    for ax in [ax_init, ax_final]:
+        ax.set_xlim(0, len(dssp[0]))
+        ax.set_ylim(0, 1)
+        ax.set_yticks([])
+
+    xticks = list(range(0, len(dssp[0]), 10))
+
+    ax_final.set_xticks(xticks)
+    ax_final.set_xticklabels([f"{i+1}" for i in xticks], rotation=90)
+    ax_init.set_xticks([])
+
+    ax_final.set_xlabel("Residue Index")
+
+    ax_init.set_title("Initial Secondary Structure")
+    ax_final.set_title("Final Secondary Structure")
+
+    legend_labels = ['Coil (C)', 'Helix (H)', 'Extended (E)']
+    handles = [plt.Line2D([0], [0], color=color_map[k], lw=4) for k in color_map]
+    ax_final.legend(handles, legend_labels, loc='upper right')
+
+    plt.tight_layout()
+    fig_combined.savefig("combined_ensemble_secondary.png", dpi=300)
+
+    # -------------------------
+    # COIL PROBABILITIES
+    # -------------------------
+    coil_counts = np.sum(dssp == 'C', axis=0)
+    total_frames = dssp.shape[0]
+    coil_probabilities = coil_counts / total_frames
+
+    ### dictionary output
+    ##coil_dict = {
+    ##    f"{i+1}_{residue_names[i]}": float(prob)
+    ##    for i, prob in enumerate(coil_probabilities)
+    ##}
+
+
+    structures = ['H', 'B', 'E', 'G', 'I', 'T', 'S', 'C']
+
+    total_frames = dssp.shape[0]
+
+    ss_dict = {}
+
+    for i in range(dssp.shape[1]):  # safer than enumerate(residue_names)
+        res_key = f"{i+1}_{residue_names[i]}"
+    
+        ss_dict[res_key] = {
+            ss: float(np.sum(dssp[:, i] == ss) / total_frames)
+            for ss in structures
+        }
+
+    coil_dict = ss_dict
+
+
+    
+    # -------------------------
+    # ORDER PROBABILITY FIG
+    # -------------------------
+    fig_order = plt.figure(figsize=(18, 4))
+    plt.bar(range(len(coil_probabilities)), coil_probabilities, color='grey')
+    plt.xlabel('Residue Index')
+    plt.ylabel('Coil Probability')
+    plt.title('Coil Probability for Each Residue')
+
+    plt.xticks(
+        ticks=range(len(coil_probabilities)),
+        labels=[f"{i+1} {residue_names[i]}" for i in range(len(coil_probabilities))],
+        rotation=90
+    )
+
+    plt.tight_layout()
+    fig_order.savefig("order_probability.png", dpi=300)
+
+    # -------------------------
+    # RETURN EVERYTHING
+    # -------------------------
+    return fig_combined, fig_order, fig_ensemble, coil_dict
 
 
 
