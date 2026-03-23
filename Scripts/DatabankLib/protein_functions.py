@@ -1228,6 +1228,11 @@ def calculate_SAXS_profile_crysol(gro_file, xtc_file,dt_analysis_ps=100):
             subprocess.run("sed -i 's/OT1/OXT/' "+ filName_PDB, shell=True)
             subprocess.run("sed -i '/.*OC2*/d' "+ filName_PDB, shell=True)
             subprocess.run("sed -i '/.*OT2*/d' "+ filName_PDB, shell=True)
+            # HIS fix
+            subprocess.run("sed -i 's/HIE/HIS/g' "+ filName_PDB, shell=True)
+            # glutamic acid and aspartate fix for low pH simulations
+            subprocess.run("sed -i 's/GLH/GLU/g' "+ filName_PDB, shell=True)
+            subprocess.run("sed -i 's/ASH/ASP/g' "+ filName_PDB, shell=True)
             
             # RUN CRYSOL
             OUT = subprocess.run("crysol "+ filName_PDB +" -lm 50 -fb 18 -ns 101 -p profile_"+str(frame_idx), shell=True)
@@ -1494,7 +1499,7 @@ def calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_d
     for residue, freq_dict in experimental_data.items():
         new_freq_dict = {}
         for freq, values in freq_dict.items():
-            rounded_freq = round(float(freq))
+            rounded_freq = round(float(freq)/10)*10
             new_freq_dict[rounded_freq] = values
         rounded_data[residue] = new_freq_dict
 
@@ -1518,6 +1523,7 @@ def calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_d
             #print(experimental_data[int(re.sub(r"\D", "", residue))])
             try:
                 #print(residue + " " + re.sub(r"\D", "", residue))
+                #print(experimental_data)
                 #print(experimental_data[int(re.sub(r"\D", "", residue))])
                 differences[residue] = {
                     'R1': 1/spin_relaxation_times[residue][magnetic_field]['T1']['value'] - 1/experimental_data[int(re.sub(r"\D", "", residue))][magnetic_field]['T1']['value'],
