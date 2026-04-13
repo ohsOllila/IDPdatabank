@@ -1,0 +1,88 @@
+uniprot:
+- title: 'sp|Q6P5W5.4| RecName: Full=Zinc transporter ZIP4; AltName: Full=Solute carrier
+    family 39 member 4; AltName: Full=Zrt- and Irt-like protein 4; Short=ZIP-4; Flags:
+    Precursor [Homo sapiens]'
+  length: 647
+  identity_%: 88.46
+  similarity_%: 88.46
+  coverage_%: 78.0
+  e_value: 2.94858e-30
+  bit_score: 115.546
+- title: 'sp|A0JPN2.2| RecName: Full=Zinc transporter ZIP4; AltName: Full=Solute carrier
+    family 39 member 4; AltName: Full=Zrt- and Irt-like protein 4; Short=ZIP-4; Flags:
+    Precursor [Rattus norvegicus]'
+  length: 657
+  identity_%: 62.67
+  similarity_%: 73.33
+  coverage_%: 75.0
+  e_value: 2.82611e-22
+  bit_score: 92.8189
+- title: 'sp|L5KLU7.1| RecName: Full=Zinc transporter ZIP4; AltName: Full=Solute carrier
+    family 39 member 4; AltName: Full=Zrt- and Irt-like protein 4; Short=ZIP-4; Flags:
+    Precursor [Pteropus alecto]'
+  length: 644
+  identity_%: 70.67
+  similarity_%: 76.0
+  coverage_%: 75.0
+  e_value: 8.97006e-22
+  bit_score: 91.2781
+- title: 'sp|Q1KZG0.1| RecName: Full=Zinc transporter ZIP4; AltName: Full=Solute carrier
+    family 39 member 4; AltName: Full=Zrt- and Irt-like protein 4; Short=ZIP-4; Flags:
+    Precursor [Bos taurus]'
+  length: 653
+  identity_%: 68.0
+  similarity_%: 72.0
+  coverage_%: 75.0
+  e_value: 1.07767e-18
+  bit_score: 82.4185
+- title: 'sp|Q78IQ7.1| RecName: Full=Zinc transporter ZIP4; AltName: Full=Activated
+    in W/Wv mouse stomach 2; Short=mAWMS2; AltName: Full=Solute carrier family 39
+    member 4; AltName: Full=Zrt- and Irt-like protein 4; Short=ZIP-4; Flags: Precursor
+    [Mus musculus]'
+  length: 660
+  identity_%: 66.67
+  similarity_%: 73.33
+  coverage_%: 75.0
+  e_value: 2.0407e-16
+  bit_score: 75.8702
+pdb:
+- title: pdb|7R32|A Chain A, Membrane-associated protein slr1513 [Synechocystis sp.
+    PCC 6803] >pdb|7R32|B Chain B, Membrane-associated protein slr1513 [Synechocystis
+    sp. PCC 6803] >pdb|7R32|C Chain C, Membrane-associated protein slr1513 [Synechocystis
+    sp. PCC 6803]
+  length: 114
+  identity_%: 73.33
+  similarity_%: 73.33
+  coverage_%: 15.0
+  e_value: 0.513973
+  bit_score: 30.0314
+- title: pdb|3SKX|A Chain A, Copper-exporting P-type ATPase B [Archaeoglobus fulgidus
+    DSM 4304]
+  length: 280
+  identity_%: 44.44
+  similarity_%: 57.78
+  coverage_%: 45.0
+  e_value: 0.853128
+  bit_score: 30.0314
+- title: pdb|7RCS|A Chain A, antibody m43.160 heavy chain [Mus musculus] >pdb|7RCS|H
+    Chain H, antibody m43.160 heavy chain [Mus musculus]
+  length: 255
+  identity_%: 53.57
+  similarity_%: 60.71
+  coverage_%: 28.0
+  e_value: 0.854189
+  bit_score: 29.6462
+- title: pdb|7RDA|H Chain H, antibody m43.138 heavy chain [Mus musculus]
+  length: 255
+  identity_%: 53.57
+  similarity_%: 60.71
+  coverage_%: 28.0
+  e_value: 0.870946
+  bit_score: 29.6462
+- title: pdb|7T6X|H Chain H, AR4A Fab, heavy chain [Homo sapiens]
+  length: 277
+  identity_%: 45.16
+  similarity_%: 58.06
+  coverage_%: 31.0
+  e_value: 0.885155
+  bit_score: 29.6462

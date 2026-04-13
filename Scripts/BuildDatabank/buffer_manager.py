@@ -46,7 +46,7 @@ class BufferManager:
         if component not in self._buffer_data:
             raise ValueError(f"Component {component} not found in buffer data")
 
-        if component in ("H2O", "D2O", "entity_1", "asyn", "ICL2", "LysRS residues 1-72", "entity", "alpha-synuclein", "protein", "Alpha-synuclein", "intrinsically disordered alpha-synuclein", "alpha synuclein", "Synuclein","hZIP4 intracellular loop 2","protease inhibitors (Roche)"):
+        if component in ("H2O", "D2O", "entity_1", "asyn", "ICL2", "LysRS residues 1-72", "entity", "alpha-synuclein", "protein", "Alpha-synuclein", "intrinsically disordered alpha-synuclein", "alpha synuclein", "Synuclein","hZIP4 intracellular loop 2","protease inhibitors (Roche)", "Calmodulin","EN2", "Engrailed 2","AEBSF protease inhibitor","leupeptin","pepstatin A","CEREBRAL DOPAMINE NEUROTROPHIC FACTOR"):
             return 0.0
 
         charges = self._get_charges_at_ph(component, self.ph)

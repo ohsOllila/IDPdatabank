@@ -1,0 +1,109 @@
+uniprot:
+- title: 'sp|Q6P5W5.4| RecName: Full=Zinc transporter ZIP4; AltName: Full=Solute carrier
+    family 39 member 4; AltName: Full=Zrt- and Irt-like protein 4; Short=ZIP-4; Flags:
+    Precursor [Homo sapiens]'
+  length: 647
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 75.0
+  e_value: 1.26001e-43
+  bit_score: 152.525
+- title: 'sp|L5KLU7.1| RecName: Full=Zinc transporter ZIP4; AltName: Full=Solute carrier
+    family 39 member 4; AltName: Full=Zrt- and Irt-like protein 4; Short=ZIP-4; Flags:
+    Precursor [Pteropus alecto]'
+  length: 644
+  identity_%: 76.0
+  similarity_%: 81.33
+  coverage_%: 75.0
+  e_value: 5.78546e-26
+  bit_score: 103.219
+- title: 'sp|A0JPN2.2| RecName: Full=Zinc transporter ZIP4; AltName: Full=Solute carrier
+    family 39 member 4; AltName: Full=Zrt- and Irt-like protein 4; Short=ZIP-4; Flags:
+    Precursor [Rattus norvegicus]'
+  length: 657
+  identity_%: 68.0
+  similarity_%: 78.67
+  coverage_%: 75.0
+  e_value: 7.21938e-26
+  bit_score: 102.834
+- title: 'sp|Q78IQ7.1| RecName: Full=Zinc transporter ZIP4; AltName: Full=Activated
+    in W/Wv mouse stomach 2; Short=mAWMS2; AltName: Full=Solute carrier family 39
+    member 4; AltName: Full=Zrt- and Irt-like protein 4; Short=ZIP-4; Flags: Precursor
+    [Mus musculus]'
+  length: 660
+  identity_%: 72.0
+  similarity_%: 78.67
+  coverage_%: 75.0
+  e_value: 2.04029e-20
+  bit_score: 87.4261
+- title: 'sp|Q1KZG0.1| RecName: Full=Zinc transporter ZIP4; AltName: Full=Solute carrier
+    family 39 member 4; AltName: Full=Zrt- and Irt-like protein 4; Short=ZIP-4; Flags:
+    Precursor [Bos taurus]'
+  length: 653
+  identity_%: 76.0
+  similarity_%: 80.0
+  coverage_%: 75.0
+  e_value: 5.13457e-20
+  bit_score: 86.2705
+pdb:
+- title: pdb|7R32|A Chain A, Membrane-associated protein slr1513 [Synechocystis sp.
+    PCC 6803] >pdb|7R32|B Chain B, Membrane-associated protein slr1513 [Synechocystis
+    sp. PCC 6803] >pdb|7R32|C Chain C, Membrane-associated protein slr1513 [Synechocystis
+    sp. PCC 6803]
+  length: 114
+  identity_%: 76.47
+  similarity_%: 82.35
+  coverage_%: 17.0
+  e_value: 0.00304545
+  bit_score: 35.8094
+- title: pdb|3SKX|A Chain A, Copper-exporting P-type ATPase B [Archaeoglobus fulgidus
+    DSM 4304]
+  length: 280
+  identity_%: 48.89
+  similarity_%: 62.22
+  coverage_%: 45.0
+  e_value: 0.00516599
+  bit_score: 36.1946
+- title: pdb|9HBK|C Chain C, Superinfection exclusion protein [Vaccinia virus Western
+    Reserve] >pdb|9HL2|A Chain A, Superinfection exclusion protein [Vaccinia virus
+    Western Reserve] >pdb|9RDH|C Chain C, Superinfection exclusion protein [Vaccinia
+    virus Western Reserve]
+  length: 413
+  identity_%: 60.87
+  similarity_%: 69.57
+  coverage_%: 23.0
+  e_value: 0.00850802
+  bit_score: 35.8094
+- title: pdb|6QKG|A Chain A, NCR A [bacterium enrichment culture clone N47] >pdb|6QKG|B
+    Chain B, NCR A [bacterium enrichment culture clone N47] >pdb|6QKR|A Chain A, NCR
+    [bacterium enrichment culture clone N47] >pdb|6QKR|B Chain B, NCR [bacterium enrichment
+    culture clone N47] >pdb|6QKX|A Chain A, NCR [bacterium enrichment culture clone
+    N47]
+  length: 714
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 13.0
+  e_value: 0.0108724
+  bit_score: 35.4242
+- title: pdb|5V12|A Chain A, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+    >pdb|5V12|B Chain B, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+    >pdb|5V12|C Chain C, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+    >pdb|5V12|D Chain D, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+    >pdb|5V12|E Chain E, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+    >pdb|5V12|F Chain F, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+    >pdb|5V12|G Chain G, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+    >pdb|5V12|H Chain H, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+    >pdb|5V1X|A Chain A, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+    >pdb|5V1X|B Chain B, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+    >pdb|5V1X|C Chain C, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+    >pdb|5V1X|D Chain D, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+    >pdb|5V1X|E Chain E, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+    >pdb|5V1X|F Chain F, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+    >pdb|5V1X|G Chain G, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+    >pdb|5V1X|H Chain H, Hercynylcysteine sulfoxide lyase [Neurospora crassa OR74A]
+  length: 501
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 13.0
+  e_value: 0.0198727
+  bit_score: 34.6538

@@ -1,0 +1,47 @@
+uniprot:
+- title: 'sp|Q15046.3| RecName: Full=Lysine--tRNA ligase; AltName: Full=Lysyl-tRNA
+    synthetase; Short=LysRS [Homo sapiens]'
+  length: 597
+  identity_%: 98.61
+  similarity_%: 98.61
+  coverage_%: 100.0
+  e_value: 3.64833e-35
+  bit_score: 127.487
+- title: 'sp|Q99MN1.1| RecName: Full=Lysine--tRNA ligase; AltName: Full=Lysyl-tRNA
+    synthetase; Short=LysRS [Mus musculus]'
+  length: 595
+  identity_%: 77.78
+  similarity_%: 87.5
+  coverage_%: 100.0
+  e_value: 3.76377e-25
+  bit_score: 99.3673
+- title: 'sp|P37879.1| RecName: Full=Lysine--tRNA ligase; AltName: Full=Lysyl-tRNA
+    synthetase; Short=LysRS [Cricetulus griseus]'
+  length: 597
+  identity_%: 79.45
+  similarity_%: 86.3
+  coverage_%: 101.39
+  e_value: 1.65805e-21
+  bit_score: 88.9669
+- title: 'sp|Q5XIM7.1| RecName: Full=Lysine--tRNA ligase; AltName: Full=Lysyl-tRNA
+    synthetase; Short=LysRS [Rattus norvegicus]'
+  length: 626
+  identity_%: 77.78
+  similarity_%: 88.89
+  coverage_%: 75.0
+  e_value: 1.80634e-12
+  bit_score: 63.5438
+pdb:
+- title: pdb|6CHD|A Chain A, Lysine--tRNA ligase [Homo sapiens] >pdb|6CHD|B Chain
+    B, Lysine--tRNA ligase [Homo sapiens] >pdb|9DOW|A Chain A, Lysine--tRNA ligase
+    [Homo sapiens] >pdb|9DOW|B Chain B, Lysine--tRNA ligase [Homo sapiens] >pdb|9DPA|A
+    Chain A, Lysine--tRNA ligase [Homo sapiens] >pdb|9DPA|B Chain B, Lysine--tRNA
+    ligase [Homo sapiens] >pdb|9DPB|A Chain A, Lysine--tRNA ligase [Homo sapiens]
+    >pdb|9DPB|B Chain B, Lysine--tRNA ligase [Homo sapiens] >pdb|9DPL|A Chain A, Lysine--tRNA
+    ligase [Homo sapiens] >pdb|9DPL|B Chain B, Lysine--tRNA ligase [Homo sapiens]
+  length: 597
+  identity_%: 98.61
+  similarity_%: 98.61
+  coverage_%: 100.0
+  e_value: 1.04462e-35
+  bit_score: 127.487

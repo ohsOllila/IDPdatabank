@@ -1,0 +1,63 @@
+uniprot:
+- title: 'sp|Q99109.1| RecName: Full=Repellent protein 1; Contains: RecName: Full=Rep1-1;
+    Contains: RecName: Full=Rep1-2; Contains: RecName: Full=Rep1-3; Contains: RecName:
+    Full=Rep1-4; Contains: RecName: Full=Rep1-5; Contains: RecName: Full=Rep1-6; Contains:
+    RecName: Full=Rep1-7; Contains: RecName: Full=Rep1-8; Contains: RecName: Full=Rep1-9;
+    Contains: RecName: Full=Rep1-10; Contains: RecName: Full=Rep1-11; Flags: Precursor
+    [Mycosarcoma maydis]'
+  length: 652
+  identity_%: 54.55
+  similarity_%: 68.18
+  coverage_%: 62.86
+  e_value: 1.41318
+  bit_score: 27.7202
+- title: 'sp|Q99109.1| RecName: Full=Repellent protein 1; Contains: RecName: Full=Rep1-1;
+    Contains: RecName: Full=Rep1-2; Contains: RecName: Full=Rep1-3; Contains: RecName:
+    Full=Rep1-4; Contains: RecName: Full=Rep1-5; Contains: RecName: Full=Rep1-6; Contains:
+    RecName: Full=Rep1-7; Contains: RecName: Full=Rep1-8; Contains: RecName: Full=Rep1-9;
+    Contains: RecName: Full=Rep1-10; Contains: RecName: Full=Rep1-11; Flags: Precursor
+    [Mycosarcoma maydis]'
+  length: 652
+  identity_%: 46.15
+  similarity_%: 61.54
+  coverage_%: 74.29
+  e_value: 4.51812
+  bit_score: 26.5646
+pdb:
+- title: pdb|6FIG|A Chain A, Receptor-like protein kinase ANXUR1 [Arabidopsis thaliana]
+    >pdb|6FIG|B Chain B, Receptor-like protein kinase ANXUR1 [Arabidopsis thaliana]
+  length: 414
+  identity_%: 58.82
+  similarity_%: 70.59
+  coverage_%: 48.57
+  e_value: 2.39664
+  bit_score: 25.7942
+- title: pdb|4U5I|A Chain A, Endoglucanase H [Acetivibrio thermocellus ATCC 27405]
+    >pdb|4U5I|B Chain B, Endoglucanase H [Acetivibrio thermocellus ATCC 27405] >pdb|4U5K|A
+    Chain A, Endoglucanase H [Acetivibrio thermocellus ATCC 27405] >pdb|4U5K|B Chain
+    B, Endoglucanase H [Acetivibrio thermocellus ATCC 27405]
+  length: 403
+  identity_%: 50.0
+  similarity_%: 55.56
+  coverage_%: 51.43
+  e_value: 5.00766
+  bit_score: 24.6386
+- title: pdb|4U3A|A Chain A, Endoglucanase H [Acetivibrio thermocellus ATCC 27405]
+    >pdb|4U3A|B Chain B, Endoglucanase H [Acetivibrio thermocellus ATCC 27405]
+  length: 403
+  identity_%: 50.0
+  similarity_%: 55.56
+  coverage_%: 51.43
+  e_value: 5.70051
+  bit_score: 24.6386
+- title: pdb|5BYW|A Chain A, Endoglucanase H [Acetivibrio thermocellus ATCC 27405]
+    >pdb|5BYW|B Chain B, Endoglucanase H [Acetivibrio thermocellus ATCC 27405] >pdb|5BYW|C
+    Chain C, Endoglucanase H [Acetivibrio thermocellus ATCC 27405] >pdb|5BYW|D Chain
+    D, Endoglucanase H [Acetivibrio thermocellus ATCC 27405] >pdb|5BYW|E Chain E,
+    Endoglucanase H [Acetivibrio thermocellus ATCC 27405]
+  length: 414
+  identity_%: 50.0
+  similarity_%: 55.56
+  coverage_%: 51.43
+  e_value: 6.82179
+  bit_score: 24.6386

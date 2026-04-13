@@ -1,0 +1,92 @@
+uniprot:
+- title: 'sp|I6YA32.1| RecName: Full=Cell wall hydrolase ChiZ [Mycobacterium tuberculosis
+    H37Rv]'
+  length: 165
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 95.52
+  e_value: 5.97136e-39
+  bit_score: 128.642
+- title: 'sp|Q6PCF9.1| RecName: Full=Putative sodium-coupled neutral amino acid transporter
+    10; AltName: Full=Solute carrier family 38 member 10 [Xenopus laevis]'
+  length: 1045
+  identity_%: 31.71
+  similarity_%: 51.22
+  coverage_%: 61.19
+  e_value: 2.32866
+  bit_score: 28.8758
+- title: 'sp|Q8K394.2| RecName: Full=Inactive phospholipase C-like protein 2; Short=PLC-L(2);
+    Short=PLC-L2; Short=Phospholipase C-L2; AltName: Full=Phospholipase C-epsilon-2;
+    Short=PLC-epsilon-2 [Mus musculus]'
+  length: 1128
+  identity_%: 45.16
+  similarity_%: 48.39
+  coverage_%: 46.27
+  e_value: 4.10021
+  bit_score: 28.4906
+- title: 'sp|Q9NCL7.1| RecName: Full=Phosphatidylinositol transfer protein 2; Short=PtdIns
+    transfer protein 2; AltName: Full=DdPITP2 [Dictyostelium discoideum]'
+  length: 259
+  identity_%: 55.56
+  similarity_%: 72.22
+  coverage_%: 26.87
+  e_value: 4.21823
+  bit_score: 28.1054
+- title: 'sp|P32486.2| RecName: Full=Beta-glucan synthesis-associated protein KRE6;
+    AltName: Full=Killer toxin-resistance protein 6 [Saccharomyces cerevisiae S288C]'
+  length: 720
+  identity_%: 29.27
+  similarity_%: 41.46
+  coverage_%: 61.19
+  e_value: 5.61919
+  bit_score: 27.7202
+pdb:
+- title: pdb|5EX1|A Chain A, Peptidyl-prolyl cis-trans isomerase cyclophilin type
+    [Hirschia baltica ATCC 49814] >pdb|5EX1|B Chain B, Peptidyl-prolyl cis-trans isomerase
+    cyclophilin type [Hirschia baltica ATCC 49814] >pdb|5EX1|C Chain C, Peptidyl-prolyl
+    cis-trans isomerase cyclophilin type [Hirschia baltica ATCC 49814] >pdb|5EX1|D
+    Chain D, Peptidyl-prolyl cis-trans isomerase cyclophilin type [Hirschia baltica
+    ATCC 49814] >pdb|5EX1|E Chain E, Peptidyl-prolyl cis-trans isomerase cyclophilin
+    type [Hirschia baltica ATCC 49814] >pdb|5EX1|F Chain F, Peptidyl-prolyl cis-trans
+    isomerase cyclophilin type [Hirschia baltica ATCC 49814]
+  length: 283
+  identity_%: 45.83
+  similarity_%: 58.33
+  coverage_%: 35.82
+  e_value: 0.78
+  bit_score: 28.8758
+- title: pdb|6Y6K|A Chain A, RNA-dependent RNA polymerase [SFTS virus AH12]
+  length: 2084
+  identity_%: 52.63
+  similarity_%: 57.89
+  coverage_%: 28.36
+  e_value: 4.42506
+  bit_score: 26.5646
+- title: pdb|8AS6|A Chain A, RNA-dependent RNA-polymerase L protein [SFTS virus AH12]
+    >pdb|8AS7|A Chain A, RNA-dependent RNA-polymerase L protein [SFTS virus AH12]
+    >pdb|8ASB|A Chain A, RNA-dependent RNA-polymerase L protein [SFTS virus AH12]
+    >pdb|8ASD|A Chain A, RNA-directed RNA polymerase [SFTS virus AH12] >pdb|8ASG|A
+    Chain A, RNA-dependent RNA-polymerase L protein [SFTS virus AH12] >pdb|8R6U|A
+    Chain A, RNA-directed RNA polymerase L [SFTS virus AH12] >pdb|8R6W|A Chain A,
+    RNA-directed RNA polymerase L [SFTS virus AH12] >pdb|8R6Y|A Chain A, RNA-directed
+    RNA polymerase L [SFTS virus AH12]
+  length: 2084
+  identity_%: 52.63
+  similarity_%: 57.89
+  coverage_%: 28.36
+  e_value: 4.42506
+  bit_score: 26.5646
+- title: pdb|7ALP|U Chain U, Replicase [Phlebovirus WCH/97/HN/China/2011]
+  length: 2084
+  identity_%: 52.63
+  similarity_%: 57.89
+  coverage_%: 28.36
+  e_value: 4.42506
+  bit_score: 26.5646
+- title: pdb|6L42|A Chain A, RNA polymerase [Phlebovirus WCH/97/HN/China/2011]
+  length: 2109
+  identity_%: 52.63
+  similarity_%: 57.89
+  coverage_%: 28.36
+  e_value: 4.42563
+  bit_score: 26.5646

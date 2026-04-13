@@ -1,0 +1,877 @@
+uniprot:
+- title: 'sp|P37840.1| RecName: Full=Alpha-synuclein; AltName: Full=Non-A beta component
+    of AD amyloid; AltName: Full=Non-A4 component of amyloid precursor; Short=NACP
+    [Homo sapiens] >sp|P61140.1| RecName: Full=Alpha-synuclein [Gorilla gorilla gorilla]
+    >sp|P61144.1| RecName: Full=Alpha-synuclein [Pan paniscus] >sp|P61145.1| RecName:
+    Full=Alpha-synuclein [Pan troglodytes]'
+  length: 140
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 6.46099e-94
+  bit_score: 270.396
+- title: 'sp|P61139.1| RecName: Full=Alpha-synuclein [Erythrocebus patas]'
+  length: 140
+  identity_%: 99.29
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 1.3627e-93
+  bit_score: 269.626
+- title: 'sp|P61142.1| RecName: Full=Alpha-synuclein [Macaca fascicularis] >sp|P61143.1|
+    RecName: Full=Alpha-synuclein [Macaca mulatta]'
+  length: 140
+  identity_%: 98.57
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 1.89403e-93
+  bit_score: 269.24
+- title: 'sp|P61146.1| RecName: Full=Alpha-synuclein [Pongo abelii]'
+  length: 140
+  identity_%: 99.29
+  similarity_%: 99.29
+  coverage_%: 100.0
+  e_value: 1.09639e-92
+  bit_score: 267.314
+- title: 'sp|P61147.1| RecName: Full=Alpha-synuclein [Saguinus labiatus]'
+  length: 140
+  identity_%: 96.43
+  similarity_%: 98.57
+  coverage_%: 100.0
+  e_value: 4.23661e-91
+  bit_score: 263.077
+pdb:
+- title: pdb|1XQ8|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|2KKW|A Chain A, Alpha-synuclein
+    [Homo sapiens] >pdb|2N0A|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|2N0A|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|2N0A|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|2N0A|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|2N0A|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|2N0A|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|2N0A|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|2N0A|H Chain H, Alpha-synuclein
+    [Homo sapiens] >pdb|2N0A|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|2N0A|J
+    Chain J, Alpha-synuclein [Homo sapiens] >pdb|6CU7|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|6CU7|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|6CU7|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|6CU7|D Chain D, Alpha-synuclein [Homo sapiens]
+    >pdb|6CU7|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|6CU7|F Chain F, Alpha-synuclein
+    [Homo sapiens] >pdb|6CU7|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|6CU7|H
+    Chain H, Alpha-synuclein [Homo sapiens] >pdb|6CU7|I Chain I, Alpha-synuclein [Homo
+    sapiens] >pdb|6CU7|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|6CU8|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|6CU8|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|6CU8|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|6CU8|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|6CU8|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|6CU8|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|6CU8|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|6CU8|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|6CU8|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|6CU8|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|6OSJ|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|6OSJ|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|6OSJ|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|6OSJ|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|6OSJ|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|6OSJ|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|6OSJ|G Chain
+    G, Alpha-synuclein [Homo sapiens] >pdb|6OSJ|H Chain H, Alpha-synuclein [Homo sapiens]
+    >pdb|6OSJ|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|6OSJ|J Chain J, Alpha-synuclein
+    [Homo sapiens] >pdb|6OSL|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|6OSL|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|6OSL|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|6OSL|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|6OSL|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|6OSL|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|6OSL|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|6OSL|H Chain H, Alpha-synuclein
+    [Homo sapiens] >pdb|6OSL|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|6OSL|J
+    Chain J, Alpha-synuclein [Homo sapiens] >pdb|6OSM|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|6OSM|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|6OSM|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|6OSM|D Chain D, Alpha-synuclein [Homo sapiens]
+    >pdb|6OSM|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|6OSM|F Chain F, Alpha-synuclein
+    [Homo sapiens] >pdb|6OSM|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|6OSM|H
+    Chain H, Alpha-synuclein [Homo sapiens] >pdb|6OSM|I Chain I, Alpha-synuclein [Homo
+    sapiens] >pdb|6OSM|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|6RT0|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|6RT0|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|6RT0|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|6RT0|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|6RT0|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|6RT0|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|6RT0|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|6RT0|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|6RT0|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|6RT0|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|6RTB|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|6RTB|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|6RTB|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|6RTB|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|6RTB|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|6RTB|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|6RTB|G Chain
+    G, Alpha-synuclein [Homo sapiens] >pdb|6RTB|H Chain H, Alpha-synuclein [Homo sapiens]
+    >pdb|6RTB|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|6RTB|J Chain J, Alpha-synuclein
+    [Homo sapiens] >pdb|6SST|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|6SST|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|6SST|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|6SST|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|6SST|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|6SST|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|6SST|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|6SST|H Chain H, Alpha-synuclein
+    [Homo sapiens] >pdb|6SST|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|6SST|J
+    Chain J, Alpha-synuclein [Homo sapiens] >pdb|6SSX|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|6SSX|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|6SSX|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|6SSX|D Chain D, Alpha-synuclein [Homo sapiens]
+    >pdb|6SSX|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|6SSX|F Chain F, Alpha-synuclein
+    [Homo sapiens] >pdb|6SSX|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|6SSX|H
+    Chain H, Alpha-synuclein [Homo sapiens] >pdb|6SSX|I Chain I, Alpha-synuclein [Homo
+    sapiens] >pdb|6SSX|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|6XYO|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|6XYO|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|6XYO|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|6XYO|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|6XYO|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|6XYO|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|6XYO|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|6XYO|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|6XYO|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|6XYO|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|6XYP|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|6XYP|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|6XYP|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|6XYP|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|6XYP|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|6XYP|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|6XYP|G Chain
+    G, Alpha-synuclein [Homo sapiens] >pdb|6XYP|H Chain H, Alpha-synuclein [Homo sapiens]
+    >pdb|6XYP|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|6XYP|J Chain J, Alpha-synuclein
+    [Homo sapiens] >pdb|6XYQ|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|6XYQ|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|6XYQ|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|6XYQ|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|6XYQ|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|6XYQ|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|6XYQ|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|6XYQ|H Chain H, Alpha-synuclein
+    [Homo sapiens] >pdb|6XYQ|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|6XYQ|J
+    Chain J, Alpha-synuclein [Homo sapiens] >pdb|7C1D|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|7C1D|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|7C1D|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|7C1D|D Chain D, Alpha-synuclein [Homo sapiens]
+    >pdb|7C1D|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|7C1D|F Chain F, Alpha-synuclein
+    [Homo sapiens] >pdb|7L7H|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|7L7H|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|7L7H|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|7L7H|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|7L7H|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|7L7H|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|7L7H|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|7L7H|H Chain H, Alpha-synuclein
+    [Homo sapiens] >pdb|7NCA|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|7NCA|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|7NCA|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|7NCA|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|7NCA|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|7NCA|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|7NCA|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|7NCA|H Chain H, Alpha-synuclein
+    [Homo sapiens] >pdb|7NCA|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|7NCA|J
+    Chain J, Alpha-synuclein [Homo sapiens] >pdb|7NCA|K Chain K, Alpha-synuclein [Homo
+    sapiens] >pdb|7NCA|L Chain L, Alpha-synuclein [Homo sapiens] >pdb|7NCG|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|7NCG|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|7NCG|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|7NCG|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|7NCG|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|7NCG|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|7NCG|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|7NCG|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|7NCG|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|7NCG|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|7NCG|K Chain K, Alpha-synuclein [Homo sapiens] >pdb|7NCG|L Chain L, Alpha-synuclein
+    [Homo sapiens] >pdb|7NCH|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|7NCH|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|7NCH|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|7NCH|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|7NCH|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|7NCH|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|7NCH|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|7NCH|H Chain H, Alpha-synuclein
+    [Homo sapiens] >pdb|7NCH|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|7NCH|J
+    Chain J, Alpha-synuclein [Homo sapiens] >pdb|7NCH|K Chain K, Alpha-synuclein [Homo
+    sapiens] >pdb|7NCH|L Chain L, Alpha-synuclein [Homo sapiens] >pdb|7NCI|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|7NCI|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|7NCI|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|7NCI|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|7NCI|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|7NCI|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|7NCI|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|7NCI|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|7NCI|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|7NCI|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|7NCI|K Chain K, Alpha-synuclein [Homo sapiens] >pdb|7NCI|L Chain L, Alpha-synuclein
+    [Homo sapiens] >pdb|7NCJ|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|7NCJ|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|7NCJ|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|7NCJ|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|7NCJ|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|7NCJ|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|7NCJ|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|7NCJ|H Chain H, Alpha-synuclein
+    [Homo sapiens] >pdb|7NCJ|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|7NCJ|J
+    Chain J, Alpha-synuclein [Homo sapiens] >pdb|7NCJ|K Chain K, Alpha-synuclein [Homo
+    sapiens] >pdb|7NCJ|L Chain L, Alpha-synuclein [Homo sapiens] >pdb|7NCK|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|7NCK|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|7NCK|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|7NCK|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|7NCK|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|7NCK|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|7OZG|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|7OZG|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|7OZG|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|7OZG|D Chain D, Alpha-synuclein [Homo sapiens]
+    >pdb|7OZG|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|7OZG|F Chain F, Alpha-synuclein
+    [Homo sapiens] >pdb|7OZG|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|7OZG|H
+    Chain H, Alpha-synuclein [Homo sapiens] >pdb|7OZG|I Chain I, Alpha-synuclein [Homo
+    sapiens] >pdb|7OZG|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|7OZH|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|7OZH|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|7OZH|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|7OZH|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|7OZH|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|7OZH|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|7OZH|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|7OZH|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|7OZH|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|7OZH|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|7V47|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|7V47|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|7V47|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|7V47|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|7V47|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|7V47|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|7V48|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|7V48|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|7V48|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|7V48|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|7V48|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|7V48|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|7V49|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|7V49|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|7V49|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|7V4A|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|7V4A|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|7V4A|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|7V4B|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|7V4B|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|7V4B|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|7V4B|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|7V4B|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|7V4B|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|7V4C|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|7V4C|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|7V4C|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|7V4D|A
+    Chain A, Alpha-synuclein [Homo sapiens] >pdb|7V4D|B Chain B, Alpha-synuclein [Homo
+    sapiens] >pdb|7V4D|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|7V4D|D Chain
+    D, Alpha-synuclein [Homo sapiens] >pdb|7V4D|E Chain E, Alpha-synuclein [Homo sapiens]
+    >pdb|7V4D|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|7WMM|A Chain A, Alpha-synuclein
+    [Homo sapiens] >pdb|7WMM|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|7WMM|C
+    Chain C, Alpha-synuclein [Homo sapiens] >pdb|7WMM|D Chain D, Alpha-synuclein [Homo
+    sapiens] >pdb|7WMM|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|7WMM|F Chain
+    F, Alpha-synuclein [Homo sapiens] >pdb|7XJX|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|7XJX|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|7XJX|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|7XJX|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|7XJX|E
+    Chain E, Alpha-synuclein [Homo sapiens] >pdb|7XJX|F Chain F, Alpha-synuclein [Homo
+    sapiens] >pdb|7XO0|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|7XO0|B Chain
+    B, Alpha-synuclein [Homo sapiens] >pdb|7XO0|C Chain C, Alpha-synuclein [Homo sapiens]
+    >pdb|7XO0|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|7XO0|E Chain E, Alpha-synuclein
+    [Homo sapiens] >pdb|7XO0|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|7XO1|A
+    Chain A, Alpha-synuclein [Homo sapiens] >pdb|7XO1|B Chain B, Alpha-synuclein [Homo
+    sapiens] >pdb|7XO1|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|7XO1|D Chain
+    D, Alpha-synuclein [Homo sapiens] >pdb|7XO1|E Chain E, Alpha-synuclein [Homo sapiens]
+    >pdb|7XO1|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|7XO2|A Chain A, Alpha-synuclein
+    [Homo sapiens] >pdb|7XO2|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|7XO2|C
+    Chain C, Alpha-synuclein [Homo sapiens] >pdb|7XO2|D Chain D, Alpha-synuclein [Homo
+    sapiens] >pdb|7XO2|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|7XO2|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|7XO3|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|7XO3|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|7XO3|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|7XO3|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|7XO3|E
+    Chain E, Alpha-synuclein [Homo sapiens] >pdb|7XO3|F Chain F, Alpha-synuclein [Homo
+    sapiens] >pdb|7YK2|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|7YK2|B Chain
+    B, Alpha-synuclein [Homo sapiens] >pdb|7YK2|C Chain C, Alpha-synuclein [Homo sapiens]
+    >pdb|7YK2|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|7YK2|E Chain E, Alpha-synuclein
+    [Homo sapiens] >pdb|7YK2|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|7YK8|A
+    Chain A, Alpha-synuclein [Homo sapiens] >pdb|7YK8|B Chain B, Alpha-synuclein [Homo
+    sapiens] >pdb|7YK8|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|7YK8|D Chain
+    D, Alpha-synuclein [Homo sapiens] >pdb|7YK8|E Chain E, Alpha-synuclein [Homo sapiens]
+    >pdb|7YK8|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|7YK8|G Chain G, Alpha-synuclein
+    [Homo sapiens] >pdb|7YK8|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|7YK8|I
+    Chain I, Alpha-synuclein [Homo sapiens] >pdb|7YK8|J Chain J, Alpha-synuclein [Homo
+    sapiens] >pdb|7YK8|K Chain K, Alpha-synuclein [Homo sapiens] >pdb|7YK8|L Chain
+    L, Alpha-synuclein [Homo sapiens] >pdb|7YNF|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|7YNF|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|7YNF|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|7YNF|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|7YNF|E
+    Chain E, Alpha-synuclein [Homo sapiens] >pdb|7YNF|F Chain F, Alpha-synuclein [Homo
+    sapiens] >pdb|7YNG|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|7YNG|B Chain
+    B, Alpha-synuclein [Homo sapiens] >pdb|7YNG|C Chain C, Alpha-synuclein [Homo sapiens]
+    >pdb|7YNG|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|7YNG|E Chain E, Alpha-synuclein
+    [Homo sapiens] >pdb|7YNG|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|7YNL|A
+    Chain A, Alpha-synuclein [Homo sapiens] >pdb|7YNL|B Chain B, Alpha-synuclein [Homo
+    sapiens] >pdb|7YNL|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|7YNL|D Chain
+    D, Alpha-synuclein [Homo sapiens] >pdb|7YNL|E Chain E, Alpha-synuclein [Homo sapiens]
+    >pdb|7YNL|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|7YNL|G Chain G, Alpha-synuclein
+    [Homo sapiens] >pdb|7YNL|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|7YNM|A
+    Chain A, Alpha-synuclein [Homo sapiens] >pdb|7YNM|B Chain B, Alpha-synuclein [Homo
+    sapiens] >pdb|7YNM|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|7YNM|D Chain
+    D, Alpha-synuclein [Homo sapiens] >pdb|7YNM|G Chain G, Alpha-synuclein [Homo sapiens]
+    >pdb|7YNM|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|7YNM|I Chain I, Alpha-synuclein
+    [Homo sapiens] >pdb|7YNM|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|7YNN|A
+    Chain A, Alpha-synuclein [Homo sapiens] >pdb|7YNN|B Chain B, Alpha-synuclein [Homo
+    sapiens] >pdb|7YNN|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|7YNN|D Chain
+    D, Alpha-synuclein [Homo sapiens] >pdb|7YNN|G Chain G, Alpha-synuclein [Homo sapiens]
+    >pdb|7YNN|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|7YNN|I Chain I, Alpha-synuclein
+    [Homo sapiens] >pdb|7YNN|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|7YNO|A
+    Chain A, Alpha-synuclein [Homo sapiens] >pdb|7YNO|B Chain B, Alpha-synuclein [Homo
+    sapiens] >pdb|7YNO|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|7YNO|D Chain
+    D, Alpha-synuclein [Homo sapiens] >pdb|7YNO|E Chain E, Alpha-synuclein [Homo sapiens]
+    >pdb|7YNO|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|7YNP|A Chain A, Alpha-synuclein
+    [Homo sapiens] >pdb|7YNP|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|7YNP|C
+    Chain C, Alpha-synuclein [Homo sapiens] >pdb|7YNP|D Chain D, Alpha-synuclein [Homo
+    sapiens] >pdb|7YNP|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|7YNP|F Chain
+    F, Alpha-synuclein [Homo sapiens] >pdb|7YNQ|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|7YNQ|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|7YNQ|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|7YNQ|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|7YNQ|E
+    Chain E, Alpha-synuclein [Homo sapiens] >pdb|7YNQ|F Chain F, Alpha-synuclein [Homo
+    sapiens] >pdb|7YNR|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|7YNR|B Chain
+    B, Alpha-synuclein [Homo sapiens] >pdb|7YNR|C Chain C, Alpha-synuclein [Homo sapiens]
+    >pdb|7YNR|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|7YNR|E Chain E, Alpha-synuclein
+    [Homo sapiens] >pdb|7YNR|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|7YNS|A
+    Chain A, Alpha-synuclein [Homo sapiens] >pdb|7YNS|B Chain B, Alpha-synuclein [Homo
+    sapiens] >pdb|7YNS|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|7YNS|D Chain
+    D, Alpha-synuclein [Homo sapiens] >pdb|7YNS|E Chain E, Alpha-synuclein [Homo sapiens]
+    >pdb|7YNS|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|7YNT|A Chain A, Alpha-synuclein
+    [Homo sapiens] >pdb|7YNT|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|7YNT|C
+    Chain C, Alpha-synuclein [Homo sapiens] >pdb|7YNT|D Chain D, Alpha-synuclein [Homo
+    sapiens] >pdb|7YNT|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|7YNT|F Chain
+    F, Alpha-synuclein [Homo sapiens] >pdb|8A4L|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|8A4L|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8A4L|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|8A4L|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8A4L|E
+    Chain E, Alpha-synuclein [Homo sapiens] >pdb|8A4L|F Chain F, Alpha-synuclein [Homo
+    sapiens] >pdb|8A4L|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|8A4L|H Chain
+    H, Alpha-synuclein [Homo sapiens] >pdb|8A4L|I Chain I, Alpha-synuclein [Homo sapiens]
+    >pdb|8A4L|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|8A4L|K Chain K, Alpha-synuclein
+    [Homo sapiens] >pdb|8A4L|L Chain L, Alpha-synuclein [Homo sapiens] >pdb|8A4L|M
+    Chain M, Alpha-synuclein [Homo sapiens] >pdb|8A4L|O Chain O, Alpha-synuclein [Homo
+    sapiens] >pdb|8A4L|P Chain P, Alpha-synuclein [Homo sapiens] >pdb|8A9L|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|8ADS|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|8ADS|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8ADS|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|8ADS|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8ADS|E
+    Chain E, Alpha-synuclein [Homo sapiens] >pdb|8ADS|F Chain F, Alpha-synuclein [Homo
+    sapiens] >pdb|8ADS|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|8ADS|H Chain
+    H, Alpha-synuclein [Homo sapiens] >pdb|8ADS|I Chain I, Alpha-synuclein [Homo sapiens]
+    >pdb|8ADS|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|8ADU|A Chain A, Alpha-synuclein
+    [Homo sapiens] >pdb|8ADU|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8ADU|C
+    Chain C, Alpha-synuclein [Homo sapiens] >pdb|8ADU|D Chain D, Alpha-synuclein [Homo
+    sapiens] >pdb|8ADU|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8ADV|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|8ADV|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|8ADV|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8ADV|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|8ADV|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8ADV|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|8ADV|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|8ADV|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|8ADV|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|8ADV|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|8ADW|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8ADW|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|8ADW|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8ADW|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|8ADW|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|8ADW|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|8ADW|G Chain
+    G, Alpha-synuclein [Homo sapiens] >pdb|8ADW|H Chain H, Alpha-synuclein [Homo sapiens]
+    >pdb|8ADW|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|8ADW|J Chain J, Alpha-synuclein
+    [Homo sapiens] >pdb|8AEX|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8AEX|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|8AEX|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|8AEX|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8AEX|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|8AEX|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|8AEX|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|8AEX|H Chain H, Alpha-synuclein
+    [Homo sapiens] >pdb|8AEX|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|8AEX|J
+    Chain J, Alpha-synuclein [Homo sapiens] >pdb|8BQV|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|8BQW|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8BQW|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|8CE7|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|8CE7|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8CEB|A Chain A, Alpha-synuclein
+    [Homo sapiens] >pdb|8CEB|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8CYR|A
+    Chain A, Alpha-synuclein [Homo sapiens] >pdb|8CYR|B Chain B, Alpha-synuclein [Homo
+    sapiens] >pdb|8CYR|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8CYR|D Chain
+    D, Alpha-synuclein [Homo sapiens] >pdb|8CYR|E Chain E, Alpha-synuclein [Homo sapiens]
+    >pdb|8CYR|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|8CYR|I Chain I, Alpha-synuclein
+    [Homo sapiens] >pdb|8CYR|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|8CYR|K
+    Chain K, Alpha-synuclein [Homo sapiens] >pdb|8CYR|L Chain L, Alpha-synuclein [Homo
+    sapiens] >pdb|8CYR|M Chain M, Alpha-synuclein [Homo sapiens] >pdb|8CYR|N Chain
+    N, Alpha-synuclein [Homo sapiens] >pdb|8CYS|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|8CYS|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8CYS|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|8CYS|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8CYS|E
+    Chain E, Alpha-synuclein [Homo sapiens] >pdb|8CYS|F Chain F, Alpha-synuclein [Homo
+    sapiens] >pdb|8CYS|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|8CYS|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|8CYS|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|8CYS|K Chain K, Alpha-synuclein [Homo sapiens] >pdb|8CYS|L Chain L, Alpha-synuclein
+    [Homo sapiens] >pdb|8CYS|M Chain M, Alpha-synuclein [Homo sapiens] >pdb|8CYS|N
+    Chain N, Alpha-synuclein [Homo sapiens] >pdb|8CYS|O Chain O, Alpha-synuclein [Homo
+    sapiens] >pdb|8CYT|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8CYT|B Chain
+    B, Alpha-synuclein [Homo sapiens] >pdb|8CYT|C Chain C, Alpha-synuclein [Homo sapiens]
+    >pdb|8CYT|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8CYT|E Chain E, Alpha-synuclein
+    [Homo sapiens] >pdb|8CYT|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|8CYT|G
+    Chain G, Alpha-synuclein [Homo sapiens] >pdb|8CYT|I Chain I, Alpha-synuclein [Homo
+    sapiens] >pdb|8CYT|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|8CYT|K Chain
+    K, Alpha-synuclein [Homo sapiens] >pdb|8CYT|L Chain L, Alpha-synuclein [Homo sapiens]
+    >pdb|8CYT|M Chain M, Alpha-synuclein [Homo sapiens] >pdb|8CYT|N Chain N, Alpha-synuclein
+    [Homo sapiens] >pdb|8CYT|O Chain O, Alpha-synuclein [Homo sapiens] >pdb|8CYV|A
+    Chain A, Alpha-synuclein [Homo sapiens] >pdb|8CYV|B Chain B, Alpha-synuclein [Homo
+    sapiens] >pdb|8CYV|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8CYV|D Chain
+    D, Alpha-synuclein [Homo sapiens] >pdb|8CYV|E Chain E, Alpha-synuclein [Homo sapiens]
+    >pdb|8CYV|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|8CYV|I Chain I, Alpha-synuclein
+    [Homo sapiens] >pdb|8CYV|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|8CYV|K
+    Chain K, Alpha-synuclein [Homo sapiens] >pdb|8CYV|L Chain L, Alpha-synuclein [Homo
+    sapiens] >pdb|8CYV|M Chain M, Alpha-synuclein [Homo sapiens] >pdb|8CYV|N Chain
+    N, Alpha-synuclein [Homo sapiens] >pdb|8CYW|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|8CYW|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8CYW|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|8CYW|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8CYW|E
+    Chain E, Alpha-synuclein [Homo sapiens] >pdb|8CYW|F Chain F, Alpha-synuclein [Homo
+    sapiens] >pdb|8CYW|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|8CYW|J Chain
+    J, Alpha-synuclein [Homo sapiens] >pdb|8CYW|K Chain K, Alpha-synuclein [Homo sapiens]
+    >pdb|8CYW|L Chain L, Alpha-synuclein [Homo sapiens] >pdb|8CYW|M Chain M, Alpha-synuclein
+    [Homo sapiens] >pdb|8CYW|N Chain N, Alpha-synuclein [Homo sapiens] >pdb|8CYX|A
+    Chain A, Alpha-synuclein [Homo sapiens] >pdb|8CYX|B Chain B, Alpha-synuclein [Homo
+    sapiens] >pdb|8CYX|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8CYX|D Chain
+    D, Alpha-synuclein [Homo sapiens] >pdb|8CYX|E Chain E, Alpha-synuclein [Homo sapiens]
+    >pdb|8CYX|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|8CYX|J Chain J, Alpha-synuclein
+    [Homo sapiens] >pdb|8CYX|K Chain K, Alpha-synuclein [Homo sapiens] >pdb|8CYX|L
+    Chain L, Alpha-synuclein [Homo sapiens] >pdb|8CYX|M Chain M, Alpha-synuclein [Homo
+    sapiens] >pdb|8CYY|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8CYY|B Chain
+    B, Alpha-synuclein [Homo sapiens] >pdb|8CYY|C Chain C, Alpha-synuclein [Homo sapiens]
+    >pdb|8CYY|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8CYY|E Chain E, Alpha-synuclein
+    [Homo sapiens] >pdb|8CYY|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|8CYY|I
+    Chain I, Alpha-synuclein [Homo sapiens] >pdb|8CYY|J Chain J, Alpha-synuclein [Homo
+    sapiens] >pdb|8CYY|K Chain K, Alpha-synuclein [Homo sapiens] >pdb|8CYY|L Chain
+    L, Alpha-synuclein [Homo sapiens] >pdb|8CYY|M Chain M, Alpha-synuclein [Homo sapiens]
+    >pdb|8CYY|N Chain N, Alpha-synuclein [Homo sapiens] >pdb|8CZ0|A Chain A, Alpha-synuclein
+    [Homo sapiens] >pdb|8CZ0|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8CZ0|C
+    Chain C, Alpha-synuclein [Homo sapiens] >pdb|8CZ0|D Chain D, Alpha-synuclein [Homo
+    sapiens] >pdb|8CZ0|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8CZ0|F Chain
+    F, Alpha-synuclein [Homo sapiens] >pdb|8CZ0|I Chain I, Alpha-synuclein [Homo sapiens]
+    >pdb|8CZ0|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|8CZ0|K Chain K, Alpha-synuclein
+    [Homo sapiens] >pdb|8CZ0|L Chain L, Alpha-synuclein [Homo sapiens] >pdb|8CZ0|M
+    Chain M, Alpha-synuclein [Homo sapiens] >pdb|8CZ0|N Chain N, Alpha-synuclein [Homo
+    sapiens] >pdb|8CZ1|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8CZ1|B Chain
+    B, Alpha-synuclein [Homo sapiens] >pdb|8CZ1|C Chain C, Alpha-synuclein [Homo sapiens]
+    >pdb|8CZ1|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8CZ1|E Chain E, Alpha-synuclein
+    [Homo sapiens] >pdb|8CZ1|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|8CZ1|I
+    Chain I, Alpha-synuclein [Homo sapiens] >pdb|8CZ1|J Chain J, Alpha-synuclein [Homo
+    sapiens] >pdb|8CZ1|K Chain K, Alpha-synuclein [Homo sapiens] >pdb|8CZ1|L Chain
+    L, Alpha-synuclein [Homo sapiens] >pdb|8CZ1|M Chain M, Alpha-synuclein [Homo sapiens]
+    >pdb|8CZ1|N Chain N, Alpha-synuclein [Homo sapiens] >pdb|8CZ2|A Chain A, Alpha-synuclein
+    [Homo sapiens] >pdb|8CZ2|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8CZ2|C
+    Chain C, Alpha-synuclein [Homo sapiens] >pdb|8CZ2|D Chain D, Alpha-synuclein [Homo
+    sapiens] >pdb|8CZ2|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8CZ2|F Chain
+    F, Alpha-synuclein [Homo sapiens] >pdb|8CZ2|I Chain I, Alpha-synuclein [Homo sapiens]
+    >pdb|8CZ2|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|8CZ2|K Chain K, Alpha-synuclein
+    [Homo sapiens] >pdb|8CZ2|L Chain L, Alpha-synuclein [Homo sapiens] >pdb|8CZ2|M
+    Chain M, Alpha-synuclein [Homo sapiens] >pdb|8CZ2|N Chain N, Alpha-synuclein [Homo
+    sapiens] >pdb|8CZ3|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8CZ3|B Chain
+    B, Alpha-synuclein [Homo sapiens] >pdb|8CZ3|C Chain C, Alpha-synuclein [Homo sapiens]
+    >pdb|8CZ3|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8CZ3|E Chain E, Alpha-synuclein
+    [Homo sapiens] >pdb|8CZ3|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|8CZ3|I
+    Chain I, Alpha-synuclein [Homo sapiens] >pdb|8CZ3|J Chain J, Alpha-synuclein [Homo
+    sapiens] >pdb|8CZ3|K Chain K, Alpha-synuclein [Homo sapiens] >pdb|8CZ3|L Chain
+    L, Alpha-synuclein [Homo sapiens] >pdb|8CZ3|M Chain M, Alpha-synuclein [Homo sapiens]
+    >pdb|8CZ3|N Chain N, Alpha-synuclein [Homo sapiens] >pdb|8CZ6|A Chain A, Alpha-synuclein
+    [Homo sapiens] >pdb|8CZ6|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8CZ6|C
+    Chain C, Alpha-synuclein [Homo sapiens] >pdb|8CZ6|D Chain D, Alpha-synuclein [Homo
+    sapiens] >pdb|8CZ6|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8CZ6|F Chain
+    F, Alpha-synuclein [Homo sapiens] >pdb|8CZ6|G Chain G, Alpha-synuclein [Homo sapiens]
+    >pdb|8CZ6|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|8CZ6|J Chain J, Alpha-synuclein
+    [Homo sapiens] >pdb|8CZ6|K Chain K, Alpha-synuclein [Homo sapiens] >pdb|8CZ6|L
+    Chain L, Alpha-synuclein [Homo sapiens] >pdb|8CZ6|M Chain M, Alpha-synuclein [Homo
+    sapiens] >pdb|8CZ6|N Chain N, Alpha-synuclein [Homo sapiens] >pdb|8CZ6|O Chain
+    O, Alpha-synuclein [Homo sapiens] >pdb|8FPT|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|8FPT|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8FPT|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|8FPT|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8FPT|E
+    Chain E, Alpha-synuclein [Homo sapiens] >pdb|8FPT|F Chain F, Alpha-synuclein [Homo
+    sapiens] >pdb|8FPT|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|8FPT|H Chain
+    H, Alpha-synuclein [Homo sapiens] >pdb|8FPT|I Chain I, Alpha-synuclein [Homo sapiens]
+    >pdb|8FPT|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|8H03|A Chain A, Alpha-synuclein
+    [Homo sapiens] >pdb|8H03|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8H03|C
+    Chain C, Alpha-synuclein [Homo sapiens] >pdb|8H03|D Chain D, Alpha-synuclein [Homo
+    sapiens] >pdb|8H03|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8H03|F Chain
+    F, Alpha-synuclein [Homo sapiens] >pdb|8H04|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|8H04|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8H04|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|8H04|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8H04|E
+    Chain E, Alpha-synuclein [Homo sapiens] >pdb|8H04|F Chain F, Alpha-synuclein [Homo
+    sapiens] >pdb|8H05|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8H05|B Chain
+    B, Alpha-synuclein [Homo sapiens] >pdb|8H05|C Chain C, Alpha-synuclein [Homo sapiens]
+    >pdb|8HZB|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8HZB|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|8HZB|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8HZB|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|8HZB|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|8HZB|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|8HZC|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|8HZC|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|8HZC|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8HZC|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|8HZC|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8HZC|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|8HZS|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|8HZS|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8HZS|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|8HZS|D Chain D, Alpha-synuclein [Homo sapiens]
+    >pdb|8HZS|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8HZS|F Chain F, Alpha-synuclein
+    [Homo sapiens] >pdb|8JEX|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8JEX|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|8JEX|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|8JEX|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|8JEX|K Chain
+    K, Alpha-synuclein [Homo sapiens] >pdb|8JEX|P Chain P, Alpha-synuclein [Homo sapiens]
+    >pdb|8JEY|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8JEY|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|8JEY|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8JEY|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|8JEY|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|8JEY|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|8OQI|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|8OQI|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|8OQI|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8OQI|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|8OQI|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8OQI|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|8OQI|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|8OQI|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|8OQI|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|8OQI|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|8PIC|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8PIC|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|8PIC|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8PIC|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|8PIC|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|8PIC|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|8PIC|G Chain
+    G, Alpha-synuclein [Homo sapiens] >pdb|8PIC|H Chain H, Alpha-synuclein [Homo sapiens]
+    >pdb|8PIC|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|8PIC|J Chain J, Alpha-synuclein
+    [Homo sapiens] >pdb|8PIX|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8PIX|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|8PIX|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|8PIX|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8PIX|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|8PIX|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|8PIX|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|8PIX|H Chain H, Alpha-synuclein
+    [Homo sapiens] >pdb|8PIX|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|8PIX|J
+    Chain J, Alpha-synuclein [Homo sapiens] >pdb|8PK2|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|8PK2|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8PK2|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|8PK2|D Chain D, Alpha-synuclein [Homo sapiens]
+    >pdb|8PK2|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8RI9|A Chain A, Alpha-synuclein
+    [Homo sapiens] >pdb|8RI9|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8RI9|C
+    Chain C, Alpha-synuclein [Homo sapiens] >pdb|8RI9|D Chain D, Alpha-synuclein [Homo
+    sapiens] >pdb|8RI9|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8RQM|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|8RQM|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|8RQM|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8RQM|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|8RQM|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8RQM|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|8RRR|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|8RRR|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8RRR|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|8RRR|D Chain D, Alpha-synuclein [Homo sapiens]
+    >pdb|8RRR|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8RRR|F Chain F, Alpha-synuclein
+    [Homo sapiens] >pdb|8RRR|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|8RRR|H
+    Chain H, Alpha-synuclein [Homo sapiens] >pdb|8RRR|I Chain I, Alpha-synuclein [Homo
+    sapiens] >pdb|8RRR|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|8UKA|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|8UKA|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|8UKA|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8UKA|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|8UKA|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8UKA|a
+    Chain a, Alpha-synuclein [Homo sapiens] >pdb|8UKA|b Chain b, Alpha-synuclein [Homo
+    sapiens] >pdb|8UKA|c Chain c, Alpha-synuclein [Homo sapiens] >pdb|8UKA|d Chain
+    d, Alpha-synuclein [Homo sapiens] >pdb|8UKA|e Chain e, Alpha-synuclein [Homo sapiens]
+    >pdb|8XWD|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8XWD|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|8XWD|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8XWD|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|8XWD|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|8XWD|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|8Y2P|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|8Y2P|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|8Y2P|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8Y2P|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|8Y2P|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8Y2P|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|8Y2Q|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|8Y2Q|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8Y2Q|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|8Y2Q|D Chain D, Alpha-synuclein [Homo sapiens]
+    >pdb|8Y2Q|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8Y2Q|F Chain F, Alpha-synuclein
+    [Homo sapiens] >pdb|8ZWI|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8ZWI|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|8ZWI|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|8ZWI|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8ZWI|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|8ZWI|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|8ZWJ|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8ZWJ|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|8ZWJ|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8ZWJ|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|8ZWJ|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|8ZWJ|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|8ZWK|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|8ZWK|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|8ZWK|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8ZWK|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|8ZWK|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8ZWK|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|9C5R|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|9C5R|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|9C5R|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|9C5R|D Chain D, Alpha-synuclein [Homo sapiens]
+    >pdb|9C5R|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9C5R|F Chain F, Alpha-synuclein
+    [Homo sapiens] >pdb|9C5R|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|9C5R|H
+    Chain H, Alpha-synuclein [Homo sapiens] >pdb|9C5R|I Chain I, Alpha-synuclein [Homo
+    sapiens] >pdb|9C5R|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|9CD9|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|9CD9|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|9CD9|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|9CD9|H Chain H, Alpha-synuclein
+    [Homo sapiens] >pdb|9CD9|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|9CD9|J
+    Chain J, Alpha-synuclein [Homo sapiens] >pdb|9CD9|K Chain K, Alpha-synuclein [Homo
+    sapiens] >pdb|9CD9|L Chain L, Alpha-synuclein [Homo sapiens] >pdb|9CD9|M Chain
+    M, Alpha-synuclein [Homo sapiens] >pdb|9CD9|N Chain N, Alpha-synuclein [Homo sapiens]
+    >pdb|9CD9|O Chain O, Alpha-synuclein [Homo sapiens] >pdb|9CD9|P Chain P, Alpha-synuclein
+    [Homo sapiens] >pdb|9CD9|Q Chain Q, Alpha-synuclein [Homo sapiens] >pdb|9CD9|R
+    Chain R, Alpha-synuclein [Homo sapiens] >pdb|9CD9|S Chain S, Alpha-synuclein [Homo
+    sapiens] >pdb|9CD9|T Chain T, Alpha-synuclein [Homo sapiens] >pdb|9CD9|U Chain
+    U, Alpha-synuclein [Homo sapiens] >pdb|9CD9|V Chain V, Alpha-synuclein [Homo sapiens]
+    >pdb|9CD9|W Chain W, Alpha-synuclein [Homo sapiens] >pdb|9CD9|X Chain X, Alpha-synuclein
+    [Homo sapiens] >pdb|9CD9|Y Chain Y, Alpha-synuclein [Homo sapiens] >pdb|9CD9|Z
+    Chain Z, Alpha-synuclein [Homo sapiens] >pdb|9CDA|K Chain K, Alpha-synuclein [Homo
+    sapiens] >pdb|9CDA|L Chain L, Alpha-synuclein [Homo sapiens] >pdb|9CDA|M Chain
+    M, Alpha-synuclein [Homo sapiens] >pdb|9CDA|N Chain N, Alpha-synuclein [Homo sapiens]
+    >pdb|9CDA|O Chain O, Alpha-synuclein [Homo sapiens] >pdb|9CDA|P Chain P, Alpha-synuclein
+    [Homo sapiens] >pdb|9CDA|Q Chain Q, Alpha-synuclein [Homo sapiens] >pdb|9CDA|R
+    Chain R, Alpha-synuclein [Homo sapiens] >pdb|9CDA|S Chain S, Alpha-synuclein [Homo
+    sapiens] >pdb|9CDA|T Chain T, Alpha-synuclein [Homo sapiens] >pdb|9CDA|U Chain
+    U, Alpha-synuclein [Homo sapiens] >pdb|9CDA|V Chain V, Alpha-synuclein [Homo sapiens]
+    >pdb|9CDA|W Chain W, Alpha-synuclein [Homo sapiens] >pdb|9CDA|X Chain X, Alpha-synuclein
+    [Homo sapiens] >pdb|9CDA|Y Chain Y, Alpha-synuclein [Homo sapiens] >pdb|9CDA|Z
+    Chain Z, Alpha-synuclein [Homo sapiens] >pdb|9CDA|a Chain a, Alpha-synuclein [Homo
+    sapiens] >pdb|9CDA|b Chain b, Alpha-synuclein [Homo sapiens] >pdb|9CK3|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|9CK3|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|9CK3|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|9CK3|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|9CK3|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9CK3|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|9CK3|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|9CK3|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|9CK3|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|9CK3|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|9CK3|K Chain K, Alpha-synuclein [Homo sapiens] >pdb|9CK3|L Chain L, Alpha-synuclein
+    [Homo sapiens] >pdb|9CX6|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|9CX6|H
+    Chain H, Alpha-synuclein [Homo sapiens] >pdb|9E8U|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|9E8U|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|9E8U|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|9E8U|D Chain D, Alpha-synuclein [Homo sapiens]
+    >pdb|9E8U|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9E8U|F Chain F, Alpha-synuclein
+    [Homo sapiens] >pdb|9E8U|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|9E8U|H
+    Chain H, Alpha-synuclein [Homo sapiens] >pdb|9E8U|I Chain I, Alpha-synuclein [Homo
+    sapiens] >pdb|9E8U|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|9E8V|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|9E8V|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|9E8V|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|9E8V|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|9E8V|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9E8V|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|9E8V|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|9E8V|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|9E8V|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|9E8V|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|9E8W|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|9E8W|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|9E8W|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|9E8W|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|9E8W|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|9E8W|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|9E8W|G Chain
+    G, Alpha-synuclein [Homo sapiens] >pdb|9E8W|H Chain H, Alpha-synuclein [Homo sapiens]
+    >pdb|9E8W|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|9E8W|J Chain J, Alpha-synuclein
+    [Homo sapiens] >pdb|9E8X|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|9E8X|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|9E8X|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|9E8X|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|9E8X|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|9E8X|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|9E8X|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|9E8X|H Chain H, Alpha-synuclein
+    [Homo sapiens] >pdb|9E8X|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|9E8X|J
+    Chain J, Alpha-synuclein [Homo sapiens] >pdb|9E8Y|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|9E8Y|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|9E8Y|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|9E8Y|D Chain D, Alpha-synuclein [Homo sapiens]
+    >pdb|9E8Y|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9E8Y|F Chain F, Alpha-synuclein
+    [Homo sapiens] >pdb|9E8Y|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|9E8Y|H
+    Chain H, Alpha-synuclein [Homo sapiens] >pdb|9E8Y|I Chain I, Alpha-synuclein [Homo
+    sapiens] >pdb|9E8Y|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|9E9X|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|9E9X|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|9E9X|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|9E9X|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|9E9X|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9E9X|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|9EUU|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|9EUU|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|9EUU|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|9EUU|D Chain D, Alpha-synuclein [Homo sapiens]
+    >pdb|9EUU|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9EUU|F Chain F, Alpha-synuclein
+    [Homo sapiens] >pdb|9EUU|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|9EUU|H
+    Chain H, Alpha-synuclein [Homo sapiens] >pdb|9EUU|I Chain I, Alpha-synuclein [Homo
+    sapiens] >pdb|9EUU|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|9EUU|K Chain
+    K, Alpha-synuclein [Homo sapiens] >pdb|9EUU|L Chain L, Alpha-synuclein [Homo sapiens]
+    >pdb|9EUU|M Chain M, Alpha-synuclein [Homo sapiens] >pdb|9EUU|N Chain N, Alpha-synuclein
+    [Homo sapiens] >pdb|9EUU|O Chain O, Alpha-synuclein [Homo sapiens] >pdb|9EUU|P
+    Chain P, Alpha-synuclein [Homo sapiens] >pdb|9EUU|Q Chain Q, Alpha-synuclein [Homo
+    sapiens] >pdb|9EUU|R Chain R, Alpha-synuclein [Homo sapiens] >pdb|9FYP|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|9FYP|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|9FYP|K Chain K, Alpha-synuclein [Homo sapiens] >pdb|9FYP|L Chain L, Alpha-synuclein
+    [Homo sapiens] >pdb|9FYP|M Chain M, Alpha-synuclein [Homo sapiens] >pdb|9FYP|N
+    Chain N, Alpha-synuclein [Homo sapiens] >pdb|9FYP|O Chain O, Alpha-synuclein [Homo
+    sapiens] >pdb|9FYP|P Chain P, Alpha-synuclein [Homo sapiens] >pdb|9FYP|Q Chain
+    Q, Alpha-synuclein [Homo sapiens] >pdb|9FYP|R Chain R, Alpha-synuclein [Homo sapiens]
+    >pdb|9HC6|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|9HC6|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|9HC6|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|9HC6|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|9HC6|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|9HC6|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|9HC6|G Chain
+    G, Alpha-synuclein [Homo sapiens] >pdb|9HC6|H Chain H, Alpha-synuclein [Homo sapiens]
+    >pdb|9HC6|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|9HC6|J Chain J, Alpha-synuclein
+    [Homo sapiens] >pdb|9HC6|K Chain K, Alpha-synuclein [Homo sapiens] >pdb|9HC6|L
+    Chain L, Alpha-synuclein [Homo sapiens] >pdb|9HC6|M Chain M, Alpha-synuclein [Homo
+    sapiens] >pdb|9HC6|N Chain N, Alpha-synuclein [Homo sapiens] >pdb|9HC6|O Chain
+    O, Alpha-synuclein [Homo sapiens] >pdb|9HC7|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|9HC7|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|9HC7|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|9HC7|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|9HC7|E
+    Chain E, Alpha-synuclein [Homo sapiens] >pdb|9HC7|F Chain F, Alpha-synuclein [Homo
+    sapiens] >pdb|9HC7|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|9HC7|H Chain
+    H, Alpha-synuclein [Homo sapiens] >pdb|9HC7|I Chain I, Alpha-synuclein [Homo sapiens]
+    >pdb|9HC7|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|9HC7|K Chain K, Alpha-synuclein
+    [Homo sapiens] >pdb|9HC7|L Chain L, Alpha-synuclein [Homo sapiens] >pdb|9HC7|M
+    Chain M, Alpha-synuclein [Homo sapiens] >pdb|9HC7|N Chain N, Alpha-synuclein [Homo
+    sapiens] >pdb|9HC7|O Chain O, Alpha-synuclein [Homo sapiens] >pdb|9HC8|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|9HC8|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|9HC8|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|9HC8|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|9HC8|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9HC8|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|9HC8|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|9HC8|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|9HC8|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|9HC8|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|9HC9|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|9HC9|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|9HC9|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|9HC9|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|9HC9|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|9HC9|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|9HC9|G Chain
+    G, Alpha-synuclein [Homo sapiens] >pdb|9HC9|H Chain H, Alpha-synuclein [Homo sapiens]
+    >pdb|9HC9|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|9HC9|J Chain J, Alpha-synuclein
+    [Homo sapiens] >pdb|9HC9|K Chain K, Alpha-synuclein [Homo sapiens] >pdb|9HC9|L
+    Chain L, Alpha-synuclein [Homo sapiens] >pdb|9HC9|M Chain M, Alpha-synuclein [Homo
+    sapiens] >pdb|9HC9|N Chain N, Alpha-synuclein [Homo sapiens] >pdb|9HC9|O Chain
+    O, Alpha-synuclein [Homo sapiens] >pdb|9HCA|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|9HCA|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|9HCA|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|9HCA|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|9HCA|E
+    Chain E, Alpha-synuclein [Homo sapiens] >pdb|9HCA|F Chain F, Alpha-synuclein [Homo
+    sapiens] >pdb|9HCA|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|9HCA|H Chain
+    H, Alpha-synuclein [Homo sapiens] >pdb|9HCA|I Chain I, Alpha-synuclein [Homo sapiens]
+    >pdb|9HCA|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|9HCA|K Chain K, Alpha-synuclein
+    [Homo sapiens] >pdb|9HCA|L Chain L, Alpha-synuclein [Homo sapiens] >pdb|9HCA|M
+    Chain M, Alpha-synuclein [Homo sapiens] >pdb|9HCA|N Chain N, Alpha-synuclein [Homo
+    sapiens] >pdb|9HCA|O Chain O, Alpha-synuclein [Homo sapiens] >pdb|9HCB|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|9HCB|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|9HCB|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|9HCB|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|9HCB|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9HCB|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|9HCB|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|9HCB|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|9HCB|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|9HCB|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|9HGR|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|9HGR|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|9IC7|a Chain a, Alpha-synuclein [Homo sapiens] >pdb|9IC7|b
+    Chain b, Alpha-synuclein [Homo sapiens] >pdb|9IC7|c Chain c, Alpha-synuclein [Homo
+    sapiens] >pdb|9IC7|d Chain d, Alpha-synuclein [Homo sapiens] >pdb|9IC7|e Chain
+    e, Alpha-synuclein [Homo sapiens] >pdb|9IC7|f Chain f, Alpha-synuclein [Homo sapiens]
+    >pdb|9IC7|g Chain g, Alpha-synuclein [Homo sapiens] >pdb|9IC7|h Chain h, Alpha-synuclein
+    [Homo sapiens] >pdb|9IC7|i Chain i, Alpha-synuclein [Homo sapiens] >pdb|9IC7|j
+    Chain j, Alpha-synuclein [Homo sapiens] >pdb|9IC7|k Chain k, Alpha-synuclein [Homo
+    sapiens] >pdb|9IC7|l Chain l, Alpha-synuclein [Homo sapiens] >pdb|9IC7|m Chain
+    m, Alpha-synuclein [Homo sapiens] >pdb|9IC7|n Chain n, Alpha-synuclein [Homo sapiens]
+    >pdb|9IJP|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|9IJP|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|9IJP|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9IJP|G
+    Chain G, Alpha-synuclein [Homo sapiens] >pdb|9IJP|I Chain I, Alpha-synuclein [Homo
+    sapiens] >pdb|9IJP|L Chain L, Alpha-synuclein [Homo sapiens] >pdb|9JO6|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|9KC2|C Chain C, Alpha-synuclein [Homo sapiens]
+    >pdb|9KC2|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|9KC2|E Chain E, Alpha-synuclein
+    [Homo sapiens] >pdb|9KC2|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|9KC2|G
+    Chain G, Alpha-synuclein [Homo sapiens] >pdb|9KC2|H Chain H, Alpha-synuclein [Homo
+    sapiens] >pdb|9KCP|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|9KCP|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|9KCP|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|9KCP|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|9KCP|H Chain H, Alpha-synuclein
+    [Homo sapiens] >pdb|9KCP|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|9M5K|A
+    Chain A, Alpha-synuclein [Homo sapiens] >pdb|9M5K|B Chain B, Alpha-synuclein [Homo
+    sapiens] >pdb|9M5K|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|9M5L|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|9M5L|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|9M5L|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|9O4B|A Chain A, Alpha-synuclein
+    [Homo sapiens] >pdb|9O4B|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|9O4B|C
+    Chain C, Alpha-synuclein [Homo sapiens] >pdb|9O4B|D Chain D, Alpha-synuclein [Homo
+    sapiens] >pdb|9O4B|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9O4B|F Chain
+    F, Alpha-synuclein [Homo sapiens] >pdb|9O4B|G Chain G, Alpha-synuclein [Homo sapiens]
+    >pdb|9O4B|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|9O4B|I Chain I, Alpha-synuclein
+    [Homo sapiens] >pdb|9O4B|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|9O4B|K
+    Chain K, Alpha-synuclein [Homo sapiens] >pdb|9O4B|L Chain L, Alpha-synuclein [Homo
+    sapiens] >pdb|9OBP|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|9OBP|B Chain
+    B, Alpha-synuclein [Homo sapiens] >pdb|9OBP|C Chain C, Alpha-synuclein [Homo sapiens]
+    >pdb|9OBP|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|9OBP|E Chain E, Alpha-synuclein
+    [Homo sapiens] >pdb|9OBP|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|9OBP|G
+    Chain G, Alpha-synuclein [Homo sapiens] >pdb|9OBP|H Chain H, Alpha-synuclein [Homo
+    sapiens] >pdb|9OBP|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|9OBP|J Chain
+    J, Alpha-synuclein [Homo sapiens] >pdb|9QYL|E Chain E, Alpha-synuclein [Homo sapiens]
+    >pdb|9QYL|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|9QYL|G Chain G, Alpha-synuclein
+    [Homo sapiens] >pdb|9QYL|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|9QYL|J
+    Chain J, Alpha-synuclein [Homo sapiens] >pdb|9QYL|K Chain K, Alpha-synuclein [Homo
+    sapiens] >pdb|9QYL|L Chain L, Alpha-synuclein [Homo sapiens] >pdb|9QYL|M Chain
+    M, Alpha-synuclein [Homo sapiens] >pdb|9QYL|N Chain N, Alpha-synuclein [Homo sapiens]
+    >pdb|9QYL|O Chain O, Alpha-synuclein [Homo sapiens] >pdb|9QYL|P Chain P, Alpha-synuclein
+    [Homo sapiens] >pdb|9QYL|Q Chain Q, Alpha-synuclein [Homo sapiens] >pdb|9QYL|e
+    Chain e, Alpha-synuclein [Homo sapiens] >pdb|9QYL|f Chain f, Alpha-synuclein [Homo
+    sapiens] >pdb|9QYL|g Chain g, Alpha-synuclein [Homo sapiens] >pdb|9QYL|h Chain
+    h, Alpha-synuclein [Homo sapiens] >pdb|9QYL|j Chain j, Alpha-synuclein [Homo sapiens]
+    >pdb|9QYL|k Chain k, Alpha-synuclein [Homo sapiens] >pdb|9QYL|l Chain l, Alpha-synuclein
+    [Homo sapiens] >pdb|9QYL|m Chain m, Alpha-synuclein [Homo sapiens] >pdb|9QYL|n
+    Chain n, Alpha-synuclein [Homo sapiens] >pdb|9QYL|o Chain o, Alpha-synuclein [Homo
+    sapiens] >pdb|9QYL|p Chain p, Alpha-synuclein [Homo sapiens] >pdb|9QYL|q Chain
+    q, Alpha-synuclein [Homo sapiens] >pdb|9RB7|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|9RB7|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|9RB7|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|9RB7|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|9RB7|E
+    Chain E, Alpha-synuclein [Homo sapiens] >pdb|9RB7|F Chain F, Alpha-synuclein [Homo
+    sapiens] >pdb|9RB7|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|9RB7|H Chain
+    H, Alpha-synuclein [Homo sapiens] >pdb|9RB7|I Chain I, Alpha-synuclein [Homo sapiens]
+    >pdb|9RB7|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|9RB8|A Chain A, Alpha-synuclein
+    [Homo sapiens] >pdb|9RB8|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|9RB8|C
+    Chain C, Alpha-synuclein [Homo sapiens] >pdb|9RB8|D Chain D, Alpha-synuclein [Homo
+    sapiens] >pdb|9RB8|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9RB8|F Chain
+    F, Alpha-synuclein [Homo sapiens] >pdb|9RB8|G Chain G, Alpha-synuclein [Homo sapiens]
+    >pdb|9RB8|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|9RB8|I Chain I, Alpha-synuclein
+    [Homo sapiens] >pdb|9RB8|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|9RB9|A
+    Chain A, Alpha-synuclein [Homo sapiens] >pdb|9RB9|B Chain B, Alpha-synuclein [Homo
+    sapiens] >pdb|9RB9|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|9RB9|D Chain
+    D, Alpha-synuclein [Homo sapiens] >pdb|9RB9|E Chain E, Alpha-synuclein [Homo sapiens]
+    >pdb|9RB9|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|9RB9|G Chain G, Alpha-synuclein
+    [Homo sapiens] >pdb|9RB9|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|9RB9|I
+    Chain I, Alpha-synuclein [Homo sapiens] >pdb|9RB9|J Chain J, Alpha-synuclein [Homo
+    sapiens] >pdb|9RBA|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|9RBA|B Chain
+    B, Alpha-synuclein [Homo sapiens] >pdb|9RBA|C Chain C, Alpha-synuclein [Homo sapiens]
+    >pdb|9RBA|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|9RBA|E Chain E, Alpha-synuclein
+    [Homo sapiens] >pdb|9RBA|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|9RBA|G
+    Chain G, Alpha-synuclein [Homo sapiens] >pdb|9RBA|H Chain H, Alpha-synuclein [Homo
+    sapiens] >pdb|9RBA|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|9RBA|J Chain
+    J, Alpha-synuclein [Homo sapiens] >pdb|9RBB|A Chain A, Alpha-synuclein [Homo sapiens]
+    >pdb|9RBB|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|9RBB|C Chain C, Alpha-synuclein
+    [Homo sapiens] >pdb|9RBB|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|9RBB|E
+    Chain E, Alpha-synuclein [Homo sapiens] >pdb|9RBB|F Chain F, Alpha-synuclein [Homo
+    sapiens] >pdb|9RBB|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|9RBB|H Chain
+    H, Alpha-synuclein [Homo sapiens] >pdb|9RBB|I Chain I, Alpha-synuclein [Homo sapiens]
+    >pdb|9RBB|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|9Y0S|A Chain A, Alpha-synuclein
+    [Homo sapiens] >pdb|9Y0S|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|9Y0S|C
+    Chain C, Alpha-synuclein [Homo sapiens] >pdb|9Y0S|D Chain D, Alpha-synuclein [Homo
+    sapiens] >pdb|9Y0S|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9Y0S|F Chain
+    F, Alpha-synuclein [Homo sapiens] >pdb|9Y0S|G Chain G, Alpha-synuclein [Homo sapiens]
+    >pdb|9Y0S|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|9Y0S|I Chain I, Alpha-synuclein
+    [Homo sapiens] >pdb|9Y0S|J Chain J, Alpha-synuclein [Homo sapiens]
+  length: 140
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 1.84996e-94
+  bit_score: 270.396
+- title: pdb|6LRQ|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|6LRQ|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|6LRQ|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|6LRQ|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|6LRQ|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|6LRQ|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|9CKK|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|9CKK|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|9CKK|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|9CKK|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|9CKK|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9CKK|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|9CKK|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|9CKK|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|9CKL|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|9CKL|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|9CKL|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|9CKL|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|9CKL|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9CKL|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|9CKL|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|9CKL|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|9RB3|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|9RB3|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|9RB3|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|9RB3|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|9RB3|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|9RB3|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|9RB3|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|9RB3|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|9RB3|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|9RB3|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|9RB6|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|9RB6|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|9RB6|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|9RB6|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|9RB6|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|9RB6|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|9RB6|G Chain
+    G, Alpha-synuclein [Homo sapiens] >pdb|9RB6|H Chain H, Alpha-synuclein [Homo sapiens]
+    >pdb|9RB6|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|9RB6|J Chain J, Alpha-synuclein
+    [Homo sapiens]
+  length: 140
+  identity_%: 99.29
+  similarity_%: 99.29
+  coverage_%: 100.0
+  e_value: 6.53545e-94
+  bit_score: 268.855
+- title: pdb|6UFR|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|6UFR|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|6UFR|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|6UFR|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|6UFR|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|6UFR|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|6UFR|G Chain
+    G, Alpha-synuclein [Homo sapiens] >pdb|6UFR|H Chain H, Alpha-synuclein [Homo sapiens]
+    >pdb|6UFR|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|6UFR|J Chain J, Alpha-synuclein
+    [Homo sapiens] >pdb|8PJO|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8PJO|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|8PJO|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|8PJO|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8PJO|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|8PJO|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|8PJO|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|8PJO|H Chain H, Alpha-synuclein
+    [Homo sapiens] >pdb|8PJO|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|8PJO|J
+    Chain J, Alpha-synuclein [Homo sapiens] >pdb|8X7B|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|8X7B|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8X7B|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|8X7B|D Chain D, Alpha-synuclein [Homo sapiens]
+    >pdb|8X7B|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8X7B|F Chain F, Alpha-synuclein
+    [Homo sapiens] >pdb|8X7B|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|8X7B|H
+    Chain H, Alpha-synuclein [Homo sapiens] >pdb|8X7B|I Chain I, Alpha-synuclein [Homo
+    sapiens] >pdb|8X7B|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|8X7L|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|8X7L|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|8X7L|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8X7L|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|8X7L|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8X7L|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|8X7L|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|8X7L|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|8X7L|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|8X7L|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|8X7M|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8X7M|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|8X7M|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8X7M|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|8X7M|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|8X7M|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|8X7M|G Chain
+    G, Alpha-synuclein [Homo sapiens] >pdb|8X7M|H Chain H, Alpha-synuclein [Homo sapiens]
+    >pdb|8X7M|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|8X7M|J Chain J, Alpha-synuclein
+    [Homo sapiens] >pdb|8X7O|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8X7O|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|8X7O|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|8X7O|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8X7O|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|8X7O|F Chain F, Alpha-synuclein [Homo sapiens]
+    >pdb|8X7O|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|8X7O|H Chain H, Alpha-synuclein
+    [Homo sapiens] >pdb|8X7O|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|8X7O|J
+    Chain J, Alpha-synuclein [Homo sapiens] >pdb|8X7P|A Chain A, Alpha-synuclein [Homo
+    sapiens] >pdb|8X7P|B Chain B, Alpha-synuclein [Homo sapiens] >pdb|8X7P|C Chain
+    C, Alpha-synuclein [Homo sapiens] >pdb|8X7P|D Chain D, Alpha-synuclein [Homo sapiens]
+    >pdb|8X7P|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8X7P|F Chain F, Alpha-synuclein
+    [Homo sapiens] >pdb|8X7P|G Chain G, Alpha-synuclein [Homo sapiens] >pdb|8X7P|H
+    Chain H, Alpha-synuclein [Homo sapiens] >pdb|8X7P|I Chain I, Alpha-synuclein [Homo
+    sapiens] >pdb|8X7P|J Chain J, Alpha-synuclein [Homo sapiens] >pdb|8X7Q|A Chain
+    A, Alpha-synuclein [Homo sapiens] >pdb|8X7Q|B Chain B, Alpha-synuclein [Homo sapiens]
+    >pdb|8X7Q|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8X7Q|D Chain D, Alpha-synuclein
+    [Homo sapiens] >pdb|8X7Q|E Chain E, Alpha-synuclein [Homo sapiens] >pdb|8X7Q|F
+    Chain F, Alpha-synuclein [Homo sapiens] >pdb|8X7Q|G Chain G, Alpha-synuclein [Homo
+    sapiens] >pdb|8X7Q|H Chain H, Alpha-synuclein [Homo sapiens] >pdb|8X7Q|I Chain
+    I, Alpha-synuclein [Homo sapiens] >pdb|8X7Q|J Chain J, Alpha-synuclein [Homo sapiens]
+    >pdb|8X7R|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8X7R|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|8X7R|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|8X7R|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|8X7R|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|8X7R|F Chain F, Alpha-synuclein [Homo sapiens] >pdb|8X7R|G Chain
+    G, Alpha-synuclein [Homo sapiens] >pdb|8X7R|H Chain H, Alpha-synuclein [Homo sapiens]
+    >pdb|8X7R|I Chain I, Alpha-synuclein [Homo sapiens] >pdb|8X7R|J Chain J, Alpha-synuclein
+    [Homo sapiens] >pdb|8ZWH|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|8ZWH|B
+    Chain B, Alpha-synuclein [Homo sapiens] >pdb|8ZWH|C Chain C, Alpha-synuclein [Homo
+    sapiens] >pdb|8ZWH|D Chain D, Alpha-synuclein [Homo sapiens] >pdb|8ZWH|E Chain
+    E, Alpha-synuclein [Homo sapiens] >pdb|8ZWH|F Chain F, Alpha-synuclein [Homo sapiens]
+  length: 140
+  identity_%: 99.29
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 7.87589e-94
+  bit_score: 268.855
+- title: pdb|9HXA|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|9HXA|C Chain C, Alpha-synuclein
+    [Homo sapiens]
+  length: 140
+  identity_%: 99.29
+  similarity_%: 99.29
+  coverage_%: 100.0
+  e_value: 9.49126e-94
+  bit_score: 268.47
+- title: pdb|7UAK|A Chain A, Alpha-synuclein [Homo sapiens] >pdb|7UAK|B Chain B, Alpha-synuclein
+    [Homo sapiens] >pdb|7UAK|C Chain C, Alpha-synuclein [Homo sapiens] >pdb|7UAK|D
+    Chain D, Alpha-synuclein [Homo sapiens] >pdb|7UAK|E Chain E, Alpha-synuclein [Homo
+    sapiens] >pdb|7UAK|F Chain F, Alpha-synuclein [Homo sapiens]
+  length: 140
+  identity_%: 99.29
+  similarity_%: 99.29
+  coverage_%: 100.0
+  e_value: 1.34847e-93
+  bit_score: 268.085

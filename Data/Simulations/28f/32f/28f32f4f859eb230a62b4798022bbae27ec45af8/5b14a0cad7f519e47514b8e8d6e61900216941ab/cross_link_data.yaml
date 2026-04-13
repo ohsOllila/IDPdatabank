@@ -1,0 +1,87 @@
+uniprot:
+- title: 'sp|Q49AH0.2| RecName: Full=Cerebral dopamine neurotrophic factor; AltName:
+    Full=ARMET-like protein 1; AltName: Full=Conserved dopamine neurotrophic factor;
+    Flags: Precursor [Homo sapiens]'
+  length: 187
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 1.31213e-117
+  bit_score: 332.798
+- title: 'sp|P0C5I0.1| RecName: Full=Cerebral dopamine neurotrophic factor; AltName:
+    Full=ARMET-like protein 1; AltName: Full=Arginine-rich protein mutated in early
+    stage tumors-like 1; AltName: Full=Conserved dopamine neurotrophic factor; Flags:
+    Precursor [Rattus norvegicus]'
+  length: 187
+  identity_%: 84.38
+  similarity_%: 90.62
+  coverage_%: 99.38
+  e_value: 3.94453e-97
+  bit_score: 281.182
+- title: 'sp|Q8CC36.1| RecName: Full=Cerebral dopamine neurotrophic factor; AltName:
+    Full=ARMET-like protein 1; AltName: Full=Conserved dopamine neurotrophic factor;
+    Flags: Precursor [Mus musculus]'
+  length: 187
+  identity_%: 80.62
+  similarity_%: 88.75
+  coverage_%: 99.38
+  e_value: 2.53831e-92
+  bit_score: 268.855
+- title: 'sp|P55145.3| RecName: Full=Mesencephalic astrocyte-derived neurotrophic
+    factor; AltName: Full=Arginine-rich protein; AltName: Full=Protein ARMET; Flags:
+    Precursor [Homo sapiens]'
+  length: 182
+  identity_%: 63.29
+  similarity_%: 78.48
+  coverage_%: 98.14
+  e_value: 3.34582e-68
+  bit_score: 207.608
+- title: 'sp|P0C5H9.1| RecName: Full=Mesencephalic astrocyte-derived neurotrophic
+    factor; AltName: Full=Arginine-rich protein; AltName: Full=Protein ARMET; Flags:
+    Precursor [Rattus norvegicus] >sp|Q9CXI5.2| RecName: Full=Mesencephalic astrocyte-derived
+    neurotrophic factor; AltName: Full=Arginine-rich protein; AltName: Full=Protein
+    ARMET; Flags: Precursor [Mus musculus]'
+  length: 179
+  identity_%: 63.29
+  similarity_%: 79.11
+  coverage_%: 98.14
+  e_value: 5.91564e-68
+  bit_score: 206.838
+pdb:
+- title: pdb|4BIT|A Chain A, CEREBRAL DOPAMINE NEUROTROPHIC FACTOR [Homo sapiens]
+  length: 161
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 1.84242e-118
+  bit_score: 332.798
+- title: pdb|2LPN|A Chain A, Cerebral dopamine neurotrophic factor [Homo sapiens]
+  length: 105
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 65.22
+  e_value: 4.11842e-74
+  bit_score: 218.394
+- title: pdb|2W50|A Chain A, ARMET-LIKE PROTEIN 1 [Homo sapiens] >pdb|2W50|B Chain
+    B, ARMET-LIKE PROTEIN 1 [Homo sapiens]
+  length: 102
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 63.35
+  e_value: 2.69505e-71
+  bit_score: 211.46
+- title: pdb|2KVD|A Chain A, Mesencephalic astrocyte-derived neurotrophic factor [Homo
+    sapiens]
+  length: 160
+  identity_%: 63.29
+  similarity_%: 78.48
+  coverage_%: 98.14
+  e_value: 7.08169e-69
+  bit_score: 207.223
+- title: pdb|2W51|A Chain A, PROTEIN ARMET [Homo sapiens]
+  length: 158
+  identity_%: 63.29
+  similarity_%: 78.48
+  coverage_%: 98.14
+  e_value: 7.40036e-69
+  bit_score: 207.223

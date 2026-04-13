@@ -35,11 +35,12 @@ for system in systems:
     if system['TYPEOFSYSTEM'] != 'protein':
         continue
 
-    print(system['path'])
+    print('')
+    print('ANALYZING SYSTEM AT: ' + system['path'])
 
     dataFolder = databankPath + 'Data/Simulations/' + system['path']
 
-    print(system['TRJ'][0])
+    #print(system['TRJ'][0])
     trj_fname_original = dataFolder + system['TRJ'][0][0]
     trj_fname = dataFolder + 'only_protein.xtc'
     top_fname = dataFolder + system['TPR'][0][0]
@@ -48,6 +49,10 @@ for system in systems:
     trj_fname_noPBC = dataFolder + 'traj_noPBC.xtc'
     trj_fname_skipped = dataFolder + 'skipped_traj.xtc'
     nojump_traj = dataFolder + 'skipped_nojump_traj.xtc'
+
+    trj_fname_nojump = dataFolder + 'only_protein_nojump.xtc'
+    trj_fname_fit = dataFolder + 'only_protein_fit.xtc'
+    trj_fname_center = dataFolder + 'only_protein_center.xtc'
     
     SAXS_file = dataFolder + 'SAXS.yaml'
     SAXS_file_MAICoS = dataFolder + 'SAXS_MAICoS.yaml'
@@ -58,6 +63,7 @@ for system in systems:
     rog_file = dataFolder + "gyrate.xvg"
     dynamic_landscape_file = dataFolder + 'dynamic_landscape_Coeffs.yaml'
     spin_relaxation_time_file = dataFolder + 'spin_relaxation_times.yaml'
+    secondary_structure_file = dataFolder + 'secondary_structure.yaml'
     
     files = {
         "SAXS_file": SAXS_file,
@@ -69,12 +75,13 @@ for system in systems:
         "rog_file": rog_file,
         "dynamic_landscape_file": dynamic_landscape_file,
         "spin_relaxation_time_file": spin_relaxation_time_file,
+        "secondary_structure": secondary_structure_file
     }
 
     # Check for missing files
     missing_files = [name for name, path in files.items() if not os.path.exists(path)]
 
-    print(missing_files)
+    print('Files that not yet found and will be produces: ',missing_files)
     
     if missing_files:
         try:
@@ -82,11 +89,25 @@ for system in systems:
         except:
             print("MDanalysis universe creation failed")
             pass
+        
+        if (not os.path.isfile(trj_fname_nojump)):
+            execStr = (
+                f"echo Protein | {trjconvCOMMAND} -f {trj_fname_original} "
+                f"-s {top_fname} -o {trj_fname_nojump} -pbc nojump"
+            )
+            os.system(execStr)
+
+        if (not os.path.isfile(trj_fname_fit)):
+            execStr = (
+                f"echo Protein Protein | {trjconvCOMMAND} -f {trj_fname_nojump} "
+                f"-s {top_fname} -o {trj_fname_fit} -fit rot+trans"
+            )
+            os.system(execStr)
 
         if (not os.path.isfile(trj_fname)):
             execStr = (
-                f"echo Protein | {trjconvCOMMAND} -f {trj_fname_original} "
-                f"-s {top_fname} -o {trj_fname}"
+                f"echo Protein Protein | {trjconvCOMMAND} -f {trj_fname_nojump} "
+                f"-s {top_fname} -o {trj_fname} -center"
             )
             os.system(execStr)
 
@@ -99,11 +120,27 @@ for system in systems:
             os.system(execStr)
 
 
+    ## Calculate secondary structure probabilities and ensemble figures
+    if (not os.path.isfile(secondary_structure_file)):
+        print('Calculating', gro_fname, trj_fname_fit)
+
+        fig_combined, fig_order, fig_ensemble, coil_dict = calculate_secondary_structures(gro_fname, trj_fname_fit)
+        
+        # save figures
+        fig_combined.savefig(dataFolder + "secondary_structure.png", dpi=300)
+        fig_order.savefig(dataFolder + "disorder_probability.png", dpi=300)
+        fig_ensemble.savefig(dataFolder + "ensemble.png", dpi=300)
+        
+        # save YAML
+        import yaml
+        with open(secondary_structure_file, "w") as f:
+            yaml.dump(coil_dict, f)
             
 
     ## Calculate SAXS
 
     if (not os.path.isfile(SAXS_file)):
+        print('CALCULATING SAXS WITH CRYSOL')
         SAXS = calculate_SAXS_profile_crysol(gro_fname, trj_fname,1000)
         #print(SAXS)
 
@@ -113,6 +150,7 @@ for system in systems:
         with open(SAXS_file, 'w') as file:
             yaml.dump(SAXS_data, file, sort_keys=False)
 
+        print('CRYSOL CALCULATION FINISHED')
             
     if (not os.path.isfile(SAXS_file_MAICoS)):
         try:

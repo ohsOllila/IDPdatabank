@@ -1,0 +1,23 @@
+uniprot: []
+pdb:
+- title: pdb|2MU3|A Chain A, Aciniform spidroin 1 [Argiope trifasciata]
+  length: 199
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 5.85899e-130
+  bit_score: 364.77
+- title: pdb|9LIE|A Chain A, Aciniform spidroin 1 [Latrodectus hesperus]
+  length: 151
+  identity_%: 32.64
+  similarity_%: 58.33
+  coverage_%: 72.36
+  e_value: 8.77748e-15
+  bit_score: 70.0922
+- title: pdb|9LIF|A Chain A, Aciniform spidroin 1 [Latrodectus hesperus]
+  length: 151
+  identity_%: 36.88
+  similarity_%: 56.74
+  coverage_%: 70.85
+  e_value: 5.70453e-10
+  bit_score: 56.9954

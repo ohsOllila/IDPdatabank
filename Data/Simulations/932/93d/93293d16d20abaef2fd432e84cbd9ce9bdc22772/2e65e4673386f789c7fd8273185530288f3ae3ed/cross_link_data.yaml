@@ -1,0 +1,80 @@
+uniprot:
+- title: 'sp|O25899.1| RecName: Full=Protein TonB [Helicobacter pylori 26695]'
+  length: 285
+  identity_%: 96.74
+  similarity_%: 96.74
+  coverage_%: 100.0
+  e_value: 7.95334e-58
+  bit_score: 181.8
+- title: 'sp|Q9ZJP4.1| RecName: Full=Protein TonB [Helicobacter pylori J99]'
+  length: 280
+  identity_%: 95.65
+  similarity_%: 96.74
+  coverage_%: 100.0
+  e_value: 3.89273e-57
+  bit_score: 179.874
+- title: 'sp|O07650.1| RecName: Full=Protein TonB [Campylobacter coli]'
+  length: 232
+  identity_%: 39.33
+  similarity_%: 64.04
+  coverage_%: 96.74
+  e_value: 3.41943e-15
+  bit_score: 70.4774
+- title: 'sp|O52042.2| RecName: Full=Protein TonB [Vibrio cholerae O1 biovar El Tor
+    str. N16961]'
+  length: 244
+  identity_%: 40.38
+  similarity_%: 69.23
+  coverage_%: 56.52
+  e_value: 1.56637e-06
+  bit_score: 47.3654
+- title: 'sp|Q51368.2| RecName: Full=Protein TonB [Pseudomonas aeruginosa PAO1]'
+  length: 342
+  identity_%: 45.83
+  similarity_%: 68.75
+  coverage_%: 52.17
+  e_value: 1.98094e-06
+  bit_score: 46.9802
+pdb:
+- title: pdb|5LW8|A Chain A, Protein TonB [Helicobacter pylori 26695]
+  length: 92
+  identity_%: 96.74
+  similarity_%: 96.74
+  coverage_%: 100.0
+  e_value: 8.71744e-60
+  bit_score: 178.718
+- title: pdb|6SLY|A Chain A, Protein TonB [Helicobacter pylori]
+  length: 107
+  identity_%: 96.74
+  similarity_%: 96.74
+  coverage_%: 100.0
+  e_value: 1.09294e-59
+  bit_score: 179.104
+- title: pdb|6I97|D Chain D, Protein TonB [Pseudomonas aeruginosa] >pdb|6I97|E Chain
+    E, Protein TonB [Pseudomonas aeruginosa]
+  length: 90
+  identity_%: 45.83
+  similarity_%: 68.75
+  coverage_%: 52.17
+  e_value: 2.42346e-09
+  bit_score: 51.2174
+- title: pdb|6FIP|A Chain A, Protein TonB [Pseudomonas aeruginosa]
+  length: 99
+  identity_%: 45.83
+  similarity_%: 68.75
+  coverage_%: 52.17
+  e_value: 2.71055e-09
+  bit_score: 51.2174
+- title: pdb|9ERI|G Chain G, Na(+)-translocating ferredoxin:NAD(+) oxidoreductase
+    complex subunit G [Acetobacterium woodii DSM 1030] >pdb|9ERJ|G Chain G, Na(+)-translocating
+    ferredoxin:NAD(+) oxidoreductase complex subunit G [Acetobacterium woodii DSM
+    1030] >pdb|9ERK|G Chain G, Na(+)-translocating ferredoxin:NAD(+) oxidoreductase
+    complex subunit G [Acetobacterium woodii DSM 1030] >pdb|9ERL|G Chain G, Na(+)-translocating
+    ferredoxin:NAD(+) oxidoreductase complex subunit G [Acetobacterium woodii DSM
+    1030]
+  length: 207
+  identity_%: 42.86
+  similarity_%: 52.38
+  coverage_%: 45.65
+  e_value: 0.408976
+  bit_score: 30.4166

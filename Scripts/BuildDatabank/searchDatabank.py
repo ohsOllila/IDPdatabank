@@ -90,6 +90,10 @@ def searchDatabank():
         experiment_types_dict = {}
 
         simulation_ph = 7  # TODO: Implement pH-getter for the simulations
+        print()
+        print(simulation)
+        print(simulation.info)
+        print()
         simulation_temperature = simulation.info["TEMPERATURE"]
         simulation_ionic_strength = simulation.ionic_strength
         for experiment_type in experiment_types:

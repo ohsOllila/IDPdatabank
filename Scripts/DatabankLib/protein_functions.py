@@ -585,6 +585,7 @@ def get_spin_relaxation_conditions_from_BMRB(BMRBid):
     
 
     for i in data[0]:
+        #print(i)
         print(i["Name"])
         if i["Name"] in T1names:
             metadata_file = exp_data_path + "/T1_metadata.yaml"
@@ -1515,45 +1516,111 @@ def calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_d
         
     differences = {}
     for residue in spin_relaxation_times:
-        for magnetic_field in spin_relaxation_times[residue]:
-            #print(residue,magnetic_field)
-            try:
-                differences[residue] = {
-                    'R1': 1/spin_relaxation_times[residue][magnetic_field]['T1']['value'] - 1/experimental_data[residue][magnetic_field]['T1']['value'],
-                    'R2': 1/spin_relaxation_times[residue][magnetic_field]['T2']['value'] - 1/experimental_data[residue][magnetic_field]['T2']['value'],
-                    'hetNOE': spin_relaxation_times[residue][magnetic_field]['hetNOE']['value'] - experimental_data[residue][magnetic_field]['hetNOE']['value']
-                }
-                continue
-            except:
-                pass
-            #print(experimental_data.keys())
-            #print(experimental_data[int(re.sub(r"\D", "", residue))])
-            try:
-                #print(residue + " " + re.sub(r"\D", "", residue))
-                #print(experimental_data)
-                #print(experimental_data[int(re.sub(r"\D", "", residue))])
-                differences[residue] = {
-                    'R1': 1/spin_relaxation_times[residue][magnetic_field]['T1']['value'] - 1/experimental_data[int(re.sub(r"\D", "", residue))][magnetic_field]['T1']['value'],
-                    'R2': 1/spin_relaxation_times[residue][magnetic_field]['T2']['value'] - 1/experimental_data[int(re.sub(r"\D", "", residue))][magnetic_field]['T2']['value'],
-                    'hetNOE': spin_relaxation_times[residue][magnetic_field]['hetNOE']['value'] - experimental_data[int(re.sub(r"\D", "", residue))][magnetic_field]['hetNOE']['value']
-                }
-                continue
-            except:
-                pass
+#        for magnetic_field in spin_relaxation_times[residue]:
 
-            print('Calculation of difference failed for ' + residue + " " + re.sub(r"\D", "", residue))
+#            # Try resname and number
+#            try:
+#                differences[residue] = {
+#                    'R1': 1/spin_relaxation_times[residue][magnetic_field]['T1']['value'] - 1/experimental_data[residue][magnetic_field]['T1']['value'],
+#                    'R2': 1/spin_relaxation_times[residue][magnetic_field]['T2']['value'] - 1/experimental_data[residue][magnetic_field]['T2']['value'],
+#                    'hetNOE': spin_relaxation_times[residue][magnetic_field]['hetNOE']['value'] - experimental_data[residue][magnetic_field]['hetNOE']['value']
+#                }
+#                continue
+#            except Exception as e:
+#                print("Error:", e)
+#                pass
+
+#             # Try only number
+#            try:
+#                differences[residue] = {
+#                    'R1': 1/spin_relaxation_times[residue][magnetic_field]['T1']['value'] - 1/experimental_data[int(re.sub(r"\D", "", residue))][magnetic_field]['T1']['value'],
+#                    'R2': 1/spin_relaxation_times[residue][magnetic_field]['T2']['value'] - 1/experimental_data[int(re.sub(r"\D", "", residue))][magnetic_field]['T2']['value'],
+#                    'hetNOE': spin_relaxation_times[residue][magnetic_field]['hetNOE']['value'] - experimental_data[int(re.sub(r"\D", "", residue))][magnetic_field]['hetNOE']['value#']
+#                }
+#                continue
+#            except:
+#                pass
+
+           
+#            print('Calculation of difference failed for ' + residue + " " + re.sub(r"\D", "", residue))
+#            continue
+
+        # --- Resolve experimental residue key ---
+        if residue in experimental_data:
+            exp_res = experimental_data[residue]
+        else:
+            res_num = int(re.sub(r"\D", "", residue))
+            if res_num in experimental_data:
+                exp_res = experimental_data[res_num]
+            else:
+                print(f"Skipping {residue}: no experimental data")
+                continue
+
+        calc_res = spin_relaxation_times[residue]
+
+        # --- Find common magnetic fields ---
+        common_fields = set(calc_res.keys()) & set(exp_res.keys())
+
+        if not common_fields:
+            print(f"Skipping {residue}: no common magnetic fields")
             continue
 
+        differences[residue] = {}
+
+        # --- Loop over shared fields ---
+        for field in common_fields:
+
+            calc_data = calc_res[field]
+            exp_data = exp_res[field]
+
+            #differences[residue][field] = {}
+            #differences[residue] = {}
+
+            # --- R1 ---
+            if 'T1' in calc_data and 'T1' in exp_data:
+                differences[residue]['R1'] = (
+                    1 / calc_data['T1']['value'] -
+                    1 / exp_data['T1']['value']
+                )
+
+                # --- R2 ---
+            if 'T2' in calc_data and 'T2' in exp_data:
+                differences[residue]['R2'] = (
+                    1 / calc_data['T2']['value'] -
+                    1 / exp_data['T2']['value']
+                )
+
+            # --- hetNOE ---
+            if 'hetNOE' in calc_data and 'hetNOE' in exp_data:
+                differences[residue]['hetNOE'] = (
+                    calc_data['hetNOE']['value'] -
+                    exp_data['hetNOE']['value']
+                )
+
+        print(f"{residue}: processed fields {sorted(common_fields)}")
+
+        
+    if not differences:
+        differences = compute_differences(spin_relaxation_times, experimental_data)                
+        
     RMSDs = {}
 
+    for i in differences:
+        print(i)
+        print(differences[i])
+    
     values = []
     for residue in differences:
-        values.append(differences[residue]['R1']**2)
+        #print(residue)
+        #print(differences[residue])
+        if 'R1' in differences[residue]:
+            values.append(differences[residue]['R1']**2)
     RMSDs['R1'] = np.sqrt(sum(values) / len(values))
 
     values = []
     for residue in differences:
-        values.append(differences[residue]['R2']**2)
+        if 'R2' in differences[residue]:
+            values.append(differences[residue]['R2']**2)
     RMSDs['R2'] =  np.sqrt(sum(values) / len(values))
 
     values = []
@@ -1565,6 +1632,131 @@ def calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_d
     
     return(RMSDs)
     
+
+import re
+from Bio import pairwise2
+
+
+# -----------------------------
+# Helper
+# -----------------------------
+def get_resname(residue):
+    return re.sub(r"\d+", "", str(residue))
+
+
+
+# -----------------------------
+# MAIN FUNCTION
+# -----------------------------
+
+def compute_differences(spin_relaxation_times, experimental_data):
+
+    from Bio.pairwise2 import align
+    from Bio.SeqUtils import seq1
+    import re
+
+    # -----------------------------
+    # Sort residues
+    # -----------------------------
+    ref_residues_sorted = sorted(
+        spin_relaxation_times.keys(),
+        key=lambda x: int(re.sub(r"\D", "", str(x)))
+    )
+
+    exp_residues_sorted = sorted(
+        experimental_data.keys(),
+        key=lambda x: int(re.sub(r"\D", "", str(x)))
+    )
+
+    # -----------------------------
+    # Convert to 1-letter sequences
+    # -----------------------------
+    def safe_seq1(res):
+        """
+        Converts residue name (e.g. 'SER', 'ALA') → 'S', 'A'
+        Handles already-converted or unexpected formats safely.
+        """
+        try:
+            aa = seq1(res)
+            return aa if aa else "X"
+        except Exception:
+            return "X"
+
+    ref_sequence = "".join(safe_seq1(get_resname(r)) for r in ref_residues_sorted)
+    exp_sequence = "".join(safe_seq1(get_resname(r)) for r in exp_residues_sorted)
+
+    # -----------------------------
+    # Align sequences
+    # -----------------------------
+    alignments = align.globalxx(exp_sequence, ref_sequence)
+    aligned_exp, aligned_ref = alignments[0].seqA, alignments[0].seqB
+
+    # -----------------------------
+    # Build mapping
+    # -----------------------------
+    exp_to_ref = {}
+
+    ref_index = 0
+    exp_index = 0
+
+    for exp_res, ref_res in zip(aligned_exp, aligned_ref):
+
+        if ref_res != "-":
+            ref_residue = ref_residues_sorted[ref_index]
+        else:
+            ref_residue = None
+
+        if exp_res != "-":
+            exp_residue = exp_residues_sorted[exp_index]
+
+            if ref_residue is not None:
+                exp_to_ref[exp_residue] = ref_residue
+
+        if ref_res != "-":
+            ref_index += 1
+        if exp_res != "-":
+            exp_index += 1
+
+    # -----------------------------
+    # Compute differences (IMPORTANT FIX HERE)
+    # -----------------------------
+    differences = {}
+
+    # use mapped residues (NOT raw ref loop)
+    for exp_residue, ref_residue in exp_to_ref.items():
+
+        if ref_residue not in spin_relaxation_times:
+            continue
+        if exp_residue not in experimental_data:
+            continue
+        for magnetic_field in spin_relaxation_times[ref_residue]:
+
+            if magnetic_field not in experimental_data[exp_residue]:
+                continue
+            
+            try:
+                differences[ref_residue] = {
+                    'R1': (
+                        1 / spin_relaxation_times[ref_residue][magnetic_field]['T1']['value']
+                        - 1 / experimental_data[exp_residue][magnetic_field]['T1']['value']
+                    ),
+
+                    'R2': (
+                        1 / spin_relaxation_times[ref_residue][magnetic_field]['T2']['value']
+                        - 1 / experimental_data[exp_residue][magnetic_field]['T2']['value']
+                    ),
+
+                    'hetNOE': (
+                        spin_relaxation_times[ref_residue][magnetic_field]['hetNOE']['value']
+                        - experimental_data[exp_residue][magnetic_field]['hetNOE']['value']
+                    )
+                }
+
+            except KeyError as e:
+                print(f"Missing data for ref={ref_residue}, exp={exp_residue}: {e}")
+
+    return differences
+
 
 
 def convert_original_to_nested_dict(data: dict) -> dict:
@@ -2178,8 +2370,8 @@ def calculate_secondary_structures(gro_file, xtc_file):
     traj = mdtraj.load(xtc_file, top=gro_file)
 
     three_to_one = {
-        'ALA': 'A', 'ARG': 'R', 'ASN': 'N', 'ASP': 'D', 'CYS': 'C',
-        'GLU': 'E', 'GLN': 'Q', 'GLY': 'G', 'HIS': 'H', 'ILE': 'I',
+        'ALA': 'A', 'ARG': 'R', 'ASN': 'N', 'ASP': 'D', 'ASH': 'D', 'CYS': 'C',
+        'GLU': 'E','GLUH': 'E','GLH': 'E', 'GLN': 'Q', 'GLY': 'G', 'HIS': 'H', 'ILE': 'I',
         'LEU': 'L', 'LYS': 'K', 'MET': 'M', 'PHE': 'F', 'PRO': 'P',
         'SER': 'S', 'THR': 'T', 'TRP': 'W', 'TYR': 'Y', 'VAL': 'V'
     }
@@ -2189,8 +2381,13 @@ def calculate_secondary_structures(gro_file, xtc_file):
     # -------------------------
     # DSSP
     # -------------------------
-    dssp = mdtraj.compute_dssp(traj, simplified=True)
-
+    print('Running DSSP')
+    if traj.n_frames > 200000:
+        traj_small = traj[::2]
+        dssp = mdtraj.compute_dssp(traj_small, simplified=True)
+    else:
+        dssp = mdtraj.compute_dssp(traj, simplified=True)
+    
     initial_ss = dssp[0]
     final_ss = dssp[-1]
 
@@ -2202,6 +2399,8 @@ def calculate_secondary_structures(gro_file, xtc_file):
     # -------------------------
     # PYMOL ENSEMBLE IMAGE
     # -------------------------
+
+    print('Starting the ensemble figure preparation')
     cmd.set("ray_opaque_background", 1)
 
     obj_name = "traj"

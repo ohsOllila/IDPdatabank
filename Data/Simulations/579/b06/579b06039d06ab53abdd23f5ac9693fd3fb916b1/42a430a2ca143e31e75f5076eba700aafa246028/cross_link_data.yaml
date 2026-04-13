@@ -1,0 +1,57 @@
+uniprot:
+- title: 'sp|A0A2R2JFW7.1| RecName: Full=Arginase [Glaciozyma antarctica PI12]'
+  length: 345
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 32.91
+  e_value: 4.4642e-11
+  bit_score: 59.6918
+pdb:
+- title: pdb|5ZVL|A Chain A, Glutaredoxin [Triticum aestivum] >pdb|5ZVL|B Chain B,
+    Glutaredoxin [Triticum aestivum] >pdb|5ZVL|C Chain C, Glutaredoxin [Triticum aestivum]
+    >pdb|5ZVL|D Chain D, Glutaredoxin [Triticum aestivum] >pdb|5ZVL|E Chain E, Glutaredoxin
+    [Triticum aestivum]
+  length: 171
+  identity_%: 97.83
+  similarity_%: 97.83
+  coverage_%: 58.23
+  e_value: 7.71348e-20
+  bit_score: 79.337
+- title: pdb|3E46|A Chain A, Ubiquitin-conjugating enzyme E2-25 kDa [Homo sapiens]
+    >pdb|3F92|A Chain A, Ubiquitin-conjugating enzyme E2 K [Homo sapiens]
+  length: 253
+  identity_%: 97.44
+  similarity_%: 97.44
+  coverage_%: 49.37
+  e_value: 2.11458e-19
+  bit_score: 80.1073
+- title: pdb|3QRP|A Chain A, Structure of Thermus Thermophilus Cse3 bound to an RNA
+    representing a product mimic complex [Thermus thermophilus HB8] >pdb|3QRQ|A Chain
+    A, Structure of Thermus Thermophilus Cse3 bound to an RNA representing a pre-cleavage
+    complex [Thermus thermophilus HB8] >pdb|3QRR|A Chain A, Structure of Thermus Thermophilus
+    Cse3 bound to an RNA representing a product complex [Thermus thermophilus HB8]
+  length: 267
+  identity_%: 97.83
+  similarity_%: 97.83
+  coverage_%: 58.23
+  e_value: 7.59355e-19
+  bit_score: 78.9518
+- title: pdb|5T7Z|A Chain A, EpoB [Sorangium cellulosum] >pdb|5T81|A Chain A, EpoB
+    [Sorangium cellulosum] >pdb|5T81|B Chain B, EpoB [Sorangium cellulosum]
+  length: 541
+  identity_%: 97.44
+  similarity_%: 97.44
+  coverage_%: 49.37
+  e_value: 7.83382e-19
+  bit_score: 80.4925
+- title: pdb|5DFX|A Chain A, Histidine kinase [Synechocystis sp. PCC 6803 substr.
+    Kazusa] >pdb|5DFY|A Chain A, Histidine kinase [Synechocystis sp. PCC 6803 substr.
+    Kazusa] >pdb|5M82|A Chain A, Sensory transduction histidine kinase [Synechocystis
+    sp. PCC 6803 substr. Kazusa] >pdb|5M85|A Chain A, Sensory transduction histidine
+    kinase [Synechocystis sp. PCC 6803 substr. Kazusa]
+  length: 215
+  identity_%: 97.44
+  similarity_%: 97.44
+  coverage_%: 49.37
+  e_value: 8.05924e-19
+  bit_score: 77.7962

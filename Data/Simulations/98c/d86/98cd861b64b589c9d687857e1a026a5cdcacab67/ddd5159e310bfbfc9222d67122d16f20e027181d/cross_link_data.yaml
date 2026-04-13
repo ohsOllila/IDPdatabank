@@ -1,0 +1,164 @@
+uniprot:
+- title: 'sp|P0DP23.1| RecName: Full=Calmodulin-1 [Homo sapiens] >sp|P0DP24.1| RecName:
+    Full=Calmodulin-2 [Homo sapiens] >sp|P0DP25.1| RecName: Full=Calmodulin-3 [Homo
+    sapiens] >sp|P0DP26.1| RecName: Full=Calmodulin-1 [Mus musculus] >sp|P0DP27.1|
+    RecName: Full=Calmodulin-2 [Mus musculus] >sp|P0DP28.1| RecName: Full=Calmodulin-3
+    [Mus musculus] >sp|P0DP29.1| RecName: Full=Calmodulin-1 [Rattus norvegicus] >sp|P0DP30.1|
+    RecName: Full=Calmodulin-2 [Rattus norvegicus] >sp|P0DP31.1| RecName: Full=Calmodulin-3
+    [Rattus norvegicus] >sp|P0DP33.1| RecName: Full=Calmodulin-1 [Xenopus laevis]
+    >sp|P0DP34.1| RecName: Full=Calmodulin-2 A [Xenopus laevis] >sp|P0DP35.1| RecName:
+    Full=Calmodulin-2 B [Xenopus laevis] >sp|P62144.2| RecName: Full=Calmodulin; Short=CaM
+    [Anas platyrhynchos] >sp|P62149.2| RecName: Full=Calmodulin; Short=CaM [Gallus
+    gallus] >sp|P62151.2| RecName: Full=Calmodulin; Short=CaM [Tetronarce californica]
+    >sp|P62156.2| RecName: Full=Calmodulin; Short=CaM [Oncorhynchus sp.] >sp|P62157.2|
+    RecName: Full=Calmodulin; Short=CaM [Bos taurus] >sp|P62160.2| RecName: Full=Calmodulin;
+    Short=CaM [Oryctolagus cuniculus] >sp|Q5RAD2.3| RecName: Full=Calmodulin; Short=CaM
+    [Pongo abelii] >sp|Q6IT78.3| RecName: Full=Calmodulin; Short=CaM [Ctenopharyngodon
+    idella] >sp|Q6PI52.3| RecName: Full=Calmodulin; Short=CaM [Danio rerio] >sp|Q6YNX6.3|
+    RecName: Full=Calmodulin; Short=CaM [Ovis aries] >sp|Q71UH6.3| RecName: Full=Calmodulin;
+    Short=CaM [Perca flavescens]'
+  length: 149
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 2.51255e-104
+  bit_score: 297.36
+- title: 'sp|P02594.2| RecName: Full=Calmodulin; Short=CaM [Electrophorus electricus]'
+  length: 149
+  identity_%: 99.32
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 8.13072e-104
+  bit_score: 295.819
+- title: 'sp|Q9U6D3.3| RecName: Full=Calmodulin; Short=CaM [Myxine glutinosa]'
+  length: 149
+  identity_%: 99.32
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 1.08157e-103
+  bit_score: 295.819
+- title: 'sp|Q7T3T2.3| RecName: Full=Calmodulin; Short=CaM [Epinephelus akaara]'
+  length: 149
+  identity_%: 99.32
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 1.13011e-103
+  bit_score: 295.434
+- title: 'sp|P21251.2| RecName: Full=Calmodulin; Short=CaM [Apostichopus japonicus]'
+  length: 149
+  identity_%: 98.65
+  similarity_%: 99.32
+  coverage_%: 100.0
+  e_value: 4.75904e-103
+  bit_score: 293.893
+pdb:
+- title: pdb|6O20|F Chain F, Calmodulin [Bos taurus]
+  length: 169
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 2.64524e-105
+  bit_score: 299.286
+- title: pdb|3EWT|A Chain A, Calmodulin [Homo sapiens] >pdb|3EWV|A Chain A, Calmodulin
+    [Homo sapiens]
+  length: 154
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 2.88273e-105
+  bit_score: 298.516
+- title: pdb|4HEX|A Chain A, Calmodulin [Mus musculus] >pdb|4HEX|B Chain B, Calmodulin
+    [Mus musculus]
+  length: 156
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 3.08833e-105
+  bit_score: 298.516
+- title: pdb|4E50|A Chain A, Calmodulin, Linker, IQ motif of Neurogranin [Mus musculus]
+  length: 185
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 3.81684e-105
+  bit_score: 299.286
+- title: pdb|7XNI|C Chain C, Calmodulin-3 [Homo sapiens] >pdb|7XNI|E Chain E, Calmodulin-3
+    [Homo sapiens] >pdb|7XNI|F Chain F, Calmodulin-3 [Homo sapiens] >pdb|7XNI|H Chain
+    H, Calmodulin-3 [Homo sapiens] >pdb|7XNK|B Chain B, Calmodulin-3 [Homo sapiens]
+    >pdb|7XNK|D Chain D, Calmodulin-3 [Homo sapiens] >pdb|7XNK|F Chain F, Calmodulin-3
+    [Homo sapiens] >pdb|7XNK|H Chain H, Calmodulin-3 [Homo sapiens] >pdb|7XNL|B Chain
+    B, Calmodulin-3 [Homo sapiens] >pdb|7XNL|D Chain D, Calmodulin-3 [Homo sapiens]
+    >pdb|7XNL|F Chain F, Calmodulin-3 [Homo sapiens] >pdb|7XNL|H Chain H, Calmodulin-3
+    [Homo sapiens] >pdb|7XNN|A Chain A, Calmodulin-3 [Homo sapiens] >pdb|7XNN|D Chain
+    D, Calmodulin-3 [Homo sapiens] >pdb|7XNN|F Chain F, Calmodulin-3 [Homo sapiens]
+    >pdb|7XNN|H Chain H, Calmodulin-3 [Homo sapiens] >pdb|8J00|E Chain E, Calmodulin-1
+    [Homo sapiens] >pdb|8J00|F Chain F, Calmodulin-1 [Homo sapiens] >pdb|8J00|G Chain
+    G, Calmodulin-1 [Homo sapiens] >pdb|8J00|H Chain H, Calmodulin-1 [Homo sapiens]
+    >pdb|8J01|C Chain C, Calmodulin-1 [Homo sapiens] >pdb|8J01|E Chain E, Calmodulin-1
+    [Homo sapiens] >pdb|8J01|F Chain F, Calmodulin-1 [Homo sapiens] >pdb|8J01|H Chain
+    H, Calmodulin-1 [Homo sapiens] >pdb|8J02|C Chain C, Calmodulin-1 [Homo sapiens]
+    >pdb|8J02|E Chain E, Calmodulin-1 [Homo sapiens] >pdb|8J02|F Chain F, Calmodulin-1
+    [Homo sapiens] >pdb|8J02|H Chain H, Calmodulin-1 [Homo sapiens] >pdb|8J03|E Chain
+    E, Calmodulin-1 [Homo sapiens] >pdb|8J03|F Chain F, Calmodulin-1 [Homo sapiens]
+    >pdb|8J03|H Chain H, Calmodulin-1 [Homo sapiens] >pdb|8J03|J Chain J, Calmodulin-1
+    [Homo sapiens] >pdb|8J04|C Chain C, Calmodulin-1 [Homo sapiens] >pdb|8J04|E Chain
+    E, Calmodulin-1 [Homo sapiens] >pdb|8J04|F Chain F, Calmodulin-1 [Homo sapiens]
+    >pdb|8J04|H Chain H, Calmodulin-1 [Homo sapiens] >pdb|8J05|C Chain C, Calmodulin-1
+    [Homo sapiens] >pdb|8J05|E Chain E, Calmodulin-1 [Homo sapiens] >pdb|8J05|F Chain
+    F, Calmodulin-1 [Homo sapiens] >pdb|8J05|H Chain H, Calmodulin-1 [Homo sapiens]
+    >pdb|9IXY|E Chain E, Calmodulin-3 [Homo sapiens] >pdb|9IXY|F Chain F, Calmodulin-3
+    [Homo sapiens] >pdb|9IXY|G Chain G, Calmodulin-3 [Homo sapiens] >pdb|9IXY|H Chain
+    H, Calmodulin-3 [Homo sapiens] >pdb|9LIZ|C Chain C, Calmodulin-3 [Homo sapiens]
+    >pdb|9LIZ|E Chain E, Calmodulin-3 [Homo sapiens] >pdb|9LIZ|F Chain F, Calmodulin-3
+    [Homo sapiens] >pdb|9LIZ|H Chain H, Calmodulin-3 [Homo sapiens] >pdb|9LJ1|C Chain
+    C, Calmodulin-3 [Homo sapiens] >pdb|9LJ1|E Chain E, Calmodulin-3 [Homo sapiens]
+    >pdb|9LJ1|F Chain F, Calmodulin-3 [Homo sapiens] >pdb|9LJ1|H Chain H, Calmodulin-3
+    [Homo sapiens] >pdb|9LJ5|C Chain C, Calmodulin-3 [Homo sapiens] >pdb|9LJ5|E Chain
+    E, Calmodulin-3 [Homo sapiens] >pdb|9LJ5|F Chain F, Calmodulin-3 [Homo sapiens]
+    >pdb|9LJ5|H Chain H, Calmodulin-3 [Homo sapiens]
+  length: 177
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 3.9787e-105
+  bit_score: 298.901
+- title: pdb|7XNI|C Chain C, Calmodulin-3 [Homo sapiens] >pdb|7XNI|E Chain E, Calmodulin-3
+    [Homo sapiens] >pdb|7XNI|F Chain F, Calmodulin-3 [Homo sapiens] >pdb|7XNI|H Chain
+    H, Calmodulin-3 [Homo sapiens] >pdb|7XNK|B Chain B, Calmodulin-3 [Homo sapiens]
+    >pdb|7XNK|D Chain D, Calmodulin-3 [Homo sapiens] >pdb|7XNK|F Chain F, Calmodulin-3
+    [Homo sapiens] >pdb|7XNK|H Chain H, Calmodulin-3 [Homo sapiens] >pdb|7XNL|B Chain
+    B, Calmodulin-3 [Homo sapiens] >pdb|7XNL|D Chain D, Calmodulin-3 [Homo sapiens]
+    >pdb|7XNL|F Chain F, Calmodulin-3 [Homo sapiens] >pdb|7XNL|H Chain H, Calmodulin-3
+    [Homo sapiens] >pdb|7XNN|A Chain A, Calmodulin-3 [Homo sapiens] >pdb|7XNN|D Chain
+    D, Calmodulin-3 [Homo sapiens] >pdb|7XNN|F Chain F, Calmodulin-3 [Homo sapiens]
+    >pdb|7XNN|H Chain H, Calmodulin-3 [Homo sapiens] >pdb|8J00|E Chain E, Calmodulin-1
+    [Homo sapiens] >pdb|8J00|F Chain F, Calmodulin-1 [Homo sapiens] >pdb|8J00|G Chain
+    G, Calmodulin-1 [Homo sapiens] >pdb|8J00|H Chain H, Calmodulin-1 [Homo sapiens]
+    >pdb|8J01|C Chain C, Calmodulin-1 [Homo sapiens] >pdb|8J01|E Chain E, Calmodulin-1
+    [Homo sapiens] >pdb|8J01|F Chain F, Calmodulin-1 [Homo sapiens] >pdb|8J01|H Chain
+    H, Calmodulin-1 [Homo sapiens] >pdb|8J02|C Chain C, Calmodulin-1 [Homo sapiens]
+    >pdb|8J02|E Chain E, Calmodulin-1 [Homo sapiens] >pdb|8J02|F Chain F, Calmodulin-1
+    [Homo sapiens] >pdb|8J02|H Chain H, Calmodulin-1 [Homo sapiens] >pdb|8J03|E Chain
+    E, Calmodulin-1 [Homo sapiens] >pdb|8J03|F Chain F, Calmodulin-1 [Homo sapiens]
+    >pdb|8J03|H Chain H, Calmodulin-1 [Homo sapiens] >pdb|8J03|J Chain J, Calmodulin-1
+    [Homo sapiens] >pdb|8J04|C Chain C, Calmodulin-1 [Homo sapiens] >pdb|8J04|E Chain
+    E, Calmodulin-1 [Homo sapiens] >pdb|8J04|F Chain F, Calmodulin-1 [Homo sapiens]
+    >pdb|8J04|H Chain H, Calmodulin-1 [Homo sapiens] >pdb|8J05|C Chain C, Calmodulin-1
+    [Homo sapiens] >pdb|8J05|E Chain E, Calmodulin-1 [Homo sapiens] >pdb|8J05|F Chain
+    F, Calmodulin-1 [Homo sapiens] >pdb|8J05|H Chain H, Calmodulin-1 [Homo sapiens]
+    >pdb|9IXY|E Chain E, Calmodulin-3 [Homo sapiens] >pdb|9IXY|F Chain F, Calmodulin-3
+    [Homo sapiens] >pdb|9IXY|G Chain G, Calmodulin-3 [Homo sapiens] >pdb|9IXY|H Chain
+    H, Calmodulin-3 [Homo sapiens] >pdb|9LIZ|C Chain C, Calmodulin-3 [Homo sapiens]
+    >pdb|9LIZ|E Chain E, Calmodulin-3 [Homo sapiens] >pdb|9LIZ|F Chain F, Calmodulin-3
+    [Homo sapiens] >pdb|9LIZ|H Chain H, Calmodulin-3 [Homo sapiens] >pdb|9LJ1|C Chain
+    C, Calmodulin-3 [Homo sapiens] >pdb|9LJ1|E Chain E, Calmodulin-3 [Homo sapiens]
+    >pdb|9LJ1|F Chain F, Calmodulin-3 [Homo sapiens] >pdb|9LJ1|H Chain H, Calmodulin-3
+    [Homo sapiens] >pdb|9LJ5|C Chain C, Calmodulin-3 [Homo sapiens] >pdb|9LJ5|E Chain
+    E, Calmodulin-3 [Homo sapiens] >pdb|9LJ5|F Chain F, Calmodulin-3 [Homo sapiens]
+    >pdb|9LJ5|H Chain H, Calmodulin-3 [Homo sapiens]
+  length: 177
+  identity_%: 45.07
+  similarity_%: 67.61
+  coverage_%: 47.97
+  e_value: 1.39842e-13
+  bit_score: 65.855

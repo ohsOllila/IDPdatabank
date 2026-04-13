@@ -1,0 +1,58 @@
+uniprot:
+- title: 'sp|I6YA32.1| RecName: Full=Cell wall hydrolase ChiZ [Mycobacterium tuberculosis
+    H37Rv]'
+  length: 165
+  identity_%: 95.31
+  similarity_%: 95.31
+  coverage_%: 95.52
+  e_value: 5.10409e-35
+  bit_score: 119.013
+- title: 'sp|Q9NCL7.1| RecName: Full=Phosphatidylinositol transfer protein 2; Short=PtdIns
+    transfer protein 2; AltName: Full=DdPITP2 [Dictyostelium discoideum]'
+  length: 259
+  identity_%: 55.56
+  similarity_%: 72.22
+  coverage_%: 26.87
+  e_value: 4.21823
+  bit_score: 28.1054
+- title: 'sp|Q8K394.2| RecName: Full=Inactive phospholipase C-like protein 2; Short=PLC-L(2);
+    Short=PLC-L2; Short=Phospholipase C-L2; AltName: Full=Phospholipase C-epsilon-2;
+    Short=PLC-epsilon-2 [Mus musculus]'
+  length: 1128
+  identity_%: 45.16
+  similarity_%: 48.39
+  coverage_%: 46.27
+  e_value: 4.30827
+  bit_score: 28.1054
+- title: 'sp|Q5ZVY1.1| RecName: Full=Cysteine--tRNA ligase; AltName: Full=Cysteinyl-tRNA
+    synthetase; Short=CysRS [Legionella pneumophila subsp. pneumophila str. Philadelphia
+    1]'
+  length: 456
+  identity_%: 41.38
+  similarity_%: 55.17
+  coverage_%: 43.28
+  e_value: 5.79416
+  bit_score: 27.7202
+- title: 'sp|Q5X5P9.1| RecName: Full=Cysteine--tRNA ligase; AltName: Full=Cysteinyl-tRNA
+    synthetase; Short=CysRS [Legionella pneumophila str. Paris]'
+  length: 456
+  identity_%: 41.38
+  similarity_%: 55.17
+  coverage_%: 43.28
+  e_value: 6.52527
+  bit_score: 27.7202
+pdb:
+- title: pdb|5EX1|A Chain A, Peptidyl-prolyl cis-trans isomerase cyclophilin type
+    [Hirschia baltica ATCC 49814] >pdb|5EX1|B Chain B, Peptidyl-prolyl cis-trans isomerase
+    cyclophilin type [Hirschia baltica ATCC 49814] >pdb|5EX1|C Chain C, Peptidyl-prolyl
+    cis-trans isomerase cyclophilin type [Hirschia baltica ATCC 49814] >pdb|5EX1|D
+    Chain D, Peptidyl-prolyl cis-trans isomerase cyclophilin type [Hirschia baltica
+    ATCC 49814] >pdb|5EX1|E Chain E, Peptidyl-prolyl cis-trans isomerase cyclophilin
+    type [Hirschia baltica ATCC 49814] >pdb|5EX1|F Chain F, Peptidyl-prolyl cis-trans
+    isomerase cyclophilin type [Hirschia baltica ATCC 49814]
+  length: 283
+  identity_%: 45.83
+  similarity_%: 58.33
+  coverage_%: 35.82
+  e_value: 0.597178
+  bit_score: 28.8758

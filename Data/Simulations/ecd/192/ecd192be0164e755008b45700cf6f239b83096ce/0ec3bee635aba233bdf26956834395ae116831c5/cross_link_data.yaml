@@ -1,0 +1,60 @@
+uniprot:
+- title: 'sp|P19837.3| RecName: Full=Spidroin-1; AltName: Full=Dragline silk fibroin
+    1 [Trichonephila clavipes]'
+  length: 748
+  identity_%: 91.18
+  similarity_%: 91.18
+  coverage_%: 103.03
+  e_value: 2.43616e-05
+  bit_score: 41.2022
+- title: 'sp|P19837.3| RecName: Full=Spidroin-1; AltName: Full=Dragline silk fibroin
+    1 [Trichonephila clavipes]'
+  length: 748
+  identity_%: 88.24
+  similarity_%: 91.18
+  coverage_%: 103.03
+  e_value: 7.10684e-05
+  bit_score: 39.6614
+- title: 'sp|P19837.3| RecName: Full=Spidroin-1; AltName: Full=Dragline silk fibroin
+    1 [Trichonephila clavipes]'
+  length: 748
+  identity_%: 88.24
+  similarity_%: 91.18
+  coverage_%: 103.03
+  e_value: 7.10684e-05
+  bit_score: 39.6614
+- title: 'sp|P19837.3| RecName: Full=Spidroin-1; AltName: Full=Dragline silk fibroin
+    1 [Trichonephila clavipes]'
+  length: 748
+  identity_%: 90.91
+  similarity_%: 90.91
+  coverage_%: 100.0
+  e_value: 0.000118467
+  bit_score: 39.2762
+- title: 'sp|P19837.3| RecName: Full=Spidroin-1; AltName: Full=Dragline silk fibroin
+    1 [Trichonephila clavipes]'
+  length: 748
+  identity_%: 81.08
+  similarity_%: 83.78
+  coverage_%: 112.12
+  e_value: 0.000381702
+  bit_score: 37.7354
+pdb:
+- title: pdb|2XFF|A Chain A, BETA-AMYLASE [Hordeum vulgare] >pdb|2XFR|A Chain A, BETA-AMYLASE
+    [Hordeum vulgare] >pdb|2XFY|A Chain A, BETA-AMYLASE [Hordeum vulgare] >pdb|2XG9|A
+    Chain A, BETA-AMYLASE [Hordeum vulgare] >pdb|2XGB|A Chain A, BETA-AMYLASE [Hordeum
+    vulgare] >pdb|2XGI|A Chain A, BETA-AMYLASE [Hordeum vulgare]
+  length: 535
+  identity_%: 44.83
+  similarity_%: 55.17
+  coverage_%: 87.88
+  e_value: 0.347769
+  bit_score: 28.1054
+- title: pdb|6F9H|A Chain A, Beta-amylase [Hordeum vulgare] >pdb|6F9J|A Chain A, Beta-amylase
+    [Hordeum vulgare] >pdb|6F9L|A Chain A, Beta-amylase [Hordeum vulgare]
+  length: 535
+  identity_%: 44.83
+  similarity_%: 55.17
+  coverage_%: 87.88
+  e_value: 0.351234
+  bit_score: 28.1054
