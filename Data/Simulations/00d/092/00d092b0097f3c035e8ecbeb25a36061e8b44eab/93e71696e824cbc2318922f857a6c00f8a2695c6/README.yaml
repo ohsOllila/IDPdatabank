@@ -1,0 +1,95 @@
+AUTHORS_CONTACT: Samuli Ollila
+COMPOSITION:
+  CLA:
+    COUNT: 78
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  POT:
+    COUNT: 0
+    MAPPING: mappingK.yaml
+    NAME: K
+  PROTEIN:
+    SEQUENCE: GPMELSVSSDSDSSQAGSNAGNQPMLWPAWVYCTRYSDRPSSGPRSRKPKKKNPNKEDKRPRTAFTAEQLQRLKAEFQTNRYLTEQRRQSLAQELGLNESQIKIWFQNKRAKIKKAT
+  SOD:
+    COUNT: 66
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 89843
+    MAPPING: mappingTIP3Pwater.yaml
+    NAME: SOL
+CPT: null
+DATEOFRUNNING: 02/04/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.13236228
+EXPERIMENT:
+  chemical_shift:
+    alignment_score:
+    - -1
+    ionic_strength:
+    - 0.060231
+    ionic_strength_match:
+    - true
+    path:
+    - BMRBid17325
+    ph:
+    - 6.0
+    ph_match:
+    - false
+    sequence:
+    - GPMELSVSSDSDSSQAGSNAGNQPMLWPAWVYCTRYSDRPSSGPRSRKPKKKNPNKEDKRPRTAFTAEQLQRLKAEFQTNRYLTEQRRQSLAQELGLNESQIKIWFQNKRAKIKKAT
+    temperature:
+    - 303.0
+    temperature_match:
+    - true
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score:
+    - -1
+    ionic_strength:
+    - 0.04
+    ionic_strength_match:
+    - true
+    path:
+    - 10.1016/j.bpj.2015.06.069
+    ph:
+    - 6.0
+    ph_match:
+    - false
+    sequence:
+    - GPMELSVSSDSDSSQAGSNAGNQPMLWPAWVYCTRYSDRPSSGPRSRKPKKKNPNKEDKRPRTAFTAEQLQRLKAEFQTNRYLTEQRRQSLAQELGLNESQIKIWFQNKRAKIKKAT
+    temperature:
+    - 303.0
+    temperature_match:
+    - true
+FF: amber99SB-ILDN
+FF_DATE: null
+FF_SOURCE: null
+GRO: null
+ID: 408
+LOG: null
+NUMBER_OF_ATOMS: 1897
+PREEQTIME: 0
+PUBLICATION: https://doi.org/10.1038/s42004-025-01623-x
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: EN2
+TEMPERATURE: 303.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - md_EN2_amber99SB-ILDN_model8.tpr
+TRAJECTORY_SIZE: 725981800
+TRJ:
+- - md_EN2_amber99SB-ILDN_model8_nojump.xtc
+TRJLENGTH: 1000010.0
+TYPEOFSYSTEM: protein

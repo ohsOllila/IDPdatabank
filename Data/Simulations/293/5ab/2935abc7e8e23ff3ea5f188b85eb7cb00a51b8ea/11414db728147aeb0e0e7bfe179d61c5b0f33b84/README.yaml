@@ -1,0 +1,89 @@
+AUTHORS_CONTACT: Efstathia Mantzari and Samuli Ollila
+COMPOSITION:
+  CAL:
+    COUNT: 6
+    MAPPING: mappingCALecc.yaml
+    NAME: CA
+  CLA:
+    COUNT: 20
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  H2PO4:
+    COUNT: 0
+    MAPPING: mappingH2PO4amber.yaml
+    NAME: MON
+  HPO4:
+    COUNT: 0
+    MAPPING: mappingHPO4amber.yaml
+    NAME: DIB
+  PROTEIN:
+    SEQUENCE: KKEEVKKEEVPKPKPKPKPKPKPKKEEVKKEEVKK
+  SOD:
+    COUNT: 6
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 32616
+    MAPPING: mappingTIP4PSwater.yaml
+    NAME: SOL
+  TRIS:
+    COUNT: 11
+    MAPPING: mappingTRISamber.yaml
+    NAME: UNL
+CPT: null
+DATEOFRUNNING: 26/03/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.19186254
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: amberff03ws
+FF_DATE: null
+FF_SOURCE: null
+GRO: null
+ID: 285
+LOG: null
+NUMBER_OF_ATOMS: 977
+PREEQTIME: 0
+PUBLICATION: unpublished
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: Charged sequence with tris
+TEMPERATURE: 303.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - cKKEEKVP_Tris_HCl_CaCl2.tpr
+TRAJECTORY_SIZE: 395177404
+TRJ:
+- - cKKEEKVP_Tris_HCl_CaCl2_nowater.xtc
+TRJLENGTH: 1000010.0
+TYPEOFSYSTEM: protein

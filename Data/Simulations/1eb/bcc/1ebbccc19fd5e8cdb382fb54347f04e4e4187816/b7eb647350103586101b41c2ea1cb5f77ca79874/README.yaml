@@ -1,0 +1,77 @@
+AUTHORS_CONTACT: Samuli Ollila
+COMPOSITION:
+  CLA:
+    COUNT: 0
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  POT:
+    COUNT: 0
+    MAPPING: mappingK.yaml
+    NAME: K
+  PROTEIN:
+    SEQUENCE: MHHHHHHSSGLVPRGSMKETAAAKFERQHMDSPDLGTDDDDKAMASGRGGLGGQGAGAAAAAGGAGQGGYGGLGSQGTS
+  SOD:
+    COUNT: 2
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 38009
+    MAPPING: mappingTIP4PSwater.yaml
+    NAME: SOL
+CPT: null
+DATEOFRUNNING: 27/03/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.19257724
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: AMBER03WS
+FF_DATE: null
+FF_SOURCE: null
+GRO: null
+ID: 346
+LOG: null
+NUMBER_OF_ATOMS: 1031
+PREEQTIME: 0
+PUBLICATION: https://doi.org/10.1038/s42004-025-01623-x
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: silk protein
+TEMPERATURE: 303.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - model_02_AMBER03WS_md_2000ns.tpr
+TRAJECTORY_SIZE: 748919064
+TRJ:
+- - model_02_AMBER03WS_md_2000ns.xtc
+TRJLENGTH: 82630.0
+TYPEOFSYSTEM: protein

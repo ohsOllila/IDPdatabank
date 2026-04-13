@@ -1,0 +1,95 @@
+AUTHORS_CONTACT: Samuli Ollila
+COMPOSITION:
+  CLA:
+    COUNT: 32
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  POT:
+    COUNT: 0
+    MAPPING: mappingK.yaml
+    NAME: K
+  PROTEIN:
+    SEQUENCE: QEAGGRPGADCEVCKEFLNRFYKSLIDRGVNFSLDTIEKELISFCLDTKGKENRLCYYLGATKDAATKILSEVTRPMSVXMPAMKICEKLKKLDSQICELKYEKTLDLASVDLRKMRVAELKQILXSWGEECRACAEKTDYVNLIQELAPKYAATXPKTEL
+  SOD:
+    COUNT: 31
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 16139
+    MAPPING: mappingOPCwater.yaml
+    NAME: SOL
+CPT: null
+DATEOFRUNNING: 26/03/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.13235745
+EXPERIMENT:
+  chemical_shift:
+    alignment_score:
+    - 816.0
+    ionic_strength:
+    - 0.155
+    ionic_strength_match:
+    - false
+    path:
+    - BMRBid19164
+    ph:
+    - 6.0
+    ph_match:
+    - false
+    sequence:
+    - QEAGGRPGADCEVCKEFLNRFYKSLIDRGVNFSLDTIEKELISFCLDTKGKENRLCYYLGATKDAATKILSEVTRPMSVHMPAMKICEKLKKLDSQICELKYEKTLDLASVDLRKMRVAELKQILHSWGEECRACAEKTDYVNLIQELAPKYAATHPKTEL
+    temperature:
+    - 298.0
+    temperature_match:
+    - true
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score:
+    - 816.0
+    ionic_strength:
+    - 0.155
+    ionic_strength_match:
+    - false
+    path:
+    - BMRBid19164
+    ph:
+    - 6.0
+    ph_match:
+    - false
+    sequence:
+    - QEAGGRPGADCEVCKEFLNRFYKSLIDRGVNFSLDTIEKELISFCLDTKGKENRLCYYLGATKDAATKILSEVTRPMSVHMPAMKICEKLKKLDSQICELKYEKTLDLASVDLRKMRVAELKQILHSWGEECRACAEKTDYVNLIQELAPKYAATHPKTEL
+    temperature:
+    - 298.0
+    temperature_match:
+    - true
+FF: DESamber
+FF_DATE: null
+FF_SOURCE: null
+GRO: null
+ID: 307
+LOG: null
+NUMBER_OF_ATOMS: 2580
+PREEQTIME: 0
+PUBLICATION: https://doi.org/10.1038/s42004-025-01623-x
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: CDNF
+TEMPERATURE: 298.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - md_CDNF_DESamber_model4.tpr
+TRAJECTORY_SIZE: 986444944
+TRJ:
+- - md_CDNF_DESamber_model4_nojump.xtc
+TRJLENGTH: 1000010.0
+TYPEOFSYSTEM: protein

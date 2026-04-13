@@ -1,0 +1,77 @@
+AUTHORS_CONTACT: Samuli Ollila
+COMPOSITION:
+  CLA:
+    COUNT: 24
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  POT:
+    COUNT: 0
+    MAPPING: mappingK.yaml
+    NAME: K
+  PROTEIN:
+    SEQUENCE: MXXXXXXIEGRXMLRPGDCEVCISYLGRFYQDLKDRDVTFSPATIEEELIKFCREARGKENRLCYYIGATDDAATKIINEVSKPLAXXIPVEKICEKLKKKDSQICELKYDKQIDLSTVDLKKLRVKELKKILDDWGEMCKGCAEKSDYIRKINELMPKYAPKAASARTDL
+  SOD:
+    COUNT: 21
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 56281
+    MAPPING: mappingTIP4PSwater.yaml
+    NAME: SOL
+CPT: null
+DATEOFRUNNING: 02/04/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.13236220
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: amber99SBws
+FF_DATE: null
+FF_SOURCE: null
+GRO: null
+ID: 392
+LOG: null
+NUMBER_OF_ATOMS: 2796
+PREEQTIME: 0
+PUBLICATION: https://doi.org/10.1038/s42004-025-01623-x
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: MANF
+TEMPERATURE: 310.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - md_MANF_amber99SBws_model4.tpr
+TRAJECTORY_SIZE: 1069810092
+TRJ:
+- - md_MANF_amber99SBws_model4_nojump.xtc
+TRJLENGTH: 1000010.0
+TYPEOFSYSTEM: protein
