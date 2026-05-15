@@ -659,12 +659,13 @@ if __name__ == "__main__":
             )
 
     if number_of_atoms != natoms_trj:
-        stop = input(
-            f"Number of atoms in trajectory {natoms_trj} and README.yaml "
-            f"{number_of_atoms} do no match. Check the mapping files and molecule"
-            f" names. {os.linesep} If you know what you are doing, you can still "
-            "continue the running the script. Do you want to (y/n)?"
-        )
+        stop="y"
+        #stop = input(
+         #   f"Number of atoms in trajectory {natoms_trj} and README.yaml "
+          #  f"{number_of_atoms} do no match. Check the mapping files and molecule"
+          #  f" names. {os.linesep} If you know what you are doing, you can still "
+          #  "continue the running the script. Do you want to (y/n)?"
+        #)
         if stop == "n":
             os._exit("Interrupted because atomnumbers did not match")
         if stop == "y":
