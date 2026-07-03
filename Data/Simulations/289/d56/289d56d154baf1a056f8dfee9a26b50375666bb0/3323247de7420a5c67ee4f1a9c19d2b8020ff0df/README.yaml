@@ -1,37 +1,69 @@
-DOI: 10.5281/zenodo.18835936
-SOFTWARE: gromacs
-TRJ:
-- - replica_04_AMBER99SB-DISP_md_2000ns.xtc
-TPR:
-- - replica_04_AMBER99SB-DISP_md_2000ns.tpr
-PREEQTIME: 0
-TIMELEFTOUT: 0
+AUTHORS_CONTACT: Samuli Ollila
 COMPOSITION:
   PROTEIN:
     SEQUENCE: MAEDADMRNELEEMQRRADQLADESLESTRRMLQLVEESKDAGIRTLVMLDEQGEQLDRVEEGMNHINQDMKEAEKNLKDLGKCCGLFICPCNKLKSSDAYKKAWGNNQDGVVASQPARVVDEREQMAISGGFIRRVTNDARENEMDENLEQVSGIIGNLRHMALDMGNEIDTQNRQIDRIMEKADSNKTRIDEANQRATKMLGSG
-  SOL:
-    NAME: SOL
-    MAPPING: mappingTIP4PSwater.yaml
-    COUNT: 150091
   SOD:
-    NAME: NA
-    MAPPING: mappingSODecc.yaml
     COUNT: 13
-DIR_WRK: /home/cmcajsa/Documents
-PUBLICATION: https://doi.org/10.26434/chemrxiv-2025-m5m0p
-AUTHORS_CONTACT: Samuli Ollila
-SYSTEM: SNAP25_noions
-SOFTWARE_VERSION: null
-FF: AMBER99SB-DISP
-FF_SOURCE: null
-FF_DATE: null
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 150091
+    MAPPING: mappingTIP4PSwater.yaml
+    NAME: SOL
 CPT: null
-LOG: null
-TOP: null
-GRO: null
-TYPEOFSYSTEM: protein
-TRAJECTORY_SIZE: 681893888
-TRJLENGTH: 545770.0
-TEMPERATURE: 303.0
-NUMBER_OF_ATOMS: 3200
 DATEOFRUNNING: 14/05/2026
+DIR_WRK: /home/cmcajsa/Documents
+DOI: 10.5281/zenodo.18835936
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: AMBER99SB-DISP
+FF_DATE: null
+FF_SOURCE: null
+GRO: null
+ID: 448
+LOG: null
+NUMBER_OF_ATOMS: 3200
+PREEQTIME: 0
+PUBLICATION: https://doi.org/10.26434/chemrxiv-2025-m5m0p
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: SNAP25_noions
+TEMPERATURE: 303.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - replica_04_AMBER99SB-DISP_md_2000ns.tpr
+TRAJECTORY_SIZE: 681893888
+TRJ:
+- - replica_04_AMBER99SB-DISP_md_2000ns.xtc
+TRJLENGTH: 545770.0
+TYPEOFSYSTEM: protein

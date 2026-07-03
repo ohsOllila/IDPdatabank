@@ -1,4 +1,3 @@
-ID: 428
 AUTHORS_CONTACT: Samuli Ollila
 COMPOSITION:
   CLA:
@@ -76,6 +75,7 @@ FF: amberff03ws
 FF_DATE: null
 FF_SOURCE: null
 GRO: null
+ID: 428
 LOG: null
 NUMBER_OF_ATOMS: 1897
 PREEQTIME: 0

@@ -1,0 +1,83 @@
+uniprot:
+- title: 'sp|Q05917.2| RecName: Full=Homeobox protein engrailed-2; Short=Gg-En-2;
+    Short=Homeobox protein en-2 [Gallus gallus]'
+  length: 289
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 97.44
+  e_value: 9.30573e-80
+  bit_score: 238.81
+- title: 'sp|P52729.1| RecName: Full=Homeobox protein engrailed-2-A; Short=En-2A;
+    Short=Homeobox protein en-2-A; AltName: Full=En2 1.4 [Xenopus laevis]'
+  length: 265
+  identity_%: 92.86
+  similarity_%: 95.92
+  coverage_%: 83.76
+  e_value: 1.78968e-61
+  bit_score: 191.43
+- title: 'sp|P52730.1| RecName: Full=Homeobox protein engrailed-2-B; Short=En-2B;
+    Short=Homeobox protein en-2-B; AltName: Full=En2 MABEN [Xenopus laevis]'
+  length: 265
+  identity_%: 91.84
+  similarity_%: 96.94
+  coverage_%: 83.76
+  e_value: 3.83753e-61
+  bit_score: 190.66
+- title: 'sp|P09015.2| RecName: Full=Homeobox protein engrailed-2a; Short=Homeobox
+    protein en-2a; AltName: Full=Zf-En-2 [Danio rerio]'
+  length: 265
+  identity_%: 94.74
+  similarity_%: 96.84
+  coverage_%: 81.2
+  e_value: 2.26647e-60
+  bit_score: 188.734
+- title: 'sp|P31533.2| RecName: Full=Homeobox protein engrailed-2b; Short=Homeobox
+    protein en-2b; AltName: Full=Zf-En-1 [Danio rerio]'
+  length: 261
+  identity_%: 87.39
+  similarity_%: 90.09
+  coverage_%: 94.87
+  e_value: 5.96611e-59
+  bit_score: 184.882
+pdb:
+- title: pdb|3ZOB|A Chain A, HOMEOBOX PROTEIN ENGRAILED-2 [Gallus gallus]
+  length: 67
+  identity_%: 95.31
+  similarity_%: 95.31
+  coverage_%: 54.7
+  e_value: 1.67456e-37
+  bit_score: 122.865
+- title: pdb|3HDD|A Chain A, ENGRAILED HOMEODOMAIN [Drosophila melanogaster] >pdb|3HDD|B
+    Chain B, ENGRAILED HOMEODOMAIN [Drosophila melanogaster]
+  length: 60
+  identity_%: 78.33
+  similarity_%: 90.0
+  coverage_%: 51.28
+  e_value: 8.96111e-28
+  bit_score: 98.2117
+- title: pdb|1HDD|C Chain C, PROTEIN (ENGRAILED HOMEODOMAIN) [Drosophila melanogaster]
+    >pdb|1HDD|D Chain D, PROTEIN (ENGRAILED HOMEODOMAIN) [Drosophila melanogaster]
+    >pdb|2JWT|A Chain A, Segmentation polarity homeobox protein engrailed [Drosophila
+    melanogaster]
+  length: 61
+  identity_%: 76.67
+  similarity_%: 90.0
+  coverage_%: 51.28
+  e_value: 3.57093e-27
+  bit_score: 96.6709
+- title: pdb|6FVC|A Chain A, Segmentation polarity homeobox protein engrailed [Drosophila
+    melanogaster]
+  length: 64
+  identity_%: 76.27
+  similarity_%: 89.83
+  coverage_%: 50.43
+  e_value: 1.54857e-26
+  bit_score: 95.1301
+- title: pdb|2HDD|A Chain A, PROTEIN (ENGRAILED HOMEODOMAIN Q50K) [Drosophila melanogaster]
+    >pdb|2HDD|B Chain B, PROTEIN (ENGRAILED HOMEODOMAIN Q50K) [Drosophila melanogaster]
+  length: 61
+  identity_%: 76.27
+  similarity_%: 89.83
+  coverage_%: 50.43
+  e_value: 1.84294e-26
+  bit_score: 94.7449

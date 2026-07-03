@@ -68,6 +68,14 @@ BUFFER_MOLECULE_DATA: Dict[str, Dict[str, Any]] = {
         "charges": [1, -1],
         "stoichiometry": [1, 1],
     },
+    "sodium acetate": {
+        "ph_dependent": True,
+        "ph_ranges": [
+            {"min_ph": 0, "max_ph": 4.76, "charges": [0], "stoichiometry": [1]},
+            {"min_ph": 4.76, "max_ph": 14, "charges": [1, -1], "stoichiometry": [1, 1]},
+        ],
+    },
+    
     "sodium phosphate": {
         "ph_dependent": True,
         "ph_ranges": [
@@ -77,6 +85,19 @@ BUFFER_MOLECULE_DATA: Dict[str, Dict[str, Any]] = {
             {"min_ph": 12, "max_ph": 14, "charges": [1, -3], "stoichiometry": [3, 1]},
         ],
     },
+
+    "Sodium phosphate": {
+        "ph_dependent": True,
+        "ph_ranges": [
+            {"min_ph": 0, "max_ph": 2, "charges": [0], "stoichiometry": [1]},
+            {"min_ph": 2, "max_ph": 7, "charges": [1, -1], "stoichiometry": [1, 1]},
+            {"min_ph": 7, "max_ph": 12, "charges": [1, -2], "stoichiometry": [2, 1]},
+            {"min_ph": 12, "max_ph": 14, "charges": [1, -3], "stoichiometry": [3, 1]},
+        ],
+    },
+
+
+    
     "sodium succinate": {
     "ph_dependent": True,
     "ph_ranges": [
@@ -148,4 +169,205 @@ BUFFER_MOLECULE_DATA: Dict[str, Dict[str, Any]] = {
     "D2O": {"ph_dependent": False, "charges": [0], "stoichiometry": [1]},
     "H2O": {"ph_dependent": False, "charges": [0], "stoichiometry": [1]},
     "DSS": {"ph_dependent": False, "charges": [1, -1], "stoichiometry": [1, 1]},
+
+    "Glycine": {
+        "ph_dependent": True,
+        "ph_ranges": [
+            {"min_ph": 0, "max_ph": 2.34, "charges": [1], "stoichiometry": [1]},
+            {"min_ph": 2.34, "max_ph": 9.60, "charges": [0], "stoichiometry": [1]},
+            {"min_ph": 9.60, "max_ph": 14, "charges": [-1], "stoichiometry": [1]},
+        ],
+    },
+
+    "beta-mercaptoethanol": {
+        "ph_dependent": True,
+        "ph_ranges": [
+            {"min_ph": 0, "max_ph": 9.6, "charges": [0], "stoichiometry": [1]},
+            {"min_ph": 9.6, "max_ph": 14, "charges": [-1], "stoichiometry": [1]},
+        ],
+    },
+
+    "calcium chloride": {
+        "ph_dependent": False,
+        "charges": [2, -1],
+        "stoichiometry": [1, 2],
+    },
+
+    "CaCl2": {
+        "ph_dependent": False,
+        "charges": [2, -1],
+        "stoichiometry": [1, 2],
+    },
+
+    "NaPi": {
+        "ph_dependent": True,
+        "ph_ranges": [
+            {"min_ph": 0, "max_ph": 2, "charges": [0], "stoichiometry": [1]},
+            {"min_ph": 2, "max_ph": 7, "charges": [1, -1], "stoichiometry": [1, 1]},
+            {"min_ph": 7, "max_ph": 12, "charges": [1, -2], "stoichiometry": [2, 1]},
+            {"min_ph": 12, "max_ph": 14, "charges": [1, -3], "stoichiometry": [3, 1]},
+        ],
+    },
+
+    "potassium phosphate": {
+        "ph_dependent": True,
+        "ph_ranges": [
+            {"min_ph": 0, "max_ph": 2, "charges": [0], "stoichiometry": [1]},
+            {"min_ph": 2, "max_ph": 7, "charges": [1, -1], "stoichiometry": [1, 1]},
+            {"min_ph": 7, "max_ph": 12, "charges": [1, -2], "stoichiometry": [2, 1]},
+            {"min_ph": 12, "max_ph": 14, "charges": [1, -3], "stoichiometry": [3, 1]},
+        ],
+    },
+
+    "KPi": {
+        "ph_dependent": True,
+        "ph_ranges": [
+            {"min_ph": 0, "max_ph": 2, "charges": [0], "stoichiometry": [1]},
+            {"min_ph": 2, "max_ph": 7, "charges": [1, -1], "stoichiometry": [1, 1]},
+            {"min_ph": 7, "max_ph": 12, "charges": [1, -2], "stoichiometry": [2, 1]},
+            {"min_ph": 12, "max_ph": 14, "charges": [1, -3], "stoichiometry": [3, 1]},
+        ],
+    },
+
+    "TFE": {
+        "ph_dependent": False,
+        "charges": [0],
+        "stoichiometry": [1],
+    },
+
+    "TSP": {
+        "ph_dependent": False,
+        "charges": [-3, 1],
+        "stoichiometry": [1, 3],
+    },
+
+    "ZnCl2": {
+        "ph_dependent": False,
+        "charges": [2, -1],
+        "stoichiometry": [1, 2],
+    },
+
+    "Acetate Buffer": {
+    "ph_dependent": True,
+    "ph_ranges": [
+        {"min_ph": 0, "max_ph": 4.76, "charges": [0], "stoichiometry": [1]},
+        {"min_ph": 4.76, "max_ph": 14, "charges": [1, -1], "stoichiometry": [1, 1]},
+    ],
+},
+
+"beta-mercaptoethanol": {
+    "ph_dependent": True,
+    "ph_ranges": [
+        {"min_ph": 0, "max_ph": 9.6, "charges": [0], "stoichiometry": [1]},
+        {"min_ph": 9.6, "max_ph": 14, "charges": [-1], "stoichiometry": [1]},
+    ],
+},
+
+"CaCl2": {
+    "ph_dependent": False,
+    "charges": [2, -1],
+    "stoichiometry": [1, 2],
+},
+
+"calcium chloride": {
+    "ph_dependent": False,
+    "charges": [2, -1],
+    "stoichiometry": [1, 2],
+},
+
+"Glycine": {
+    "ph_dependent": True,
+    "ph_ranges": [
+        {"min_ph": 0, "max_ph": 2.34, "charges": [1], "stoichiometry": [1]},
+        {"min_ph": 2.34, "max_ph": 9.60, "charges": [0], "stoichiometry": [1]},
+        {"min_ph": 9.60, "max_ph": 14, "charges": [-1], "stoichiometry": [1]},
+    ],
+},
+
+"NaPi": {
+    "ph_dependent": True,
+    "ph_ranges": [
+        {"min_ph": 0, "max_ph": 2, "charges": [0], "stoichiometry": [1]},
+        {"min_ph": 2, "max_ph": 7, "charges": [1, -1], "stoichiometry": [1, 1]},
+        {"min_ph": 7, "max_ph": 12, "charges": [1, -2], "stoichiometry": [2, 1]},
+        {"min_ph": 12, "max_ph": 14, "charges": [1, -3], "stoichiometry": [3, 1]},
+    ],
+},
+
+"KPi": {
+    "ph_dependent": True,
+    "ph_ranges": [
+        {"min_ph": 0, "max_ph": 2, "charges": [0], "stoichiometry": [1]},
+        {"min_ph": 2, "max_ph": 7, "charges": [1, -1], "stoichiometry": [1, 1]},
+        {"min_ph": 7, "max_ph": 12, "charges": [1, -2], "stoichiometry": [2, 1]},
+        {"min_ph": 12, "max_ph": 14, "charges": [1, -3], "stoichiometry": [3, 1]},
+    ],
+},
+
+"potassium chloride": {
+    "ph_dependent": False,
+    "charges": [1, -1],
+    "stoichiometry": [1, 1],
+},
+
+"TFE": {
+    "ph_dependent": False,
+    "charges": [0],
+    "stoichiometry": [1],
+},
+
+"TSP": {
+    "ph_dependent": False,
+    "charges": [1, -1],
+    "stoichiometry": [1, 1],
+},
+
+"tris(hydroxymethyl)aminomethane": {
+    "ph_dependent": True,
+    "ph_ranges": [
+        {"min_ph": 0, "max_ph": 8.07, "charges": [1], "stoichiometry": [1]},
+        {"min_ph": 8.07, "max_ph": 14, "charges": [0], "stoichiometry": [1]},
+    ],
+},
+
+"Tris-HCl": {
+    "ph_dependent": True,
+    "ph_ranges": [
+        {"min_ph": 0, "max_ph": 8.07, "charges": [1, -1], "stoichiometry": [1, 1]},
+        {"min_ph": 8.07, "max_ph": 14, "charges": [0, -1], "stoichiometry": [1, 1]},
+    ],
+},
+
+"ZnCl2": {
+    "ph_dependent": False,
+    "charges": [2, -1],
+    "stoichiometry": [1, 2],
+},
+
+"ZINC ION": {
+    "ph_dependent": False,
+    "charges": [2],
+    "stoichiometry": [1],
+},
+
+    "magnesium chloride": {
+    "ph_dependent": False,
+    "charges": [2, -1],
+    "stoichiometry": [1, 2],
+},
+
+"magnsesium chloride": {
+    "ph_dependent": False,
+    "charges": [2, -1],
+    "stoichiometry": [1, 2],
+},
+
+"Tris": {
+    "ph_dependent": True,
+    "ph_ranges": [
+        {"min_ph": 0, "max_ph": 8.07, "charges": [1], "stoichiometry": [1]},
+        {"min_ph": 8.07, "max_ph": 14, "charges": [0], "stoichiometry": [1]},
+    ],
+},
+    
 }

@@ -1238,6 +1238,7 @@ def calculate_SAXS_profile_crysol(gro_file, xtc_file,dt_analysis_ps=100):
             subprocess.run("sed -i '/.*OT2*/d' "+ filName_PDB, shell=True)
             # HIS fix
             subprocess.run("sed -i 's/HIE/HIS/g' "+ filName_PDB, shell=True)
+            subprocess.run("sed -i 's/HSP/HIS/g' "+ filName_PDB, shell=True)
             # glutamic acid and aspartate fix for low pH simulations
             subprocess.run("sed -i 's/GLH/GLU/g' "+ filName_PDB, shell=True)
             subprocess.run("sed -i 's/ASH/ASP/g' "+ filName_PDB, shell=True)
@@ -2089,6 +2090,8 @@ def plot_quality_heatmap(data_dict, save_path, vmax=None):
     # --- Transpose for plotting (residues on x-axis, nuclei on y-axis) ---
     df_t = df.T
 
+    df_t = df_t +1
+    
     df_t.to_csv(save_path.replace(".png", ".csv"))
     
     # --- Plot ---
@@ -2101,8 +2104,11 @@ def plot_quality_heatmap(data_dict, save_path, vmax=None):
         vmax=vmax               # 👈 fixed color scale if provided
     )
     ax.set_xlabel("Residue", fontsize=20)
-    ax.set_ylabel("Nucleus", fontsize=20)
-    ax.set_title("Chemical shift quality", fontsize=20)
+    #ax.set_ylabel("Nucleus", fontsize=20)
+    if 'chemical' in save_path:
+        ax.set_title("Chemical shift quality", fontsize=20)
+    else:
+        ax.set_title("Spin relaxation quality", fontsize=20)
     plt.xticks(rotation=90, fontsize=10)
     plt.yticks(rotation=0, fontsize=18)
 
@@ -2190,7 +2196,7 @@ def evaluate_chemical_shift_quality(system, atom_accuracies):
 
     # --- Generate heatmap ---
     print(f"🧩 Generating heatmap: {quality_heatmap_file}")
-    plot_quality_heatmap(quality, quality_heatmap_file,2)
+    plot_quality_heatmap(quality, quality_heatmap_file,4)
     print("✅ Heatmap saved successfully.")
 
     return quality_heatmap_file
@@ -2276,7 +2282,7 @@ def evaluate_spin_relaxation_quality(system, relaxation_accuracies):
 
     # --- Generate heatmap ---
     print(f"🧩 Generating relaxation heatmap: {heatmap_file}")
-    plot_quality_heatmap(quality, heatmap_file,3)
+    plot_quality_heatmap(quality, heatmap_file,4)
     print("✅ Relaxation heatmap saved successfully.")
 
     return heatmap_file

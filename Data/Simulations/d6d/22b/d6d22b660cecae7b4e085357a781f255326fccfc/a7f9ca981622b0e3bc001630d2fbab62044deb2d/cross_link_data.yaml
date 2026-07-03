@@ -1,0 +1,10 @@
+uniprot: []
+pdb:
+- title: pdb|7AWA|A Chain A, Secretion system apparatus protein SsaV [Salmonella enterica
+    subsp. enterica serovar Typhimurium str. LT2]
+  length: 687
+  identity_%: 52.38
+  similarity_%: 57.14
+  coverage_%: 63.64
+  e_value: 5.92632
+  bit_score: 24.6386
