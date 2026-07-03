@@ -1,0 +1,87 @@
+uniprot:
+- title: 'sp|P0C5H9.1| RecName: Full=Mesencephalic astrocyte-derived neurotrophic
+    factor; AltName: Full=Arginine-rich protein; AltName: Full=Protein ARMET; Flags:
+    Precursor [Rattus norvegicus] >sp|Q9CXI5.2| RecName: Full=Mesencephalic astrocyte-derived
+    neurotrophic factor; AltName: Full=Arginine-rich protein; AltName: Full=Protein
+    ARMET; Flags: Precursor [Mus musculus]'
+  length: 179
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 92.4
+  e_value: 1.34565e-113
+  bit_score: 322.783
+- title: 'sp|P55145.3| RecName: Full=Mesencephalic astrocyte-derived neurotrophic
+    factor; AltName: Full=Arginine-rich protein; AltName: Full=Protein ARMET; Flags:
+    Precursor [Homo sapiens]'
+  length: 182
+  identity_%: 95.73
+  similarity_%: 96.34
+  coverage_%: 95.91
+  e_value: 2.64339e-113
+  bit_score: 322.398
+- title: 'sp|P80513.2| RecName: Full=Mesencephalic astrocyte-derived neurotrophic
+    factor; AltName: Full=Arginine-rich protein; AltName: Full=Protein ARMET; Flags:
+    Precursor [Bos taurus]'
+  length: 179
+  identity_%: 92.07
+  similarity_%: 95.73
+  coverage_%: 95.91
+  e_value: 5.6248e-109
+  bit_score: 311.227
+- title: 'sp|Q49AH0.2| RecName: Full=Cerebral dopamine neurotrophic factor; AltName:
+    Full=ARMET-like protein 1; AltName: Full=Conserved dopamine neurotrophic factor;
+    Flags: Precursor [Homo sapiens]'
+  length: 187
+  identity_%: 63.29
+  similarity_%: 79.11
+  coverage_%: 92.4
+  e_value: 1.23291e-67
+  bit_score: 206.838
+- title: 'sp|Q8CC36.1| RecName: Full=Cerebral dopamine neurotrophic factor; AltName:
+    Full=ARMET-like protein 1; AltName: Full=Conserved dopamine neurotrophic factor;
+    Flags: Precursor [Mus musculus]'
+  length: 187
+  identity_%: 64.14
+  similarity_%: 77.93
+  coverage_%: 84.8
+  e_value: 1.40871e-64
+  bit_score: 199.134
+pdb:
+- title: pdb|2RQY|A Chain A, Solution structure and dynamics of mouse ARMET [Mus musculus]
+  length: 171
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 1.32947e-125
+  bit_score: 351.673
+- title: pdb|6HA7|C Chain C, Mesencephalic astrocyte-derived neurotrophic factor [Mus
+    musculus] >pdb|6HA7|D Chain D, Mesencephalic astrocyte-derived neurotrophic factor
+    [Mus musculus]
+  length: 158
+  identity_%: 99.37
+  similarity_%: 99.37
+  coverage_%: 92.4
+  e_value: 2.22052e-113
+  bit_score: 320.087
+- title: pdb|2KVD|A Chain A, Mesencephalic astrocyte-derived neurotrophic factor [Homo
+    sapiens]
+  length: 160
+  identity_%: 98.73
+  similarity_%: 98.73
+  coverage_%: 92.4
+  e_value: 2.11331e-112
+  bit_score: 317.775
+- title: pdb|2W51|A Chain A, PROTEIN ARMET [Homo sapiens]
+  length: 158
+  identity_%: 98.73
+  similarity_%: 98.73
+  coverage_%: 92.4
+  e_value: 2.17617e-112
+  bit_score: 317.775
+- title: pdb|4BIT|A Chain A, CEREBRAL DOPAMINE NEUROTROPHIC FACTOR [Homo sapiens]
+  length: 161
+  identity_%: 63.29
+  similarity_%: 79.11
+  coverage_%: 92.4
+  e_value: 2.51192e-68
+  bit_score: 206.453

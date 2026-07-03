@@ -1,4 +1,3 @@
-ID: 416
 AUTHORS_CONTACT: Samuli Ollila
 COMPOSITION:
   CLA:
@@ -76,6 +75,7 @@ FF: amber99SBws
 FF_DATE: null
 FF_SOURCE: null
 GRO: null
+ID: 416
 LOG: null
 NUMBER_OF_ATOMS: 1897
 PREEQTIME: 0

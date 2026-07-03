@@ -52,7 +52,7 @@ def searchDatabank():
     simulations = []
 
     for simulation_readme in simulation_readmes:
-        print(simulation_readme)
+        #print(simulation_readme)
         simulation = Simulation(simulation_readme)
         simulations.append(simulation)
 
@@ -84,16 +84,19 @@ def searchDatabank():
         else:
             experiments.append(experiment)
 
+
+    aligned_experiments = []
+            
     for simulation in simulations:
 
         # TODO: will need to loop through all the experiment types, not just spin_relaxation
         experiment_types_dict = {}
 
         simulation_ph = 7  # TODO: Implement pH-getter for the simulations
-        print()
-        print(simulation)
-        print(simulation.info)
-        print()
+        #print()
+        #print(simulation)
+        #print(simulation.info)
+        #print()
         simulation_temperature = simulation.info["TEMPERATURE"]
         simulation_ionic_strength = simulation.ionic_strength
         for experiment_type in experiment_types:
@@ -111,7 +114,11 @@ def searchDatabank():
 
         for experiment in experiments:
 
-            logger.info(f"Checking experiment {experiment.path}")
+            #print()
+            #for key, value in vars(experiment).items():
+            #    print(f"{key}: {value}")
+            
+            #logger.info(f"Checking experiment {experiment.path}")
             # we first check for the exact sequence match
             # if not, we do an alignment, spit out alignment score. the exact threshold will
             # be determined later.
@@ -121,16 +128,19 @@ def searchDatabank():
 
             sequence_match = simulation.sequence == experiment.sequence
             if sequence_match:
-                logger.info(
-                    f"Perfect sequence match found between simulation {simulation.path} and experiment {experiment.path}"
-                )
+                #logger.info(
+                #    f"Perfect sequence match found between simulation {simulation.path} and experiment {experiment.path}"
+                #)
                 alignment_score = -1  # unique value for exact match
             else:
-                logger.info(
-                    f"sequence_1: {simulation.sequence}, sequence_2: {experiment.sequence}"
-                )
+                #logger.info(
+                #    f"sequence_1: {simulation.sequence}, sequence_2: {experiment.sequence}"
+                #)
+                #print(simulation.sequence, experiment.sequence)
+                sim_seq = "".join(simulation.sequence.split())
+                exp_seq = "".join(experiment.sequence.split())
                 alignment = align_and_evaluate_protein_sequences(
-                    simulation.sequence, experiment.sequence
+                    sim_seq, exp_seq
                 )
 
                 hypothetical_alignment_score = align_and_evaluate_protein_sequences(
@@ -142,19 +152,20 @@ def searchDatabank():
                 )  # this is as arbitrary as it gets
                 if alignment is not None:
                     if alignment.score > alignment_score_threshold:
+                        aligned_experiments.append(experiment)
                         alignment_score = alignment.score
                         logger.info(
                             f"Alignment found between simulation {simulation.path} and experiment {experiment.path} with score {alignment.score}"
                         )
                     else:
-                        logger.info(
-                            f"Alignment found between simulation {simulation.path} and experiment {experiment.path} with score {alignment.score} but below threshold {alignment_score_threshold}."
-                        )
+                        #logger.info(
+                        #    f"Alignment found between simulation {simulation.path} and experiment {experiment.path} with score {alignment.score} but below threshold {alignment_score_threshold}."
+                        #)
                         continue
                 else:
-                    logger.info(
-                        f"No alignment found between simulation {simulation.path} and experiment {experiment.path}"
-                    )
+                    #logger.info(
+                    #    f"No alignment found between simulation {simulation.path} and experiment {experiment.path}"
+                    #)
                     continue
 
             # matching_experiments.append(experiment)
@@ -207,7 +218,7 @@ def searchDatabank():
             experiment_types_dict[experiment_type]["temperature_match"].append(
                 temperature_result.match
             )
-            print('Ionic results: ', ionic_result)
+            #print('Ionic results: ', ionic_result)
             experiment_types_dict[experiment_type]["ionic_strength_match"].append(
                 ionic_result.match
             )
@@ -216,15 +227,21 @@ def searchDatabank():
                 alignment_score
             )
 
-        logger.info(
-            f"Appending to the info file: \n{simulation.path}\n {experiment_types_dict}"
-        )
+        #logger.info(
+        #    f"Appending to the info file: \n{simulation.path}\n {experiment_types_dict}"
+        #)
 
         simulation.info["EXPERIMENT"] = experiment_types_dict
 
         temp_path = simulation.path.with_name("README.yaml")
         simulation.file_handler.write_yaml(temp_path, simulation.info)
 
+    for experiment in experiments:
+        if experiment in aligned_experiments:
+            print("Aligned: ", experiment.path)
+            continue
+        else:
+            print(experiment.path)
 
 if __name__ == "__main__":
     searchDatabank()

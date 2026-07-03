@@ -8,3 +8,5 @@ git add Data/Simulations/*/*/*/*/gyrate.xvg
 git add Data/Simulations/*/*/*/*/spin_relaxation_times.yaml
 git add Data/Simulations/*/*/*/*/Distance_map.png
 git add Data/Simulations/*/*/*/*/*rmsd*
+git add Data/Simulations/*/*/*/*/secondary_structure.yaml
+git add Data/Simulations/*/*/*/*/cross_link_data.yaml

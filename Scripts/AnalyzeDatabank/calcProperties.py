@@ -64,6 +64,7 @@ for system in systems:
     dynamic_landscape_file = dataFolder + 'dynamic_landscape_Coeffs.yaml'
     spin_relaxation_time_file = dataFolder + 'spin_relaxation_times.yaml'
     secondary_structure_file = dataFolder + 'secondary_structure.yaml'
+    pbc_check_file = dataFolder + 'pbc_check.xvg'
     
     files = {
         "SAXS_file": SAXS_file,
@@ -75,7 +76,8 @@ for system in systems:
         "rog_file": rog_file,
         "dynamic_landscape_file": dynamic_landscape_file,
         "spin_relaxation_time_file": spin_relaxation_time_file,
-        "secondary_structure": secondary_structure_file
+        "secondary_structure": secondary_structure_file,
+        "pbc_check": pbc_check_file
     }
 
     # Check for missing files
@@ -162,8 +164,8 @@ for system in systems:
             # Save as YAML
             with open(SAXS_file_MAICoS, 'w') as file:
                 yaml.dump(data_MAICoS, file, sort_keys=False)
-        except:
-            print("MAICOS CALCULATION FAILED")
+        except Exception as e:
+            print("MAICOS CALCULATION FAILED: ", {e})
 
     print('Calculate chemical shifts')
     fasta = system['COMPOSITION']['PROTEIN']['SEQUENCE']
@@ -203,7 +205,35 @@ for system in systems:
         
         with open(chemical_shift_file, 'w') as file:
             yaml.dump( chemical_shift_data_dict, file, sort_keys=False)
-       
+
+            
+    #### CALCULATE PBC CHECK
+            
+    print('Calculate PBC check')
+    
+    if (not os.path.isfile(pbc_check_file)):
+        if not os.path.exists(trj_fname_skipped):
+            skip_value = 10
+            # Build the command: source GMXRC first, then run gmx
+            cmd = f"""
+            source /usr/local/gromacs/bin/GMXRC && \
+            echo System | gmx trjconv -f {trj_fname} -s {gro_fname} -skip {skip_value} -o {nojump_traj} -pbc nojump  && \
+            echo -e "System\nSystem" | gmx trjconv -f {nojump_traj} -s {gro_fname} -o {trj_fname_skipped} -center
+            """
+            print(cmd)
+            # Run inside a bash shell
+            subprocess.run(cmd, shell=True, executable="/bin/bash", check=True)
+    
+        cmd = f"""
+            source /usr/local/gromacs/bin/GMXRC && \
+            echo Protein | gmx mindist -f {trj_fname_skipped} -s {top_fname} -pi -od {pbc_check_file}
+            """
+        print(cmd)
+        # Run inside a bash shell
+        subprocess.run(cmd, shell=True, executable="/bin/bash", check=True)
+
+
+            
     ## Calculate contact probailities
 
     print('Calculate contact maps')

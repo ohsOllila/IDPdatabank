@@ -24,15 +24,24 @@ DIR_WRK: /home/sosamuli/temp/tmpData/
 DOI: 10.5281/zenodo.19256255
 EXPERIMENT:
   chemical_shift:
-    alignment_score: []
-    ionic_strength: []
-    ionic_strength_match: []
-    path: []
-    ph: []
-    ph_match: []
-    sequence: []
-    temperature: []
-    temperature_match: []
+    alignment_score:
+    - 172.0
+    ionic_strength:
+    - 0.0101
+    ionic_strength_match:
+    - true
+    path:
+    - BMRBid27460
+    ph:
+    - 7.0
+    ph_match:
+    - true
+    sequence:
+    - MHHHHHHSSGLVPRGSGMKETAAAKFERQHMDSPDLGTDDDDKAMAASGRGGLGGQGAGAAAAAGGAGQGGYGGLGSQGTSG
+    temperature:
+    - 283.0
+    temperature_match:
+    - true
   saxs:
     alignment_score: []
     ionic_strength: []

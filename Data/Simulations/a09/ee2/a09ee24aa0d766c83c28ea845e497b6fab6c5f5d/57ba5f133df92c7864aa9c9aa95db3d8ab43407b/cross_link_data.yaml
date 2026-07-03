@@ -1,0 +1,120 @@
+uniprot:
+- title: 'sp|O25899.1| RecName: Full=Protein TonB [Helicobacter pylori 26695]'
+  length: 285
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 4.3327e-176
+  bit_score: 488.804
+- title: 'sp|Q9ZJP4.1| RecName: Full=Protein TonB [Helicobacter pylori J99]'
+  length: 280
+  identity_%: 94.92
+  similarity_%: 96.88
+  coverage_%: 100.0
+  e_value: 1.28852e-164
+  bit_score: 459.529
+- title: 'sp|O07650.1| RecName: Full=Protein TonB [Campylobacter coli]'
+  length: 232
+  identity_%: 34.18
+  similarity_%: 54.43
+  coverage_%: 61.72
+  e_value: 3.63798e-15
+  bit_score: 75.485
+- title: 'sp|O52042.2| RecName: Full=Protein TonB [Vibrio cholerae O1 biovar El Tor
+    str. N16961]'
+  length: 244
+  identity_%: 29.52
+  similarity_%: 56.19
+  coverage_%: 41.02
+  e_value: 4.07084e-06
+  bit_score: 50.0618
+- title: 'sp|Q99109.1| RecName: Full=Repellent protein 1; Contains: RecName: Full=Rep1-1;
+    Contains: RecName: Full=Rep1-2; Contains: RecName: Full=Rep1-3; Contains: RecName:
+    Full=Rep1-4; Contains: RecName: Full=Rep1-5; Contains: RecName: Full=Rep1-6; Contains:
+    RecName: Full=Rep1-7; Contains: RecName: Full=Rep1-8; Contains: RecName: Full=Rep1-9;
+    Contains: RecName: Full=Rep1-10; Contains: RecName: Full=Rep1-11; Flags: Precursor
+    [Mycosarcoma maydis]'
+  length: 652
+  identity_%: 63.16
+  similarity_%: 76.32
+  coverage_%: 14.84
+  e_value: 6.55061e-05
+  bit_score: 47.3654
+- title: 'sp|Q99109.1| RecName: Full=Repellent protein 1; Contains: RecName: Full=Rep1-1;
+    Contains: RecName: Full=Rep1-2; Contains: RecName: Full=Rep1-3; Contains: RecName:
+    Full=Rep1-4; Contains: RecName: Full=Rep1-5; Contains: RecName: Full=Rep1-6; Contains:
+    RecName: Full=Rep1-7; Contains: RecName: Full=Rep1-8; Contains: RecName: Full=Rep1-9;
+    Contains: RecName: Full=Rep1-10; Contains: RecName: Full=Rep1-11; Flags: Precursor
+    [Mycosarcoma maydis]'
+  length: 652
+  identity_%: 72.73
+  similarity_%: 81.82
+  coverage_%: 8.59
+  e_value: 0.411222
+  bit_score: 35.4242
+pdb:
+- title: pdb|6SLY|A Chain A, Protein TonB [Helicobacter pylori]
+  length: 107
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 41.8
+  e_value: 3.42431e-75
+  bit_score: 225.328
+- title: pdb|5LW8|A Chain A, Protein TonB [Helicobacter pylori 26695]
+  length: 92
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 35.94
+  e_value: 4.38111e-63
+  bit_score: 194.126
+- title: pdb|6I97|D Chain D, Protein TonB [Pseudomonas aeruginosa] >pdb|6I97|E Chain
+    E, Protein TonB [Pseudomonas aeruginosa]
+  length: 90
+  identity_%: 45.83
+  similarity_%: 68.75
+  coverage_%: 18.75
+  e_value: 8.11625e-08
+  bit_score: 50.447
+- title: pdb|6FIP|A Chain A, Protein TonB [Pseudomonas aeruginosa]
+  length: 99
+  identity_%: 45.83
+  similarity_%: 68.75
+  coverage_%: 18.75
+  e_value: 1.1463e-07
+  bit_score: 50.447
+- title: pdb|9YA0|IA Chain IA, PCR12, TGME49_292170 [Toxoplasma gondii] >pdb|9YA0|IB
+    Chain IB, PCR12, TGME49_292170 [Toxoplasma gondii] >pdb|9YA0|IC Chain IC, PCR12,
+    TGME49_292170 [Toxoplasma gondii]
+  length: 1599
+  identity_%: 28.89
+  similarity_%: 35.56
+  coverage_%: 35.16
+  e_value: 0.0117542
+  bit_score: 38.891
+- title: pdb|9YA0|IA Chain IA, PCR12, TGME49_292170 [Toxoplasma gondii] >pdb|9YA0|IB
+    Chain IB, PCR12, TGME49_292170 [Toxoplasma gondii] >pdb|9YA0|IC Chain IC, PCR12,
+    TGME49_292170 [Toxoplasma gondii]
+  length: 1599
+  identity_%: 28.92
+  similarity_%: 37.35
+  coverage_%: 32.42
+  e_value: 0.0292922
+  bit_score: 37.7354
+- title: pdb|9YA0|IA Chain IA, PCR12, TGME49_292170 [Toxoplasma gondii] >pdb|9YA0|IB
+    Chain IB, PCR12, TGME49_292170 [Toxoplasma gondii] >pdb|9YA0|IC Chain IC, PCR12,
+    TGME49_292170 [Toxoplasma gondii]
+  length: 1599
+  identity_%: 25.0
+  similarity_%: 33.59
+  coverage_%: 50.0
+  e_value: 0.194041
+  bit_score: 35.039
+- title: pdb|9YA0|IA Chain IA, PCR12, TGME49_292170 [Toxoplasma gondii] >pdb|9YA0|IB
+    Chain IB, PCR12, TGME49_292170 [Toxoplasma gondii] >pdb|9YA0|IC Chain IC, PCR12,
+    TGME49_292170 [Toxoplasma gondii]
+  length: 1599
+  identity_%: 28.17
+  similarity_%: 36.62
+  coverage_%: 27.73
+  e_value: 3.31779
+  bit_score: 31.187

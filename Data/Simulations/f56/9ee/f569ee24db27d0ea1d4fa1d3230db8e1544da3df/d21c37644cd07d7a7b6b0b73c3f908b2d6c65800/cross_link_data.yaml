@@ -1,0 +1,125 @@
+uniprot:
+- title: 'sp|P60877.1| RecName: Full=Synaptosomal-associated protein 25; Short=SNAP-25;
+    AltName: Full=Synaptosomal-associated 25 kDa protein [Macaca mulatta] >sp|P60878.1|
+    RecName: Full=Synaptosomal-associated protein 25; Short=SNAP-25; AltName: Full=Super
+    protein; Short=SUP; AltName: Full=Synaptosomal-associated 25 kDa protein [Gallus
+    gallus] >sp|P60879.1| RecName: Full=Synaptosomal-associated protein 25; Short=SNAP-25;
+    AltName: Full=Super protein; Short=SUP; AltName: Full=Synaptosomal-associated
+    25 kDa protein [Mus musculus] >sp|P60880.1| RecName: Full=Synaptosomal-associated
+    protein 25; Short=SNAP-25; AltName: Full=Super protein; Short=SUP; AltName: Full=Synaptosomal-associated
+    25 kDa protein [Homo sapiens] >sp|P60881.1| RecName: Full=Synaptosomal-associated
+    protein 25; Short=SNAP-25; AltName: Full=Super protein; Short=SUP; AltName: Full=Synaptosomal-associated
+    25 kDa protein [Rattus norvegicus] >sp|Q17QQ3.1| RecName: Full=Synaptosomal-associated
+    protein 25; Short=SNAP-25; AltName: Full=Synaptosomal-associated 25 kDa protein
+    [Bos taurus] >sp|Q5R1X1.1| RecName: Full=Synaptosomal-associated protein 25; Short=SNAP-25;
+    AltName: Full=Synaptosomal-associated 25 kDa protein [Pan troglodytes]'
+  length: 206
+  identity_%: 95.15
+  similarity_%: 97.57
+  coverage_%: 100.0
+  e_value: 1.62e-140
+  bit_score: 393.66
+- title: 'sp|Q5NVG5.1| RecName: Full=Synaptosomal-associated protein 25; Short=SNAP-25;
+    AltName: Full=Synaptosomal-associated 25 kDa protein [Pongo abelii]'
+  length: 206
+  identity_%: 94.66
+  similarity_%: 97.09
+  coverage_%: 100.0
+  e_value: 1.5354e-139
+  bit_score: 390.963
+- title: 'sp|P36977.1| RecName: Full=Synaptosomal-associated protein 25-A; Short=SNAP-25A;
+    AltName: Full=Synaptosome-associated protein 25.1; Short=SNAP-25.1 [Carassius
+    auratus]'
+  length: 204
+  identity_%: 89.32
+  similarity_%: 94.17
+  coverage_%: 100.0
+  e_value: 2.00602e-128
+  bit_score: 362.844
+- title: 'sp|Q5TZ66.1| RecName: Full=Synaptosomal-associated protein 25-A; Short=SNAP-25A;
+    AltName: Full=Synaptosome-associated protein 25.1; Short=SNAP-25.1 [Danio rerio]'
+  length: 204
+  identity_%: 88.83
+  similarity_%: 93.69
+  coverage_%: 100.0
+  e_value: 4.00313e-128
+  bit_score: 362.073
+- title: 'sp|P36978.1| RecName: Full=Synaptosomal-associated protein 25-B; Short=SNAP-25B;
+    AltName: Full=Synaptosome-associated protein 25.2; Short=SNAP-25.2 [Carassius
+    auratus]'
+  length: 203
+  identity_%: 85.44
+  similarity_%: 90.78
+  coverage_%: 100.0
+  e_value: 6.20195e-122
+  bit_score: 346.28
+pdb:
+- title: pdb|6MDM|H Chain H, Synaptosomal-associated protein 25 [Rattus norvegicus]
+    >pdb|6MDN|H Chain H, Synaptosomal-associated protein 25 [Rattus norvegicus] >pdb|6MDO|H
+    Chain H, Synaptosomal-associated protein 25 [Rattus norvegicus] >pdb|6MDP|H Chain
+    H, Synaptosomal-associated protein 25 [Rattus norvegicus]
+  length: 207
+  identity_%: 99.02
+  similarity_%: 99.02
+  coverage_%: 99.03
+  e_value: 2.69376e-146
+  bit_score: 406.757
+- title: pdb|9OJZ|I Chain I, Synaptosomal-associated protein 25 [Rattus norvegicus]
+    >pdb|9OK3|C Chain C, Synaptosomal-associated protein 25 [Rattus norvegicus] >pdb|9OLO|I
+    Chain I, Synaptosomal-associated protein 25 [Rattus norvegicus] >pdb|9OLO|J Chain
+    J, Synaptosomal-associated protein 25 [Rattus norvegicus] >pdb|9OM6|C Chain C,
+    Synaptosomal-associated protein 25 [Rattus norvegicus] >pdb|9OM6|D Chain D, Synaptosomal-associated
+    protein 25 [Rattus norvegicus] >pdb|9PAF|I Chain I, Synaptosomal-associated protein
+    25 [Rattus norvegicus] >pdb|9PAG|I Chain I, Synaptosomal-associated protein 25
+    [Rattus norvegicus] >pdb|9PB9|I Chain I, Synaptosomal-associated protein 25 [Rattus
+    norvegicus] >pdb|9PBA|I Chain I, Synaptosomal-associated protein 25 [Rattus norvegicus]
+    >pdb|9PBF|H Chain H, Synaptosomal-associated protein 25 [Rattus norvegicus] >pdb|9PBV|H
+    Chain H, Synaptosomal-associated protein 25 [Rattus norvegicus] >pdb|9PC3|I Chain
+    I, Synaptosomal-associated protein 25 [Rattus norvegicus] >pdb|9PCZ|K Chain K,
+    Synaptosomal-associated protein 25 [Rattus norvegicus] >pdb|9PCZ|L Chain L, Synaptosomal-associated
+    protein 25 [Rattus norvegicus] >pdb|9PD1|I Chain I, Synaptosomal-associated protein
+    25 [Rattus norvegicus] >pdb|9PD1|J Chain J, Synaptosomal-associated protein 25
+    [Rattus norvegicus]
+  length: 222
+  identity_%: 93.69
+  similarity_%: 96.12
+  coverage_%: 100.0
+  e_value: 7.44345e-139
+  bit_score: 388.652
+- title: pdb|3J97|M Chain M, Synaptosomal-associated protein 25 [Rattus norvegicus]
+  length: 198
+  identity_%: 97.47
+  similarity_%: 97.98
+  coverage_%: 96.12
+  e_value: 2.2766e-138
+  bit_score: 386.341
+- title: pdb|9PCX|I Chain I, Synaptosomal-associated protein 25,Synaptosomal-associated
+    protein 25, Alpha-soluble NSF attachment protein chimera [Rattus norvegicus] >pdb|9PCX|J
+    Chain J, Synaptosomal-associated protein 25,Synaptosomal-associated protein 25,
+    Alpha-soluble NSF attachment protein chimera [Rattus norvegicus] >pdb|9PCX|K Chain
+    K, Synaptosomal-associated protein 25,Synaptosomal-associated protein 25, Alpha-soluble
+    NSF attachment protein chimera [Rattus norvegicus] >pdb|9PCX|L Chain L, Synaptosomal-associated
+    protein 25,Synaptosomal-associated protein 25, Alpha-soluble NSF attachment protein
+    chimera [Rattus norvegicus] >pdb|9PCX|M Chain M, Synaptosomal-associated protein
+    25,Synaptosomal-associated protein 25, Alpha-soluble NSF attachment protein chimera
+    [Rattus norvegicus] >pdb|9PCX|N Chain N, Synaptosomal-associated protein 25,Synaptosomal-associated
+    protein 25, Alpha-soluble NSF attachment protein chimera [Rattus norvegicus] >pdb|9PD8|I
+    Chain I, Synaptosomal-associated protein 25,Synaptosomal-associated protein 25,Synaptosomal-associated
+    protein 25,Alpha-soluble NSF attachment protein [Rattus norvegicus] >pdb|9PD8|J
+    Chain J, Synaptosomal-associated protein 25,Synaptosomal-associated protein 25,Synaptosomal-associated
+    protein 25,Alpha-soluble NSF attachment protein [Rattus norvegicus]
+  length: 518
+  identity_%: 93.69
+  similarity_%: 96.12
+  coverage_%: 100.0
+  e_value: 4.43266e-135
+  bit_score: 390.193
+- title: pdb|3J96|M Chain M, Synaptosomal-associated protein 25 [Rattus norvegicus]
+    >pdb|3J98|M Chain M, Synaptosomal-associated protein 25 [Rattus norvegicus] >pdb|3J99|M
+    Chain M, Synaptosomal-associated protein 25 [Rattus norvegicus]
+  length: 188
+  identity_%: 97.34
+  similarity_%: 97.87
+  coverage_%: 91.26
+  e_value: 2.8146e-131
+  bit_score: 368.237

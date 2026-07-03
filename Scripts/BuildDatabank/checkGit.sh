@@ -8,3 +8,5 @@ git status Data/Simulations/*/*/*/*/gyrate.xvg
 git status Data/Simulations/*/*/*/*/spin_relaxation_times.yaml
 git status Data/Simulations/*/*/*/*/Distance_map.png
 git status Data/Simulations/*/*/*/*/*rmsd*
+git status Data/Simulations/*/*/*/*/secondary_structure.yaml
+git status Data/Simulations/*/*/*/*/cross_link_data.yaml

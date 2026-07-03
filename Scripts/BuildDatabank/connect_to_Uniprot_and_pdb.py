@@ -61,11 +61,13 @@ def blast_sequence(sequence, top_n=5):
 
     seq_len = len(sequence)
 
+    print('Analyzing Uniprot')
     # --- UniProt (SwissProt) ---
     sp_handle = NCBIWWW.qblast("blastp", "swissprot", sequence)
     sp_record = NCBIXML.read(sp_handle)
     sp_hits = parse_hits(sp_record, seq_len)
 
+    print('Analyzing PDB')
     # --- PDB ---
     pdb_handle = NCBIWWW.qblast("blastp", "pdb", sequence)
     pdb_record = NCBIXML.read(pdb_handle)
@@ -88,6 +90,7 @@ for system in systems:
     print('generating: ', output_file)
     
     sequence = system['COMPOSITION']['PROTEIN']['SEQUENCE']
+    print(sequence)
     results = blast_sequence(sequence)
 
     print("\n--- UniProt hits ---")
