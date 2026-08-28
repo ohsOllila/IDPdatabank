@@ -1,0 +1,837 @@
+101GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+102LYS:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+104GLU:
+  C: 0
+  CA: 0.15121739130432843
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+105GLU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.4026978510744528
+  non_zero_percentage: 20.0
+106GLY:
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+109GLN:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.08242238880564523
+  non_zero_percentage: 20.0
+10LYS:
+  C: 0
+  CA: 0
+  CB: 0.2954226732787679
+  H: 0
+  N: 0.12479860069974502
+  non_zero_percentage: 40.0
+110GLU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.12128655672160571
+  non_zero_percentage: 20.0
+111GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+112ILE:
+  C: 0
+  CA: 0.0956346826586838
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+113LEU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 1.32867266366805
+  non_zero_percentage: 20.0
+114GLU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.4943980009995699
+  non_zero_percentage: 20.0
+115ASP:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.1282840579709501
+  non_zero_percentage: 20.0
+116MET:
+  C: 0
+  CA: 0.005322838580596567
+  CB: 0.04550724637679604
+  H: 0
+  N: 0.1650078960520318
+  non_zero_percentage: 60.0
+118VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.5454516741629505
+  non_zero_percentage: 20.0
+119ASP:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.8641823088455112
+  non_zero_percentage: 20.0
+11ALA:
+  C: 0
+  CA: 0
+  CB: 0.17571944796835104
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+123GLU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+124ALA:
+  C: 0
+  CA: 0
+  CB: 0.02560565870910203
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+125TYR:
+  C: 0
+  CA: 0
+  CB: 0.31510590858421383
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+126GLU:
+  C: 0
+  CA: 0
+  CB: 0.27043478260871767
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+127MET:
+  C: 0
+  CA: 0
+  CB: 0.1809533694691099
+  H: 0
+  N: 0.24035082458772195
+  non_zero_percentage: 40.0
+129SER:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+12LYS:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+130GLU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+131GLU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+132GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+133TYR:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+134GLN:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+135ASP:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+136TYR:
+  C: 0
+  CA: 0
+  CB: 0.1041367777649651
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+137GLU:
+  C: 0
+  CA: 0
+  CB: 0.03067158728324748
+  H: 0
+  N: 0.010170714642646406
+  non_zero_percentage: 40.0
+139GLU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+13GLU:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+140ALA:
+  CA: 0.35712443778118796
+  CB: 0
+  H: 0
+  N: 2.4680119940030294
+  non_zero_percentage: 50.0
+14GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+15VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+16VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 1.5929091454272966
+  non_zero_percentage: 20.0
+17ALA:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.6169527236382124
+  non_zero_percentage: 20.0
+18ALA:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+19ALA:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+20GLU:
+  C: 0
+  CA: 0.19630534732642246
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+21LYS:
+  C: 0
+  CA: 0.1133658170914913
+  CB: 0
+  H: 0
+  N: 0.4476853573213986
+  non_zero_percentage: 40.0
+22THR:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.5452845577210497
+  non_zero_percentage: 20.0
+23LYS:
+  C: 0
+  CA: 0
+  CB: 0.08902817821859133
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+24GLN:
+  C: 0
+  CA: 0
+  CB: 0.1065563372159859
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+25GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+26VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+27ALA:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+28GLU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+29ALA:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.23119760119949428
+  non_zero_percentage: 20.0
+30ALA:
+  C: 0
+  CA: 0
+  CB: 0.07448967823781216
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+31GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+32LYS:
+  C: 0
+  CA: 0
+  CB: 0.0645927036481786
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+33THR:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+34LYS:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+35GLU:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0.1674344827586025
+  non_zero_percentage: 25.0
+36GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+37VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+38LEU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 1.0974998500750077
+  non_zero_percentage: 20.0
+39TYR:
+  C: 0
+  CA: 0
+  CB: 0.2996955368470089
+  H: 0
+  N: 0.6637043478260807
+  non_zero_percentage: 40.0
+3VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.3125501249375191
+  non_zero_percentage: 20.0
+40VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.7498362818589954
+  non_zero_percentage: 20.0
+41GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0.2791468265867081
+  non_zero_percentage: 25.0
+44THR:
+  C: 0
+  CA: 0.08694752623691215
+  CB: 0
+  H: 0
+  N: 0.03203298350820205
+  non_zero_percentage: 40.0
+45LYS:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+46GLU:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0.18910324837581816
+  non_zero_percentage: 25.0
+47GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+48VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+49VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 1.3780993503248227
+  non_zero_percentage: 20.0
+4PHE:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+51GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+52VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+54THR:
+  C: 0
+  CA: 0.1013558220889692
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+55VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.9496689655172361
+  non_zero_percentage: 20.0
+56ALA:
+  C: 0
+  CA: 0.0013958020989619513
+  CB: 0
+  H: 0
+  N: 0.5415026486756063
+  non_zero_percentage: 40.0
+57GLU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+58LYS:
+  C: 0
+  CA: 0.5831109445277463
+  CB: 0
+  H: 0
+  N: 0.15356401799097052
+  non_zero_percentage: 40.0
+59THR:
+  C: 0
+  CA: 0.7565112443778403
+  CB: 0
+  H: 0
+  N: 1.09340669665159
+  non_zero_percentage: 40.0
+5MET:
+  C: 0
+  CA: 0
+  CB: 0.1925683312190598
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+60LYS:
+  C: 0
+  CA: 0.03720089955020711
+  CB: 0
+  H: 0
+  N: 0.23484877561223816
+  non_zero_percentage: 40.0
+61GLU:
+  C: 0
+  CA: 1.1189010494751628
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+62GLN:
+  C: 0
+  CA: 0.9401444277861728
+  CB: 0
+  H: 0
+  N: 0.7850622688656017
+  non_zero_percentage: 40.0
+63VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 2.1659468265866737
+  non_zero_percentage: 20.0
+64THR:
+  C: 0
+  CA: 0.5414827586206385
+  CB: 0
+  H: 0
+  N: 1.1156819590204519
+  non_zero_percentage: 40.0
+66VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.5689205397300554
+  non_zero_percentage: 20.0
+67GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0.3151720139930376
+  non_zero_percentage: 25.0
+68GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+69ALA:
+  C: 0
+  CA: 0
+  CB: 0.08588321224004591
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+6LYS:
+  C: 0
+  CA: 0
+  CB: 0.23838772921229556
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+70VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.5421021489256135
+  non_zero_percentage: 20.0
+71VAL:
+  C: 0
+  CA: 0.4642983508245848
+  CB: 0
+  H: 0
+  N: 2.121452073963087
+  non_zero_percentage: 40.0
+72THR:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 1.7672637681158334
+  non_zero_percentage: 20.0
+73GLY:
+  C: 0
+  CA: 0
+  H: 0.12598428058700906
+  N: 0
+  non_zero_percentage: 25.0
+74VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.041888455772089994
+  non_zero_percentage: 20.0
+75THR:
+  C: 0
+  CA: 1.3014757621189759
+  CB: 0
+  H: 0
+  N: 0.6497029485258055
+  non_zero_percentage: 40.0
+76ALA:
+  C: 0
+  CA: 0.3493883058472207
+  CB: 0
+  H: 0
+  N: 0.604490354822542
+  non_zero_percentage: 40.0
+77VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 1.477878260869545
+  non_zero_percentage: 20.0
+78ALA:
+  C: 0
+  CA: 0
+  CB: 0.21222850113404124
+  H: 0
+  N: 1.0043498250875245
+  non_zero_percentage: 40.0
+79GLN:
+  C: 0
+  CA: 0.25864117941037534
+  CB: 0
+  H: 0
+  N: 0.004546726636647236
+  non_zero_percentage: 40.0
+7GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+80LYS:
+  C: 0
+  CA: 0.0270839580209028
+  CB: 0
+  H: 0
+  N: 0.3927422288855609
+  non_zero_percentage: 40.0
+81THR:
+  C: 0
+  CA: 0.3501724137931532
+  CB: 0
+  H: 0
+  N: 0.6572871564217906
+  non_zero_percentage: 40.0
+82VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 1.072815592203932
+  non_zero_percentage: 20.0
+83GLU:
+  C: 0
+  CA: 0
+  CB: 0.1347014954060779
+  H: 0
+  N: 0.7400877561218409
+  non_zero_percentage: 40.0
+84GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+85ALA:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+86GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+88ILE:
+  C: 0
+  CA: 1.0924182908545674
+  CB: 0
+  H: 0
+  N: 0.46818070964515646
+  non_zero_percentage: 40.0
+89ALA:
+  C: 0
+  CA: 0.7644552723637617
+  CB: 0
+  H: 0
+  N: 1.3970106946526757
+  non_zero_percentage: 40.0
+8LEU:
+  C: 0
+  CA: 0
+  CB: 0.1990766155383934
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+90ALA:
+  C: 0
+  CA: 0.5151174412793083
+  CB: 0
+  H: 0
+  N: 0.3670296851574222
+  non_zero_percentage: 40.0
+91ALA:
+  C: 0
+  CA: 0.08720339830094304
+  CB: 0
+  H: 0
+  N: 0.3670858570715041
+  non_zero_percentage: 40.0
+92THR:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+93GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+94PHE:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+95VAL:
+  C: 0
+  CA: 0
+  CB: 0.14622803982626098
+  H: 0
+  N: 1.4088891554223095
+  non_zero_percentage: 40.0
+96LYS:
+  C: 0
+  CA: 0
+  CB: 0.03334140621994708
+  H: 0
+  N: 0.2682766616692107
+  non_zero_percentage: 40.0
+97LYS:
+  CA: 0.3549340329835218
+  CB: 0
+  H: 0
+  N: 0.08416651674170339
+  non_zero_percentage: 50.0
+98ASP:
+  C: 0
+  CA: 0.011918040979544742
+  CB: 0
+  H: 0
+  N: 0.07672163918053343
+  non_zero_percentage: 40.0
+99GLN:
+  C: 0
+  CA: 0
+  CB: 0.08321762195829696
+  H: 0
+  N: 0
+  non_zero_percentage: 20.0
+9SER:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+  non_zero_percentage: 0.0
+Averages:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.32148439023866304
+  non_zero_percentage: 20.0
+overall_non_zero_percentage: 18.252032520325205

@@ -1,0 +1,66 @@
+Experiment_ID: '1'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '500'
+    Manufacturer: Bruker
+    Model: Avance III
+Name: 2D 1H-15N HSQC
+Sample_component:
+-   Concentration_val: '0.6'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-15N]'
+    Mol_common_name: Engrailed 2
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: '%'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: D2O
+    Type: null
+-   Concentration_val: '0.111'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: DSS
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: TCEP
+    Type: null
+-   Concentration_val: '1'
+    Concentration_val_units: uM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: AEBSF protease inhibitor
+    Type: null
+-   Concentration_val: '2'
+    Concentration_val_units: uM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: leupeptin
+    Type: null
+-   Concentration_val: '2'
+    Concentration_val_units: uM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: pepstatin A
+    Type: null
+-   Concentration_val: '0.02'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: EDTA
+    Type: null
+-   Concentration_val: '0.02'
+    Concentration_val_units: '%'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium azide
+    Type: null
+-   Concentration_val: '40'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium succinat
+    Type: null
+-   Concentration_val: '90'
+    Concentration_val_units: '%'
+    Isotopic_labeling: natural abundance
+    Mol_common_name: H2O
+    Type: null
+Sample_condition_variable:
+    ph: '6'
+    temperature: '303'

@@ -25,7 +25,7 @@ DOI: 10.5281/zenodo.19257724
 EXPERIMENT:
   chemical_shift:
     alignment_score:
-    - 404.0
+    - 394.0
     ionic_strength:
     - 0.0101
     ionic_strength_match:

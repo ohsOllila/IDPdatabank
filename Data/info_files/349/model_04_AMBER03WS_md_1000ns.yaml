@@ -1,0 +1,42 @@
+DOI: 10.5281/zenodo.19256255 
+
+SOFTWARE: gromacs
+TRJ: model_04_AMBER03WS_md_1000ns.xtc
+TPR: model_04_AMBER03WS_md_1000ns.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4PSwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ POT:
+  NAME: K
+  MAPPING: mappingK.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION: https://doi.org/10.1038/s42004-025-01623-x
+AUTHORS_CONTACT: Samuli Ollila
+
+SYSTEM: silk protein
+SOFTWARE_VERSION:
+
+FF: AMBER03WS
+FF_SOURCE: 
+FF_DATE:
+
+CPT:
+LOG:
+TOP:
+GRO:
+
+TYPEOFSYSTEM: protein

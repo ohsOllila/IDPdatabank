@@ -1,0 +1,42 @@
+DOI: 10.5281/zenodo.19133769
+
+SOFTWARE: gromacs
+TRJ: md_KKEEVKP_deprot_150mM_nacl_nowater.xtc
+TPR: md_KKEEVKP_deprot_150mM_nacl.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4PSwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CAL:
+  NAME: CA
+  MAPPING: mappingCALecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION: unpublished
+AUTHORS_CONTACT: Efstathia Mantzari and Samuli Ollila
+
+SYSTEM: Charged sequence with NaCl
+SOFTWARE_VERSION:
+
+FF: amberff03ws
+FF_SOURCE: 
+FF_DATE:
+
+CPT:
+LOG:
+TOP:
+GRO:
+
+TYPEOFSYSTEM: protein

@@ -1,0 +1,40 @@
+DOI: 10.5281/zenodo.22072196
+
+SOFTWARE: gromacs
+TRJ: run4_300ns.xtc
+TPR: run4_300ns.tpr
+PREEQTIME: 10
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP3Pwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION: 
+
+AUTHORS_CONTACT: Samuli Ollila
+
+SYSTEM: yibk cyclic no salt
+SOFTWARE_VERSION:
+
+FF: 
+FF_SOURCE: 
+FF_DATE:
+
+CPT:
+LOG:
+TOP:
+GRO:
+
+TYPEOFSYSTEM: protein

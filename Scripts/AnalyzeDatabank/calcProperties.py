@@ -169,9 +169,9 @@ for system in systems:
 
     print('Calculate chemical shifts')
     fasta = system['COMPOSITION']['PROTEIN']['SEQUENCE']
-    print(fasta)
+    #print(fasta)
     fasta_dict = fasta_string_to_residue_dict(fasta)
-    print(fasta_dict)
+    #print(fasta_dict)
     
     if (not os.path.isfile(chemical_shift_file)):
         if not os.path.exists(trj_fname_skipped):
@@ -185,21 +185,23 @@ for system in systems:
             print(cmd)
             # Run inside a bash shell
             subprocess.run(cmd, shell=True, executable="/bin/bash", check=True)
-    
+
+        print('CS_calculation started')
         chemical_shifts = calculate_ChemShifts_sparta(gro_fname, trj_fname_skipped)
         #print(chemical_shifts)
 
         chemical_shift_data = chemical_shifts.to_dict()
 
-        #print(chemical_shift_data)
+        #print('CHEMICAL SHIFT DATA FROM SPARTA: ', chemical_shift_data)
         # Save as YAML
 
         chemical_shift_data_dict = convert_original_to_nested_dict(chemical_shift_data)
         fasta = system['COMPOSITION']['PROTEIN']['SEQUENCE']
-        fasta_dict = fasta_string_to_residue_dict(fasta)
-
-        print(fasta_dict)
-        print(chemical_shift_data_dict)
+        #fasta_dict = fasta_string_to_residue_dict(fasta)
+        fasta_dict =  gro_to_residue_dict(gro_fname)
+        
+        #print('FASTA DICT: ',fasta_dict)
+        #print('FASTA DICT: ',chemical_shift_data_dict)
 
         chemical_shift_data_dict = {f"{num}{fasta_dict.get(num, 'UNK')}": value for num, value in chemical_shift_data_dict.items()}
         
@@ -342,7 +344,7 @@ for system in systems:
             dynamic_landscape = yaml.safe_load(file)
 
         
-        magnetic_fields = [800, 600]
+        magnetic_fields = [850, 800, 600]
         #magnetic_field=magnetic_field*2*np.pi/gammaH*10**6
         print('Calculating for ', magnetic_fields, ' MHz magnetic fields')
         spin_relaxation_times = {}    
@@ -382,87 +384,139 @@ for system in systems:
     print('Calculate spin relaxation data RMSD between simulations and experiments')
     spin_relaxation_rmsd_file =  dataFolder + 'spin_relaxation_rmsd.yaml'
     try:
+        #print(system['EXPERIMENT']['spin_relaxation']['path'])
         exp_spin_relax_file = databankPath + '/Data/Experiments/spin_relaxation/' + system['EXPERIMENT']['spin_relaxation']['path'][0] + '/spin_relaxation_times.yaml'
-        ExperimentalFile = True
+        ExperimentalFileSpin = True
     except:
         print('Experimental spin relaxation data file not found')
-        ExperimentalFile = False
+        ExperimentalFileSpin = False
 
-    if not os.path.exists(spin_relaxation_rmsd_file) and ExperimentalFile:
+    #print(ExperimentalFile)
+        
+    if not os.path.exists(spin_relaxation_rmsd_file) and ExperimentalFileSpin:
         print(spin_relaxation_time_file,exp_spin_relax_file)
         rmsd = calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,exp_spin_relax_file)
         clean_rmsd = convert_numpy(rmsd)
         with open(spin_relaxation_rmsd_file, 'w') as file:
             yaml.dump(clean_rmsd, file, sort_keys=False, default_flow_style=False, indent=4)
 
-    #continue
+#    #continue
 
-    print('Calculate chemical shift RMSD between simulations and experiments')
-    chemical_shift_rmsd_file =  dataFolder + 'chemical_shift_rmsd.yaml'
+#    print('Calculate chemical shift RMSD between simulations and experiments')
+#    chemical_shift_rmsd_file =  dataFolder + 'chemical_shift_rmsd.yaml'
 
-    print(system['EXPERIMENT']['chemical_shift']['path'])
-    chemical_shift_paths = system['EXPERIMENT']['chemical_shift']['path']
-    if len(chemical_shift_paths) > 0:
-        for BMRBid in chemical_shift_paths:
-            print(BMRBid)
-            id_number = re.search(r'\d+', BMRBid).group()
-            bmrb_local_file = download_NMR_star_file(id_number)
-            if BMRBid == 'BMRBid16300':
-                break
-    else:
-        print("Trying to get chemical shifts from the spin relaxation data source")
-        try:
-            if "BMRBid" in system['EXPERIMENT']['spin_relaxation']['path'][0]:
-                BMRBid = system['EXPERIMENT']['spin_relaxation']['path'][0].replace("BMRBid", "", 1)
-                bmrb_local_file = download_NMR_star_file(BMRBid)
-                ExperimentalFile = True
-            else:
-                pass
-        except:
-            print('Experimental chemical shift data file not found')
-            ExperimentalFile = False
+#    print(system['EXPERIMENT']['chemical_shift']['path'])
+#    chemical_shift_paths = system['EXPERIMENT']['chemical_shift']['path']
+#    experiment_path = databankPath + 'Data/Experiments/' + chemical_shift_paths[0]
+#    chemical_shift_experimental_file = experiment_path + '/chemical_shifts.yaml'
+#    if os.path.exists(chemical_shift_experimental_file):
+    
+#    if len(chemical_shift_paths) > 0:
+#        for BMRBid in chemical_shift_paths:
+#            print(BMRBid)
+#            id_number = re.search(r'\d+', BMRBid).group()
+#            bmrb_local_file = download_NMR_star_file(id_number)
+#            if BMRBid == 'BMRBid16300':
+#                break
+#    else:
+#        print("Trying to get chemical shifts from the spin relaxation data source")
+#        try:
+#            if "BMRBid" in system['EXPERIMENT']['spin_relaxation']['path'][0]:
+#                BMRBid = system['EXPERIMENT']['spin_relaxation']['path'][0].replace("BMRBid", "", 1)
+#                bmrb_local_file = download_NMR_star_file(BMRBid)
+#                ExperimentalFile = True
+#            else:
+#                pass
+#        except:
+#            print('Experimental chemical shift data file not found')
+#            ExperimentalFile = False
 
-    #print('test',  BMRBid)
-    if not os.path.exists(chemical_shift_rmsd_file) and ExperimentalFile:
-        sim_residues_all = set()
-        sim_file = os.path.join(dataFolder, 'chemical_shifts_sparta.yaml')
-        with open(sim_file) as f:
-            raw = yaml.safe_load(f)
-            sim_residues_all.update(k for k in raw.keys())
-        
+#    #print('test',  BMRBid)
+#    if not os.path.exists(chemical_shift_rmsd_file) and ExperimentalFile:
+#        sim_residues_all = set()
+#        sim_file = os.path.join(dataFolder, 'chemical_shifts_sparta.yaml')
+#        with open(sim_file) as f:
+#            raw = yaml.safe_load(f)
+#            sim_residues_all.update(k for k in raw.keys())
+#        
 
         # ------------------------
         # Parse NMR-STAR file
         # ------------------------
 
-        exp_data = parse_star_file(bmrb_local_file)
-        # Only residues present in simulation
-        exp_data_filtered = {res: atoms for res, atoms in exp_data.items() if res in sim_residues_all}
-        exp_residues = sorted(exp_data_filtered.keys())
+#        exp_data = parse_star_file(bmrb_local_file)
+#        print(exp_data)
+#        # Only residues present in simulation
+#        exp_data_filtered = {res: atoms for res, atoms in exp_data.items() if res in sim_residues_all}
+#        exp_residues = sorted(exp_data_filtered.keys())
 
-        #print(exp_data)
+#        #print(exp_data)
+#        
+#        # ------------------------
+#        # Calculate RMSDs
+#        # ------------------------
+#        nuclei = ["C", "CA", "CB", "HA", "H", "N"]
+
+#        with open(sim_file) as f:
+#            raw = yaml.safe_load(f)
+
+#        # convert string keys to integers
+#        sim_data = {k: v for k, v in raw.items()}
+
+#        # compute RMSD
+#        print(sim_data, exp_data_filtered,bmrb_local_file)
+#        chemical_shift_rmsd_vals = compute_rmsd_chemical_shift(sim_data, exp_data_filtered, nuclei, exp_residues)#
+
+#        #print(rmsd_vals)
+
+#        #clean_rmsd = convert_numpy(rmsd)
+#        with open(chemical_shift_rmsd_file, 'w') as file:
+#            yaml.dump(chemical_shift_rmsd_vals, file, sort_keys=False, default_flow_style=False, indent=4)
+
+
+    print('Calculate chemical shift RMSD between simulations and experiments')
+
+    chemical_shift_rmsd_file = (
+        dataFolder + 'chemical_shift_rmsd.yaml'
+    )
+
+    sim_file = os.path.join(
+        dataFolder,
+        'chemical_shifts_sparta.yaml'
+    )
+
+    if not os.path.exists(chemical_shift_rmsd_file):
+        print('Chemical shift RMSD file not found, calculating')
+
+        exp_data, ExperimentalFileShift = (
+            load_experimental_chemical_shifts(
+                system,
+                databankPath,
+            )
+        )
+
+        #print(exp_data, ExperimentalFile)
         
-        # ------------------------
-        # Calculate RMSDs
-        # ------------------------
-        nuclei = ["C", "CA", "CB", "HA", "H", "N"]
+        if ExperimentalFileShift:
 
-        with open(sim_file) as f:
-            raw = yaml.safe_load(f)
+            chemical_shift_rmsd_vals = (
+                calculate_chemical_shift_rmsd(
+                    sim_file,
+                    exp_data,
+                )
+            )
 
-        # convert string keys to integers
-        sim_data = {k: v for k, v in raw.items()}
+            with open(chemical_shift_rmsd_file, 'w') as file:
+                yaml.dump(
+                    chemical_shift_rmsd_vals,
+                    file,
+                    sort_keys=False,
+                    default_flow_style=False,
+                    indent=4,
+                )
 
-        # compute RMSD
-        print(sim_data, exp_data_filtered,bmrb_local_file)
-        chemical_shift_rmsd_vals = compute_rmsd_chemical_shift(sim_data, exp_data_filtered, nuclei, exp_residues)
 
-        #print(rmsd_vals)
-
-        #clean_rmsd = convert_numpy(rmsd)
-        with open(chemical_shift_rmsd_file, 'w') as file:
-            yaml.dump(chemical_shift_rmsd_vals, file, sort_keys=False, default_flow_style=False, indent=4)
-
+            
 
     #Values based on Ollila et al. 2018 as calculated below
     relaxation_accuracies = {
@@ -470,9 +524,12 @@ for system in systems:
         "R2": 3.8,
         "hetNOE": 0.1
     }
-    
+
+
     spin_relaxation_quality_file =  dataFolder + 'spin_relaxation_quality.yaml'
-    if not os.path.exists(spin_relaxation_quality_file) and ExperimentalFile:
+
+    print('Calculate spin relaxation quality')
+    if not os.path.exists(spin_relaxation_quality_file) and ExperimentalFileSpin:
         evaluate_spin_relaxation_quality(system, relaxation_accuracies)
 
 
@@ -486,6 +543,7 @@ for system in systems:
         'N': 2.5
     }
 
+    print('Calculate spin relaxation quality')
     chemical_shift_quality_file =  dataFolder + 'chemical_shift_quality.yaml'
-    if not os.path.exists(chemical_shift_quality_file) and ExperimentalFile:
+    if not os.path.exists(chemical_shift_quality_file) and ExperimentalFileShift:
         evaluate_chemical_shift_quality(system, atom_accuracies)

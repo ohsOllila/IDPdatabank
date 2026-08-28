@@ -170,16 +170,31 @@ def searchDatabank():
 
             # matching_experiments.append(experiment)
 
+            #path_parts = os.path.normpath(experiment.path).split(os.sep)
+            #last = os.path.basename(experiment.path)
+            #second_last = path_parts[-2]
+
+            ## If the last part looks like a DOI (contains a '.'), take the last two parts
+            #if '.' in second_last:
+            #    selected_path = os.path.join(path_parts[-2], path_parts[-1])
+            #else:
+            #    selected_path = last
+
             path_parts = os.path.normpath(experiment.path).split(os.sep)
-            last = os.path.basename(experiment.path)
+
+            last = path_parts[-1]
             second_last = path_parts[-2]
 
-            # If the last part looks like a DOI (contains a '.'), take the last two parts
-            if '.' in second_last:
-                selected_path = os.path.join(path_parts[-2], path_parts[-1])
+            if last.isdigit():
+                # Last component is an integer, take last three parts
+                selected_path = os.path.join(*path_parts[-3:])
+            elif '.' in second_last:
+                # Second-last component looks like a DOI
+                selected_path = os.path.join(*path_parts[-2:])
             else:
                 selected_path = last
 
+                
             experiment_type = experiment.experiment_type
             experiment_types_dict[experiment_type]["path"].append(selected_path)
             

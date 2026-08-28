@@ -1,0 +1,17 @@
+Experiment_ID: 
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '600'  
+Name: T1
+Sample_component:
+-   Concentration_val: '1.0'
+    Concentration_val_units: mM
+    Mol_common_name: MANF
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: mM
+    Mol_common_name: sodium phosphate
+    Type: null
+Sample_condition_variable:
+    ph: '6.0'
+    temperature: '310.000'

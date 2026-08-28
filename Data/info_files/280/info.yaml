@@ -1,0 +1,52 @@
+DOI: 10.5281/zenodo.19186254
+
+SOFTWARE: gromacs
+TRJ: cKKEEKVP_Tris_nowater.xtc
+TPR: cKKEEKVP_Tris.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4PSwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CAL:
+  NAME: CA
+  MAPPING: mappingCALecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+ H2PO4:
+  NAME: MON
+  MAPPING: mappingH2PO4amber.yaml
+ HPO4:
+  NAME: DIB
+  MAPPING: mappingHPO4amber.yaml
+ TRIS:
+  NAME: UNL
+  MAPPING: mappingTRISamber.yaml
+
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION: unpublished
+AUTHORS_CONTACT: Efstathia Mantzari and Samuli Ollila
+
+SYSTEM: Charged sequence with NaCl and phosphate
+SOFTWARE_VERSION:
+
+FF: amberff03ws
+FF_SOURCE: 
+FF_DATE:
+
+CPT:
+LOG:
+TOP:
+GRO:
+
+TYPEOFSYSTEM: protein

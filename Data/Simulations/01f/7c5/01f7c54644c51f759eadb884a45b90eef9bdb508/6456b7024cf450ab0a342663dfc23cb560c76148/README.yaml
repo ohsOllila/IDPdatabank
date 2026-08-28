@@ -1,0 +1,91 @@
+AUTHORS_CONTACT: Samuli Ollila
+COMPOSITION:
+  CLA:
+    COUNT: 8
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  PROTEIN:
+    SEQUENCE: SHMGSLNDSDIKPLRMDPPVYPRMAQARGIEGRVKVLFTITSDGRIDDIQVLESVPSRMFDREVRQAMAKWRFEPRVSGGKIVARQATKMFFFKIEKRR
+  SOD:
+    COUNT: 0
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 7536
+    MAPPING: mappingTIP3Pwater.yaml
+    NAME: SOL
+CPT: null
+DATEOFRUNNING: 20/08/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.1010416
+EXPERIMENT:
+  chemical_shift:
+    alignment_score:
+    - -1
+    ionic_strength:
+    - 0.02
+    ionic_strength_match:
+    - true
+    path:
+    - BMRBid34235
+    ph:
+    - 6.0
+    ph_match:
+    - false
+    sequence:
+    - SHMGSLNDSDIKPLRMDPPVYPRMAQARGIEGRVKVLFTITSDGRIDDIQVLESVPSRMFDREVRQAMAKWRFEPRVSGGKIVARQATKMFFFKIEKRR
+    temperature:
+    - 298.0
+    temperature_match:
+    - true
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score:
+    - -1
+    ionic_strength:
+    - 0.02
+    ionic_strength_match:
+    - true
+    path:
+    - 10.7717/peerj.5412
+    ph:
+    - 6.0
+    ph_match:
+    - false
+    sequence:
+    - SHMGSLNDSDIKPLRMDPPVYPRMAQARGIEGRVKVLFTITSDGRIDDIQVLESVPSRMFDREVRQAMAKWRFEPRVSGGKIVARQATKMFFFKIEKRR
+    temperature:
+    - 298.0
+    temperature_match:
+    - true
+FF: Amber ff99SB-ILDN / TIP4P
+FF_DATE: null
+FF_SOURCE: null
+GRO: null
+ID: 453
+LOG: null
+NUMBER_OF_ATOMS: 31788
+PREEQTIME: 10
+PUBLICATION: http://dx.doi.org/10.7717/peerj.5412
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: PsTonB
+TEMPERATURE: 298.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - run.tpr
+TRAJECTORY_SIZE: 4322414564
+TRJ:
+- - run.xtc
+TRJLENGTH: 400010.0
+TYPEOFSYSTEM: protein

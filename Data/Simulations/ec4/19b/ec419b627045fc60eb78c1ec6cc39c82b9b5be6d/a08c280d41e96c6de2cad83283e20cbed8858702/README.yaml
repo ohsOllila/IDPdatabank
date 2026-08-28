@@ -44,15 +44,24 @@ EXPERIMENT:
     temperature: []
     temperature_match: []
   spin_relaxation:
-    alignment_score: []
-    ionic_strength: []
-    ionic_strength_match: []
-    path: []
-    ph: []
-    ph_match: []
-    sequence: []
-    temperature: []
-    temperature_match: []
+    alignment_score:
+    - 839.0
+    ionic_strength:
+    - 0.01
+    ionic_strength_match:
+    - true
+    path:
+    - 10.1016/j.febslet.2010.03.008
+    ph:
+    - 6.0
+    ph_match:
+    - false
+    sequence:
+    - MHHHHHHIEGRHMLRPGDCEVCISYLGRFYQDLKDRDVTFSPATIEEELIKFCREARGKENRLCYYIGATDDAATKIINEVSKPLAHHIPVEKICEKLKKKDSQICELKYDKQIDLSTVDLKKLRVKELKKILDDWGEMCKGCAEKSDYIRKINELMPKYAPKAASARTDL
+    temperature:
+    - 310.0
+    temperature_match:
+    - true
 FF: amber99SB-disp
 FF_DATE: null
 FF_SOURCE: null

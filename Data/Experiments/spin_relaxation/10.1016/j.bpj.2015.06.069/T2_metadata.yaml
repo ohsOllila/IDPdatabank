@@ -1,0 +1,17 @@
+Experiment_ID: 
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '400,500,600,800,1000'   
+Name: T2
+Sample_component:
+-   Concentration_val: '0.6'
+    Concentration_val_units: mM
+    Mol_common_name: EN2
+    Type: null
+-   Concentration_val: '40'
+    Concentration_val_units: mM
+    Mol_common_name: sodium succinate
+    Type: null
+Sample_condition_variable:
+    ph: '6.0'
+    temperature: '303.000'

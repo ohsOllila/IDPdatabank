@@ -1,0 +1,42 @@
+DOI: 10.5281/zenodo.19127915
+
+SOFTWARE: gromacs
+TRJ: md_TonB_prot_10mM_ca2+_nojump_nowater.xtc
+TPR: md_TonB_prot_10mM_ca2+_c.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4PSwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CAL:
+  NAME: CA
+  MAPPING: mappingCALecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION: unpublished
+AUTHORS_CONTACT: Efstathia Mantzari and Samuli Ollila
+
+SYSTEM: TonB low pH with CaCl
+SOFTWARE_VERSION:
+
+FF: amberff03ws
+FF_SOURCE: 
+FF_DATE:
+
+CPT:
+LOG:
+TOP:
+GRO:
+
+TYPEOFSYSTEM: protein

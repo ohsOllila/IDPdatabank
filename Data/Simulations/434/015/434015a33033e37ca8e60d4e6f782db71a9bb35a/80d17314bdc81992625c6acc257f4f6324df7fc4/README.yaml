@@ -24,15 +24,33 @@ DIR_WRK: /home/sosamuli/temp/tmpData/
 DOI: 10.5281/zenodo.11282884
 EXPERIMENT:
   chemical_shift:
-    alignment_score: []
-    ionic_strength: []
-    ionic_strength_match: []
-    path: []
-    ph: []
-    ph_match: []
-    sequence: []
-    temperature: []
-    temperature_match: []
+    alignment_score:
+    - 429.0
+    - 412.0
+    ionic_strength:
+    - 0.0
+    - 0.0
+    ionic_strength_match:
+    - false
+    - false
+    path:
+    - BMRBid34043
+    - BMRBid34425
+    ph:
+    - 6.0
+    - 6.0
+    ph_match:
+    - false
+    - false
+    sequence:
+    - SNEFLMKIQTAISSKNRYPKMAQIRGIEGEVLVSFTINADGSVTDIKVVKSNTTDILNHAALEAIKSAAHLFPKPEETVHLKIPIAYSLKED
+    - SEGATSEAQAYNPGVSNEFLMKIQTAISSKNRYPKMAQIRGIEGEVLVSFTINADGSVTDIKVVKSNTTDILNHAALEAIKSAAHLFPKPEETVHLKIPIAYSLKED
+    temperature:
+    - 298.0
+    - 303.0
+    temperature_match:
+    - true
+    - true
   saxs:
     alignment_score: []
     ionic_strength: []
@@ -44,15 +62,51 @@ EXPERIMENT:
     temperature: []
     temperature_match: []
   spin_relaxation:
-    alignment_score: []
-    ionic_strength: []
-    ionic_strength_match: []
-    path: []
-    ph: []
-    ph_match: []
-    sequence: []
-    temperature: []
-    temperature_match: []
+    alignment_score:
+    - 429.0
+    - 412.0
+    - 344.5
+    - 344.5
+    ionic_strength:
+    - 0.0
+    - 0.02
+    - 0.16999999999999998
+    - 0.02
+    ionic_strength_match:
+    - false
+    - true
+    - false
+    - true
+    path:
+    - 10.1021/acs.jpcb.8b02250
+    - 10.3389/fchem.2020.00136/1
+    - 10.3389/fchem.2020.00136/3
+    - 10.3389/fchem.2020.00136/2
+    ph:
+    - 6.0
+    - 6.0
+    - 6.0
+    - 6.0
+    ph_match:
+    - false
+    - false
+    - false
+    - false
+    sequence:
+    - SNEFLMKIQTAISSKNRYPKMAQIRGIEGEVLVSFTINADGSVTDIKVVKSNTTDILNHAALEAIKSAAHLFPKPEETVHLKIPIAYSLKED
+    - SEGATSEAQAYNPGVSNEFLMKIQTAISSKNRYPKMAQIRGIEGEVLVSFTINADGSVTDIKVVKSNTTDILNHAALEAIKSAAHLFPKPEETVHLKIPIAYSLKED
+    - REDAPEPLAQAGTTKVTMSLASINTNSNTKTNAESAKPKEEPKEKPKKEEPKKEEPKKEVTKPKPKPKPKPKPKPEPKPEPKPEPKVEEVKKEEPKEEPKKEEAKEEAKEKSAPKQVTTKDIVKEKDKQEESNKTSEGATSEAQAYNPGVSNEFLMKIQTAISSKNRYPKMAQIRGIEGEVLVSFTINADGSVTDIKVVKSNTTDILNHAALEAIKSAAHLFPKPEETVHLKIPIAYSLKED
+    - REDAPEPLAQAGTTKVTMSLASINTNSNTKTNAESAKPKEEPKEKPKKEEPKKEEPKKEVTKPKPKPKPKPKPKPEPKPEPKPEPKVEEVKKEEPKEEPKKEEAKEEAKEKSAPKQVTTKDIVKEKDKQEESNKTSEGATSEAQAYNPGVSNEFLMKIQTAISSKNRYPKMAQIRGIEGEVLVSFTINADGSVTDIKVVKSNTTDILNHAALEAIKSAAHLFPKPEETVHLKIPIAYSLKED
+    temperature:
+    - 303.0
+    - 298.0
+    - 298.0
+    - 298.0
+    temperature_match:
+    - true
+    - true
+    - true
+    - true
 FF: amber99SBws
 FF_DATE: null
 FF_SOURCE: null

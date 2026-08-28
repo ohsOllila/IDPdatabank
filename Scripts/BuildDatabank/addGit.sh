@@ -10,3 +10,5 @@ git add Data/Simulations/*/*/*/*/Distance_map.png
 git add Data/Simulations/*/*/*/*/*rmsd*
 git add Data/Simulations/*/*/*/*/secondary_structure.yaml
 git add Data/Simulations/*/*/*/*/cross_link_data.yaml
+git add Data/Simulations/*/*/*/*/*quality*png
+git add Data/Simulations/*/*/*/*/*quality*yaml

@@ -1,0 +1,16 @@
+Experiment_ID: '1'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '850'
+    Manufacturer: Bruker
+    Model: AVANCE
+Name: 2D 1H-15N HSQC
+Sample_component:
+-   Concentration_val: '0.5'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-100% 13C; U-100% 15N]'
+    Mol_common_name: TonB
+    Type: null
+Sample_condition_variable:
+    ph: '6'
+    temperature: '303'
