@@ -1,0 +1,42 @@
+DOI: 10.5281/zenodo.19135517 
+
+SOFTWARE: gromacs
+TRJ: md_GPS40_02.xtc
+TPR: md_GPS40_02.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingOPCwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CAL:
+  NAME: CA
+  MAPPING: mappingCALecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION: unpublished
+AUTHORS_CONTACT: Efstathia Mantzari and Samuli Ollila
+
+SYSTEM: Protein linker 
+SOFTWARE_VERSION:
+
+FF: DESAMBER
+FF_SOURCE: 
+FF_DATE:
+
+CPT:
+LOG:
+TOP:
+GRO:
+
+TYPEOFSYSTEM: protein

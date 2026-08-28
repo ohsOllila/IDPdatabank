@@ -1,0 +1,39 @@
+DOI: 10.5281/zenodo.18712915
+
+SOFTWARE: gromacs
+TRJ: md_TonB_neutralpH_40mm_nojump_nowater_2micro.xtc
+TPR: md_TonB_neutralPh_40mm.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4PSwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION: 
+AUTHORS_CONTACT: Efthathia Mantzari & Samuli Ollila
+
+SYSTEM: TonB
+SOFTWARE_VERSION:
+
+FF: AMBER03WS
+FF_SOURCE: 
+FF_DATE:
+
+CPT:
+LOG:
+TOP:
+GRO:
+
+TYPEOFSYSTEM: protein

@@ -1,0 +1,256 @@
+12THR:
+  R1: 0.3801520213222662
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+14ASP:
+  R1: 0
+  R2: 0
+  hetNOE: 0.11050711197614116
+  non_zero_percentage: 33.333333333333336
+16LEU:
+  R1: 0.8827919974240925
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+17ASN:
+  R1: 1.402387635598397
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+18LEU:
+  R1: 0.964786997448351
+  R2: 0
+  hetNOE: 0.5754033222327806
+  non_zero_percentage: 66.66666666666667
+19ARG:
+  R1: 0.9598445379462106
+  R2: 0
+  hetNOE: 0.4349960985015153
+  non_zero_percentage: 66.66666666666667
+20GLY:
+  R1: 0
+  R2: 0
+  hetNOE: 1.815161026288726
+  non_zero_percentage: 33.333333333333336
+22LEU:
+  R1: 0.3482704259539988
+  R2: 0
+  hetNOE: 1.2127986466658283
+  non_zero_percentage: 66.66666666666667
+23ASP:
+  R1: 0.6696396521000214
+  R2: 0
+  hetNOE: 1.112084712074095
+  non_zero_percentage: 66.66666666666667
+24GLY:
+  R1: 0.1579435916670704
+  R2: 0
+  hetNOE: 1.0131714066860797
+  non_zero_percentage: 66.66666666666667
+26ARG:
+  R1: 2.001629637524033
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+27TRP:
+  R1: 1.205378250003482
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+28ARG:
+  R1: 0.9366617501137391
+  R2: 0
+  hetNOE: 0.0857251528745604
+  non_zero_percentage: 66.66666666666667
+29ARG:
+  R1: 0.4889616891545554
+  R2: 0
+  hetNOE: 0.9758156160365985
+  non_zero_percentage: 66.66666666666667
+30ALA:
+  R1: 0.14446882021086083
+  R2: 0
+  hetNOE: 0.548838142122837
+  non_zero_percentage: 66.66666666666667
+31GLU:
+  R1: 0
+  R2: 0
+  hetNOE: 1.0237083130535969
+  non_zero_percentage: 33.333333333333336
+33ALA:
+  R1: 0
+  R2: 0
+  hetNOE: 1.5976557720435065
+  non_zero_percentage: 33.333333333333336
+34GLN:
+  R1: 0
+  R2: 0
+  hetNOE: 1.1725982180222911
+  non_zero_percentage: 33.333333333333336
+35SER:
+  R1: 0.7102623141501461
+  R2: 0
+  hetNOE: 0.8861893639920206
+  non_zero_percentage: 66.66666666666667
+36ARG:
+  R1: 1.4205274455012158
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+37ARG:
+  R1: 0.7818248381177899
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+39GLY:
+  R1: 0.9291743255595746
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+3ALA:
+  R1: 0.018191312677517724
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+40ARG:
+  R1: 2.50840605511876
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+41SER:
+  R1: 0.9088643219082386
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+42ARG:
+  R1: 0.8605654884790712
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+44GLY:
+  R1: 1.3455540370079726
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+45GLY:
+  R1: 0.9220323060267701
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+46ALA:
+  R1: 0.7198547198731855
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+48LEU:
+  R1: 0.19729980589386376
+  R2: 0
+  hetNOE: 0.2810646566472621
+  non_zero_percentage: 66.66666666666667
+49ARG:
+  R1: 0.8330628394172976
+  R2: 0
+  hetNOE: 0.5451993597357621
+  non_zero_percentage: 66.66666666666667
+4MET:
+  R1: 0
+  R2: 0
+  hetNOE: 0.21418718565018136
+  non_zero_percentage: 33.333333333333336
+50TYR:
+  R1: 1.159481857402437
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+52ARG:
+  R1: 1.550872246822542
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+53THR:
+  R1: 1.4391058940650918
+  R2: 0
+  hetNOE: 0.6565210003868769
+  non_zero_percentage: 66.66666666666667
+54GLY:
+  R1: 1.7113332304630462
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+55VAL:
+  R1: 1.4320030281300378
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+56GLY:
+  R1: 0.3653493259795726
+  R2: 0
+  hetNOE: 0.2788042534209343
+  non_zero_percentage: 66.66666666666667
+57MET:
+  R1: 1.5486043428418945
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+58SER:
+  R1: 0.21187470449444978
+  R2: 0
+  hetNOE: 0.5048369615769888
+  non_zero_percentage: 66.66666666666667
+59ARG:
+  R1: 1.727711171586114
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+5THR:
+  R1: 0
+  R2: 0
+  hetNOE: 0.5941836124731275
+  non_zero_percentage: 33.333333333333336
+60THR:
+  R1: 1.3158617650278468
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+61GLY:
+  R1: 1.5885251199974153
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+63GLY:
+  R1: 0.48376723451022374
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 33.333333333333336
+64SER:
+  R1: 0.4145404008388387
+  R2: 0
+  hetNOE: 0.6714518180409583
+  non_zero_percentage: 66.66666666666667
+65ARG:
+  R1: 0
+  R2: 0
+  hetNOE: 2.2661962731198746
+  non_zero_percentage: 33.333333333333336
+67VAL:
+  R1: 0.6825578251749365
+  R2: 0
+  hetNOE: 7.230952058404377
+  non_zero_percentage: 66.66666666666667
+7VAL:
+  R1: 0
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 0.0
+8ARG:
+  R1: 0
+  R2: 0
+  hetNOE: 0
+  non_zero_percentage: 0.0
+Averages:
+  R1: 0.8464718956322519
+  R2: 0
+  hetNOE: 0.7880204043447578
+  non_zero_percentage: 66.66666666666667
+overall_non_zero_percentage: 43.137254901960766

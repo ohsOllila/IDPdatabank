@@ -1363,10 +1363,17 @@ def calculate_SAXS_profile_maicos(gro_file, xtc_file,water_shell=None,output_fil
 #		- solves disk space problem
 #		- might be slover than the OUTDATED function
 
-def calculate_ChemShifts_sparta(gro_file, xtc_file, dt_analysis_ps=100000,be_quiet=True):
+def calculate_ChemShifts_sparta_not_used(gro_file, xtc_file, dt_analysis_ps=100000,be_quiet=True):
     # Load structure and trajectory (PBC: nojump)
     u = mda.Universe(gro_file, xtc_file)
+
+    print('CALCULATING!!!!!!!!!!!!!!!!')
     
+    for res in u.select_atoms("protein").residues:
+        if 190 <= res.resid <= 200:
+            print(res.resid, res.resname)
+    exit()
+            
     # only select protein atoms
     protein_atoms = u.select_atoms("protein")
     
@@ -1463,6 +1470,11 @@ def calculate_ChemShifts_sparta(gro_file, xtc_file, dt_analysis_ps=1000):
     idx_prot_atoms = traj.topology.select('protein')
     # slice trajectory to keep only protein atoms
     traj_just_prot = traj.atom_slice(idx_prot_atoms)
+
+    for residue in traj_just_prot.topology.residues:
+        if 190 <= residue.resSeq <= 200:
+            print(residue.resSeq, residue.name)
+
     
     # ADJUST TIME STEPS FOR ANALYSIS
     # timesteps between analyzed frames (dt_analysis_ps) should be roughly 100 ps
@@ -1547,6 +1559,7 @@ def calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_d
 #            continue
 
         # --- Resolve experimental residue key ---
+        #print(residue,experimental_data)
         if residue in experimental_data:
             exp_res = experimental_data[residue]
         else:
@@ -1560,6 +1573,7 @@ def calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_d
         calc_res = spin_relaxation_times[residue]
 
         # --- Find common magnetic fields ---
+        #print(calc_res.keys(), exp_res.keys())
         common_fields = set(calc_res.keys()) & set(exp_res.keys())
 
         if not common_fields:
@@ -1573,6 +1587,9 @@ def calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_d
 
             calc_data = calc_res[field]
             exp_data = exp_res[field]
+
+            #print(calc_data)
+            #print(exp_data)
 
             #differences[residue][field] = {}
             #differences[residue] = {}
@@ -1609,7 +1626,7 @@ def calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_d
     for i in differences:
         print(i)
         print(differences[i])
-    
+        
     values = []
     for residue in differences:
         #print(residue)
@@ -1626,7 +1643,8 @@ def calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_d
 
     values = []
     for residue in differences:
-        values.append(differences[residue]['hetNOE']**2)
+        if 'hetNOE' in differences[residue]:
+            values.append(differences[residue]['hetNOE']**2)
     RMSDs['hetNOE'] =  np.sqrt(sum(values) / len(values))
 
     RMSDs['differences'] = differences
@@ -1833,6 +1851,112 @@ def parse_star_file(filename):
     return shifts
 
 
+
+def load_experimental_chemical_shifts(system, databankPath):
+    """
+    Returns:
+        exp_data (dict)
+        ExperimentalFile (bool)
+    """
+
+    chemical_shift_paths = system['EXPERIMENT']['chemical_shift']['path']
+
+    # --------------------------------------------------
+    # Priority 1: Preprocessed chemical_shifts.yaml
+    # --------------------------------------------------
+    if len(chemical_shift_paths) > 0:
+        experiment_path = (
+            databankPath
+            + 'Data/Experiments/chemical_shift/'
+            + chemical_shift_paths[0]
+        )
+
+        chemical_shift_experimental_file = (
+            experiment_path + '/chemical_shifts.yaml'
+        )
+
+        if os.path.exists(chemical_shift_experimental_file):
+            print(
+                f"Loading experimental chemical shifts from "
+                f"{chemical_shift_experimental_file}"
+            )
+
+            with open(chemical_shift_experimental_file) as f:
+                exp_data = yaml.safe_load(f)
+
+            return exp_data, True
+
+    # --------------------------------------------------
+    # Priority 2: Download and parse BMRB
+    # --------------------------------------------------
+    if len(chemical_shift_paths) > 0:
+        for BMRBid in chemical_shift_paths:
+            print(chemical_shift_experimental_file," not found, fetching from ", BMRBid)
+
+            id_number = re.search(r'\d+', BMRBid).group()
+            bmrb_local_file = download_NMR_star_file(id_number)
+
+            if BMRBid == 'BMRBid16300':
+                break
+
+            exp_data = parse_star_file(bmrb_local_file)
+
+            if exp_data:
+                return exp_data, True
+
+    # --------------------------------------------------
+    # Priority 3: Spin-relaxation source
+    # --------------------------------------------------
+    print("Trying to get chemical shifts from the spin relaxation data source")
+
+    try:
+        if "BMRBid" in system['EXPERIMENT']['spin_relaxation']['path'][0]:
+
+            BMRBid = (
+                system['EXPERIMENT']['spin_relaxation']['path'][0]
+                .replace            )
+
+            bmrb_local_file = download_NMR_star_file(BMRBid)
+            exp_data = parse_star_file(bmrb_local_file)
+
+            return exp_data, True
+
+    except Exception:
+        pass
+
+    print("Experimental chemical shift data file not found")
+    return {}, False
+
+def calculate_chemical_shift_rmsd(
+    sim_file,
+    exp_data,
+    nuclei=("C", "CA", "CB", "HA", "H", "N")
+):
+    """
+    Calculate chemical-shift RMSDs.
+    """
+
+    with open(sim_file) as f:
+        sim_data = yaml.safe_load(f)
+
+    sim_residues_all = set(sim_data.keys())
+
+    # Only compare residues present in simulation
+    exp_data_filtered = {
+        res: atoms
+        for res, atoms in exp_data.items()
+        if res in sim_residues_all
+    }
+
+    exp_residues = sorted(exp_data_filtered.keys())
+
+    return compute_rmsd_chemical_shift(
+        sim_data,
+        exp_data_filtered,
+        nuclei,
+        exp_residues,
+    )
+
 #def compute_rmsd_chemical_shift(sim_data, exp_data, nuclei, residues):
 #    rmsd_per_nucleus = {}
 #    for nucleus in nuclei:
@@ -1999,6 +2123,38 @@ AA_MAP = {
 
 
 from io import StringIO
+
+
+def gro_to_residue_dict(gro_file):
+    """
+    Read a GROMACS .gro file and return a dictionary:
+
+        {residue_number: residue_name}
+
+    Example:
+        {194: 'SER', 195: 'ASN', ...}
+    """
+
+    residue_dict = {}
+
+    with open(gro_file) as f:
+        lines = f.readlines()
+
+    # Skip title and atom count, skip final box line
+    for line in lines[2:-1]:
+
+        try:
+            resid = int(line[:5])
+            resname = line[5:10].strip()
+
+            # Store each residue only once
+            residue_dict.setdefault(resid, resname)
+
+        except ValueError:
+            continue
+
+    return residue_dict
+
 
 def fasta_string_to_residue_dict(fasta_str):
     """

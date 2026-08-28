@@ -1,0 +1,73 @@
+ID: 454
+AUTHORS_CONTACT: Samuli Ollila
+COMPOSITION:
+  CLA:
+    COUNT: 3
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  PROTEIN:
+    SEQUENCE: SMFHVILFQPEIPPNTGNIIRLCANAGCSLHLIEPLGFELDDKRLRRAGLDYHEYASVRRYPYLQSCLEALGQPRLFAFTTKGSRAFHEVAYQRGDAFLFGPESRGLPEDVRNALPTDRRLRLPMREGCRSLNLSNTVAVTVYEAWRQLGFAMG
+  SOD:
+    COUNT: 0
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 17722
+    MAPPING: mappingTIP3Pwater.yaml
+    NAME: SOL
+CPT: null
+DATEOFRUNNING: 27/08/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.22072030
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: null
+FF_DATE: null
+FF_SOURCE: null
+GRO: null
+LOG: null
+NUMBER_OF_ATOMS: 102143
+PREEQTIME: 10
+PUBLICATION: null
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: yibk linear no salt
+TEMPERATURE: 310.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - run1_300ns.tpr
+TRAJECTORY_SIZE: 10864752788
+TRJ:
+- - run1_300ns.xtc
+TRJLENGTH: 300010.0
+TYPEOFSYSTEM: protein

@@ -43,6 +43,8 @@ def create_nmr_dictionary(nmr_data,raw_data,data_type,field_strengths):
         # Process each magnetic field strength
         for i, field in enumerate(field_strengths):
 
+            field = str(field)
+            print(field)
             if residue in nmr_data and field not in nmr_data[residue]:
                 nmr_data[residue][field] = {}
             elif residue not in nmr_data:
@@ -75,6 +77,7 @@ def create_nmr_dictionary(nmr_data,raw_data,data_type,field_strengths):
     return nmr_data
 
 
+
 with open("EN2_exp/EN2_R1_exp_pms.dat", "r", encoding="utf-8") as f:
     content = f.read()
 
@@ -97,6 +100,9 @@ for field in field_strengths:
 #for field, freq in zip(field_strengths, frequencies):
 #    print(f"{field} => {freq}")
 
+
+fasta_sequence = yaml.safe_load(open("fasta.yaml"))["sequence"][0]
+print(fasta_sequence)
 
 # Create the dictionary
 nmr_data = {}
@@ -141,7 +147,7 @@ nmr_dict = create_nmr_dictionary(nmr_data,raw_data,'T2',frequencies)
 
 
 
-with open('spin_relaxation_times.yaml', 'w') as file:
+with open('tst.yaml', 'w') as file:
     yaml.dump(nmr_dict, file, default_flow_style=False)
 
 

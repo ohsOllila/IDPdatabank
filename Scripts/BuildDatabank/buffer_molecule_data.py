@@ -96,6 +96,16 @@ BUFFER_MOLECULE_DATA: Dict[str, Dict[str, Any]] = {
         ],
     },
 
+    "NaPO4 buffer": {
+        "ph_dependent": True,
+        "ph_ranges": [
+            {"min_ph": 0, "max_ph": 2, "charges": [0], "stoichiometry": [1]},
+            {"min_ph": 2, "max_ph": 7, "charges": [1, -1], "stoichiometry": [1, 1]},
+            {"min_ph": 7, "max_ph": 12, "charges": [1, -2], "stoichiometry": [2, 1]},
+            {"min_ph": 12, "max_ph": 14, "charges": [1, -3], "stoichiometry": [3, 1]},
+        ],
+    },
+
 
     
     "sodium succinate": {

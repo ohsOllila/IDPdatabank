@@ -1,0 +1,42 @@
+DOI: 10.5281/zenodo.10952046
+
+SOFTWARE: gromacs
+TRJ: md_TonBCTD_amber99SB-ILDN_model15_nojump.xtc
+TPR: md_TonBCTD_amber99SB-ILDN_model15.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP3Pwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ POT:
+  NAME: K
+  MAPPING: mappingK.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION: https://doi.org/10.1038/s42004-025-01623-x
+AUTHORS_CONTACT: Samuli Ollila
+
+SYSTEM: TonBCTD
+SOFTWARE_VERSION:
+
+FF: amber99SB-ILDN
+FF_SOURCE: 
+FF_DATE:
+
+CPT:
+LOG:
+TOP:
+GRO:
+
+TYPEOFSYSTEM: protein

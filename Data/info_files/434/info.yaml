@@ -1,0 +1,39 @@
+DOI: 10.5281/zenodo.1010416
+
+SOFTWARE: gromacs
+TRJ: run.xtc
+TPR: run.tpr
+PREEQTIME: 10
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP3Pwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION: http://dx.doi.org/10.7717/peerj.5412
+AUTHORS_CONTACT: Samuli Ollila
+
+SYSTEM: PsTonB
+SOFTWARE_VERSION:
+
+FF: Amber ff99SB-ILDN / TIP4P
+FF_SOURCE: 
+FF_DATE:
+
+CPT:
+LOG:
+TOP:
+GRO:
+
+TYPEOFSYSTEM: protein
