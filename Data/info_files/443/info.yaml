@@ -1,0 +1,40 @@
+DOI: 10.5281/zenodo.22159857    
+
+SOFTWARE: gromacs
+TRJ: md_TonB_linkerKP_deprot_40mm_nowater.xtc
+TPR: md_TonB_linkerKP_deprot_40mm.tpr 
+PREEQTIME: 10
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4PSwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION: 
+
+AUTHORS_CONTACT: Samuli Ollila
+
+SYSTEM: md_TonB_linkerKP_deprot_40mm 
+SOFTWARE_VERSION:
+
+FF: Amberff03ws
+FF_SOURCE: 
+FF_DATE:
+
+CPT: md_TonB_linkerKP_deprot_40mm.cpt
+LOG: 
+TOP: topol_deprot.top 
+GRO: 
+
+TYPEOFSYSTEM: protein

@@ -1,4 +1,3 @@
-ID: 456
 AUTHORS_CONTACT: Samuli Ollila
 COMPOSITION:
   CLA:
@@ -55,6 +54,7 @@ FF: Amberff03ws
 FF_DATE: null
 FF_SOURCE: null
 GRO: null
+ID: 456
 LOG:
 - - md_TonB_31-111_prot_40mm.log
 NUMBER_OF_ATOMS: 1607
