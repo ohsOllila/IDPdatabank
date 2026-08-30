@@ -1,0 +1,75 @@
+AUTHORS_CONTACT: Samuli Ollila
+COMPOSITION:
+  CLA:
+    COUNT: 28
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  PROTEIN:
+    SEQUENCE: EEVEEVEEVKPKPKPKPKPEEVEEVEEV
+  SOD:
+    COUNT: 24
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 32758
+    MAPPING: mappingTIP4PSwater.yaml
+    NAME: SOL
+CPT:
+- - md_EEVKP40_prot_01.cpt
+DATEOFRUNNING: 30/08/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.22179492
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: Amberff03ws
+FF_DATE: null
+FF_SOURCE: null
+GRO: null
+LOG:
+- - md_EEVKP40_prot_01.log
+NUMBER_OF_ATOMS: 522
+PREEQTIME: 10
+PUBLICATION: null
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: md_EEVKP40_prot
+TEMPERATURE: 303.0
+TIMELEFTOUT: 0
+TOP:
+- - topol_prot.top
+TPR:
+- - md_EEVKP40_prot_01.tpr
+TRAJECTORY_SIZE: 216236932
+TRJ:
+- - md_EEVKP40_prot_01_nowater.xtc
+TRJLENGTH: 1000010.0
+TYPEOFSYSTEM: protein
