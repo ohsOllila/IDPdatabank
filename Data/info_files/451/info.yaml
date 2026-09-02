@@ -1,0 +1,32 @@
+DOI: 10.5281/zenodo.22238405
+SOFTWARE: gromacs
+TRJ: KAPK_DESamber_0mm_nacl_md_KAPK_02.xtc
+TPR: KAPK_DESamber_0mm_nacl_md_KAPK_02.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingOPCwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CAL:
+  NAME: CA
+  MAPPING: mappingCALecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+DIR_WRK:
+PUBLICATION:
+AUTHORS_CONTACT: Samuli Ollila
+SYSTEM: KAPK linker
+SOFTWARE_VERSION:
+FF: DESAMBER
+FF_SOURCE:
+FF_DATE:
+CPT: KAPK_DESamber_0mm_nacl_md_KAPK_02.cpt
+LOG: KAPK_DESamber_0mm_nacl_md_KAPK_02.log
+TOP: KAPK_DESamber_0mm_nacl_topol.top
+TYPEOFSYSTEM: protein
