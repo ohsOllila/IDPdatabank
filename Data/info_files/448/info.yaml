@@ -1,0 +1,29 @@
+DOI: 10.5281/zenodo.22180994
+SOFTWARE: gromacs
+TRJ: GGS_amberff03ws_0mm_nacl_md_GGS_02.xtc
+TPR: GGS_amberff03ws_0mm_nacl_md_GGS_02.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4PSwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+DIR_WRK: /home/sosamuli/temp/tmpData/
+PUBLICATION:
+AUTHORS_CONTACT: Samuli Ollila
+SYSTEM: GGS linker
+SOFTWARE_VERSION:
+FF: AMBER03WS
+FF_SOURCE:
+FF_DATE:
+CPT: GGS_amberff03ws_0mm_nacl_md_GGS_02.cpt
+LOG: GGS_amberff03ws_0mm_nacl_md_GGS_02.log
+TOP: GGS_amberff03ws_0mm_nacl_topol.top
+TYPEOFSYSTEM: protein
