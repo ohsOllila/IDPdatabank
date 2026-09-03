@@ -1,0 +1,40 @@
+DOI: 10.5281/zenodo.22287251
+
+SOFTWARE: gromacs
+TRJ: deprotonated_md_KKEEVKP40_deprot_01_nowater.xtc
+TPR: deprotonated_md_KKEEVKP40_deprot_01.tpr
+PREEQTIME: 10
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingOPCwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CAL:
+  NAME: CA
+  MAPPING: mappingCALecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION:
+
+AUTHORS_CONTACT: Samuli Ollila
+
+SYSTEM: KKEEVKP40_deprot
+SOFTWARE_VERSION:
+FF: DESAMBER
+FF_SOURCE:
+FF_DATE:
+CPT: deprotonated_md_KKEEVKP40_deprot_01.cpt
+LOG: deprotonated_md_KKEEVKP40_deprot_01.log
+TOP: deprotonated_topol.top
+
+TYPEOFSYSTEM: protein
