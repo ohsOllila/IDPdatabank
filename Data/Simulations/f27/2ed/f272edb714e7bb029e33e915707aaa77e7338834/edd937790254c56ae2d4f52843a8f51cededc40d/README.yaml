@@ -1,0 +1,78 @@
+AUTHORS_CONTACT: Samuli Ollila
+COMPOSITION:
+  CAL:
+    COUNT: 0
+    MAPPING: mappingCALecc.yaml
+    NAME: CA
+  CLA:
+    COUNT: 19
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  PROTEIN:
+    SEQUENCE: KKEEVPKPKPKPKKEEV
+  SOD:
+    COUNT: 12
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 16777
+    MAPPING: mappingOPCwater.yaml
+    NAME: SOL
+CPT:
+- - protonated_md_KKEEVKP40_prot_01.cpt
+DATEOFRUNNING: 03/09/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.22287251
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: DESAMBER
+FF_DATE: null
+FF_SOURCE: null
+LOG:
+- - protonated_md_KKEEVKP40_prot_01.log
+NUMBER_OF_ATOMS: 340
+PREEQTIME: 10
+PUBLICATION: null
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: KKEEVKP40_prot
+TEMPERATURE: 298.0
+TIMELEFTOUT: 0
+TOP:
+- - protonated_topol.top
+TPR:
+- - protonated_md_KKEEVKP40_prot_01.tpr
+TRAJECTORY_SIZE: 143066336
+TRJ:
+- - protonated_md_KKEEVKP40_prot_01_nowater.xtc
+TRJLENGTH: 1000010.0
+TYPEOFSYSTEM: protein
