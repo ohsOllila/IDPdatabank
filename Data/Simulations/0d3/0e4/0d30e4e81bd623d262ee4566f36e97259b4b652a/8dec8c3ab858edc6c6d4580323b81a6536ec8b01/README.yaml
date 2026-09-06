@@ -21,31 +21,22 @@ DOI: 10.5281/zenodo.15966816
 EXPERIMENT:
   chemical_shift:
     alignment_score:
-    - 856.5
     - -1
     ionic_strength:
-    - 0.022
     - 0.022000000000000002
     ionic_strength_match:
     - true
-    - true
     path:
-    - BMRBid25197
     - BMRBid17899
     ph:
     - 5.02
-    - 5.02
     ph_match:
     - false
-    - false
     sequence:
-    - AGPQGGFGATGGASAGLISRVANALANTSTLRTVLRTGVSQQIASSVVQRAAQSLASTLGVDGNNLARFAVQAVSRLPAGSDTSAYAQAFSSALFNAGVLNASNIDTLGSRVLSALLNGVSSAAQGLGINVDSGSVQSDISSSSSFLSTSSSSASYSQASASSTSGAGYTGPSGPSTGPSGYPGPLGGGAPFGQSGFGGSAGPQGGFGATGGASAGLISRVANALANTSTLRTVLRTGVSQQIASSVVQRAAQSLASTLGVDGNNLARFAVQAVSRLPAGSDTSAYAQAFSSALFNAGVLNASNIDTLGSRVLSALLNGVSSAAQGLGINVDSGSVQSDISSSSSFLSTSSSSASYSQASASSTSGAGYTGPSGPSTGPSGYPGPLGGGAPFGQSGFGG
     - AGPQGGFGATGGASAGLISRVANALANTSTLRTVLRTGVSQQIASSVVQRAAQSLASTLGVDGNNLARFAVQAVSRLPAGSDTSAYAQAFSSALFNAGVLNASNIDTLGSRVLSALLNGVSSAAQGLGINVDSGSVQSDISSSSSFLSTSSSSASYSQASASSTSGAGYTGPSGPSTGPSGYPGPLGGGAPFGQSGFGG
     temperature:
     - 303.15
-    - 303.15
     temperature_match:
-    - true
     - true
   saxs:
     alignment_score: []
@@ -58,15 +49,24 @@ EXPERIMENT:
     temperature: []
     temperature_match: []
   spin_relaxation:
-    alignment_score: []
-    ionic_strength: []
-    ionic_strength_match: []
-    path: []
-    ph: []
-    ph_match: []
-    sequence: []
-    temperature: []
-    temperature_match: []
+    alignment_score:
+    - -1
+    ionic_strength:
+    - 0.02
+    ionic_strength_match:
+    - true
+    path:
+    - 10.3390/ijms17081305
+    ph:
+    - 5.0
+    ph_match:
+    - false
+    sequence:
+    - AGPQGGFGATGGASAGLISRVANALANTSTLRTVLRTGVSQQIASSVVQRAAQSLASTLGVDGNNLARFAVQAVSRLPAGSDTSAYAQAFSSALFNAGVLNASNIDTLGSRVLSALLNGVSSAAQGLGINVDSGSVQSDISSSSSFLSTSSSSASYSQASASSTSGAGYTGPSGPSTGPSGYPGPLGGGAPFGQSGFGG
+    temperature:
+    - 303.0
+    temperature_match:
+    - true
 FF: AMBER99SB-DISP
 FF_DATE: null
 FF_SOURCE: null

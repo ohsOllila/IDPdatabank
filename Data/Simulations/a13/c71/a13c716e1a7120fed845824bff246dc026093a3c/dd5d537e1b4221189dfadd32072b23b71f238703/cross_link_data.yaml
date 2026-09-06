@@ -1,0 +1,10 @@
+uniprot:
+- title: 'sp|Q5RA68.1| RecName: Full=Hydroxysteroid dehydrogenase-like protein 2 [Pongo
+    abelii]'
+  length: 418
+  identity_%: 54.55
+  similarity_%: 72.73
+  coverage_%: 78.57
+  e_value: 1.82088
+  bit_score: 26.9498
+pdb: []

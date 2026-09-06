@@ -1,0 +1,94 @@
+uniprot:
+- title: 'sp|A0KEQ6.2| RecName: Full=tRNA (cytidine(34)-2''-O)-methyltransferase;
+    AltName: Full=tRNA (cytidine/uridine-2''-O-)-methyltransferase TrmL [Aeromonas
+    hydrophila subsp. hydrophila ATCC 7966]'
+  length: 156
+  identity_%: 62.91
+  similarity_%: 78.15
+  coverage_%: 98.05
+  e_value: 2.8213e-67
+  bit_score: 204.142
+- title: 'sp|C6X9I5.2| RecName: Full=tRNA (cytidine(34)-2''-O)-methyltransferase;
+    AltName: Full=tRNA (cytidine/uridine-2''-O-)-methyltransferase TrmL [Methylovorus
+    glucosotrophus SIP3-4]'
+  length: 154
+  identity_%: 59.6
+  similarity_%: 76.82
+  coverage_%: 98.05
+  e_value: 6.73957e-65
+  bit_score: 197.978
+- title: 'sp|P0AGJ7.1| RecName: Full=tRNA (cytidine(34)-2''-O)-methyltransferase;
+    AltName: Full=tRNA (cytidine/uridine-2''-O-)-methyltransferase TrmL [Escherichia
+    coli K-12] >sp|P0AGJ8.1| RecName: Full=tRNA (cytidine(34)-2''-O)-methyltransferase;
+    AltName: Full=tRNA (cytidine/uridine-2''-O-)-methyltransferase TrmL [Escherichia
+    coli CFT073]'
+  length: 157
+  identity_%: 60.0
+  similarity_%: 77.33
+  coverage_%: 97.4
+  e_value: 7.42973e-65
+  bit_score: 197.978
+- title: 'sp|B8CHC9.2| RecName: Full=tRNA (cytidine(34)-2''-O)-methyltransferase;
+    AltName: Full=tRNA (cytidine/uridine-2''-O-)-methyltransferase TrmL [Shewanella
+    piezotolerans WP3]'
+  length: 153
+  identity_%: 59.6
+  similarity_%: 76.82
+  coverage_%: 98.05
+  e_value: 8.86485e-65
+  bit_score: 197.593
+- title: 'sp|Q74Y93.1| RecName: Full=tRNA (cytidine(34)-2''-O)-methyltransferase;
+    AltName: Full=tRNA (cytidine/uridine-2''-O-)-methyltransferase TrmL [Yersinia
+    pestis]'
+  length: 162
+  identity_%: 60.0
+  similarity_%: 76.13
+  coverage_%: 100.65
+  e_value: 1.02989e-64
+  bit_score: 197.978
+pdb:
+- title: pdb|6QH8|A Chain A, tRNA (cytidine(34)-2'-O)-methyltransferase [Pseudomonas
+    aeruginosa] >pdb|6QH8|B Chain B, tRNA (cytidine(34)-2'-O)-methyltransferase [Pseudomonas
+    aeruginosa] >pdb|6QH8|C Chain C, tRNA (cytidine(34)-2'-O)-methyltransferase [Pseudomonas
+    aeruginosa] >pdb|6QH8|D Chain D, tRNA (cytidine(34)-2'-O)-methyltransferase [Pseudomonas
+    aeruginosa]
+  length: 162
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 6.2523e-113
+  bit_score: 318.546
+- title: pdb|6QKV|A Chain A, tRNA (cytidine(34)-2'-O)-methyltransferase [Pseudomonas
+    aeruginosa] >pdb|6QKV|B Chain B, tRNA (cytidine(34)-2'-O)-methyltransferase [Pseudomonas
+    aeruginosa]
+  length: 155
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 98.7
+  e_value: 8.60173e-112
+  bit_score: 315.464
+- title: pdb|3N4J|A Chain A, RNA methyltransferase [Yersinia pestis CO92] >pdb|3N4K|A
+    Chain A, RNA methyltransferase [Yersinia pestis CO92] >pdb|3N4K|B Chain B, RNA
+    methyltransferase [Yersinia pestis CO92]
+  length: 165
+  identity_%: 59.62
+  similarity_%: 76.28
+  coverage_%: 101.3
+  e_value: 1.51364e-65
+  bit_score: 198.749
+- title: pdb|4KDZ|A Chain A, tRNA (cytidine(34)-2'-O)-methyltransferase [Escherichia
+    coli UTI89]
+  length: 157
+  identity_%: 60.0
+  similarity_%: 77.33
+  coverage_%: 97.4
+  e_value: 2.20282e-65
+  bit_score: 197.978
+- title: pdb|1J85|A Chain A, YibK [Haemophilus influenzae Rd KW20] >pdb|1MXI|A Chain
+    A, Hypothetical tRNA/rRNA methyltransferase HI0766 [Haemophilus influenzae]
+  length: 160
+  identity_%: 58.0
+  similarity_%: 76.67
+  coverage_%: 97.4
+  e_value: 8.18527e-65
+  bit_score: 196.823

@@ -1,0 +1,42 @@
+uniprot:
+- title: 'sp|O25899.1| RecName: Full=Protein TonB [Helicobacter pylori 26695]'
+  length: 285
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 1.48815e-48
+  bit_score: 158.688
+- title: 'sp|Q9ZJP4.1| RecName: Full=Protein TonB [Helicobacter pylori J99]'
+  length: 280
+  identity_%: 91.09
+  similarity_%: 92.08
+  coverage_%: 100.0
+  e_value: 7.18331e-37
+  bit_score: 128.257
+- title: 'sp|Q99109.1| RecName: Full=Repellent protein 1; Contains: RecName: Full=Rep1-1;
+    Contains: RecName: Full=Rep1-2; Contains: RecName: Full=Rep1-3; Contains: RecName:
+    Full=Rep1-4; Contains: RecName: Full=Rep1-5; Contains: RecName: Full=Rep1-6; Contains:
+    RecName: Full=Rep1-7; Contains: RecName: Full=Rep1-8; Contains: RecName: Full=Rep1-9;
+    Contains: RecName: Full=Rep1-10; Contains: RecName: Full=Rep1-11; Flags: Precursor
+    [Mycosarcoma maydis]'
+  length: 652
+  identity_%: 66.67
+  similarity_%: 77.78
+  coverage_%: 35.64
+  e_value: 0.026409
+  bit_score: 35.8094
+- title: 'sp|B2RUR4.1| RecName: Full=Keratinocyte proline-rich protein [Mus musculus]'
+  length: 657
+  identity_%: 41.86
+  similarity_%: 51.16
+  coverage_%: 42.57
+  e_value: 0.211493
+  bit_score: 33.113
+- title: 'sp|B2RUR4.1| RecName: Full=Keratinocyte proline-rich protein [Mus musculus]'
+  length: 657
+  identity_%: 33.96
+  similarity_%: 58.49
+  coverage_%: 52.48
+  e_value: 0.591949
+  bit_score: 31.9574
+pdb: []
