@@ -65,6 +65,8 @@ for system in systems:
     spin_relaxation_time_file = dataFolder + 'spin_relaxation_times.yaml'
     secondary_structure_file = dataFolder + 'secondary_structure.yaml'
     pbc_check_file = dataFolder + 'pbc_check.xvg'
+    folding_state_file =  dataFolder + 'stable_contacts.json'
+
     
     files = {
         "SAXS_file": SAXS_file,
@@ -77,7 +79,8 @@ for system in systems:
         "dynamic_landscape_file": dynamic_landscape_file,
         "spin_relaxation_time_file": spin_relaxation_time_file,
         "secondary_structure": secondary_structure_file,
-        "pbc_check": pbc_check_file
+        "pbc_check": pbc_check_file,
+        "folding_state": folding_state_file
     }
 
     # Check for missing files
@@ -126,12 +129,47 @@ for system in systems:
     if (not os.path.isfile(secondary_structure_file)):
         print('Calculating', gro_fname, trj_fname_fit)
 
-        fig_combined, fig_order, fig_ensemble, coil_dict = calculate_secondary_structures(gro_fname, trj_fname_fit)
+        #fig_combined, fig_order, fig_ensemble, coil_dict = calculate_secondary_structures(gro_fname, trj_fname_fit)
         
-        # save figures
-        fig_combined.savefig(dataFolder + "secondary_structure.png", dpi=300)
-        fig_order.savefig(dataFolder + "disorder_probability.png", dpi=300)
-        fig_ensemble.savefig(dataFolder + "ensemble.png", dpi=300)
+        ## save figures
+        #fig_combined.savefig(dataFolder + "secondary_structure.png", dpi=300)
+        #fig_order.savefig(dataFolder + "disorder_probability.png", dpi=300)
+        #fig_ensemble.savefig(dataFolder + "ensemble.png", dpi=300)
+
+        plt.close()
+
+
+        fig_combined, fig_order, fig_ensemble, coil_dict = calculate_secondary_structures(
+            gro_fname,
+            trj_fname_fit
+        )
+
+        # Save figures
+        fig_combined.savefig(
+            dataFolder + "secondary_structure.png",
+            dpi=300,
+            bbox_inches="tight"
+        )
+
+        fig_order.savefig(
+            dataFolder + "disorder_probability.png",
+            dpi=300,
+            bbox_inches="tight"
+        )
+
+        fig_ensemble.savefig(
+            dataFolder + "ensemble.png",
+            dpi=300,
+            bbox_inches="tight"
+        )
+
+        # IMPORTANT: close the figures
+        import matplotlib.pyplot as plt
+
+        plt.close(fig_combined)
+        plt.close(fig_order)
+        plt.close(fig_ensemble)
+
         
         # save YAML
         import yaml
@@ -344,7 +382,7 @@ for system in systems:
             dynamic_landscape = yaml.safe_load(file)
 
         
-        magnetic_fields = [850, 800, 600]
+        magnetic_fields = [850, 800, 700, 600, 500, 400]
         #magnetic_field=magnetic_field*2*np.pi/gammaH*10**6
         print('Calculating for ', magnetic_fields, ' MHz magnetic fields')
         spin_relaxation_times = {}    
@@ -547,3 +585,14 @@ for system in systems:
     chemical_shift_quality_file =  dataFolder + 'chemical_shift_quality.yaml'
     if not os.path.exists(chemical_shift_quality_file) and ExperimentalFileShift:
         evaluate_chemical_shift_quality(system, atom_accuracies)
+
+
+    print('Determine folding state')
+    if not os.path.exists(folding_state_file):
+        result = stable_contact_analysis(gro_fname, trj_fname)
+
+        existing = {}
+        existing[str(system['ID'])] = result
+        with open(folding_state_file, 'w') as f:
+            json.dump(existing, f, indent=2)
+        

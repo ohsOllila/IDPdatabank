@@ -150,7 +150,8 @@ def searchDatabank():
                 alignment_score_threshold = (
                     hypothetical_alignment_score * 0.8
                 )  # this is as arbitrary as it gets
-                if alignment is not None:
+                length_difference_ok = abs(len(sim_seq) - len(exp_seq)) < 5
+                if alignment is not None and length_difference_ok:
                     if alignment.score > alignment_score_threshold:
                         aligned_experiments.append(experiment)
                         alignment_score = alignment.score

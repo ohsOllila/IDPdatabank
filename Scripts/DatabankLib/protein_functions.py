@@ -16,6 +16,7 @@ from typing import List, Dict, Optional
 from collections import defaultdict
 import matplotlib.pyplot as plt
 import math
+import json
 
 import seaborn as sns
 from matplotlib.colors import LinearSegmentedColormap
@@ -2516,7 +2517,7 @@ def compute_residue_nonzero_percentages(input_yaml: str, output_yaml: str) -> No
     #plt.show()
 
 
-def calculate_secondary_structures(gro_file, xtc_file):
+def calculate_secondary_structures_old(gro_file, xtc_file):
 
     import mdtraj
     import numpy as np
@@ -2675,8 +2676,8 @@ def calculate_secondary_structures(gro_file, xtc_file):
         rotation=90
     )
 
-    plt.tight_layout()
-    fig_order.savefig("order_probability.png", dpi=300)
+    #plt.tight_layout()
+    #fig_order.savefig("order_probability.png", dpi=300)
 
     # -------------------------
     # RETURN EVERYTHING
@@ -2684,5 +2685,337 @@ def calculate_secondary_structures(gro_file, xtc_file):
     return fig_combined, fig_order, fig_ensemble, coil_dict
 
 
+def calculate_secondary_structures(gro_file, xtc_file):
 
+    import mdtraj
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import matplotlib.image as mpimg
+    from pymol import cmd
+
+    print(xtc_file, gro_file)
+
+    # -------------------------
+    # LOAD TRAJECTORY
+    # -------------------------
+    traj = mdtraj.load(xtc_file, top=gro_file)
+
+    three_to_one = {
+        'ALA': 'A', 'ARG': 'R', 'ASN': 'N', 'ASP': 'D', 'ASH': 'D',
+        'CYS': 'C', 'GLU': 'E', 'GLUH': 'E', 'GLH': 'E', 'GLN': 'Q',
+        'GLY': 'G', 'HIS': 'H', 'ILE': 'I', 'LEU': 'L', 'LYS': 'K',
+        'MET': 'M', 'PHE': 'F', 'PRO': 'P', 'SER': 'S', 'THR': 'T',
+        'TRP': 'W', 'TYR': 'Y', 'VAL': 'V'
+    }
+
+    residue_names = [
+        three_to_one[res.name]
+        for res in traj.topology.residues
+    ]
+
+    # -------------------------
+    # DSSP
+    # -------------------------
+    print('Running DSSP')
+
+    if traj.n_frames > 200000:
+        traj_small = traj[::2]
+        dssp = mdtraj.compute_dssp(traj_small, simplified=True)
+    else:
+        dssp = mdtraj.compute_dssp(traj, simplified=True)
+
+    initial_ss = dssp[0]
+    final_ss = dssp[-1]
+
+    color_map = {
+        'C': 'grey',
+        'H': 'red',
+        'E': 'blue'
+    }
+
+    initial_colors = [color_map[s] for s in initial_ss]
+    final_colors = [color_map[s] for s in final_ss]
+
+    # -------------------------
+    # PYMOL ENSEMBLE IMAGE
+    # -------------------------
+    print('Starting the ensemble figure preparation')
+
+    # Save current PyMOL state as much as possible
+    cmd.set("ray_opaque_background", 1)
+
+    obj_name = "traj"
+
+    # Make sure an old object with this name doesn't interfere
+    cmd.delete(obj_name)
+
+    cmd.load(gro_file, obj_name)
+    cmd.load_traj(
+        xtc_file,
+        obj_name,
+        state=1,
+        interval=2000
+    )
+
+    cmd.color("blue", obj_name)
+    cmd.set("all_states", "on")
+    cmd.orient()
+    cmd.ray(600, 600)
+
+    pymol_img = "ensemble.png"
+    cmd.png(pymol_img)
+
+    # Remove PyMOL object
+    cmd.delete(obj_name)
+
+    # Convert PyMOL image → matplotlib figure
+    img = mpimg.imread(pymol_img)
+
+    fig_ensemble, ax_e = plt.subplots(figsize=(6, 6))
+
+    ax_e.imshow(img)
+    ax_e.axis("off")
+    ax_e.set_title("Conformational Ensemble")
+
+    fig_ensemble.tight_layout()
+
+    # -------------------------
+    # COMBINED FIGURE
+    # -------------------------
+    fig_combined = plt.figure(figsize=(18, 7))
+
+    gs = fig_combined.add_gridspec(
+        3,
+        1,
+        height_ratios=[2, 1, 1]
+    )
+
+    ax_img = fig_combined.add_subplot(gs[0])
+    ax_init = fig_combined.add_subplot(gs[1])
+    ax_final = fig_combined.add_subplot(gs[2])
+
+    ax_img.imshow(img)
+    ax_img.axis("off")
+    ax_img.set_title("Conformational Ensemble")
+
+    for i, c in enumerate(initial_colors):
+        ax_init.bar(i, 1, color=c)
+
+    for i, c in enumerate(final_colors):
+        ax_final.bar(i, 1, color=c)
+
+    for ax in [ax_init, ax_final]:
+        ax.set_xlim(0, len(dssp[0]))
+        ax.set_ylim(0, 1)
+        ax.set_yticks([])
+
+    xticks = list(range(0, len(dssp[0]), 10))
+
+    ax_final.set_xticks(xticks)
+    ax_final.set_xticklabels(
+        [f"{i+1}" for i in xticks],
+        rotation=90
+    )
+
+    ax_init.set_xticks([])
+
+    ax_final.set_xlabel("Residue Index")
+
+    ax_init.set_title("Initial Secondary Structure")
+    ax_final.set_title("Final Secondary Structure")
+
+    legend_labels = [
+        'Coil (C)',
+        'Helix (H)',
+        'Extended (E)'
+    ]
+
+    handles = [
+        plt.Line2D(
+            [0], [0],
+            color=color_map[k],
+            lw=4
+        )
+        for k in ['C', 'H', 'E']
+    ]
+
+    ax_final.legend(
+        handles,
+        legend_labels,
+        loc='upper right'
+    )
+
+    fig_combined.tight_layout()
+
+    # -------------------------
+    # COIL PROBABILITIES
+    # -------------------------
+    coil_counts = np.sum(dssp == 'C', axis=0)
+    total_frames = dssp.shape[0]
+
+    coil_probabilities = (
+        coil_counts / total_frames
+    )
+
+    # -------------------------
+    # SECONDARY STRUCTURE DICTIONARY
+    # -------------------------
+    structures = [
+        'H', 'B', 'E', 'G',
+        'I', 'T', 'S', 'C'
+    ]
+
+    ss_dict = {}
+
+    for i in range(dssp.shape[1]):
+
+        res_key = f"{i+1}_{residue_names[i]}"
+
+        ss_dict[res_key] = {
+            ss: float(
+                np.sum(dssp[:, i] == ss) / total_frames
+            )
+            for ss in structures
+        }
+
+    coil_dict = ss_dict
+
+    # -------------------------
+    # ORDER PROBABILITY FIG
+    # -------------------------
+    fig_order, ax_order = plt.subplots(
+        figsize=(18, 4)
+    )
+
+    ax_order.bar(
+        range(len(coil_probabilities)),
+        coil_probabilities,
+        color='grey'
+    )
+
+    ax_order.set_xlabel('Residue Index')
+    ax_order.set_ylabel('Coil Probability')
+    ax_order.set_title(
+        'Coil Probability for Each Residue'
+    )
+
+    ax_order.set_xticks(
+        range(len(coil_probabilities))
+    )
+
+    ax_order.set_xticklabels(
+        [
+            f"{i+1} {residue_names[i]}"
+            for i in range(len(coil_probabilities))
+        ],
+        rotation=90
+    )
+
+    fig_order.tight_layout()
+
+    # -------------------------
+    # RETURN
+    # -------------------------
+    return (
+        fig_combined,
+        fig_order,
+        fig_ensemble,
+        coil_dict
+    )
+
+
+def protein_folding_class(system, databankPath):
+    dataFolder = (
+        databankPath
+        + 'Data/Simulations/'
+        + system['path']
+        + '/'
+    )
+
+    # =====================================================
+    # Determine protein class
+    # =====================================================
+
+    protein_class = None
+
+    infile = dataFolder + 'stable_contacts.json'
+
+    try:
+        with open(infile, 'r') as f:
+            results = json.load(f)
+
+        system_id = str(
+            system.get('ID', system['path'])
+        )
+
+        stable_contacts = (
+            results[system_id]['frac_residues_stable']
+        )
+
+        if stable_contacts >= 0.8:
+            protein_class = 'folded'
+
+        elif stable_contacts <= 0.3:
+            protein_class = 'unfolded'
+
+        else:
+            protein_class = 'partially_folded'
+
+        return protein_class
+
+    except (FileNotFoundError, KeyError):
+        # Classification unavailable
+        protein_class = None
+
+
+
+def stable_contact_analysis(gro_file, xtc_file, sel="name CA", cutoff=8.0, min_seq_sep=4, stability_threshold=0.8):
+    """
+    Computes time-averaged residue-residue contact probabilities and derives
+    a stability-based folding measure, distinguishing persistent (folded-like)
+    contacts from transient (disordered-but-compact) contacts.
+
+    Returns:
+      contact_prob: (N,N) matrix, P(i,j) = fraction of frames residues i,j are in contact
+      frac_stable_contacts: fraction of *possible* long-range pairs that are stable
+      frac_residues_stable: fraction of residues with >=1 stable contact
+      mean_instantaneous_contacts: mean per-frame contact count per residue (for comparison)
+    """
+
+    u = mda.Universe(gro_file, xtc_file)
+    print(u)
+    ag = u.select_atoms(sel)
+    n_res = len(ag)
+    resids = np.arange(n_res)
+    seq_sep = np.abs(resids[:, None] - resids[None, :])
+    long_range_mask = seq_sep >= min_seq_sep
+
+    contact_sum = np.zeros((n_res, n_res))
+    n_frames = 0
+    instantaneous_counts = []
+
+    for ts in u.trajectory:
+        d = distances.distance_array(ag.positions, ag.positions, box=u.dimensions)
+        contact_mask = (d < cutoff) & long_range_mask
+        contact_sum += contact_mask
+        instantaneous_counts.append(contact_mask.sum(axis=1).mean())
+        n_frames += 1
+
+    contact_prob = contact_sum / n_frames
+
+    # Stable contacts: pairs with contact probability above threshold
+    stable_mask = (contact_prob >= stability_threshold) & long_range_mask
+    n_possible_pairs = long_range_mask.sum() / 2  # upper triangle only
+    n_stable_pairs = stable_mask.sum() / 2
+
+    frac_stable_contacts = n_stable_pairs / n_possible_pairs if n_possible_pairs > 0 else 0.0
+    residues_with_stable_contact = (stable_mask.sum(axis=1) > 0)
+    frac_residues_stable = residues_with_stable_contact.mean()
+
+    return {
+        'frac_stable_contacts': float(frac_stable_contacts),
+        'frac_residues_stable': float(frac_residues_stable),
+        'mean_instantaneous_contacts': float(np.mean(instantaneous_counts)),
+        'n_stable_pairs': int(n_stable_pairs),
+    }
 

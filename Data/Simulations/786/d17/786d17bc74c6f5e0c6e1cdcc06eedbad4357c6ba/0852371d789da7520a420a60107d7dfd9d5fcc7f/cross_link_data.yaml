@@ -1,0 +1,43 @@
+uniprot:
+- title: 'sp|B2RUR4.1| RecName: Full=Keratinocyte proline-rich protein [Mus musculus]'
+  length: 657
+  identity_%: 36.36
+  similarity_%: 56.36
+  coverage_%: 54.46
+  e_value: 0.237637
+  bit_score: 33.113
+- title: 'sp|B2RUR4.1| RecName: Full=Keratinocyte proline-rich protein [Mus musculus]'
+  length: 657
+  identity_%: 42.86
+  similarity_%: 47.62
+  coverage_%: 41.58
+  e_value: 3.70048
+  bit_score: 29.6462
+- title: 'sp|Q9ZJP4.1| RecName: Full=Protein TonB [Helicobacter pylori J99]'
+  length: 280
+  identity_%: 96.77
+  similarity_%: 96.77
+  coverage_%: 30.69
+  e_value: 4.02017
+  bit_score: 29.6462
+pdb:
+- title: pdb|12DL|LA Chain LA, KH domain-containing protein 3 [Mus musculus] >pdb|9SFP|C
+    Chain C, KH domain-containing protein 3 [Mus musculus] >pdb|9T63|S Chain S, KH
+    domain-containing protein 3 [Mus musculus] >pdb|9T64|0 Chain 0, KH domain-containing
+    protein 3 [Mus musculus] >pdb|9T64|S Chain S, KH domain-containing protein 3 [Mus
+    musculus] >pdb|9T66|S Chain S, KH domain-containing protein 3 [Mus musculus] >pdb|9T66|j
+    Chain j, KH domain-containing protein 3 [Mus musculus] >pdb|9T67|0 Chain 0, KH
+    domain-containing protein 3 [Mus musculus] >pdb|9T67|S Chain S, KH domain-containing
+    protein 3 [Mus musculus] >pdb|9T68|0 Chain 0, KH domain-containing protein 3 [Mus
+    musculus] >pdb|9T68|An Chain An, KH domain-containing protein 3 [Mus musculus]
+    >pdb|9T68|S Chain S, KH domain-containing protein 3 [Mus musculus] >pdb|9T68|j
+    Chain j, KH domain-containing protein 3 [Mus musculus] >pdb|9XRL|4 Chain 4, KH
+    domain-containing protein 3 [Mus musculus] >pdb|9XRL|6 Chain 6, KH domain-containing
+    protein 3 [Mus musculus] >pdb|9XRL|AA Chain AA, KH domain-containing protein 3
+    [Mus musculus]
+  length: 440
+  identity_%: 33.33
+  similarity_%: 50.0
+  coverage_%: 77.23
+  e_value: 9.61548
+  bit_score: 26.9498
