@@ -29,7 +29,7 @@ import os.path
 from collections.abc import Sequence
 from typing import Optional
 
-from DatabankLib.core import System
+from fairmd.idp.core import System
 
 # GROMACS
 gromacs_dict = {

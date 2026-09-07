@@ -1,5 +1,5 @@
-from DatabankLib import RCODE_COMPUTED, RCODE_ERROR, RCODE_SKIPPED
-from DatabankLib.core import initialize_databank
+from fairmd.idp import RCODE_COMPUTED, RCODE_ERROR, RCODE_SKIPPED
+from fairmd.idp.core import initialize_databank
 
 
 from logging import Logger

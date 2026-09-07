@@ -17,12 +17,12 @@ import numpy as np
 import math
 import MDAnalysis as mda
 
-from DatabankLib import NMLDB_SIMU_PATH
-from DatabankLib.core import (System)
-from DatabankLib.settings.molecules import (
+from fairmd.idp import NMLDB_SIMU_PATH
+from fairmd.idp.core import (System)
+from fairmd.idp.settings.molecules import (
     lipids_set, molecules_set, molecule_ff_set)
-from DatabankLib.databankio import resolve_download_file_url
-from DatabankLib.settings.engines import get_struc_top_traj_fnames, software_dict
+from fairmd.idp.databankio import resolve_download_file_url
+from fairmd.idp.settings.engines import get_struc_top_traj_fnames, software_dict
 
 logger = logging.getLogger(__name__)
 

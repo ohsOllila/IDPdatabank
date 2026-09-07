@@ -1,4 +1,33 @@
 [build-system]
-requires-python = ">=3.9"
 requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "fairmd-idp"
+version = "1.1.0"                          # should agree with git tag!
+description = "FAIRMD IDP databank main package"
+readme = "README.md"
+authors = [
+    {name = "Samuli Ollila", email = "samuli.ollila@helsinki.fi"},
+]
+license = "GPL-3.0-or-later"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.9"
+dynamic = ["dependencies"]
+
+[project.urls]
+repository = "https://github.com/ohsOllila/IDPdatabank"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["src/fairmd/idp/requirements.txt"]}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["fairmd.idp", "fairmd.idp.*"]
+namespaces = true
+
+[tool.setuptools.package-data]
+"fairmd.idp.settings" = ["*.yaml"]

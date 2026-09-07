@@ -1,4 +1,4 @@
-from DatabankLib.protein_functions import *
+from fairmd.idp.protein_functions import *
 
 
 #get_data_from_BMRB('50115')

@@ -17,10 +17,10 @@ from tqdm import tqdm
 # the universal mapping file
 import periodictable
 
-from DatabankLib.core import System
-from DatabankLib.databankLibrary import lipids_set, getLipids
-from DatabankLib.jsonEncoders import CompactJSONEncoder
-from DatabankLib import NMLDB_SIMU_PATH, NMLDB_DATA_PATH
+from fairmd.idp.core import System
+from fairmd.idp.databankLibrary import lipids_set, getLipids
+from fairmd.idp.jsonEncoders import CompactJSONEncoder
+from fairmd.idp import NMLDB_SIMU_PATH, NMLDB_DATA_PATH
 
 
 # To write data in numpy arrays into json file, we inherit compact JSON

@@ -8,7 +8,7 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 
-from DatabankLib import NMLDB_SIMU_PATH, NMLDB_EXP_PATH
+from fairmd.idp import NMLDB_SIMU_PATH, NMLDB_EXP_PATH
 
 
 def plotFormFactor(  # noqa: N802
