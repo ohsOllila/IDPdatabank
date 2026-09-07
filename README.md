@@ -32,3 +32,17 @@ from fairmd.idp.protein_functions import *
 When the package is not installed from a clone of this repository, set
 `NMLDB_ROOT_PATH` to the cloned repository folder (or `NMLDB_DATA_PATH` to its
 `Data` folder) so that the data can be found.
+
+## Development
+
+Linting, tests, package build and documentation are run with [tox](https://tox.wiki/):
+
+```bash
+pip install tox
+tox -e lint    # ruff + sphinx-lint
+tox -e tests   # pytest
+tox -e build   # build sdist/wheel and check the manifest
+tox -e docs    # build the documentation into docs/build/html
+```
+
+See `docs/src/development.rst` and `docs/README.md` for details.
