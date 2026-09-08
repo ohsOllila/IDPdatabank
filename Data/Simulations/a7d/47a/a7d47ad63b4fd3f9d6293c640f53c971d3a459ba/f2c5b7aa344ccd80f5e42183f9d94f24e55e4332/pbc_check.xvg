@@ -1,0 +1,35 @@
+# This file was created Tue Apr 14 09:48:18 2026
+# Created by:
+#                     :-) GROMACS - gmx mindist, 2025.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/sosamuli/work/NMRlipids/IDPdatabank/Scripts/AnalyzeDatabank
+# Command line:
+#   gmx mindist -f /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/a7d/47a/a7d47ad63b4fd3f9d6293c640f53c971d3a459ba/f2c5b7aa344ccd80f5e42183f9d94f24e55e4332/skipped_traj.xtc -s /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/a7d/47a/a7d47ad63b4fd3f9d6293c640f53c971d3a459ba/f2c5b7aa344ccd80f5e42183f9d94f24e55e4332/model_03_AMBER99SB-DISP_md_2000ns.tpr -pi -od /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/a7d/47a/a7d47ad63b4fd3f9d6293c640f53c971d3a459ba/f2c5b7aa344ccd80f5e42183f9d94f24e55e4332/pbc_check.xvg
+# gmx mindist is part of G R O M A C S:
+#
+# Gravel Rubs Often Many Awfully Cauterized Sores
+#
+@    title "Minimum distance to periodic image"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Distance (nm)"
+@TYPE xy
+@ subtitle "and maximum internal distance"
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "min per."
+@ s1 legend "max int."
+@ s2 legend "box1"
+@ s3 legend "box2"
+@ s4 legend "box3"
+	0	 6.952 13.089 16.065 16.065 16.065
+	100	 6.664 12.802 16.044 16.044 16.044
+	200	 6.104 12.580 16.038 16.038 16.038
+	300	 6.230 12.248 16.041 16.041 16.041
+	400	 6.007 12.192 16.042 16.042 16.042
+	500	 6.143 12.369 16.039 16.039 16.039

@@ -1,0 +1,49 @@
+# This file was created Tue Apr 14 07:43:54 2026
+# Created by:
+#                     :-) GROMACS - gmx mindist, 2025.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/sosamuli/work/NMRlipids/IDPdatabank/Scripts/AnalyzeDatabank
+# Command line:
+#   gmx mindist -f /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/1eb/bcc/1ebbccc19fd5e8cdb382fb54347f04e4e4187816/b7eb647350103586101b41c2ea1cb5f77ca79874/skipped_traj.xtc -s /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/1eb/bcc/1ebbccc19fd5e8cdb382fb54347f04e4e4187816/b7eb647350103586101b41c2ea1cb5f77ca79874/model_02_AMBER03WS_md_2000ns.tpr -pi -od /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/1eb/bcc/1ebbccc19fd5e8cdb382fb54347f04e4e4187816/b7eb647350103586101b41c2ea1cb5f77ca79874/pbc_check.xvg
+# gmx mindist is part of G R O M A C S:
+#
+# Grunge ROck MAChoS
+#
+@    title "Minimum distance to periodic image"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Distance (nm)"
+@TYPE xy
+@ subtitle "and maximum internal distance"
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "min per."
+@ s1 legend "max int."
+@ s2 legend "box1"
+@ s3 legend "box2"
+@ s4 legend "box3"
+	0	 3.856  7.557 10.502 10.502 10.502
+	100	 3.948  7.434 10.485 10.485 10.485
+	200	 3.856  7.604 10.496 10.496 10.496
+	300	 3.765  7.577 10.485 10.485 10.485
+	400	 4.171  7.555 10.492 10.492 10.492
+	500	 4.185  7.810 10.488 10.488 10.488
+	600	 4.382  7.540 10.486 10.486 10.486
+	700	 4.610  7.401 10.498 10.498 10.498
+	800	 5.174  7.725 10.492 10.492 10.492
+	900	 4.896  7.838 10.492 10.492 10.492
+	1000	 5.180  7.700 10.498 10.498 10.498
+	1100	 4.344  8.305 10.496 10.496 10.496
+	1200	 4.438  7.660 10.487 10.487 10.487
+	1300	 4.458  8.218 10.486 10.486 10.486
+	1400	 4.886  7.385 10.489 10.489 10.489
+	1500	 5.071  7.213 10.495 10.495 10.495
+	1600	 4.735  8.111 10.503 10.503 10.503
+	1700	 4.550  8.240 10.489 10.489 10.489
+	1800	 4.091  8.632 10.497 10.497 10.497
+	1900	 4.515  8.531 10.495 10.495 10.495
