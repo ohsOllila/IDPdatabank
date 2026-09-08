@@ -1,0 +1,47 @@
+# This file was created Tue Apr 14 16:23:33 2026
+# Created by:
+#                     :-) GROMACS - gmx mindist, 2025.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/sosamuli/work/NMRlipids/IDPdatabank/Scripts/AnalyzeDatabank
+# Command line:
+#   gmx mindist -f /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/215/6f2/2156f253e38f5a3dd3cf8809996ae50c439fbbc4/2f01f6a771c83ca2cf02993e1642a638ddd3dca3/skipped_traj.xtc -s /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/215/6f2/2156f253e38f5a3dd3cf8809996ae50c439fbbc4/2f01f6a771c83ca2cf02993e1642a638ddd3dca3/model_01_DESAMBER_md_2000ns.tpr -pi -od /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/215/6f2/2156f253e38f5a3dd3cf8809996ae50c439fbbc4/2f01f6a771c83ca2cf02993e1642a638ddd3dca3/pbc_check.xvg
+# gmx mindist is part of G R O M A C S:
+#
+# GROningen Mixture of Alchemy and Childrens' Stories
+#
+@    title "Minimum distance to periodic image"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Distance (nm)"
+@TYPE xy
+@ subtitle "and maximum internal distance"
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "min per."
+@ s1 legend "max int."
+@ s2 legend "box1"
+@ s3 legend "box2"
+@ s4 legend "box3"
+	0	 5.574  7.954 11.057 11.057 11.057
+	100	 5.456  8.025 11.056 11.056 11.056
+	200	 5.698  7.897 11.053 11.053 11.053
+	300	 5.480  8.113 11.041 11.041 11.041
+	400	 5.487  8.280 11.059 11.059 11.059
+	500	 5.195  8.663 11.051 11.051 11.051
+	600	 4.818  8.582 11.041 11.041 11.041
+	700	 4.952  8.545 11.041 11.041 11.041
+	800	 5.995  8.195 11.055 11.055 11.055
+	900	 5.601  8.030 11.056 11.056 11.056
+	1000	 5.681  7.905 11.048 11.048 11.048
+	1100	 5.812  8.463 11.051 11.051 11.051
+	1200	 4.948  8.227 11.055 11.055 11.055
+	1300	 4.868  8.378 11.051 11.051 11.051
+	1400	 5.137  8.145 11.047 11.047 11.047
+	1500	 5.432  8.720 11.050 11.050 11.050
+	1600	 5.120  8.242 11.042 11.042 11.042
+	1700	 5.051  8.506 11.052 11.052 11.052

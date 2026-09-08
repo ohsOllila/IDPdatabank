@@ -1,0 +1,46 @@
+# This file was created Wed Apr 15 04:30:38 2026
+# Created by:
+#                     :-) GROMACS - gmx mindist, 2025.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/sosamuli/work/NMRlipids/IDPdatabank/Scripts/AnalyzeDatabank
+# Command line:
+#   gmx mindist -f /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/a69/ad8/a69ad8b93f3f2bfc168d0df01d90ece26b62a7b6/165e8a9ec60792c7d0a0f164d3ed91bb2ae9aa63/skipped_traj.xtc -s /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/a69/ad8/a69ad8b93f3f2bfc168d0df01d90ece26b62a7b6/165e8a9ec60792c7d0a0f164d3ed91bb2ae9aa63/model_01_AMBER03WS_md_2000ns.tpr -pi -od /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/a69/ad8/a69ad8b93f3f2bfc168d0df01d90ece26b62a7b6/165e8a9ec60792c7d0a0f164d3ed91bb2ae9aa63/pbc_check.xvg
+# gmx mindist is part of G R O M A C S:
+#
+# Green Red Orange Magenta Azure Cyan Skyblue
+#
+@    title "Minimum distance to periodic image"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Distance (nm)"
+@TYPE xy
+@ subtitle "and maximum internal distance"
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "min per."
+@ s1 legend "max int."
+@ s2 legend "box1"
+@ s3 legend "box2"
+@ s4 legend "box3"
+	0	 5.533  8.003 11.060 11.060 11.060
+	100	 6.242  7.651 11.037 11.037 11.037
+	200	 5.898  7.807 11.036 11.036 11.036
+	300	 5.648  7.294 11.030 11.030 11.030
+	400	 6.258  7.483 11.036 11.036 11.036
+	500	 6.397  7.214 11.043 11.043 11.043
+	600	 6.096  7.383 11.031 11.031 11.031
+	700	 6.293  7.808 11.047 11.047 11.047
+	800	 6.395  7.856 11.035 11.035 11.035
+	900	 6.026  7.653 11.042 11.042 11.042
+	1000	 6.358  7.917 11.025 11.025 11.025
+	1100	 6.428  7.360 11.032 11.032 11.032
+	1200	 6.691  7.574 11.026 11.026 11.026
+	1300	 6.511  7.495 11.031 11.031 11.031
+	1400	 6.704  7.518 11.033 11.033 11.033
+	1500	 6.527  7.316 11.023 11.023 11.023
+	1600	 6.065  7.484 11.039 11.039 11.039

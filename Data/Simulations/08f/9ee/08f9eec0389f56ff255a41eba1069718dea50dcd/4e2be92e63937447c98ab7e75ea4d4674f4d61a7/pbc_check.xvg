@@ -1,0 +1,46 @@
+# This file was created Tue Apr 14 00:03:34 2026
+# Created by:
+#                     :-) GROMACS - gmx mindist, 2025.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/sosamuli/work/NMRlipids/IDPdatabank/Scripts/AnalyzeDatabank
+# Command line:
+#   gmx mindist -f /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/08f/9ee/08f9eec0389f56ff255a41eba1069718dea50dcd/4e2be92e63937447c98ab7e75ea4d4674f4d61a7/skipped_traj.xtc -s /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/08f/9ee/08f9eec0389f56ff255a41eba1069718dea50dcd/4e2be92e63937447c98ab7e75ea4d4674f4d61a7/model_01_AMBER99SB-DISP_md_2000ns.tpr -pi -od /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/08f/9ee/08f9eec0389f56ff255a41eba1069718dea50dcd/4e2be92e63937447c98ab7e75ea4d4674f4d61a7/pbc_check.xvg
+# gmx mindist is part of G R O M A C S:
+#
+# Green Red Orange Magenta Azure Cyan Skyblue
+#
+@    title "Minimum distance to periodic image"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Distance (nm)"
+@TYPE xy
+@ subtitle "and maximum internal distance"
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "min per."
+@ s1 legend "max int."
+@ s2 legend "box1"
+@ s3 legend "box2"
+@ s4 legend "box3"
+	0	 5.620  7.959 11.046 11.046 11.046
+	100	 5.619  8.011 11.028 11.028 11.028
+	200	 5.758  8.219 11.020 11.020 11.020
+	300	 5.729  7.870 11.025 11.025 11.025
+	400	 5.863  8.165 11.019 11.019 11.019
+	500	 5.614  8.339 11.020 11.020 11.020
+	600	 5.410  8.465 11.021 11.021 11.021
+	700	 5.010  8.371 11.016 11.016 11.016
+	800	 4.749  8.983 11.028 11.028 11.028
+	900	 5.286  8.667 11.016 11.016 11.016
+	1000	 4.762  7.987 11.021 11.021 11.021
+	1100	 4.915  7.998 11.016 11.016 11.016
+	1200	 4.766  7.978 11.010 11.010 11.010
+	1300	 4.762  7.464 11.026 11.026 11.026
+	1400	 4.791  7.553 11.029 11.029 11.029
+	1500	 4.906  7.434 11.017 11.017 11.017
+	1600	 5.045  7.087 11.023 11.023 11.023

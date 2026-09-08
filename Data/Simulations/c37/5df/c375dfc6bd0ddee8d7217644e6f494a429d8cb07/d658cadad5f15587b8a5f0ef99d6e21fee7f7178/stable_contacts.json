@@ -1,0 +1,8 @@
+{
+  "123": {
+    "frac_stable_contacts": 0.004186346071275226,
+    "frac_residues_stable": 0.17857142857142858,
+    "mean_instantaneous_contacts": 2.652501380350241,
+    "n_stable_pairs": 39
+  }
+}

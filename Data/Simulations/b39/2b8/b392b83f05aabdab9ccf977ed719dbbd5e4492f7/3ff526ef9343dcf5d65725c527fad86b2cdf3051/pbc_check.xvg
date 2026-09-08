@@ -1,0 +1,48 @@
+# This file was created Tue Apr 14 03:06:18 2026
+# Created by:
+#                     :-) GROMACS - gmx mindist, 2025.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/sosamuli/work/NMRlipids/IDPdatabank/Scripts/AnalyzeDatabank
+# Command line:
+#   gmx mindist -f /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/b39/2b8/b392b83f05aabdab9ccf977ed719dbbd5e4492f7/3ff526ef9343dcf5d65725c527fad86b2cdf3051/skipped_traj.xtc -s /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/b39/2b8/b392b83f05aabdab9ccf977ed719dbbd5e4492f7/3ff526ef9343dcf5d65725c527fad86b2cdf3051/model_02_CHARMM36M_md_2000ns.tpr -pi -od /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/b39/2b8/b392b83f05aabdab9ccf977ed719dbbd5e4492f7/3ff526ef9343dcf5d65725c527fad86b2cdf3051/pbc_check.xvg
+# gmx mindist is part of G R O M A C S:
+#
+# GROningen MAchine for Chemical Simulation
+#
+@    title "Minimum distance to periodic image"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Distance (nm)"
+@TYPE xy
+@ subtitle "and maximum internal distance"
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "min per."
+@ s1 legend "max int."
+@ s2 legend "box1"
+@ s3 legend "box2"
+@ s4 legend "box3"
+	0	 3.750  7.589 10.515 10.515 10.515
+	100	 3.965  7.445 10.504 10.504 10.504
+	200	 3.717  7.622 10.508 10.508 10.508
+	300	 3.210  7.836 10.493 10.493 10.493
+	400	 2.953  7.986 10.511 10.511 10.511
+	500	 2.696  8.556 10.513 10.513 10.513
+	600	 2.727  8.221 10.518 10.518 10.518
+	700	 2.862  8.655 10.527 10.527 10.527
+	800	 3.615  8.121 10.487 10.487 10.487
+	900	 4.553  7.531 10.498 10.498 10.498
+	1000	 4.428  6.608 10.506 10.506 10.506
+	1100	 3.882  7.425 10.515 10.515 10.515
+	1200	 4.314  7.113 10.517 10.517 10.517
+	1300	 4.532  6.824 10.509 10.509 10.509
+	1400	 3.782  7.217 10.501 10.501 10.501
+	1500	 4.041  7.027 10.507 10.507 10.507
+	1600	 4.425  6.870 10.521 10.521 10.521
+	1700	 4.874  7.218 10.518 10.518 10.518
+	1800	 4.922  6.483 10.509 10.509 10.509

@@ -1,0 +1,8 @@
+{
+  "403": {
+    "frac_stable_contacts": 0.006914741944682065,
+    "frac_residues_stable": 0.49707602339181284,
+    "mean_instantaneous_contacts": 2.730910117799407,
+    "n_stable_pairs": 97
+  }
+}
