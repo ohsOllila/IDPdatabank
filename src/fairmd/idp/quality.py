@@ -5,8 +5,8 @@ TODO: remove code duplication and commented code
 """
 
 from typing import List
-from DatabankLib import NMLDB_SIMU_PATH
-from DatabankLib.core import System, initialize_databank, lipids_set
+from fairmd.idp import NMLDB_SIMU_PATH
+from fairmd.idp.core import System, initialize_databank, lipids_set
 
 import re
 import decimal as dc
