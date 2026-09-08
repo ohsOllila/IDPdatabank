@@ -41,8 +41,19 @@ Environments
 ``docs``
    Runs ``docs/src/run_apidoc.py`` to generate the API pages and then
    ``sphinx-build``. The output is in ``docs/build/html``. See
-   ``docs/README.md`` for details. Read the Docs builds the same
-   configuration from ``.readthedocs.yaml``.
+   ``docs/README.md`` for details.
+
+Published documentation
+-----------------------
+
+The documentation is published on GitHub Pages at
+https://ohsollila.github.io/IDPdatabank/ by the ``Docs`` workflow
+(``.github/workflows/docs.yml``). Every pull request builds the
+documentation as a check; every push to ``master`` (or a manual run of the
+workflow from the Actions tab) builds it and deploys the result.
+
+The same configuration can also be built by Read the Docs through
+``.readthedocs.yaml``.
 
 Continuous integration
 ----------------------

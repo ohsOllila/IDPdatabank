@@ -54,4 +54,6 @@ tox -e build   # build sdist/wheel and check the manifest
 tox -e docs    # build the documentation into docs/build/html
 ```
 
-See `docs/src/development.rst` and `docs/README.md` for details.
+The documentation is published at <https://ohsollila.github.io/IDPdatabank/>
+on every push to `master`. See `docs/src/development.rst` and `docs/README.md`
+for details.

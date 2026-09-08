@@ -1,3 +1,5 @@
+# Builds the Sphinx documentation on every pull request and publishes it to
+# GitHub Pages (https://ohsollila.github.io/IDPdatabank/) on pushes to master.
 name: Docs
 
 on:
@@ -7,19 +9,65 @@ on:
       - "docs/**"
       - "tox.ini"
       - "pyproject.toml"
-      - ".readthedocs.yaml"
+      - ".github/workflows/docs.yml"
+  push:
+    branches: [master]
+    paths:
+      - "src/**"
+      - "docs/**"
+      - "tox.ini"
+      - "pyproject.toml"
+      - ".github/workflows/docs.yml"
+  # allow publishing by hand from the Actions tab
+  workflow_dispatch:
+
+# only one deployment at a time; do not cancel a running one
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  docs:
+  build:
     runs-on: ubuntu-24.04
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.12"
-    - run: pip install tox
+      - uses: actions/checkout@v4
 
-    - name: Build the documentation
-      run: tox -e docs
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install tox
+
+      - name: Build the documentation
+        run: tox -e docs
+
+      - name: Disable Jekyll processing of the Sphinx output
+        run: touch docs/build/html/.nojekyll
+
+      - name: Upload the site as a Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/build/html
+
+  deploy:
+    # publish only from master (or a manual run), never from pull requests
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          # switch the repository to "GitHub Actions" as Pages source if needed
+          enablement: true
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
