@@ -4,7 +4,7 @@
 ## python3 correlationCALC.py
 ## python3 ${path}/Old_Relaxations_for_Samuli.py
 
-from DatabankLib.protein_functions import *
+from fairmd.idp.protein_functions import *
 import yaml
 
 #databankPath = "/home/sosamuli/work/NMRlipids/IDPdatabank/"  # this is the local path for the cloned Databank
@@ -16,11 +16,11 @@ os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPsimBank/"
 
 
 # These two lines include core Databank routines and Databank API
-from DatabankLib.core import *
-from DatabankLib.databankLibrary import *
+from fairmd.idp.core import *
+from fairmd.idp.databankLibrary import *
 # This is for plotting
-from DatabankLib.databankio import *
-from DatabankLib.plottings import plotSimulation
+from fairmd.idp.databankio import *
+from fairmd.idp.plottings import plotSimulation
 #from IPython.display import display, Markdown
 
 # This initializes the databank and stores the information of all simulations into a list.

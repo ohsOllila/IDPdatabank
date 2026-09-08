@@ -40,28 +40,28 @@ import numpy as np
 
 from MDAnalysis import Universe
 
-from DatabankLib.protein_functions import *
+from fairmd.idp.protein_functions import *
 
 
 # import databank dictionaries
-import DatabankLib
-from DatabankLib.core import System
-from DatabankLib.databankLibrary import (
+import fairmd.idp
+from fairmd.idp.core import System
+from fairmd.idp.databankLibrary import (
     calc_file_sha1_hash,
     create_databank_directories,
     lipids_set,
     molecules_set
 )
 # helpers
-from DatabankLib.databankio import (
+from fairmd.idp.databankio import (
     download_resource_from_uri,
     resolve_download_file_url
 )
-from DatabankLib.databankLibrary import (
+from fairmd.idp.databankLibrary import (
     parse_valid_config_settings
 )
-from DatabankLib.settings.molecules import Lipid, NonLipid
-from DatabankLib.settings.engines import get_struc_top_traj_fnames, software_dict
+from fairmd.idp.settings.molecules import Lipid, NonLipid
+from fairmd.idp.settings.engines import get_struc_top_traj_fnames, software_dict
 
 pd.set_option("display.max_rows", 500)
 pd.set_option("display.max_columns", 500)
@@ -97,8 +97,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "-o",
         "--output-dir",
-        help=f"set custom output directory [{DatabankLib.NMLDB_SIMU_PATH}]",
-        default=DatabankLib.NMLDB_SIMU_PATH
+        help=f"set custom output directory [{fairmd.idp.NMLDB_SIMU_PATH}]",
+        default=fairmd.idp.NMLDB_SIMU_PATH
     )
 
     args = parser.parse_args()
