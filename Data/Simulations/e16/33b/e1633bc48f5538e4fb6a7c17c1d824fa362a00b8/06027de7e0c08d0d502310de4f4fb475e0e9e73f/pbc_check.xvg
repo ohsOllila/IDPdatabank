@@ -1,0 +1,42 @@
+# This file was created Mon Apr 13 19:47:36 2026
+# Created by:
+#                     :-) GROMACS - gmx mindist, 2025.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/sosamuli/work/NMRlipids/IDPdatabank/Scripts/AnalyzeDatabank
+# Command line:
+#   gmx mindist -f /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/e16/33b/e1633bc48f5538e4fb6a7c17c1d824fa362a00b8/06027de7e0c08d0d502310de4f4fb475e0e9e73f/skipped_traj.xtc -s /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/e16/33b/e1633bc48f5538e4fb6a7c17c1d824fa362a00b8/06027de7e0c08d0d502310de4f4fb475e0e9e73f/model_04_DESAMBER_md_2000ns.tpr -pi -od /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/e16/33b/e1633bc48f5538e4fb6a7c17c1d824fa362a00b8/06027de7e0c08d0d502310de4f4fb475e0e9e73f/pbc_check.xvg
+# gmx mindist is part of G R O M A C S:
+#
+# Glycine aRginine prOline Methionine Alanine Cystine Serine
+#
+@    title "Minimum distance to periodic image"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Distance (nm)"
+@TYPE xy
+@ subtitle "and maximum internal distance"
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "min per."
+@ s1 legend "max int."
+@ s2 legend "box1"
+@ s3 legend "box2"
+@ s4 legend "box3"
+	0	 4.394  9.330 12.437 12.437 12.437
+	100	 4.693  8.949 12.421 12.421 12.421
+	200	 4.052  9.364 12.419 12.419 12.419
+	300	 3.575  9.563 12.430 12.430 12.430
+	400	 3.601  9.569 12.423 12.423 12.423
+	500	 3.240  9.513 12.429 12.429 12.429
+	600	 3.477  9.237 12.439 12.439 12.439
+	700	 3.292  9.266 12.416 12.416 12.416
+	800	 3.593  9.208 12.420 12.420 12.420
+	900	 3.505  9.406 12.421 12.421 12.421
+	1000	 3.547  9.617 12.417 12.417 12.417
+	1100	 3.889  9.191 12.427 12.427 12.427
+	1200	 3.870  9.091 12.422 12.422 12.422

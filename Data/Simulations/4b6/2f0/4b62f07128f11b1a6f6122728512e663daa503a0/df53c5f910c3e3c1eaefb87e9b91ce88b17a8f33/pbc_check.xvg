@@ -1,0 +1,46 @@
+# This file was created Tue Apr 14 06:18:52 2026
+# Created by:
+#                     :-) GROMACS - gmx mindist, 2025.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/sosamuli/work/NMRlipids/IDPdatabank/Scripts/AnalyzeDatabank
+# Command line:
+#   gmx mindist -f /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/4b6/2f0/4b62f07128f11b1a6f6122728512e663daa503a0/df53c5f910c3e3c1eaefb87e9b91ce88b17a8f33/skipped_traj.xtc -s /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/4b6/2f0/4b62f07128f11b1a6f6122728512e663daa503a0/df53c5f910c3e3c1eaefb87e9b91ce88b17a8f33/model_05_AMBER03WS_md_2000ns.tpr -pi -od /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/4b6/2f0/4b62f07128f11b1a6f6122728512e663daa503a0/df53c5f910c3e3c1eaefb87e9b91ce88b17a8f33/pbc_check.xvg
+# gmx mindist is part of G R O M A C S:
+#
+# Good ROcking Metal Altar for Chronical Sinners
+#
+@    title "Minimum distance to periodic image"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Distance (nm)"
+@TYPE xy
+@ subtitle "and maximum internal distance"
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "min per."
+@ s1 legend "max int."
+@ s2 legend "box1"
+@ s3 legend "box2"
+@ s4 legend "box3"
+	0	 2.919  8.158 11.070 11.070 11.070
+	100	 2.910  8.235 11.051 11.051 11.051
+	200	 3.606  8.331 11.066 11.066 11.066
+	300	 4.014  7.920 11.064 11.064 11.064
+	400	 3.728  8.801 11.060 11.060 11.060
+	500	 3.972  9.022 11.049 11.049 11.049
+	600	 3.918  9.225 11.062 11.062 11.062
+	700	 3.516  8.465 11.055 11.055 11.055
+	800	 3.466  8.346 11.063 11.063 11.063
+	900	 3.477  7.872 11.066 11.066 11.066
+	1000	 3.995  7.956 11.058 11.058 11.058
+	1100	 3.749  7.738 11.052 11.052 11.052
+	1200	 3.847  7.627 11.046 11.046 11.046
+	1300	 4.563  7.514 11.055 11.055 11.055
+	1400	 4.527  7.205 11.051 11.051 11.051
+	1500	 4.593  7.408 11.054 11.054 11.054
+	1600	 4.691  7.929 11.053 11.053 11.053

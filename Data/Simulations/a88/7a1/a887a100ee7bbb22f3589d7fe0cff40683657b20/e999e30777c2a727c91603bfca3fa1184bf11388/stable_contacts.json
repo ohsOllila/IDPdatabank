@@ -1,0 +1,8 @@
+{
+  "80": {
+    "frac_stable_contacts": 0.007731958762886598,
+    "frac_residues_stable": 0.26,
+    "mean_instantaneous_contacts": 2.8052206738966308,
+    "n_stable_pairs": 36
+  }
+}
