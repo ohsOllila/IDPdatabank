@@ -6,14 +6,7 @@
 
 from fairmd.idp.protein_functions import *
 import yaml
-
-databankPath = "/home/sosamuli/work/NMRlipids/IDPdatabank/"  # this is the local path for the cloned Databank
-os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPdatabank/"
-
-#databankPath = "/home/sosamuli/work/NMRlipids/IDPsimBank/"  # this is the local path for the cloned Databank
-#os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPsimBank/"
-
-
+from fairmd.idp import NMLDB_SIMU_PATH, NMLDB_EXP_PATH, NMLDB_ROOT_PATH
 
 # These two lines include core Databank routines and Databank API
 from fairmd.idp.core import *
@@ -38,7 +31,7 @@ for system in systems:
     print('')
     print('ANALYZING SYSTEM AT: ' + system['path'])
 
-    dataFolder = databankPath + 'Data/Simulations/' + system['path']
+    dataFolder = os.path.join(NMLDB_SIMU_PATH, system['path'])
 
     #print(system['TRJ'][0])
     trj_fname_original = dataFolder + system['TRJ'][0][0]
@@ -70,7 +63,7 @@ for system in systems:
     
     files = {
         "SAXS_file": SAXS_file,
-        "SAXS_file_MAICoS": SAXS_file_MAICoS,
+        # "SAXS_file_MAICoS": SAXS_file_MAICoS,
         "chemical_shift_file": chemical_shift_file,
         "Contact_map_file": Contact_map_file,
         "distance_map_file": distance_map_file,
@@ -423,7 +416,10 @@ for system in systems:
     spin_relaxation_rmsd_file =  dataFolder + 'spin_relaxation_rmsd.yaml'
     try:
         #print(system['EXPERIMENT']['spin_relaxation']['path'])
-        exp_spin_relax_file = databankPath + '/Data/Experiments/spin_relaxation/' + system['EXPERIMENT']['spin_relaxation']['path'][0] + '/spin_relaxation_times.yaml'
+        exp_spin_relax_file = os.path.join(
+            NMLDB_EXP_PATH, 'spin_relaxation',
+            system['EXPERIMENT']['spin_relaxation']['path'][0], 'spin_relaxation_times.yaml'
+        )
         ExperimentalFileSpin = True
     except:
         print('Experimental spin relaxation data file not found')
@@ -529,7 +525,7 @@ for system in systems:
         exp_data, ExperimentalFileShift = (
             load_experimental_chemical_shifts(
                 system,
-                databankPath,
+                NMLDB_ROOT_PATH + '/',
             )
         )
 
