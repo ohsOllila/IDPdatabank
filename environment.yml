@@ -28,7 +28,7 @@ dependencies:
   - pymol-open-source
   # `gmx` is called by the analysis scripts
   - gromacs
-  - maicos>=0.11.2,<0.12
   # conda-forge for linux-64 only, so it comes from pip to work on all platforms.
   - pip:
       - buildh>=1.6.1
+      - maicos>=0.11.2,<0.12
