@@ -33,3 +33,11 @@ poetry.lock
 *.swo
 
 *~
+
+# tox / testing / docs
+.tox/
+.coverage
+coverage.xml
+docs/build/
+docs/src/auto_gen/
+.pytest_cache/
