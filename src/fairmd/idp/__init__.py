@@ -10,8 +10,8 @@ import os
 
 NMLDB_ROOT_PATH: str = os.environ.get(
     "NMLDB_ROOT_PATH",
-    os.path.dirname(os.path.dirname(
-        os.path.dirname(os.path.abspath(__file__))))
+    os.path.dirname(os.path.dirname(os.path.dirname(
+        os.path.dirname(os.path.abspath(__file__)))))
 )
 """ Path to the project root """
 

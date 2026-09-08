@@ -13,7 +13,7 @@ from typing import Any
 import yaml
 import re
 
-from DatabankLib import NMLDB_MOL_PATH
+from fairmd.idp import NMLDB_MOL_PATH
 
 
 class Molecule(ABC):

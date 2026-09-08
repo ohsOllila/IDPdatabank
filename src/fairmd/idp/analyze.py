@@ -1,5 +1,5 @@
 """
-:module: DatabankLib.analyze
+:module: fairmd.idp.analyze
 :description: major analysis methods calculating a property from NMRLipipds
               `system` object
 """
@@ -18,19 +18,19 @@ from tqdm import tqdm
 import numpy as np
 import gc
 
-from DatabankLib import (
+from fairmd.idp import (
     NMLDB_SIMU_PATH, RCODE_ERROR, RCODE_SKIPPED, RCODE_COMPUTED,
     NMLDB_DATA_PATH)
-from DatabankLib.core import System
-from DatabankLib.settings.molecules import lipids_set
-from DatabankLib.settings.engines import get_struc_top_traj_fnames
-from DatabankLib.databankLibrary import (
+from fairmd.idp.core import System
+from fairmd.idp.settings.molecules import lipids_set
+from fairmd.idp.settings.engines import get_struc_top_traj_fnames
+from fairmd.idp.databankLibrary import (
     GetNlipids, system2MDanalysisUniverse)
-from DatabankLib.jsonEncoders import CompactJSONEncoder
-from DatabankLib.databankio import resolve_download_file_url
-from DatabankLib.databankop import find_OP
-from DatabankLib.form_factor import FormFactor
-from DatabankLib import analyze_nmrpca as nmrpca
+from fairmd.idp.jsonEncoders import CompactJSONEncoder
+from fairmd.idp.databankio import resolve_download_file_url
+from fairmd.idp.databankop import find_OP
+from fairmd.idp.form_factor import FormFactor
+from fairmd.idp import analyze_nmrpca as nmrpca
 
 
 def computeNMRPCA(  # noqa: N802 (API)

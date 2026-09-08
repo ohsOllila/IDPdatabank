@@ -8,10 +8,10 @@ import os
 import yaml
 import collections.abc
 from typing import Dict, List
-from DatabankLib.settings.molecules import Molecule
+from fairmd.idp.settings.molecules import Molecule
 
-from DatabankLib import NMLDB_SIMU_PATH
-from DatabankLib.settings.molecules import Lipid, lipids_set, molecules_set, NonLipid
+from fairmd.idp import NMLDB_SIMU_PATH
+from fairmd.idp.settings.molecules import Lipid, lipids_set, molecules_set, NonLipid
 
 
 class System(collections.abc.MutableMapping):
