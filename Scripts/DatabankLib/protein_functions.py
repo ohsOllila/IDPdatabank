@@ -1296,6 +1296,8 @@ def calculate_SAXS_profile_crysol(gro_file, xtc_file,dt_analysis_ps=100):
 def calculate_SAXS_profile_maicos(gro_file, xtc_file,water_shell=None,output_file=False):
     # Load structure and trajectory (PBC: nojump)
     u = mda.Universe(gro_file, xtc_file)
+    if not hasattr(u.atoms, "elements"):
+        u.guess_TopologyAttrs(to_guess=["elements"])
     
     # consider hydration shell or not
     #	considered: if hydration_shell is an integer or float

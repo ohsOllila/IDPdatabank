@@ -70,7 +70,7 @@ for system in systems:
     
     files = {
         "SAXS_file": SAXS_file,
-#        "SAXS_file_MAICoS": SAXS_file_MAICoS,
+        "SAXS_file_MAICoS": SAXS_file_MAICoS,
         "chemical_shift_file": chemical_shift_file,
         "Contact_map_file": Contact_map_file,
         "distance_map_file": distance_map_file,
