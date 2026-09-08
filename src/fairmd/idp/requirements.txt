@@ -10,4 +10,5 @@ seaborn
 pymol-open-source
 biopython
 libarchive-c
+colorlog
 Deprecated
