@@ -1,17 +1,12 @@
 buildh>=1.6.1
 MDAnalysis>=2.7.0
-numpy>=1.25.0
+numpy>=1.26.4,<2
 pandas>=2.0.0
 PyYAML>=6.0.0
 tqdm>=4.5.0
 periodictable>=1.5.0
-maicos
-seaborn
-pymol-open-source
-biopython
-libarchive-c
 Deprecated
-# fairmd.idp
+# imported by fairmd.idp modules (protein_functions, databankio, plottings, jpyroutines)
 biopython>=1.85
 matplotlib>=3.4.0
 scipy>=1.7.0
@@ -21,7 +16,7 @@ mdtraj
 maicos>=0.11.2,<0.12
 libarchive-c
 ipython
+pymol-open-source
 # used by the scripts in Scripts/BuildDatabank
 pydantic>=2.0.0
 colorlog
-pymol
