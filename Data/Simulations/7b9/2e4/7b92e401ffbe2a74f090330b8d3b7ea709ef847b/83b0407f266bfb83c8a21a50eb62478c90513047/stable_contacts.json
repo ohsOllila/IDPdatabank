@@ -1,0 +1,8 @@
+{
+  "250": {
+    "frac_stable_contacts": 0.04136874361593463,
+    "frac_residues_stable": 0.9456521739130435,
+    "mean_instantaneous_contacts": 4.077379443596868,
+    "n_stable_pairs": 162
+  }
+}

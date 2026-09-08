@@ -1,0 +1,35 @@
+# This file was created Tue Apr 14 17:22:12 2026
+# Created by:
+#                     :-) GROMACS - gmx mindist, 2025.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/sosamuli/work/NMRlipids/IDPdatabank/Scripts/AnalyzeDatabank
+# Command line:
+#   gmx mindist -f /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/bed/607/bed6072eae075b50753d2311dfcd2f342748240f/c1b5c3a39834e86add4e23060fc18e39a1175b29/skipped_traj.xtc -s /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/bed/607/bed6072eae075b50753d2311dfcd2f342748240f/c1b5c3a39834e86add4e23060fc18e39a1175b29/model_03_CHARMM36M_md_2000ns.tpr -pi -od /home/sosamuli/work/NMRlipids/IDPdatabank/Data/Simulations/bed/607/bed6072eae075b50753d2311dfcd2f342748240f/c1b5c3a39834e86add4e23060fc18e39a1175b29/pbc_check.xvg
+# gmx mindist is part of G R O M A C S:
+#
+# Gromacs Runs One Microsecond At Cannonball Speeds
+#
+@    title "Minimum distance to periodic image"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Distance (nm)"
+@TYPE xy
+@ subtitle "and maximum internal distance"
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "min per."
+@ s1 legend "max int."
+@ s2 legend "box1"
+@ s3 legend "box2"
+@ s4 legend "box3"
+	0	 7.049 13.045 16.129 16.129 16.129
+	100	 7.215 12.447 16.118 16.118 16.118
+	200	 7.164 12.270 16.130 16.130 16.130
+	300	 7.667 11.959 16.113 16.113 16.113
+	400	 7.743 12.603 16.121 16.121 16.121
+	500	 7.786 12.148 16.111 16.111 16.111

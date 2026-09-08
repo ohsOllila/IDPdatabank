@@ -1,0 +1,8 @@
+{
+  "443": {
+    "frac_stable_contacts": 0.0020484807101399795,
+    "frac_residues_stable": 0.15048543689320387,
+    "mean_instantaneous_contacts": 1.8363240222633836,
+    "n_stable_pairs": 42
+  }
+}
