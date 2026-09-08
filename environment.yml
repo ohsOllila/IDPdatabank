@@ -19,16 +19,13 @@ dependencies:
   - scipy>=1.7.0
   - requests>=2.26.0
   - seaborn
-  - mdtraj<1.11              # 1.11 requires numpy 2
+  - mdtraj<1.11
   - python-libarchive-c
   - ipython
   - pydantic>=2.0.0
   - colorlog
-  # imported by fairmd.idp.protein_functions; no reliable PyPI wheels
   - pymol-open-source
-  # `gmx` is called by the analysis scripts
   - gromacs
-  # conda-forge for linux-64 only, so it comes from pip to work on all platforms.
   - pip:
       - buildh>=1.6.1
       - maicos>=0.11.2,<0.12
