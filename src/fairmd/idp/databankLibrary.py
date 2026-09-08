@@ -5,7 +5,6 @@ analyzing the NMRlipids databank
 
 import copy
 import hashlib
-import urllib
 import logging
 from tqdm import tqdm
 
@@ -21,7 +20,7 @@ from fairmd.idp import NMLDB_SIMU_PATH
 from fairmd.idp.core import (System)
 from fairmd.idp.settings.molecules import (
     lipids_set, molecules_set, molecule_ff_set)
-from fairmd.idp.databankio import resolve_download_file_url
+from fairmd.idp.databankio import download_system_file
 from fairmd.idp.settings.engines import get_struc_top_traj_fnames, software_dict
 
 logger = logging.getLogger(__name__)
@@ -288,11 +287,10 @@ def system2MDanalysisUniverse(system):  # noqa: N802 (API name)
             raise FileNotFoundError(
                 f"Trajectory should be downloaded [{trj_name}] by user")
     else:
-        trj_url = resolve_download_file_url(doi, trj)
         if (not os.path.isfile(trj_name)):
             print('Downloading trajectory with the size of ', system['TRAJECTORY_SIZE'],
                   ' to ', system['path'])
-            _ = urllib.request.urlretrieve(trj_url, trj_name)
+            download_system_file(system, trj, trj_name)
 
     # downloading topology (if exists)
     if top is not None:
@@ -300,9 +298,8 @@ def system2MDanalysisUniverse(system):  # noqa: N802 (API name)
             if (not os.path.isfile(top_name)):
                 raise FileNotFoundError(f"TPR should be downloaded [{top_name}]")
         else:
-            top_url = resolve_download_file_url(doi, top)
             if (not os.path.isfile(top_name)):
-                _ = urllib.request.urlretrieve(top_url, top_name)
+                download_system_file(system, top, top_name)
 
     # downloading structure (if exists)
     if struc is not None:
@@ -310,9 +307,8 @@ def system2MDanalysisUniverse(system):  # noqa: N802 (API name)
             if (not os.path.isfile(struc_name)):
                 raise FileNotFoundError(f"GRO should be downloaded [{struc_name}]")
         else:
-            struc_url = resolve_download_file_url(doi, struc)
             if (not os.path.isfile(struc_name)):
-                _ = urllib.request.urlretrieve(struc_url, struc_name)
+                download_system_file(system, struc, struc_name)
 
     made_from_top = False
     try:
@@ -600,8 +596,18 @@ def parse_valid_config_settings(info_yaml: dict) -> tuple[dict, list[str]]:
                     logger.debug(f"entry '{key_sim}' has NoneType value, skipping")
                 # already a list -> ok
                 elif isinstance(value_sim, list):
-                    logger.debug(f"value_sim '{value_sim}' is already a list, skipping")
-                    files_tbd.extend(value_sim)
+                    entries = []
+                    for entry in value_sim:
+                        if isinstance(entry, str):
+                            entry = [entry]
+                        if (not isinstance(entry, list) or not entry
+                                or not isinstance(entry[0], str) or not entry[0].strip()):
+                            raise YamlBadConfigException(
+                                f"Invalid file entry in {key_sim}: {entry!r}"
+                            )
+                        entries.append(entry)
+                    sim[key_sim] = entries
+                    files_tbd.extend(entry[0] for entry in entries)
                 else:
                     value_sim_splitted = value_sim.split(";")
 
