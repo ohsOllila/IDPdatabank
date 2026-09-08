@@ -7,7 +7,7 @@ channels:
 dependencies:
   - python>=3.11
   - pip
-  - numpy>=1.25
+  - numpy>=1.26.4,<2
   - mdanalysis>=2.7.0
   - pandas>=2.0.0
   - pyyaml>=6.0.0
