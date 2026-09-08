@@ -5,9 +5,9 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - python>=3.9,<3.13        # numpy<2 has no builds for Python 3.13
+  - python>=3.11
   - pip
-  - numpy>=1.20,<2.0
+  - numpy>=1.25
   - mdanalysis>=2.7.0
   - pandas>=2.0.0
   - pyyaml>=6.0.0
@@ -28,9 +28,7 @@ dependencies:
   - pymol-open-source
   # `gmx` is called by the analysis scripts
   - gromacs
-  # buildh is not on conda-forge. maicos 0.11.x (the last version with the Saxs
-  # module used by protein_functions; 0.12 moved it to `scatterkit`) is on
+  - maicos>=0.11.2,<0.12
   # conda-forge for linux-64 only, so it comes from pip to work on all platforms.
   - pip:
       - buildh>=1.6.1
-      - maicos>=0.11.2,<0.12
