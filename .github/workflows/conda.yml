@@ -1,0 +1,55 @@
+# Checks that the package can be installed and imported in a conda
+# environment built from environment.yml (all dependencies from conda-forge).
+name: Conda install
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "src/**"
+      - "environment.yml"
+      - "pyproject.toml"
+      - "tests/test_package_import.py"
+      - ".github/workflows/conda.yml"
+  pull_request:
+    paths:
+      - "src/**"
+      - "environment.yml"
+      - "pyproject.toml"
+      - "tests/test_package_import.py"
+      - ".github/workflows/conda.yml"
+
+jobs:
+  conda:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-15]
+    defaults:
+      run:
+        shell: bash -el {0}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create conda environment from environment.yml
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+          environment-file: environment.yml
+          activate-environment: fairmd-idp
+
+      - name: Install the package without pulling dependencies from PyPI
+        run: pip install --no-deps .
+
+      - name: Check that all requirements are satisfied
+        run: pip check
+
+      - name: Import test
+        env:
+          NMLDB_ROOT_PATH: ${{ github.workspace }}
+        run: |
+          pip install pytest
+          pytest tests/test_package_import.py

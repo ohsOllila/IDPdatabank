@@ -22,6 +22,15 @@ or, from a clone of this repository, as an editable install:
 pip install -e .
 ```
 
+Alternatively, create a conda environment with all dependencies from
+conda-forge and install the package into it:
+
+```bash
+mamba env create -f environment.yml
+mamba activate fairmd-idp
+pip install --no-deps -e .
+```
+
 The scripts in `Scripts/` import the library as `fairmd.idp`, e.g.
 
 ```python
