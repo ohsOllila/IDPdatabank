@@ -16,7 +16,5 @@ mdtraj
 maicos>=0.11.2,<0.12
 libarchive-c
 ipython
-pymol-open-source
-# used by the scripts in Scripts/BuildDatabank
 pydantic>=2.0.0
 colorlog
