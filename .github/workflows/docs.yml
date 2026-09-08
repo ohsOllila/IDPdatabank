@@ -1,0 +1,25 @@
+name: Docs
+
+on:
+  pull_request:
+    paths:
+      - "src/**"
+      - "docs/**"
+      - "tox.ini"
+      - "pyproject.toml"
+      - ".readthedocs.yaml"
+
+jobs:
+  docs:
+    runs-on: ubuntu-24.04
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+    - run: pip install tox
+
+    - name: Build the documentation
+      run: tox -e docs
