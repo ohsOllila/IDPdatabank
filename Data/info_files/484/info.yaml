@@ -1,0 +1,29 @@
+DOI: 10.17617/3.G8TPPM
+
+SOFTWARE: gromacs
+TRJ: COR15A_4GtoA.zip/COR15A_4GtoA/repeat_05.xtc
+TPR: COR15A_4GtoA.zip/COR15A_4GtoA/repeat_05.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4Pwater.yaml
+
+DIR_WRK: /media/julianne/DATA/Lipids/IDPdatabank/downloads/
+
+PUBLICATION: https://doi.org/10.1002/pro.4989
+
+AUTHORS_CONTACT: Tobias Rindfleisch
+
+SYSTEM: COR15A_4GtoA_repeat_05
+SOFTWARE_VERSION: 2020.06
+FF: OPLS_AA
+FF_SOURCE:
+FF_DATE:
+CPT:
+LOG:
+TOP:
+
+TYPEOFSYSTEM: protein

@@ -1,0 +1,32 @@
+DOI: 10.17617/3.SQSR84
+
+SOFTWARE: gromacs
+TRJ: KEA3_RCT_WT_apo.tar.gz/APO/repeat_04.xtc
+TPR: KEA3_RCT_WT_apo.tar.gz/APO/repeat_04.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4Pwater.yaml
+
+
+
+DIR_WRK: /media/julianne/DATA/Lipids/IDPdatabank/downloads/
+
+PUBLICATION:
+
+AUTHORS_CONTACT: Tobias Rindfleisch
+
+SYSTEM: KEA3_RCT_WT_apo_repeat_04
+SOFTWARE_VERSION: 2022.4
+FF: CHARMM36m
+FF_SOURCE:
+FF_DATE: charmm36m-jul2020
+CPT:
+LOG:
+TOP:
+
+TYPEOFSYSTEM: protein
