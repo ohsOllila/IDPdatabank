@@ -2,14 +2,6 @@ from fairmd.idp.protein_functions import *
 import yaml
 from pathlib import Path
 
-#databankPath = "/home/sosamuli/work/NMRlipids/IDPdatabank/"  # this is the local path for the cloned Databank
-#os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPdatabank/"
-
-databankPath = "/home/sosamuli/work/NMRlipids/IDPsimBank/"  # this is the local path for the cloned Databank
-os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPsimBank/"
-
-
-
 # These two lines include core Databank routines and Databank API
 from fairmd.idp.core import *
 from fairmd.idp.databankLibrary import *

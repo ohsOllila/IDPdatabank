@@ -53,10 +53,7 @@ from fairmd.idp.databankLibrary import (
     molecules_set
 )
 # helpers
-from fairmd.idp.databankio import (
-    download_resource_from_uri,
-    resolve_download_file_url
-)
+from fairmd.idp.databankio import download_simulation_files
 from fairmd.idp.databankLibrary import (
     parse_valid_config_settings
 )
@@ -194,19 +191,11 @@ if __name__ == "__main__":
 
     # Check link status and download files
     try:
-        download_links = []
-
-        for fi in files:
-            logger.info(f"Validating file: {fi}..")
-            _x = resolve_download_file_url(sim["DOI"], fi, validate_uri=True)
-            download_links.append(_x)
-
-        logger.info(f"Now downloading {len(files)} files ...")
-
-        for url, fi in zip(download_links, files):
-            download_resource_from_uri(
-                url, os.path.join(dir_tmp, fi), override_if_exists=args.no_cache
-            )
+        file_keys = [key for key, spec in software_dict[sim["SOFTWARE"].upper()].items()
+                     if "file" in spec.get("TYPE", "")]
+        files = download_simulation_files(
+            sim, dir_tmp, file_keys, override_if_exists=args.no_cache
+        )
         logger.info(f"Download of {len(files)} files was successful")
 
 
@@ -233,17 +222,6 @@ if __name__ == "__main__":
         logger.error(traceback.format_exc())
         quit(3)
 
-    # Normalize file paths in sim after downloading. This is essential because the current path points to files inside a zipped folder
-    for key_sim, value_sim in sim.items():
-        if isinstance(value_sim, list):
-            for file_entry in value_sim:
-                if isinstance(file_entry, list) and isinstance(file_entry[0], str):
-                    original = file_entry[0]
-                    stripped = os.path.basename(original)
-                    if stripped != original:
-                        logger.debug(f"Normalizing file path from '{original}' to '{stripped}'")
-                    file_entry[0] = stripped
-
     ####################################################
     # -- Calculate hash of downloaded files
 
@@ -264,7 +242,7 @@ if __name__ == "__main__":
         try:
             entry_type = software_sim[key_sim]["TYPE"]
         except KeyError:
-            if key_sim in ["SOFTWARE", "ID"]:
+            if key_sim in ["SOFTWARE", "ID", "SOURCE_FILES"]:
                 continue
             else:
                 # That shouldn't happen! Unexpected YAML-keys were checked by
@@ -706,21 +684,10 @@ if __name__ == "__main__":
     shutil.copyfile(traj, os.path.join(directory_path, os.path.basename(traj)))
     shutil.copyfile(top, os.path.join(directory_path, os.path.basename(top)))
 
-    # dictionary saved in yaml format
+    # Close the YAML file before copying it, so buffered metadata reaches disk.
     outfile_dict = os.path.join(dir_tmp, "README.yaml")
-
-    #for i in sim:
-    #    print(i)
-
-    #sim['ID'] = 0
-    #print(sim._store)
-        
     with open(outfile_dict, "w") as f:
-        #yaml.dump(sim.__dict__)
-        yaml.dump(sim._store, f, sort_keys=False, default_flow_style=False) #, allow_unicode=True)
-        shutil.copyfile(
-            os.path.join(dir_tmp, "README.yaml"),
-            os.path.join(directory_path, "README.yaml"),
-        )
+        yaml.dump(sim._store, f, sort_keys=False, default_flow_style=False)
+    shutil.copyfile(outfile_dict, os.path.join(directory_path, "README.yaml"))
 
     logger.info("Script completed successfully!")

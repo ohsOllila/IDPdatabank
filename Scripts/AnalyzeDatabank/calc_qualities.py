@@ -1,13 +1,6 @@
 from fairmd.idp.protein_functions import *
 import yaml
-
-#databankPath = "/home/sosamuli/work/NMRlipids/IDPdatabank/"  # this is the local path for the cloned Databank
-#os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPdatabank/"
-
-databankPath = "/home/sosamuli/work/NMRlipids/IDPdatabank/"  # this is the local path for the cloned Databank
-os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPdatabank/"
-
-
+from fairmd.idp import NMLDB_SIMU_PATH
 
 # These two lines include core Databank routines and Databank API
 from fairmd.idp.core import *
@@ -26,7 +19,7 @@ trjconvCOMMAND = 'gmx trjconv'
 
 for system in systems:
 
-    dataFolder = databankPath + 'Data/Simulations/' + system['path']
+    dataFolder = os.path.join(NMLDB_SIMU_PATH, system['path'])
     
     spin_relaxation_quality_file =  dataFolder + 'spin_relaxation_quality.yaml'
     spin_relaxation_res_quality_file =  dataFolder + 'spin_relaxation_res_quality.yaml'

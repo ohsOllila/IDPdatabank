@@ -30,7 +30,7 @@ NMLDB_SIMU_PATH: str = os.environ.get(
 NMLDB_MOL_PATH: str = os.path.join(NMLDB_DATA_PATH, 'Molecules')
 """ Path to the project molecules folder """
 
-NMLDB_EXP_PATH: str = os.path.join(NMLDB_DATA_PATH, 'experiments')
+NMLDB_EXP_PATH: str = os.path.join(NMLDB_DATA_PATH, 'Experiments')
 """ Path to the project experiments folder """
 
 if not os.path.isdir(NMLDB_DATA_PATH):
