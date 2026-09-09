@@ -12,4 +12,6 @@ git status Data/Simulations/*/*/*/*/secondary_structure.yaml
 git status Data/Simulations/*/*/*/*/cross_link_data.yaml
 git status Data/Simulations/*/*/*/*/*quality*png
 git status Data/Simulations/*/*/*/*/*quality*yaml
+git status Data/Simulations/*/*/*/*/pbc_check.xvg
+git status Data/Simulations/*/*/*/*/stable_contacts.json
 

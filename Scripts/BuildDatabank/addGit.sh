@@ -12,3 +12,5 @@ git add Data/Simulations/*/*/*/*/secondary_structure.yaml
 git add Data/Simulations/*/*/*/*/cross_link_data.yaml
 git add Data/Simulations/*/*/*/*/*quality*png
 git add Data/Simulations/*/*/*/*/*quality*yaml
+git add Data/Simulations/*/*/*/*/pbc_check.xvg
+git add Data/Simulations/*/*/*/*/stable_contacts.json
