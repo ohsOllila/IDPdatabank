@@ -292,6 +292,32 @@ class TestRepositoryUrlResolution:
             '?persistentId=doi:10.17617/3.ABC/file'
         )
 
+    def test_mddb_resolves_via_node_lookup(self):
+        def dispatch(url, **kwargs):
+            if '/projects/bsc-A0008' in url and '/files/' not in url:
+                return Response(json.dumps({'node': 'bsc', 'local': 'A0008'}).encode())
+            return Response()
+
+        with patch.object(downloads.urllib.request, 'urlopen', side_effect=dispatch):
+            url = downloads.resolve_download_file_url('mddb:bsc-A0008', 'trajectory.xtc')
+        assert url == 'https://bsc.mddbr.eu/api/rest/v1/projects/A0008/files/trajectory.xtc'
+
+    def test_mddb_replica_suffix_is_preserved_on_the_node_local_id(self):
+        def dispatch(url, **kwargs):
+            if '/projects/bsc-A0008' in url and '/files/' not in url:
+                return Response(json.dumps({'node': 'bsc', 'local': 'A0008'}).encode())
+            return Response()
+
+        with patch.object(downloads.urllib.request, 'urlopen', side_effect=dispatch):
+            url = downloads.resolve_download_file_url('mddb:bsc-A0008.2', 'topology.tpr')
+        assert url == 'https://bsc.mddbr.eu/api/rest/v1/projects/A0008.2/files/topology.tpr'
+
+    def test_mddb_missing_node_in_metadata_raises(self):
+        with patch.object(downloads.urllib.request, 'urlopen',
+                           return_value=Response(json.dumps({}).encode())):
+            with pytest.raises(RuntimeError, match="node"):
+                downloads.resolve_download_file_url('mddb:bsc-A0008', 'trajectory.xtc')
+
 
 # --------------------------------------------------------------------------
 # SOURCE_FILES metadata: the archive/member address that must survive import
