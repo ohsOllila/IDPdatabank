@@ -11,7 +11,6 @@ import re
 import traceback
 from logging import Logger
 import buildh
-import urllib.request
 import socket
 
 from tqdm import tqdm
@@ -27,7 +26,7 @@ from fairmd.idp.settings.engines import get_struc_top_traj_fnames
 from fairmd.idp.databankLibrary import (
     GetNlipids, system2MDanalysisUniverse)
 from fairmd.idp.jsonEncoders import CompactJSONEncoder
-from fairmd.idp.databankio import resolve_download_file_url
+from fairmd.idp.databankio import download_system_file
 from fairmd.idp.databankop import find_OP
 from fairmd.idp.form_factor import FormFactor
 from fairmd.idp import analyze_nmrpca as nmrpca
@@ -299,8 +298,7 @@ def computeOP(  # noqa: N802 (API)
                     raise RuntimeError("trjconv exited with error (see above)")
         elif 'openMM' in software or 'NAMD' in software:
             if not os.path.isfile(struc_fname):
-                pdb_url = resolve_download_file_url(system.get('DOI'), struc_fname)
-                _ = urllib.request.urlretrieve(pdb_url, struc_fname)
+                download_system_file(system, os.path.basename(struc_fname), struc_fname)
         else:
             print("Order parameter calculation for other than gromacs, "
                   "openMM and NAMD are yet to be implemented.")
@@ -568,11 +566,10 @@ def computeFF(  # noqa: N802 (API)
                 raise FileNotFoundError(
                     f"Trajectory should be downloaded [{trj_name}] by user")
         else:
-            trj_url = resolve_download_file_url(system['DOI'], trj)
             if not os.path.isfile(trj_name):
                 print('Downloading trajectory with the size of ',
                       system['TRAJECTORY_SIZE'], ' to ', system['path'])
-                _ = urllib.request.urlretrieve(trj_url, trj_name)
+                download_system_file(system, trj, trj_name)
 
         # make a function like this
         # TODO TPR should not be obligatory for GROMACS
@@ -584,9 +581,8 @@ def computeFF(  # noqa: N802 (API)
                     raise FileNotFoundError(
                         f"TPR should be downloaded [{tpr_name}] by user")
             else:
-                tpr_url = resolve_download_file_url(doi, top)
                 if not os.path.isfile(tpr_name):
-                    _ = urllib.request.urlretrieve(tpr_url, tpr_name)
+                    download_system_file(system, top, tpr_name)
 
         if 'openMM' in software or 'NAMD' in software:
             if skip_downloading:
@@ -594,9 +590,8 @@ def computeFF(  # noqa: N802 (API)
                     raise FileNotFoundError(
                         f"Structure file should be downloaded [{struc_name}] by user")
             else:
-                pdb_url = resolve_download_file_url(doi, struc)
                 if not os.path.isfile(struc_name):
-                    _ = urllib.request.urlretrieve(pdb_url, struc_name)
+                    download_system_file(system, struc, struc_name)
 
         eq_time = float(system['TIMELEFTOUT'])*1000
 
