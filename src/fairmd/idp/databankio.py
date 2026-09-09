@@ -340,7 +340,11 @@ def resolve_mddb_file_url(
     The hub host (MDDB_API_ROOT) does not correctly proxy the binary file
     download endpoint, so the project's home node is looked up via its (hub
     served) metadata first, and the file is then fetched directly from that
-    node's own host.
+    node's own host. A node's hostname does *not* reliably follow from its
+    alias (e.g. alias "cin" is actually hosted at cineca.mddbr.eu, alias "mmb"
+    at irb-dev.mddbr.eu, alias "ufl" at a completely unrelated domain), so the
+    real hostname is looked up via the hub's /nodes endpoint rather than
+    guessed as "<node>.mddbr.eu".
 
     Args:
         project_ref (str): MDDB project accession, optionally suffixed with
@@ -369,7 +373,18 @@ def resolve_mddb_file_url(
             f"MDDB project '{accession}' metadata is missing 'node'/'local': {metadata}"
         )
 
-    uri = f"https://{node}.mddbr.eu/api/rest/v1/projects/{local}{md_suffix}/files/{fi_name}"
+    nodes_uri = f"{MDDB_API_ROOT}/nodes"
+    try:
+        with urllib.request.urlopen(nodes_uri, timeout=10) as response:
+            nodes = json.loads(response.read().decode())
+    except Exception as e:
+        raise RuntimeError(f"Could not fetch MDDB node list from {nodes_uri}: {e}")
+
+    api_url = next((n["api_url"] for n in nodes if n.get("alias") == node), None)
+    if not api_url:
+        raise RuntimeError(f"MDDB node alias '{node}' not found in {nodes_uri}")
+
+    uri = f"{api_url.rstrip('/')}/rest/v1/projects/{local}{md_suffix}/files/{fi_name}"
     if validate_uri:
         _validate_url(uri, sleep429, project_ref, fi_name)
     return uri
