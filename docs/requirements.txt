@@ -1,0 +1,10 @@
+ipython
+myst-parser
+sphinx>=7.2.2
+sphinx-rtd-theme
+# imported by fairmd.idp modules but not declared as package dependencies
+biopython
+matplotlib
+requests
+scipy
+seaborn
