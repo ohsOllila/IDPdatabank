@@ -70,7 +70,7 @@ for system in systems:
     
     files = {
         "SAXS_file": SAXS_file,
-        "SAXS_file_MAICoS": SAXS_file_MAICoS,
+#        "SAXS_file_MAICoS": SAXS_file_MAICoS,
         "chemical_shift_file": chemical_shift_file,
         "Contact_map_file": Contact_map_file,
         "distance_map_file": distance_map_file,
@@ -191,8 +191,9 @@ for system in systems:
             yaml.dump(SAXS_data, file, sort_keys=False)
 
         print('CRYSOL CALCULATION FINISHED')
-            
-    if (not os.path.isfile(SAXS_file_MAICoS)):
+
+    skip_maicos = True
+    if (not os.path.isfile(SAXS_file_MAICoS) and not skip_maicos):
         try:
             SAXS_MAICoS = calculate_SAXS_profile_maicos(gro_fname, trj_fname)
             #print(SAXS)
