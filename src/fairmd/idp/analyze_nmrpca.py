@@ -44,7 +44,7 @@ from deprecated import deprecated
 from fairmd.idp import NMLDB_SIMU_PATH
 from fairmd.idp.core import System
 from fairmd.idp.databankLibrary import lipids_set
-from fairmd.idp.databankio import resolve_download_file_url, download_resource_from_uri
+from fairmd.idp.databankio import download_system_file
 
 from MDAnalysis.analysis.base import AnalysisFromFunction
 import warnings
@@ -107,6 +107,7 @@ class Parser:
         self.eq_time_fname = eq_time_fname
 
         # Extracting data from readme
+        self._system = system
         self._path = os.path.join(self.root, system["path"])
         print('Indexing path:', self._path)
         if self.verbose:
@@ -183,17 +184,13 @@ class Parser:
         """
         print("Downloading")
         if not os.path.isfile(self.tpr_name):
-            self.tpr_url = resolve_download_file_url(self.doi, self.tpr)
             # This is a log message. Printing even in silent mode
             print("Parser: Downloading tpr ", self.doi)
-            # urllib.request.urlretrieve(self.tpr_url, self.tpr_name)
-            download_resource_from_uri(self.tpr_url, self.tpr_name)
+            download_system_file(self._system, self.tpr, self.tpr_name)
         if not os.path.isfile(self.trj_name):
-            self.trj_url = resolve_download_file_url(self.doi, self.trj)
             # This is a log message. Printing even in silent mode
             print("Parser: Downloading trj ", self.doi)
-            # urllib.request.urlretrieve(self.trj_url, self.trj_name)
-            download_resource_from_uri(self.trj_url, self.trj_name)
+            download_system_file(self._system, self.trj, self.trj_name)
 
     def prepare_gmx_traj(self):
         """

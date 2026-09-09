@@ -1,13 +1,6 @@
 from fairmd.idp.protein_functions import *
 import yaml
-
-databankPath = "/home/sosamuli/work/NMRlipids/IDPdatabank/"  # this is the local path for the cloned Databank
-os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPdatabank/"
-
-#databankPath = "/home/sosamuli/work/NMRlipids/IDPsimBank/"  # this is the local path for the cloned Databank
-#os.environ["NMLDB_ROOT_PATH"] = "/home/sosamuli/work/NMRlipids/IDPsimBank/"
-
-
+from fairmd.idp import NMLDB_SIMU_PATH
 
 # These two lines include core Databank routines and Databank API
 from fairmd.idp.core import *
@@ -80,7 +73,7 @@ def blast_sequence(sequence, top_n=5):
 
 for system in systems:
 
-    path = databankPath + '/Data/Simulations/' + (system['path'])
+    path = os.path.join(NMLDB_SIMU_PATH, system['path'])
     output_file = path + 'cross_link_data.yaml'
 
     if os.path.isfile(output_file):
