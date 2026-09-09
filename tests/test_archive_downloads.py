@@ -293,17 +293,25 @@ class TestRepositoryUrlResolution:
         )
 
     def test_mddb_resolves_via_node_lookup(self):
+        """A node's hostname must come from /nodes, not be guessed from its
+        alias -- e.g. alias "cin" is actually hosted at cineca.mddbr.eu."""
         def dispatch(url, **kwargs):
-            if '/projects/bsc-A0008' in url and '/files/' not in url:
-                return Response(json.dumps({'node': 'bsc', 'local': 'A0008'}).encode())
+            if '/nodes' in url:
+                return Response(json.dumps(
+                    [{'alias': 'cin', 'api_url': 'https://cineca.mddbr.eu/api/'}]).encode())
+            if '/projects/cin-A00IR' in url and '/files/' not in url:
+                return Response(json.dumps({'node': 'cin', 'local': 'A00IR'}).encode())
             return Response()
 
         with patch.object(downloads.urllib.request, 'urlopen', side_effect=dispatch):
-            url = downloads.resolve_download_file_url('mddb:bsc-A0008', 'trajectory.xtc')
-        assert url == 'https://bsc.mddbr.eu/api/rest/v1/projects/A0008/files/trajectory.xtc'
+            url = downloads.resolve_download_file_url('mddb:cin-A00IR', 'trajectory.xtc')
+        assert url == 'https://cineca.mddbr.eu/api/rest/v1/projects/A00IR/files/trajectory.xtc'
 
     def test_mddb_replica_suffix_is_preserved_on_the_node_local_id(self):
         def dispatch(url, **kwargs):
+            if '/nodes' in url:
+                return Response(json.dumps(
+                    [{'alias': 'bsc', 'api_url': 'https://bsc.mddbr.eu/api/'}]).encode())
             if '/projects/bsc-A0008' in url and '/files/' not in url:
                 return Response(json.dumps({'node': 'bsc', 'local': 'A0008'}).encode())
             return Response()
@@ -316,6 +324,16 @@ class TestRepositoryUrlResolution:
         with patch.object(downloads.urllib.request, 'urlopen',
                            return_value=Response(json.dumps({}).encode())):
             with pytest.raises(RuntimeError, match="node"):
+                downloads.resolve_download_file_url('mddb:bsc-A0008', 'trajectory.xtc')
+
+    def test_mddb_unknown_node_alias_raises(self):
+        def dispatch(url, **kwargs):
+            if '/nodes' in url:
+                return Response(json.dumps([]).encode())
+            return Response(json.dumps({'node': 'bsc', 'local': 'A0008'}).encode())
+
+        with patch.object(downloads.urllib.request, 'urlopen', side_effect=dispatch):
+            with pytest.raises(RuntimeError, match="not found"):
                 downloads.resolve_download_file_url('mddb:bsc-A0008', 'trajectory.xtc')
 
 
