@@ -22,8 +22,6 @@ import seaborn as sns
 from matplotlib.colors import LinearSegmentedColormap
 
 
-from pymol import cmd
-import pymol
 import glob
 
 import matplotlib.image as mpimg

@@ -1,0 +1,31 @@
+# No longer needed once. 
+# Keep this list in sync with src/fairmd/idp/requirements.txt.
+name: fairmd-idp
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python>=3.11
+  - pip
+  - numpy>=1.26.4,<2
+  - mdanalysis>=2.7.0
+  - pandas>=2.0.0
+  - pyyaml>=6.0.0
+  - tqdm>=4.5.0
+  - periodictable>=1.5.0
+  - deprecated
+  - biopython>=1.85
+  - matplotlib-base>=3.4.0
+  - scipy>=1.7.0
+  - requests>=2.26.0
+  - seaborn
+  - mdtraj<1.11
+  - python-libarchive-c
+  - ipython
+  - pydantic>=2.0.0
+  - colorlog
+  - pymol-open-source
+  - gromacs
+  - pip:
+      - buildh>=1.6.1
+      - maicos>=0.11.2,<0.12

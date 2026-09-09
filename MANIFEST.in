@@ -1,0 +1,19 @@
+graft src
+
+include README.md
+
+prune .github
+prune .tox
+prune Data
+prune Scratch
+prune Scripts
+prune docs
+prune tests
+
+exclude .gitignore
+exclude .pre-commit-config.yaml
+exclude .readthedocs.yaml
+exclude tox.ini
+exclude environment.yml
+
+global-exclude *.py[cod] __pycache__/* *.so *.dylib *~
