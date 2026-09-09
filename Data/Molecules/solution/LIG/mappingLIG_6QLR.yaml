@@ -1,0 +1,110 @@
+# Ligand "LIG" (galectin-3 inhibitor from PDB 6QLR), as simulated in
+# MDDB project cin-A00IR (LIGATE project, https://mdposit-dev.mddbr.eu).
+# Identity mapping: MDDB's atom names already match the PDB Chemical
+# Component Dictionary naming for this ligand, so the universal name is
+# just that name wrapped in M_..._M 
+
+M_C20_M:
+  ATOMNAME: C20
+M_C21_M:
+  ATOMNAME: C21
+M_C22_M:
+  ATOMNAME: C22
+M_C24_M:
+  ATOMNAME: C24
+M_C01_M:
+  ATOMNAME: C01
+M_C02_M:
+  ATOMNAME: C02
+M_C03_M:
+  ATOMNAME: C03
+M_C04_M:
+  ATOMNAME: C04
+M_C05_M:
+  ATOMNAME: C05
+M_C06_M:
+  ATOMNAME: C06
+M_C07_M:
+  ATOMNAME: C07
+M_C09_M:
+  ATOMNAME: C09
+M_C11_M:
+  ATOMNAME: C11
+M_C12_M:
+  ATOMNAME: C12
+M_C14_M:
+  ATOMNAME: C14
+M_C16_M:
+  ATOMNAME: C16
+M_C18_M:
+  ATOMNAME: C18
+M_C19_M:
+  ATOMNAME: C19
+M_C25_M:
+  ATOMNAME: C25
+M_C27_M:
+  ATOMNAME: C27
+M_C30_M:
+  ATOMNAME: C30
+M_F1_M:
+  ATOMNAME: F1
+M_F2_M:
+  ATOMNAME: F2
+M_N17_M:
+  ATOMNAME: N17
+M_N28_M:
+  ATOMNAME: N28
+M_N29_M:
+  ATOMNAME: N29
+M_O10_M:
+  ATOMNAME: O10
+M_O13_M:
+  ATOMNAME: O13
+M_O15_M:
+  ATOMNAME: O15
+M_O31_M:
+  ATOMNAME: O31
+M_S08_M:
+  ATOMNAME: S08
+M_H1_M:
+  ATOMNAME: H1
+M_H2_M:
+  ATOMNAME: H2
+M_H3_M:
+  ATOMNAME: H3
+M_H4_M:
+  ATOMNAME: H4
+M_H5_M:
+  ATOMNAME: H5
+M_H6_M:
+  ATOMNAME: H6
+M_H7_M:
+  ATOMNAME: H7
+M_H8_M:
+  ATOMNAME: H8
+M_H9_M:
+  ATOMNAME: H9
+M_H10_M:
+  ATOMNAME: H10
+M_H11_M:
+  ATOMNAME: H11
+M_H12_M:
+  ATOMNAME: H12
+M_H13_M:
+  ATOMNAME: H13
+M_H14_M:
+  ATOMNAME: H14
+M_H15_M:
+  ATOMNAME: H15
+M_H16_M:
+  ATOMNAME: H16
+M_H17_M:
+  ATOMNAME: H17
+M_H18_M:
+  ATOMNAME: H18
+M_H19_M:
+  ATOMNAME: H19
+M_H20_M:
+  ATOMNAME: H20
+M_H21_M:
+  ATOMNAME: H21

@@ -1,0 +1,31 @@
+DOI: mddb:cin-A00IR
+
+SOFTWARE: gromacs
+TRJ: trajectory.xtc
+TPR: topology.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ LIG:
+  NAME: LIG
+  MAPPING: mappingLIG_6QLR.yaml
+
+DIR_WRK: /media/julianne/DATA/Lipids/IDPdatabank/downloads/
+
+PUBLICATION:
+
+AUTHORS_CONTACT: Andrew Emerson, Giorgia Frumezio, Lara Querciagrossa, Andrea Piserchia and Sebastian Wingbermühle
+
+SYSTEM: Galectin3_6QLR_LIGATE_cin-A00IR
+SOFTWARE_VERSION: 2023.2
+FF: Amber99SB-ILDN
+FF_SOURCE:
+FF_DATE:
+CPT:
+LOG:
+TOP:
+TEMPERATURE: 298
+
+TYPEOFSYSTEM: protein

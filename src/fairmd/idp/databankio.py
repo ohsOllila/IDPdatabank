@@ -223,6 +223,8 @@ def resolve_download_file_url(
 
 
     Steps:
+    0) If doi is an "mddb:<project>" reference (MDDB/MDposit has no DOIs),
+       resolve it separately -- see resolve_mddb_file_url.
     1) Resolve DOI via https://doi.org to get final domain.
     2) Check if domain is a Dataverse by querying /api/info/version.
     3) If Dataverse:
@@ -232,7 +234,7 @@ def resolve_download_file_url(
     5) Validate final URL if requested.
 
     Args:
-        doi (str): DOI string
+        doi (str): DOI string, or "mddb:<project accession>" for MDDB
         fi_name (str): name of the file to resolve from source
         validate_uri (bool, optional): Check if URI exists. Defaults to True.
         sleep429 (int, optional): Sleep in seconds if 429 HTTP code returned
@@ -245,6 +247,9 @@ def resolve_download_file_url(
     Returns:
         str: file URI
     """
+
+    if doi.lower().startswith("mddb:"):
+        return resolve_mddb_file_url(doi.split(":", 1)[1], fi_name, validate_uri, sleep429)
 
     archive_name = fi_name.split('/')[0]
 
@@ -313,6 +318,75 @@ def resolve_download_file_url(
     if validate_uri:
         _validate_url(uri, sleep429, doi, fi_name)
 
+    return uri
+
+
+MDDB_API_ROOT = "https://mdposit-dev.mddbr.eu/api/rest/v1"
+
+
+def resolve_mddb_file_url(
+        project_ref: str, fi_name: str, validate_uri: bool = True,
+        sleep429=5) -> str:
+    """
+    :meta private:
+    Resolve a download URL for one file of an MDDB/MDposit project.
+
+    MDDB has no DOIs; projects are addressed by accession (e.g. "bsc-A0008"),
+    optionally with a ".<mdNumber>" suffix selecting one of several replicas
+    ("MDs") stored under the same project, e.g. "bsc-A0008.2". Files
+    themselves (trajectory.xtc, topology.tpr, structure.pdb, ...) are plain,
+    unarchived downloads -- no extraction is needed.
+
+    The hub host (MDDB_API_ROOT) does not correctly proxy the binary file
+    download endpoint, so the project's home node is looked up via its (hub
+    served) metadata first, and the file is then fetched directly from that
+    node's own host. A node's hostname does *not* reliably follow from its
+    alias (e.g. alias "cin" is actually hosted at cineca.mddbr.eu, alias "mmb"
+    at irb-dev.mddbr.eu, alias "ufl" at a completely unrelated domain), so the
+    real hostname is looked up via the hub's /nodes endpoint rather than
+    guessed as "<node>.mddbr.eu".
+
+    Args:
+        project_ref (str): MDDB project accession, optionally suffixed with
+            ".<mdNumber>" to select a replica.
+        fi_name (str): name of the file to resolve, as listed in the
+            project's "files".
+        validate_uri (bool, optional): Check if URI exists. Defaults to True.
+        sleep429 (int, optional): Sleep in seconds if 429 HTTP code returned
+
+    Returns:
+        str: file URI
+    """
+    accession = project_ref.split(".", 1)[0]
+    md_suffix = project_ref[len(accession):]  # "" or ".<mdNumber>"
+
+    metadata_uri = f"{MDDB_API_ROOT}/projects/{accession}"
+    try:
+        with urllib.request.urlopen(metadata_uri, timeout=10) as response:
+            metadata = json.loads(response.read().decode())
+    except Exception as e:
+        raise RuntimeError(f"Could not fetch MDDB project metadata from {metadata_uri}: {e}")
+
+    node, local = metadata.get("node"), metadata.get("local")
+    if not node or not local:
+        raise RuntimeError(
+            f"MDDB project '{accession}' metadata is missing 'node'/'local': {metadata}"
+        )
+
+    nodes_uri = f"{MDDB_API_ROOT}/nodes"
+    try:
+        with urllib.request.urlopen(nodes_uri, timeout=10) as response:
+            nodes = json.loads(response.read().decode())
+    except Exception as e:
+        raise RuntimeError(f"Could not fetch MDDB node list from {nodes_uri}: {e}")
+
+    api_url = next((n["api_url"] for n in nodes if n.get("alias") == node), None)
+    if not api_url:
+        raise RuntimeError(f"MDDB node alias '{node}' not found in {nodes_uri}")
+
+    uri = f"{api_url.rstrip('/')}/rest/v1/projects/{local}{md_suffix}/files/{fi_name}"
+    if validate_uri:
+        _validate_url(uri, sleep429, project_ref, fi_name)
     return uri
 
 
