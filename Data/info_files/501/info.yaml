@@ -1,0 +1,40 @@
+DOI: 10.5061/dryad.v9s4mw6z2
+
+SOFTWARE: gromacs
+TRJ: MD_p53TAD_Trajectory.zip/MD_p53TAD_Trajectory/run1/protein.pdb
+TPR: MD_p53TAD_Inpu.zip/MD_p53TAD_Inpu/run1/product.tpr 
+PREEQTIME: 10
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingOPCwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CAL:
+  NAME: CA
+  MAPPING: mappingCALecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
+
+PUBLICATION:
+
+AUTHORS_CONTACT: Samuli Ollila
+
+SYSTEM: asyn
+SOFTWARE_VERSION:
+FF: DESAMBER
+FF_SOURCE:
+FF_DATE:
+CPT: 
+LOG: 
+TOP: 
+
+TYPEOFSYSTEM: protein
