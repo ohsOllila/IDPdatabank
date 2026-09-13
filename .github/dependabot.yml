@@ -1,0 +1,13 @@
+# Keeps the GitHub Actions used in .github/workflows/ on their latest majors.
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    # one pull request bumping all actions instead of one per action
+    groups:
+      github-actions:
+        patterns:
+          - "*"
