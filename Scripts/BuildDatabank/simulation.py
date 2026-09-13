@@ -58,9 +58,11 @@ class Simulation:
         """Initialize buffer manager with simulation data if available."""
         count_water = self.composition.get("SOL", {}).get("COUNT", 0)
         if count_water == 0:
-            raise ValueError(
-                "No water found in simulation composition. I don't know what to do now."
-            )
+            #raise ValueError(
+            #    "No water found in simulation composition. I don't know what to do now."
+            #)
+            print("No water found in simulation composition. Value set artificially to one.")
+            count_water = 1
         buffer_data = {
             k: v for k, v in self.composition.items() if k not in ["PROTEIN", "SOL"]
         }  #
