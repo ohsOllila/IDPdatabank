@@ -379,5 +379,11 @@ BUFFER_MOLECULE_DATA: Dict[str, Dict[str, Any]] = {
         {"min_ph": 8.07, "max_ph": 14, "charges": [0], "stoichiometry": [1]},
     ],
 },
+
+"QACLTXLGBFUVST-IFLJBQAJSA-N": {
+    "ph_dependent": False,
+    "charges": [0],
+    "stoichiometry": [1]
+}
     
 }

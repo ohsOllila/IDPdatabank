@@ -1,28 +1,32 @@
-AUTHORS_CONTACT: Samuli Ollila
+AUTHORS_CONTACT: "Andrew Emerson, Giorgia Frumezio, Lara Querciagrossa, Andrea Piserchia\
+  \ and Sebastian Wingberm\xFChle"
 COMPOSITION:
-  CAL:
-    COUNT: 0
-    MAPPING: mappingCALecc.yaml
-    NAME: CA
   CLA:
-    COUNT: 12
+    COUNT: 0
     MAPPING: mappingCLAecc.yaml
     NAME: CL
+  POT:
+    COUNT: 0
+    MAPPING: mappingK.yaml
+    NAME: K
   PROTEIN:
-    SEQUENCE: KKEEVPAPAPAPKKEEV
+    SEQUENCE: PLIVPYNLPLPGGVVPRMLITILGTVKPNANRIALDFQRGNDVAFHFNPRFNENNRRVIVCNTKLDNNWGREERQSVFPFESGKPFKIQVLVEPDHFKVAVNDAHLLQYNHRVKKLNEISKLGISGDIDLTSASYTMI
+  QACLTXLGBFUVST-IFLJBQAJSA-N:
+    COUNT: 1
+    MAPPING: mapping_QACLTXLGBFUVST-IFLJBQAJSA-N.yaml
+    NAME: LIG
   SOD:
-    COUNT: 12
+    COUNT: 0
     MAPPING: mappingSODecc.yaml
     NAME: NA
   SOL:
-    COUNT: 16792
-    MAPPING: mappingOPCwater.yaml
+    COUNT: 0
+    MAPPING: mappingTIP3Pwater.yaml
     NAME: SOL
-CPT:
-- - deprotonated_md_KKEEVAP40_deprot_01.cpt
-DATEOFRUNNING: 03/09/2026
+CPT: null
+DATEOFRUNNING: 11/09/2026
 DIR_WRK: /home/sosamuli/temp/tmpData/
-DOI: 10.5281/zenodo.22260706
+DOI: mddb:cin-A00IR
 EXPERIMENT:
   chemical_shift:
     alignment_score: []
@@ -54,26 +58,23 @@ EXPERIMENT:
     sequence: []
     temperature: []
     temperature_match: []
-FF: DESAMBER
+FF: Amber99SB-ILDN
 FF_DATE: null
 FF_SOURCE: null
-ID: 465
-LOG:
-- - deprotonated_md_KKEEVAP40_deprot_01.log
-NUMBER_OF_ATOMS: 293
+LOG: null
+NUMBER_OF_ATOMS: 2282
 PREEQTIME: 0
 PUBLICATION: null
 SOFTWARE: gromacs
-SOFTWARE_VERSION: null
-SYSTEM: KKEEVAP protein linker
-TEMPERATURE: 298.0
+SOFTWARE_VERSION: 2023.2
+SYSTEM: Galectin3_6QLR_LIGATE_cin-A00IR
+TEMPERATURE: 298
 TIMELEFTOUT: 0
-TOP:
-- - deprotonated_topol.top
+TOP: null
 TPR:
-- - deprotonated_md_KKEEVAP40_deprot_01.tpr
-TRAJECTORY_SIZE: 124773948
+- - topology.tpr
+TRAJECTORY_SIZE: 873531328
 TRJ:
-- - deprotonated_md_KKEEVAP40_deprot_01_nowater.xtc
+- - trajectory.xtc
 TRJLENGTH: 1000010.0
 TYPEOFSYSTEM: protein

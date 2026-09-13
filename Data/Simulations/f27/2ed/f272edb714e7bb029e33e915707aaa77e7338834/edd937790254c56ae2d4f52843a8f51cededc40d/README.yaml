@@ -1,4 +1,3 @@
-ID: 468
 AUTHORS_CONTACT: Samuli Ollila
 COMPOSITION:
   CAL:
@@ -58,6 +57,7 @@ EXPERIMENT:
 FF: DESAMBER
 FF_DATE: null
 FF_SOURCE: null
+ID: 468
 LOG:
 - - protonated_md_KKEEVKP40_prot_01.log
 NUMBER_OF_ATOMS: 340

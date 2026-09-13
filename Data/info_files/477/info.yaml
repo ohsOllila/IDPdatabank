@@ -8,11 +8,25 @@ TIMELEFTOUT: 0
 
 COMPOSITION:
  PROTEIN:
- LIG:
+ QACLTXLGBFUVST-IFLJBQAJSA-N:
   NAME: LIG
-  MAPPING: mappingLIG_6QLR.yaml
+  MAPPING: mapping_QACLTXLGBFUVST-IFLJBQAJSA-N.yaml
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP3Pwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ POT:
+  NAME: K
+  MAPPING: mappingK.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
 
-DIR_WRK: /media/julianne/DATA/Lipids/IDPdatabank/downloads/
+
+
+DIR_WRK: /home/sosamuli/temp/tmpData/
 
 PUBLICATION:
 

@@ -16,6 +16,7 @@ def main():
     if args.BMRB:
         print(f"Received BMRB input: {args.BMRB}")
         try:
+            bmrb_local_file = download_NMR_star_file(args.BMRB)
             get_spin_relaxations_from_BMRB(args.BMRB)
             get_spin_relaxation_conditions_from_BMRB(args.BMRB)
             #fasta_seq = extract_bmrb_fasta(args.BMRB)
