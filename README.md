@@ -1,11 +1,11 @@
-#FAIRMD protein databank
-This is the repository used for the FAIRMD protein databank development. FAIRMD protein databank is an overlay databank containing molecular dynamics (MD) simulations of proteins with programmatic access and quality evaluations against experiments. This is an extension of the [NMRlipids databank](https://doi.org/10.26434/chemrxiv-2023-jrpwm) (now [FAIRMD lipids databank](https://github.com/NMRLipids/FAIRMD_lipids/)).
+# FAIRMD protein databank
+This is the repository for the development of the FAIRMD protein databank, which is an overlay databank containing molecular dynamics (MD) simulations of proteins with programmatic access and quality evaluations against experiments. This is an extension of the [NMRlipids databank](https://doi.org/10.26434/chemrxiv-2023-jrpwm) (now [FAIRMD lipids databank](https://github.com/NMRLipids/FAIRMD_lipids/)).
 
-For each simulation, there is a README.yaml which contains all the essential information for the data upcycling and reuse, including the permanent location of each simulation file. The README.yaml files are located in [Data/simulations](https://github.com/NMRLipids/Databank/tree/main/Data/Simulations) folder under subfolders named based on file hash identities. Simulations can be automatically accessed and analyzed with after performing the installation steps as expemplified, for example, in [calcProperties.py](https://github.com/ohsOllila/IDPdatabank/blob/master/Scripts/AnalyzeDatabank/calcProperties.py) and [plotQuality.ipynb](https://github.com/ohsOllila/IDPdatabank/blob/master/Scripts/AnalyzeDatabank/plotQuality.ipynb).
+README.yaml files contain all the essential information for each simulation, including the permanent location of each simulation file, enabling the data upcycling and reuse. The README.yaml files are located in [Data/simulations](https://github.com/NMRLipids/Databank/tree/main/Data/Simulations) folder under subfolders named based on file hash identities. After installation of the databank, simulations can be programmatically accessed and analyzed. For example, see [calcProperties.py](https://github.com/ohsOllila/IDPdatabank/blob/master/Scripts/AnalyzeDatabank/calcProperties.py) and [plotQuality.ipynb](https://github.com/ohsOllila/IDPdatabank/blob/master/Scripts/AnalyzeDatabank/plotQuality.ipynb) and other analysis codes in this repository.
 
-CalcProperties.py currently automatically analyzes contact, distance and backbone correlation maps, radius of gyrations, dynamic landscapes, spin relaxation times, chemical shifts, SAXS intensities, secondary structures and folding state of proteins.
+[CalcProperties.py](https://github.com/ohsOllila/IDPdatabank/blob/master/Scripts/AnalyzeDatabank/calcProperties.py) analyzes automatically the contact, distance and backbone correlation maps, radius of gyrations, dynamic landscapes, spin relaxation times, chemical shifts, SAXS intensities, secondary structures and folding state of proteins from all simulations in the databank, and stores the results in the same folders with the README.yaml files.
 
-Simulation entries can be added with [AddData.py](https://github.com/ohsOllila/IDPdatabank/blob/master/Scripts/BuildDatabank/AddData.py) using info.yaml files, similarly to the NMRlipids databank (see [documentation](https://databank.readthedocs.io/stable/contrib/addingSimulation.html#addsimulation), upload portal is not yet implemented for proteins).
+Simulation entries can be added using [AddData.py](https://github.com/ohsOllila/IDPdatabank/blob/master/Scripts/BuildDatabank/AddData.py) function and info.yaml files, similarly to the NMRlipids databank (see [FAIRMD lipids documentation](https://databank.readthedocs.io/stable/contrib/addingSimulation.html#addsimulation) but note that the upload portal is not yet implemented for proteins).
 
 Experimental data from BMRB can be automatically fetched with [create_experimental_data_file.py](https://github.com/ohsOllila/IDPdatabank/blob/master/Scripts/BuildDatabank/create_experimental_data_file.py).
 
@@ -13,7 +13,7 @@ The databank is being developed in [FAIRMD - Disorder to Order: Streamlining Bio
 
 
 ## Publication
-Manuscript describing the FAIRMD protein databank is being prepared. People contributing this repository will be invited authors according to the [authorship document]() adapted from the [NMRlipids project](https://nmrlipids.blogspot.com/).
+Manuscript describing the FAIRMD protein databank is being prepared. People contributing this repository will be invited authors according to the [authorship document](https://github.com/ohsOllila/IDPdatabank/blob/master/AUTHORSHIP.md) adapted from the [NMRlipids project](https://nmrlipids.blogspot.com/).
 
 
 ## Installation
