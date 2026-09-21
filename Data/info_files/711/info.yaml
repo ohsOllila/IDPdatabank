@@ -1,0 +1,31 @@
+DOI: 10.17617/3.4I538Z
+
+SOFTWARE: gromacs
+TRJ: 2_MD_validation-WT-12_ff99SB_NMR_tip4p.tar.gz/2_MD_validation-WT-12_ff99SB_NMR_tip4p/struc_09/struc_09.xtc
+TPR: 2_MD_validation-WT-12_ff99SB_NMR_tip4p.tar.gz/2_MD_validation-WT-12_ff99SB_NMR_tip4p/struc_09/struc_09.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 120
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4Pwater.yaml
+
+DIR_WRK: /media/julianne/DATA/Lipids/IDPdatabank/downloads/
+
+PUBLICATION: https://doi.org/10.1021/acs.jctc.5c00854
+
+AUTHORS_CONTACT: Tobias Rindfleisch
+
+SYSTEM: 2_MD_validation-WT-12_ff99SB_NMR_tip4p_struc_09
+SOFTWARE_VERSION:
+FF: ff99SB-NMR
+FF_SOURCE:
+FF_DATE:
+CPT:
+LOG:
+TOP: 2_MD_validation-WT-12_ff99SB_NMR_tip4p.tar.gz/2_MD_validation-WT-12_ff99SB_NMR_tip4p/struc_09/topol.top
+TEMPERATURE: 300
+
+TYPEOFSYSTEM: protein
