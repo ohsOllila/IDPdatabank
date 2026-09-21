@@ -1,0 +1,31 @@
+DOI: 10.17617/3.4I538Z
+
+SOFTWARE: gromacs
+TRJ: 1_initial_structure_generation-2_G68A-OPLS_AA_tip4p.tar.gz/1_initial_structure_generation-G68A-OPLS_AA_tip4p/repeat_07/repeat_07.xtc
+TPR: 1_initial_structure_generation-2_G68A-OPLS_AA_tip4p.tar.gz/1_initial_structure_generation-G68A-OPLS_AA_tip4p/repeat_07/repeat_07.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4Pwater.yaml
+
+DIR_WRK: /media/julianne/DATA/Lipids/IDPdatabank/downloads/
+
+PUBLICATION: https://doi.org/10.1021/acs.jctc.5c00854
+
+AUTHORS_CONTACT: Tobias Rindfleisch
+
+SYSTEM: 1_initial_structure_generation-2_G68A-OPLS_AA_tip4p_repeat_07
+SOFTWARE_VERSION:
+FF: OPLS_AA
+FF_SOURCE:
+FF_DATE:
+CPT:
+LOG:
+TOP: 1_initial_structure_generation-2_G68A-OPLS_AA_tip4p.tar.gz/1_initial_structure_generation-G68A-OPLS_AA_tip4p/repeat_07/topol.top
+TEMPERATURE: 300
+
+TYPEOFSYSTEM: protein
