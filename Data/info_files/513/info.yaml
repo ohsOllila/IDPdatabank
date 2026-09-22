@@ -11,6 +11,12 @@ COMPOSITION:
  SOL:
   NAME: SOL
   MAPPING: mappingTIP4Pwater.yaml
+ SOD:
+  NAME: 
+  MAPPING: 
+ CLA:
+  NAME: 
+  MAPPING: 
 
 
 DIR_WRK: /media/julianne/DATA/Lipids/IDPdatabank/downloads/
