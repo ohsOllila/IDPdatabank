@@ -469,7 +469,458 @@ def extract_heteronucl_NOE_data(data):
     return []
 
 
-def extract_data_from_BMRB(ID, datatype):
+
+def normalize_magnetic_field(value):
+    
+    """
+        Convert BMRB Spectrometer_frequency_1H to MHz.
+    
+    Normal cases in BMRB 27721:
+    
+        499260345      -> 499.260345 MHz
+        599882216      -> 599.882216 MHz
+        899894229      -> 899.894229 MHz
+    
+    BMRB 27721 also contains:
+
+    599882216882216
+
+    which is clearly malformed. This corresponds to
+    599882216 Hz duplicated/concatenated with 882216.
+
+    The generic handling below also protects against
+    very large malformed values.
+    """
+
+    if value is None:
+        return None
+
+    value = float(value)
+
+    # Normal BMRB value in Hz
+    if 1e8 < value < 1e10:
+        return value / 1e6
+
+    # Some entries may contain a duplicated/concatenated
+    # frequency, e.g. 599882216882216
+    if value >= 1e11:
+
+        # Convert to MHz assuming the value is approximately
+        # a Hz value with an accidental duplicated suffix.
+        #
+        # First try removing the duplicated last 6 digits.
+        string_value = str(int(value))
+
+        if len(string_value) > 12:
+
+            possible_frequency = float(
+                string_value[:-6]
+            )
+
+            if 1e8 < possible_frequency < 1e10:
+                return possible_frequency / 1e6
+
+        # Fallback
+        return value / 1e12
+
+    # Already MHz
+    if value < 10000:
+        return value
+
+    return value / 1e6
+
+
+
+
+def convert_relaxation_value(value, units):
+    """Convert a BMRB relaxation value to T1/T2 in seconds."""
+
+    if value is None:
+        return None
+
+    value = float(value)
+
+    # Normalize unit string
+    units = str(units).strip().lower()
+    units = units.replace(" ", "")
+    units = units.replace("−", "-")
+    units = units.replace("⁻¹", "-1")
+
+    return value
+    
+    if units in ("s", "sec", "second", "seconds"):
+        # Already T1/T2 in seconds
+        return value
+
+    elif units in ("s-1", "s^-1", "1/s"):
+        # R1/R2 -> T1/T2
+        return 1.0 / value
+
+    elif units in ("ms", "msec", "millisecond", "milliseconds"):
+        # T1/T2 in milliseconds -> seconds
+        return value / 1000.0
+
+    elif units in ("ms-1", "ms^-1", "1/ms"):
+        # R1/R2 in ms^-1 -> T1/T2 in seconds
+        return 1.0 / (value * 1000.0)
+
+    else:
+        print(f"WARNING: Unknown relaxation units '{units}'. "
+              f"Using value directly.")
+        return value
+
+
+
+
+
+
+def extract_relaxation_data_from_BMRB(BMRBid, datatype):
+
+    import shlex
+    import requests
+
+    datatype_info = {
+        "heteronucl_T1_relaxation": {
+            "frequency_tag": "_Heteronucl_T1_list.Spectrometer_frequency_1H",
+            "units_tag": "_Heteronucl_T1_list.T1_val_units",
+            "seq_tag": "_T1.Seq_ID",
+            "comp_tag": "_T1.Comp_ID",
+            "value_tag": "_T1.Val",
+            "error_tag": "_T1.Val_err",
+            "atom_type_tag": "_T1.Atom_type",
+            "isotope_tag": "_T1.Atom_isotope_number",
+        },
+
+        "heteronucl_T2_relaxation": {
+            "frequency_tag": "_Heteronucl_T2_list.Spectrometer_frequency_1H",
+            "units_tag": "_Heteronucl_T2_list.T2_val_units",
+            "seq_tag": "_T2.Seq_ID",
+            "comp_tag": "_T2.Comp_ID",
+            "value_tag": "_T2.T2_val",
+            "error_tag": "_T2.T2_val_err",
+            "atom_type_tag": "_T2.Atom_type",
+            "isotope_tag": "_T2.Atom_isotope_number",
+        },
+
+        "heteronucl_NOEs": {
+            "frequency_tag": "_Heteronucl_NOE_list.Spectrometer_frequency_1H",
+            "units_tag": None,
+            "seq_tag": "_Heteronucl_NOE.Seq_ID_1",
+            "comp_tag": "_Heteronucl_NOE.Comp_ID_1",
+            "value_tag": "_Heteronucl_NOE.Val",
+            "error_tag": "_Heteronucl_NOE.Val_err",
+            "atom_type_tag": "_Heteronucl_NOE.Atom_type_1",
+            "isotope_tag": "_Heteronucl_NOE.Atom_isotope_number_1",
+        },
+    }
+
+    if datatype not in datatype_info:
+        raise ValueError(f"Unknown datatype: {datatype}")
+
+    info = datatype_info[datatype]
+
+    # Download BMRB NMR-STAR file
+    url = (
+        f"https://bmrb.io/ftp/pub/bmrb/entry_directories/"
+        f"bmr{BMRBid}/bmr{BMRBid}_3.str"
+    )
+
+    response = requests.get(url)
+    response.raise_for_status()
+
+    lines = response.text.splitlines()
+
+    results = {}
+
+    # ---------------------------------------------------------
+    # Split into saveframes
+    # ---------------------------------------------------------
+
+    saveframes = []
+    current_saveframe = []
+
+    for line in lines:
+
+        stripped = line.strip()
+
+        if stripped.startswith("save_") and stripped != "save_":
+
+            if current_saveframe:
+                saveframes.append(current_saveframe)
+
+            current_saveframe = [line]
+
+        elif stripped == "save_":
+
+            if current_saveframe:
+                current_saveframe.append(line)
+                saveframes.append(current_saveframe)
+                current_saveframe = []
+
+        elif current_saveframe:
+
+            current_saveframe.append(line)
+
+    # ---------------------------------------------------------
+    # Process saveframes
+    # ---------------------------------------------------------
+
+    for saveframe in saveframes:
+
+        # Check that this is the correct type of saveframe
+        frequency_line = None
+
+        for line in saveframe:
+
+            if line.strip().startswith(info["frequency_tag"]):
+
+                frequency_line = line.strip()
+                break
+
+        if frequency_line is None:
+            continue
+
+        # -----------------------------------------------------
+        # Get magnetic field
+        # -----------------------------------------------------
+
+        parts = shlex.split(frequency_line)
+
+        if len(parts) < 2:
+            continue
+
+        magnetic_field = normalize_magnetic_field(parts[-1])
+
+        if magnetic_field is None:
+            continue
+
+        # -----------------------------------------------------
+        # Get units
+        # -----------------------------------------------------
+
+        units = None
+
+        if info["units_tag"] is not None:
+
+            for line in saveframe:
+
+                if line.strip().startswith(info["units_tag"]):
+
+                    parts = shlex.split(line.strip())
+
+                    if len(parts) >= 2:
+                        units = parts[-1]
+
+                    break
+
+        # -----------------------------------------------------
+        # Find the loop containing the required value tag
+        # -----------------------------------------------------
+
+        loop_start = None
+        tags = []
+        data_start = None
+
+        for i, line in enumerate(saveframe):
+
+            if line.strip() != "loop_":
+                continue
+
+            # Read tags after loop_
+            candidate_tags = []
+
+            j = i + 1
+
+            while j < len(saveframe):
+
+                stripped = saveframe[j].strip()
+
+                if not stripped:
+                    j += 1
+                    continue
+
+                if stripped.startswith("_"):
+                    candidate_tags.append(stripped.split()[0])
+                    j += 1
+                    continue
+
+                break
+
+            # Is this the loop we want?
+            required_tags = [
+                info["seq_tag"],
+                info["comp_tag"],
+                info["value_tag"],
+                info["error_tag"],
+            ]
+
+            if all(tag in candidate_tags for tag in required_tags):
+
+                loop_start = i
+                tags = candidate_tags
+                data_start = j
+                break
+
+        if loop_start is None:
+            continue
+
+        # -----------------------------------------------------
+        # Column indices
+        # -----------------------------------------------------
+
+        seq_index = tags.index(info["seq_tag"])
+        comp_index = tags.index(info["comp_tag"])
+        value_index = tags.index(info["value_tag"])
+        error_index = tags.index(info["error_tag"])
+
+        
+        atom_type_index = tags.index(info["atom_type_tag"])
+        isotope_index = tags.index(info["isotope_tag"])
+        
+        # -----------------------------------------------------
+        # Read loop
+        # -----------------------------------------------------
+
+        i = data_start
+
+        while i < len(saveframe):
+
+            line = saveframe[i].strip()
+
+            if not line:
+                i += 1
+                continue
+
+            if line.startswith("stop_"):
+                break
+
+            if line.startswith("save_"):
+                break
+
+            if line.startswith("#"):
+                break
+
+            try:
+                values = shlex.split(line)
+            except ValueError:
+                i += 1
+                continue
+
+            # Ignore lines that don't contain a complete row
+            if len(values) < len(tags):
+                i += 1
+                continue
+
+            seq_id = values[seq_index]
+            comp_id = values[comp_index]
+
+            value_string = values[value_index]
+            error_string = values[error_index]
+
+            atom_type = values[atom_type_index]
+            isotope = values[isotope_index]
+
+            # Only use backbone 15N relaxation data
+            if atom_type != "N" or isotope != "15":
+                i += 1
+                continue
+            
+            
+            if value_string in (".", "?"):
+                i += 1
+                continue
+
+            try:
+                value = float(value_string)
+            except ValueError:
+                i += 1
+                continue
+
+            # Error
+            if error_string in (".", "?"):
+                error = None
+            else:
+                try:
+                    error = float(error_string)
+                except ValueError:
+                    error = None
+
+            # -------------------------------------------------
+            # Convert T1/T2 according to units
+            # -------------------------------------------------
+
+            if datatype in (
+                "heteronucl_T1_relaxation",
+                "heteronucl_T2_relaxation",
+            ):
+
+                if units is None:
+                    print(
+                        f"WARNING: No units found for {datatype}, "
+                        f"BMRB {BMRBid}, field {magnetic_field}"
+                    )
+
+                elif units in ("s", "sec", "second", "seconds"):
+
+                    # Already T1/T2
+                    pass
+
+                elif units in ("s^-1", "s-1", "1/s"):
+
+                    # R1/R2 -> T1/T2
+                    old_value = value
+
+                    value = 1.0 / old_value
+
+                    if error is not None:
+                        error = error / (old_value ** 2)
+
+                elif units in ("ms", "msec", "milliseconds"):
+
+                    value = value / 1000.0
+
+                    if error is not None:
+                        error = error / 1000.0
+
+                elif units in ("ms^-1", "ms-1", "1/ms"):
+
+                    old_value = value
+
+                    value = 1.0 / (old_value * 1000.0)
+
+                    if error is not None:
+                        error = error / (old_value ** 2 * 1000.0)
+
+                else:
+
+                    print(
+                        f"WARNING: Unknown units '{units}' "
+                        f"for {datatype}, using value directly"
+                    )
+
+            # -------------------------------------------------
+            # Store
+            # -------------------------------------------------
+
+            residue = f"{seq_id}{comp_id}"
+
+            if magnetic_field not in results:
+                results[magnetic_field] = {}
+
+            results[magnetic_field][residue] = {
+                "value": value,
+                "error": error,
+            }
+
+            i += 1
+
+    return results
+
+
+
+
+
+def extract_data_from_BMRB_old(ID, datatype):
 
     output = {}
     data = []
@@ -580,7 +1031,7 @@ def get_spin_relaxation_conditions_from_BMRB(BMRBid):
 
     T1names = ['Het. Nuc. T1 relaxation', '2D 1H-15N HSQC-T1', 'T1/R1 relaxation', '15N R1', 'sqct1etf3gpsitc3d', 'Het. Nuc. T1 relaxation', '2D 1H-15N HSQC-T1', '15N T1', 'hsqct1etf3gpsitc3d.nlf', 'T1_relaxation_800', 'R1-measurement', 'T1', '3D 1H-15N t1 interleaved', '2D 15N HSQC T1', '2D 1H-15N R1 relaxation', 'T2 (H[n[T2(N)]])', '2D 1H-15N HSQC T1', '2D 1H-15N HSQC R1', '2D 15N-T1', '15N T1 relaxation', '15N T1 experiment', '"T1, T2, NOE"', '2D 1H-15N T1-HSQC', 'T1 experiments', '2D 1H-15N HSQC R1 edited', '2D R1 15','1H correlation']
     T2names = ['Het. Nuc. T2 relaxation', '2D 1H-15N HSQC -T2', 'T2/R2 relaxation', '15N R2', 'hsqct2etf3gpsitc3d', 'Het. Nuc. T2 relaxation', '2D 1H-15N HSQC -T2', '15N T2', 'hsqct2etf3gpsitc3d.ac', 'T2_relaxation_800', 'R2 measurement', 'T2', '3D 1H-15N t2 interleaved', '2D 15N HSQC T2', '2D 1H-15N R2 relaxation', 'T1 (H[n[T1(N)]])', '2D 1H-15N HSQC T2', '2D 1H-15N HSQC R2', '2D 15N-T2', '15N T2 relaxation', '15N T2 experiment', '"T1, T2, NOE"', '2D 1H-15N T2-HSQC', 'T2 experiments', '2D 1H-15N HSQC R2 edited', '2D R2 15N', '1H correlation']
-    netNOEnames = ['15N-(1H) NOE', '2D 1H-15N HSQC-NOE','15N-(1H) NOE', 'hsqcnoef3gpsi', '1H 15N het NOE', '1H-15N heteronoe', '2D 1H-15N HSQC-NOE', '{1H}-15N NOE', 'HetNOE_relaxation_800', 'hetNOE measurement', 'HTNOE 1', '2D 1H-15N NOE with saturation', 'HETERONOE', '2D 15N HSQC Heteronuclear NOE', '2D 1H-15N heteronuclear NOE', '"1H,15N NOE"', '2D 1H-15N HSQC NOE', '2D 1H-15N HSQC hNOE', '2D 15N-HET-NOE', '2D 15N- HET-NOE', 'heteronuclear 1H-15N NOE', '"T1, T2, NOE"', '15N-1H NOE', '2D 1H-15N Het NOE', 'Heteronuclear NOE ratio', '2D NOE 15N', '1H correlation']
+    netNOEnames = ['15N-(1H) NOE', '2D 1H-15N HSQC-NOE','15N-(1H) NOE', 'hsqcnoef3gpsi', '1H 15N het NOE', '1H-15N heteronoe', '2D 1H-15N HSQC-NOE', '{1H}-15N NOE', 'HetNOE_relaxation_800', 'hetNOE measurement', 'HTNOE 1', '2D 1H-15N NOE with saturation', 'HETERONOE', '2D 15N HSQC Heteronuclear NOE', '2D 1H-15N heteronuclear NOE', '"1H,15N NOE"', '2D 1H-15N HSQC NOE', '2D 1H-15N HSQC hNOE', '2D 15N-HET-NOE', '2D 15N- HET-NOE', 'heteronuclear 1H-15N NOE', '"T1, T2, NOE"', '15N-1H NOE', '2D 1H-15N Het NOE', 'Heteronuclear NOE ratio', '2D NOE 15N', '1H correlation','{H}-15N NOE']
     
 
     for i in data[0]:
@@ -896,7 +1347,175 @@ def save_fasta_sequences(sequences: List[str], filename: str) -> None:
             f.write("\n")
 
 
+
+
 def get_spin_relaxations_from_BMRB(BMRBid):
+
+    print("Getting experimental data from BMRBid: ", BMRBid)
+
+    # -------------------------------------------------------------
+    # Extract ALL magnetic fields for each relaxation type
+    # -------------------------------------------------------------
+
+    experimental_data_tmp = {
+        "T1": extract_relaxation_data_from_BMRB(
+            BMRBid,
+            "heteronucl_T1_relaxation"
+        ),
+
+        "T2": extract_relaxation_data_from_BMRB(
+            BMRBid,
+            "heteronucl_T2_relaxation"
+        ),
+
+        "hetNOE": extract_relaxation_data_from_BMRB(
+            BMRBid,
+            "heteronucl_NOEs"
+        ),
+    }
+
+    # -------------------------------------------------------------
+    # Units
+    # -------------------------------------------------------------
+
+    units = {
+        "T1": extract_units(
+            BMRBid,
+            "heteronucl_T1_relaxation"
+        ),
+
+        "T2": extract_units(
+            BMRBid,
+            "heteronucl_T2_relaxation"
+        ),
+    }
+
+    # -------------------------------------------------------------
+    # Construct final output
+    # -------------------------------------------------------------
+
+    experimental_data = {}
+
+    # =============================================================
+    # T1
+    # =============================================================
+
+    for magnetic_field, residues in experimental_data_tmp["T1"].items():
+
+        for residue, data in residues.items():
+
+            if residue not in experimental_data:
+                experimental_data[residue] = {}
+
+            if magnetic_field not in experimental_data[residue]:
+                experimental_data[residue][magnetic_field] = {}
+
+            value = data["value"]
+            error = data["error"]
+
+            # Convert ms -> s
+            if units["T1"] == "ms":
+
+                if value is not None:
+                    value *= 0.001
+
+                if error is not None:
+                    error *= 0.001
+
+            experimental_data[residue][magnetic_field]["T1"] = {
+                "value": value,
+                "error": error,
+            }
+
+    # =============================================================
+    # T2
+    # =============================================================
+
+    for magnetic_field, residues in experimental_data_tmp["T2"].items():
+
+        for residue, data in residues.items():
+
+            if residue not in experimental_data:
+                experimental_data[residue] = {}
+
+            if magnetic_field not in experimental_data[residue]:
+                experimental_data[residue][magnetic_field] = {}
+
+            value = data["value"]
+            error = data["error"]
+
+            # Convert ms -> s
+            if units["T2"] == "ms":
+
+                if value is not None:
+                    value *= 0.001
+
+                if error is not None:
+                    error *= 0.001
+
+            experimental_data[residue][magnetic_field]["T2"] = {
+                "value": value,
+                "error": error,
+            }
+
+    # =============================================================
+    # hetNOE
+    # =============================================================
+
+    for magnetic_field, residues in experimental_data_tmp["hetNOE"].items():
+
+        for residue, data in residues.items():
+
+            if residue not in experimental_data:
+                experimental_data[residue] = {}
+
+            if magnetic_field not in experimental_data[residue]:
+                experimental_data[residue][magnetic_field] = {}
+
+            experimental_data[residue][magnetic_field]["hetNOE"] = {
+                "value": data["value"],
+                "error": data["error"],
+            }
+
+    # -------------------------------------------------------------
+    # Save
+    # -------------------------------------------------------------
+
+    exp_data_path = (
+        "../../Data/Experiments/spin_relaxation/BMRBid"
+        + str(BMRBid)
+    )
+
+    if not os.path.isdir(exp_data_path):
+        os.makedirs(exp_data_path, exist_ok=True)
+
+    experimental_spin_relaxation_times_file = (
+        exp_data_path + "/spin_relaxation_times.yaml"
+    )
+
+    with open(experimental_spin_relaxation_times_file, "w") as file:
+
+        yaml.dump(
+            experimental_data,
+            file,
+            sort_keys=True,
+            default_flow_style=False,
+            indent=4
+        )
+
+    print(
+        "Experimental data stored in ",
+        experimental_spin_relaxation_times_file
+    )
+
+
+
+
+
+
+
+            
+def get_spin_relaxations_from_BMRB_old(BMRBid):
 
     print("Getting experimental data from BMRBid: ", BMRBid)
     experimental_data_tmp = {
@@ -1241,6 +1860,7 @@ def calculate_SAXS_profile_crysol(gro_file, xtc_file,dt_analysis_ps=100):
             # glutamic acid and aspartate fix for low pH simulations
             subprocess.run("sed -i 's/GLH/GLU/g' "+ filName_PDB, shell=True)
             subprocess.run("sed -i 's/ASH/ASP/g' "+ filName_PDB, shell=True)
+            subprocess.run("sed -i 's/HSD/HIS/g' "+ filName_PDB, shell=True)
             
             # RUN CRYSOL
             OUT = subprocess.run("crysol "+ filName_PDB +" -lm 50 -fb 18 -ns 101 -p profile_"+str(frame_idx), shell=True)
@@ -2046,12 +2666,57 @@ def compute_rmsd_chemical_shift(sim_data, exp_data, nuclei, residues):
 
     return result
 
+
+import os
+import shutil
+import requests
+
 def download_NMR_star_file(BMRBid):
+    bmrb_url = (
+        "https://bmrb.io/ftp/pub/bmrb/entry_directories/bmr"
+        + BMRBid
+        + "/bmr"
+        + BMRBid
+        + "_3.str"
+    )
+
+    # Chemical shift directory
+    cs_path = "../../Data/Experiments/chemical_shift/BMRBid" + BMRBid
+    os.makedirs(cs_path, exist_ok=True)
+
+    # Spin relaxation directory
+    relaxation_path = "../../Data/Experiments/spin_relaxation/BMRBid" + BMRBid
+    os.makedirs(relaxation_path, exist_ok=True)
+
+    # Local filenames
+    bmrb_local_file = cs_path + "/bmr" + BMRBid + ".str"
+    relaxation_local_file = relaxation_path + "/bmr" + BMRBid + ".str"
+
+    # Download if chemical-shift copy does not exist
+    if not os.path.exists(bmrb_local_file):
+        print("Downloading BMRB NMR-STAR file to", bmrb_local_file)
+
+        r = requests.get(bmrb_url)
+        r.raise_for_status()
+
+        with open(bmrb_local_file, "wb") as f:
+            f.write(r.content)
+
+        print("NMR-star file downloaded to", bmrb_local_file)
+
+    # Copy to spin-relaxation directory
+    if not os.path.exists(relaxation_local_file):
+        shutil.copy2(bmrb_local_file, relaxation_local_file)
+        print("Copied NMR-star file to", relaxation_local_file)
+
+    return bmrb_local_file
+
+def download_NMR_star_file_old(BMRBid):
     bmrb_url = "https://bmrb.io/ftp/pub/bmrb/entry_directories/bmr" + BMRBid +"/bmr" + BMRBid + "_3.str"
     exp_data_path = '../../Data/Experiments/chemical_shift/BMRBid' + BMRBid
     os.makedirs(exp_data_path, exist_ok=True)
     bmrb_local_file = exp_data_path + "/bmr" + BMRBid + ".str"
-
+    
     if not os.path.exists(bmrb_local_file):
         print("Downloading BMRB NMR-STAR file to ",  bmrb_local_file)
         r = requests.get(bmrb_url)

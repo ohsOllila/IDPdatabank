@@ -578,9 +578,10 @@ for system in systems:
         'N': 2.5
     }
 
-    print('Calculate spin relaxation quality')
+    print('Calculate chemical shift quality')
     chemical_shift_quality_file =  dataFolder + 'chemical_shift_quality.yaml'
     if not os.path.exists(chemical_shift_quality_file) and ExperimentalFileShift:
+        print('Calculating')
         evaluate_chemical_shift_quality(system, atom_accuracies)
 
 

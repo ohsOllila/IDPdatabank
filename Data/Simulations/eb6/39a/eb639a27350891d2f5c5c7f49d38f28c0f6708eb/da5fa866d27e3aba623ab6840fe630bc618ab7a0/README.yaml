@@ -29,15 +29,24 @@ DIR_WRK: /home/sosamuli/temp/tmpData/
 DOI: mddb:cin-A00IR
 EXPERIMENT:
   chemical_shift:
-    alignment_score: []
-    ionic_strength: []
-    ionic_strength_match: []
-    path: []
-    ph: []
-    ph_match: []
-    sequence: []
-    temperature: []
-    temperature_match: []
+    alignment_score:
+    - -1
+    ionic_strength:
+    - 0.0
+    ionic_strength_match:
+    - true
+    path:
+    - BMRBid27721
+    ph:
+    - 7.4
+    ph_match:
+    - true
+    sequence:
+    - PLIVPYNLPLPGGVVPRMLITILGTVKPNANRIALDFQRGNDVAFHFNPRFNENNRRVIVCNTKLDNNWGREERQSVFPFESGKPFKIQVLVEPDHFKVAVNDAHLLQYNHRVKKLNEISKLGISGDIDLTSASYTMI
+    temperature:
+    - 301.0
+    temperature_match:
+    - true
   saxs:
     alignment_score: []
     ionic_strength: []
@@ -49,18 +58,28 @@ EXPERIMENT:
     temperature: []
     temperature_match: []
   spin_relaxation:
-    alignment_score: []
-    ionic_strength: []
-    ionic_strength_match: []
-    path: []
-    ph: []
-    ph_match: []
-    sequence: []
-    temperature: []
-    temperature_match: []
+    alignment_score:
+    - -1
+    ionic_strength:
+    - 0.0
+    ionic_strength_match:
+    - true
+    path:
+    - BMRBid27721
+    ph:
+    - 7.4
+    ph_match:
+    - true
+    sequence:
+    - PLIVPYNLPLPGGVVPRMLITILGTVKPNANRIALDFQRGNDVAFHFNPRFNENNRRVIVCNTKLDNNWGREERQSVFPFESGKPFKIQVLVEPDHFKVAVNDAHLLQYNHRVKKLNEISKLGISGDIDLTSASYTMI
+    temperature:
+    - 301.0
+    temperature_match:
+    - true
 FF: Amber99SB-ILDN
 FF_DATE: null
 FF_SOURCE: null
+ID: 469
 LOG: null
 NUMBER_OF_ATOMS: 2282
 PREEQTIME: 0

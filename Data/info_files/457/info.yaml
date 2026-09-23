@@ -2,7 +2,7 @@ DOI: 10.17617/3.SQSR84
 
 SOFTWARE: gromacs
 TRJ: KEA3_RCT_WT_apo.tar.gz/APO/repeat_00.xtc
-TPR: KEA3_RCT_WT_apo.tar.gz/APO/repeat_00.tpr
+TPR: KEA3_RCT_WT_apo.tar.gz/APO/repeat_example.tpr
 PREEQTIME: 0
 TIMELEFTOUT: 0
 
@@ -11,6 +11,13 @@ COMPOSITION:
  SOL:
   NAME: SOL
   MAPPING: mappingTIP4Pwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+
 
 
 

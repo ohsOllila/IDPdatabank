@@ -56,7 +56,73 @@ def _write_atomic(destination, blocks):
             temporary.unlink(missing_ok=True)
 
 
+from zipfile import ZipFile
+import time
+
+
+import os
+from pathlib import Path, PurePosixPath
+
 def extract_file_from_archive(archive_path, target_path, dest_dir):
+    """Extract one regular member to dest_dir using its basename."""
+    target = validate_source_path(target_path)
+
+    with libarchive.file_reader(str(archive_path)) as entries:
+        for entry in entries:
+            if PurePosixPath(entry.pathname) == target:
+                if not entry.isfile or entry.islnk:
+                    raise ValueError(
+                        f"Archive member is not a regular file: {target}"
+                    )
+
+                destination = Path(dest_dir) / target.name
+                tmp_destination = destination.with_suffix(
+                    destination.suffix + ".tmp"
+                )
+
+                total_size = getattr(entry, "size", None)
+                extracted_size = 0
+                last_percent = -1
+
+                print(
+                    f"Extracting {target.name}"
+                    + (f" ({total_size/1024**3:.2f} GB)" if total_size else "")
+                )
+
+                with open(tmp_destination, "wb") as f:
+                    for block in entry.get_blocks():
+                        f.write(block)
+                        extracted_size += len(block)
+
+                        if total_size:
+                            percent = int(extracted_size * 100 / total_size)
+
+                            # Update only when percentage changes
+                            if percent != last_percent:
+                                print(
+                                    f"\r  {percent:3d}% "
+                                    f"({extracted_size/1024**3:.2f}/"
+                                    f"{total_size/1024**3:.2f} GB)",
+                                    end="",
+                                    flush=True,
+                                )
+                                last_percent = percent
+                        else:
+                            print(
+                                f"\r  {extracted_size/1024**3:.2f} GB extracted",
+                                end="",
+                                flush=True,
+                            )
+
+                os.replace(tmp_destination, destination)
+                print("\r  100% complete")
+                return destination
+
+    raise FileNotFoundError(f"'{target}' not found in archive {archive_path}")
+
+
+
+def extract_file_from_archive_old(archive_path, target_path, dest_dir):
     """Extract one regular member to dest_dir using its basename."""
     target = validate_source_path(target_path)
     with libarchive.file_reader(str(archive_path)) as entries:
@@ -318,6 +384,8 @@ def resolve_download_file_url(
     if validate_uri:
         _validate_url(uri, sleep429, doi, fi_name)
 
+
+    #print('RESOLVE FINISHED')
     return uri
 
 

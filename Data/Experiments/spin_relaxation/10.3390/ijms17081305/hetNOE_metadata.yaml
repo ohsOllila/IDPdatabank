@@ -1,0 +1,20 @@
+Experiment_ID: 
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '700'
+    Manufacturer: Bruker
+    Model: AvanceIII
+Name: hetNOE
+Sample_component:
+-   Concentration_val: '0.2'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[15N]'
+    Mol_common_name: AcSp1
+    Type: null
+-   Concentration_val: '20'
+    Concentration_val_units: mM
+    Mol_common_name: sodium acetate
+    Type: null
+Sample_condition_variable:
+    ph: '5'
+    temperature: '303'

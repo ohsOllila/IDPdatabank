@@ -1,0 +1,34 @@
+Experiment_ID: '1'
+Experiment_file:
+-   description: null
+    type: null
+    url: https://bmrb.io/ftp/pub/bmrb/metabolomics/entry_directories/51598/None/hnca
+NMR_spectrometer:
+    Field_strength: '750'
+    Manufacturer: Bruker
+    Model: AVANCE III
+Name: 3D HNCA
+Sample_component:
+-   Concentration_val: '150'
+    Concentration_val_units: uM
+    Isotopic_labeling: '[U-99% 13C; U-99% 15N]'
+    Mol_common_name: SNAP25a
+    Type: null
+-   Concentration_val: '20'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium phosphate
+    Type: null
+-   Concentration_val: '150'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium chloride
+    Type: null
+-   Concentration_val: '0.1'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: TCEP
+    Type: null
+Sample_condition_variable:
+    ph: '6.5'
+    temperature: '288.15'
