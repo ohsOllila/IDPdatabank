@@ -1,0 +1,76 @@
+ID: 474
+AUTHORS_CONTACT: null
+COMPOSITION:
+  CLA:
+    COUNT: 0
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  PROTEIN:
+    SEQUENCE: PAPAPAPAPA
+  SOD:
+    COUNT: 0
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 4092
+    MAPPING: mappingOPCwater.yaml
+    NAME: SOL
+CPT:
+- - md_PA_02.cpt
+DATEOFRUNNING: 16/09/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.22747141
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: null
+FF_DATE: null
+FF_SOURCE: null
+GRO: null
+LOG:
+- - md_PA_02.log
+NUMBER_OF_ATOMS: 16491
+PREEQTIME: 0
+PUBLICATION: null
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: PA
+TEMPERATURE: 298.0
+TIMELEFTOUT: 0
+TOP:
+- - topol.top
+TPR:
+- - md_PA_02.tpr
+TRAJECTORY_SIZE: 4424698824
+TRJ:
+- - md_PA_02.xtc
+TRJLENGTH: 800010.0
+TYPEOFSYSTEM: protein

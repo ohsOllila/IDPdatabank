@@ -1,0 +1,679 @@
+differences:
+    100ALA:
+        C: null
+        CA: null
+        CB: 0.34213485514488085
+        HA: null
+        H: -0.2508995204795088
+        N: -0.8670745754245388
+    101VAL:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.08992048951048659
+        N: -0.5663339960037774
+    102ASN:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.748740799200796
+        N: 0.21807153846133076
+    103ASP:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.2782334765234822
+        N: 3.2378957442556953
+    104ALA:
+        C: null
+        CA: null
+        CB: 0.2521290409590229
+        HA: null
+        H: -0.24959000999001013
+        N: -0.9740530469529318
+    107LEU:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.30248471528472365
+        N: 3.2207056043956186
+    108GLN:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.44597217782218124
+        N: -0.09088996004005878
+    10LEU:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.6340947952047911
+        N: 0.9343985114884816
+    110ASN:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.9212225974026005
+        N: -3.450197232767522
+    111HIS:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.9427367932067954
+        N: null
+    112ARG:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.7088315084914996
+        N: -0.7880275224775914
+    113VAL:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.457239120879124
+        N: -2.333184015984159
+    115LYS:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.9211604995004992
+        N: 0.25360836163824274
+    116LEU:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.5670308291708208
+        N: 0.9650172527472876
+    117ASN:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.07156129870129924
+        N: 3.155137982017962
+    118GLU:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.33718904095903923
+        N: 1.841870229770322
+    119ILE:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.16462956043957178
+        N: -0.9572673626373387
+    120SER:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.846652377622366
+        N: 4.1624085414587455
+    121LYS:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.40950320679321006
+        N: -0.8155032967033122
+    123GLY:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.4827465134865214
+        N: -0.9906582817182397
+    126GLY:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.7939614985015027
+        N: 2.956276103896201
+    127ASP:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.5399329970029907
+        N: 1.640594395604495
+    128ILE:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.388272387612389
+        N: 1.7438681418581012
+    129ASP:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.32941347652348085
+        N: -0.23654652347643434
+    130LEU:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.7518021278721196
+        N: -4.8140985714285165
+    131THR:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.3516794705294686
+        N: -6.738493156843148
+    132SER:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.1317902997003042
+        N: 4.484977462537486
+    133ALA:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.13080518481518943
+        N: -0.026475684315656167
+    134SER:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.19398218781218546
+        N: 2.8439046953048717
+    135TYR:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.22594092907093533
+        N: 2.7592609690310326
+    136THR:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.2114240759240822
+        N: -0.44523221778207756
+    137MET:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.4198374525474531
+        N: 1.0663932467531936
+    13GLY:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.6225337862137845
+        N: -1.053041098901133
+    14VAL:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.9287058941058923
+        N: null
+    15VAL:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 1.3493162037962003
+        N: 1.65768093906091
+    17ARG:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.11304945054944682
+        N: 2.2570527572430166
+    18MET:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.4425130569430529
+        N: 0.24890003995996324
+    19LEU:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.25280710289710306
+        N: -1.4458786113886788
+    20ILE:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.6796871728271761
+        N: -5.32050287712282
+    22ILE:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.5188454045954032
+        N: -3.857008371628311
+    23LEU:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.0664697502497571
+        N: -1.3234197202797873
+    24GLY:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.8732666033966057
+        N: 0.25243423576411317
+    25THR:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.43306481518482265
+        N: -0.7012550149850796
+    27LYS:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.26836451548451734
+        N: -2.0586703596404163
+    30ALA:
+        C: null
+        CA: null
+        CB: -0.83756435564435
+        HA: null
+        H: 0.7004775524475519
+        N: 1.289506703296766
+    31ASN:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.7752247752247818
+        N: 2.041128301698265
+    33ILE:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.35272297702297806
+        N: 0.23506590409604655
+    34ALA:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.027703366633366144
+        N: -0.4964389310687807
+    35LEU:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.16978318681317717
+        N: 1.701536323676308
+    36ASP:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.43684709290709733
+        N: -0.14628402597395507
+    38GLN:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.24578639360639087
+        N: -4.365683026973031
+    39ARG:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.49387452547452604
+        N: -0.307104595404482
+    3ILE:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.18657469530470117
+        N: -1.7700113386613054
+    42ASP:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.7405647052947097
+        N: -1.7119194605394625
+    43VAL:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.9854466333666263
+        N: -1.7923034165833656
+    44ALA:
+        C: null
+        CA: null
+        CB: 0.6028024775224772
+        HA: null
+        H: null
+        N: null
+    45PHE:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.007189400599402873
+        N: -1.8360128471528867
+    46HIS:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.41163811188811295
+        N: -5.68659905094907
+    47PHE:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.15606766233766223
+        N: -0.29440168831180813
+    48ASN:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.030356013986013508
+        N: 3.024201498501668
+    4VAL:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.39417263736263664
+        N: 0.8267050149847393
+    51PHE:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.6748700899100921
+        N: 3.1020090009989474
+    55ASN:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.38669584415584524
+        N: 3.1985542857142377
+    56ARG:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.29538511488511876
+        N: 1.003999890109867
+    57ARG:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.4162499200799159
+        N: 2.201604465534402
+    58VAL:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.17458126873127533
+        N: -0.8548014585415018
+    60VAL:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 1.127708591408589
+        N: -1.8721582917081747
+    61CYS:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.2593750749250763
+        N: 1.6481367432568703
+    62ASN:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.336672537462535
+        N: 2.0171700599401277
+    63THR:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -1.362666433566437
+        N: -2.4329910989008994
+    64LYS:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.3705295004994884
+        N: -4.330720899100669
+    65LEU:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.5847977322677229
+        N: -0.3957500099902376
+    66ASP:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.23384066933066805
+        N: -1.583838901098872
+    67ASN:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.49414268731267974
+        N: 2.4263593206792535
+    69TRP:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.40717911088911585
+        N: -4.455877882117889
+    6TYR:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.35856298701298783
+        N: -1.9349356043955765
+    70GLY:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.5259284315684187
+        N: 0.24901361638367803
+    74ARG:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.30089699300700623
+        N: -2.9797971828172223
+    75GLN:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.10697409590408746
+        N: 0.034001818181764065
+    77VAL:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.14701887112888024
+        N: -2.563732287712398
+    78PHE:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.043469550449547256
+        N: 2.5432695904095937
+    7ASN:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.004516413586405754
+        N: -3.509894605394507
+    80PHE:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 1.3246978321678347
+        N: 4.167268271728233
+    82SER:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.21193358641358806
+        N: -0.5119493906093311
+    83GLY:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 1.3233751248751267
+        N: -0.14828631368652623
+    86PHE:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.3664683616383648
+        N: -0.8926579520477134
+    87LYS:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.8032829670329775
+        N: 0.3618155044955529
+    88ILE:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.7075451348651214
+        N: -1.8471539360639468
+    8LEU:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.7392408491508391
+        N: -2.426493656343581
+    90VAL:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.5385050549450536
+        N: 0.46926578421560805
+    91LEU:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.46691858141859477
+        N: -1.0844534665333754
+    92VAL:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.3070844355644482
+        N: -1.8928577122875652
+    95ASP:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.33083623376622207
+        N: 4.731127562437692
+    96HIS:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.5162911088911004
+        N: -1.9946639060938764
+    97PHE:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: 0.3151951648351723
+        N: 4.433925624375661
+    98LYS:
+        C: null
+        CA: null
+        CB: null
+        HA: null
+        H: -0.6489329470529359
+        N: -1.6216152447553327
+C: null
+CA: null
+CB: 0.55801213901516
+HA: null
+H: 0.5606669854104127
+N: 2.4309184563149593

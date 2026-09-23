@@ -1,0 +1,21 @@
+Experiment_ID: '1'
+Experiment_file: []
+NMR_spectrometer:
+    Field_strength: '500'
+    Manufacturer: Agilent
+    Model: UnityPlus
+Name: 3D HNCACB
+Sample_component:
+-   Concentration_val: '0.20'
+    Concentration_val_units: mM
+    Isotopic_labeling: '[U-100% 13C; U-100% 15N]'
+    Mol_common_name: Galectin-3
+    Type: null
+-   Concentration_val: '0.32'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: QACLTXLGBFUVST-IFLJBQAJSA-N
+    Type: null
+Sample_condition_variable:
+    ph: '7.4'
+    temperature: '301'

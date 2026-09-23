@@ -1,0 +1,75 @@
+ID: 472
+AUTHORS_CONTACT: Tobias Rindfleisch
+COMPOSITION:
+  CLA:
+    COUNT: 283
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  PROTEIN:
+    SEQUENCE: MGSSXXXXXXSSGLVPRGSXMENLYFQGNQLGRKAADFLDERLDPGEKIGEDVNFDVSESIVIIGFGQMGQVLANFLSTPLVSDSDLVGWPYIGFDLNPAVVKESRKLGFPILYGDGSRPSVLQSAGVSSPKAIMIMYKGKKRTTEAVQRLRLAFPGSPIYARAQDLPXLLELKKAGATDAILENAETSLQLGSKLLTGFGVMSDDVSFLSKVFRDSMEIQAQEEITASETNAGLKPMQMKASDINVVSAATQKQVQLMKPMQMKASDSNSDSAAEILQETAGLSQPPEIDDSSVNIDNGFVGKADKAQD
+  SOD:
+    COUNT: 293
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 94777
+    MAPPING: mappingTIP4Pwater.yaml
+    NAME: SOL
+CPT: null
+DATEOFRUNNING: 16/09/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.17617/3.SQSR84
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: CHARMM36m
+FF_DATE: charmm36m-jul2020
+FF_SOURCE: null
+LOG: null
+NUMBER_OF_ATOMS: 384363
+PREEQTIME: 0
+PUBLICATION: null
+SOFTWARE: gromacs
+SOFTWARE_VERSION: 2022.4
+SOURCE_FILES:
+  repeat_02.xtc: KEA3_RCT_WT_apo.tar.gz/APO/repeat_02.xtc
+  repeat_example.tpr: KEA3_RCT_WT_apo.tar.gz/APO/repeat_example.tpr
+SYSTEM: KEA3_RCT_WT_apo_repeat_02
+TEMPERATURE: 300.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - repeat_example.tpr
+TRAJECTORY_SIZE: 45808834556
+TRJ:
+- - repeat_02.xtc
+TRJLENGTH: 1000020.0
+TYPEOFSYSTEM: protein
