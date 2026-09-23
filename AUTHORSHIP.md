@@ -1,4 +1,5 @@
-Everyone who contributes this GitHub repository (pull request, comment, etc.) will be offered coauthorship in the publication describing FAIRMD proteins databank. The final decision on authorship will be to the invited individuals themselves. They should base their decision on self-assessment of their scientific contribution to the manuscript to be submitted.
+# Authorship rules for FAIRMD protein databank manuscript
+Everyone who contributes this [GitHub repository](https://github.com/ohsOllila/IDPdatabank) (pull request, comment, etc.) will be offered coauthorship in the publication describing FAIRMD proteins databank. **The final decision on authorship will be to the invited individuals themselves. They should base their decision on self-assessment of their scientific contribution to the manuscript to be submitted.**
 
 We hope that all communications would be written such that they are assignable to a person and affiliation, as this will remove unnecessary ambiguity upon publishing.
 
