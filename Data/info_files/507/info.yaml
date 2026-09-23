@@ -1,0 +1,40 @@
+DOI: 10.17617/3.SQSR84
+
+SOFTWARE: gromacs
+TRJ: KEA3_RCT_G65A_ADP.tar.gz/ADP/repeat_05.xtc
+TPR: KEA3_RCT_G65A_ADP.tar.gz/ADP/repeat_05.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4Pwater.yaml
+ SOD:
+  NAME: 
+  MAPPING: 
+ CLA:
+  NAME: 
+  MAPPING: 
+ ADP:
+  NAME: ADP
+  MAPPING: mappingADPcharmm.yaml
+
+DIR_WRK: /media/julianne/DATA/Lipids/IDPdatabank/downloads/
+
+PUBLICATION: https://doi.org/10.1038/s41467-024-47151-5
+
+AUTHORS_CONTACT: Tobias Rindfleisch
+
+SYSTEM: KEA3_RCT_G65A_ADP_repeat_05
+SOFTWARE_VERSION: 2022.4
+FF: CHARMM36m
+FF_SOURCE:
+FF_DATE: charmm36m-jul2020
+CPT:
+LOG:
+TOP:
+TEMPERATURE: 300
+
+TYPEOFSYSTEM: protein

@@ -1,0 +1,34 @@
+DOI: 10.17617/3.4I538Z
+
+SOFTWARE: gromacs
+TRJ: 2_MD_validation-WT-03_CHARMM22_star_tip4p.tar.gz/2_MD_validation-WT-3_CHARMM22_star_tip4p/struc_07/struc_07.xtc
+TPR: 2_MD_validation-WT-03_CHARMM22_star_tip4p.tar.gz/2_MD_validation-WT-3_CHARMM22_star_tip4p/struc_07/struc_07.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 120
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4Pwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingNAgmx.yaml
+
+DIR_WRK: /media/julianne/DATA/Lipids/IDPdatabank/downloads/
+
+PUBLICATION: https://doi.org/10.1021/acs.jctc.5c00854
+
+AUTHORS_CONTACT: Tobias Rindfleisch
+
+SYSTEM: 2_MD_validation-WT-03_CHARMM22_star_tip4p_struc_07
+SOFTWARE_VERSION:
+FF: CHARMM22star
+FF_SOURCE:
+FF_DATE:
+CPT:
+LOG:
+TOP: 2_MD_validation-WT-03_CHARMM22_star_tip4p.tar.gz/2_MD_validation-WT-3_CHARMM22_star_tip4p/struc_07/topol.top
+TEMPERATURE: 300
+
+TYPEOFSYSTEM: protein

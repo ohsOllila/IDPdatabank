@@ -1,0 +1,98 @@
+# Ligand "ATP" (adenosine triphosphate), as simulated with the CHARMM36m
+# force field (KEA3_RCT_WT/G65A_ATP, DOI 10.17617/3.SQSR84). Atom names
+# follow the standard CHARMM36 nucleotide-analog topology (RESI ATP in
+# toppar_all36_na_nad_ppi.str), which itself follows PDB Chemical Component
+# Dictionary nomenclature for the ribose/adenine/phosphate atoms.
+#
+# Universal names are the real atom names unchanged, except that the prime
+# character (illegal in a M_..._M identifier) is replaced with "R" (for the
+# ribose ring) so that, e.g., ring carbon C4 (adenine) and sugar carbon C4'
+# (ribose) do not collide once primes are dropped; a doubled prime (as in
+# H2'') becomes a doubled "R" (H2RR).
+
+M_C4R_M:
+  ATOMNAME: C4'
+M_H4R_M:
+  ATOMNAME: H4'
+M_O4R_M:
+  ATOMNAME: O4'
+M_C1R_M:
+  ATOMNAME: C1'
+M_H1R_M:
+  ATOMNAME: H1'
+M_C5_M:
+  ATOMNAME: C5
+M_N7_M:
+  ATOMNAME: N7
+M_C8_M:
+  ATOMNAME: C8
+M_H8_M:
+  ATOMNAME: H8
+M_N9_M:
+  ATOMNAME: N9
+M_N1_M:
+  ATOMNAME: N1
+M_C2_M:
+  ATOMNAME: C2
+M_H2_M:
+  ATOMNAME: H2
+M_N3_M:
+  ATOMNAME: N3
+M_C4_M:
+  ATOMNAME: C4
+M_C6_M:
+  ATOMNAME: C6
+M_N6_M:
+  ATOMNAME: N6
+M_H61_M:
+  ATOMNAME: H61
+M_H62_M:
+  ATOMNAME: H62
+M_C2R_M:
+  ATOMNAME: C2'
+M_H2RR_M:
+  ATOMNAME: H2''
+M_O2R_M:
+  ATOMNAME: O2'
+M_H2R_M:
+  ATOMNAME: H2'
+M_C3R_M:
+  ATOMNAME: C3'
+M_H3R_M:
+  ATOMNAME: H3'
+M_O3R_M:
+  ATOMNAME: O3'
+M_H3T_M:
+  ATOMNAME: H3T
+M_C5R_M:
+  ATOMNAME: C5'
+M_H5R_M:
+  ATOMNAME: H5'
+M_H5RR_M:
+  ATOMNAME: H5''
+M_O5R_M:
+  ATOMNAME: O5'
+M_PA_M:
+  ATOMNAME: PA
+M_O1A_M:
+  ATOMNAME: O1A
+M_O2A_M:
+  ATOMNAME: O2A
+M_O3A_M:
+  ATOMNAME: O3A
+M_PB_M:
+  ATOMNAME: PB
+M_O1B_M:
+  ATOMNAME: O1B
+M_O2B_M:
+  ATOMNAME: O2B
+M_O3B_M:
+  ATOMNAME: O3B
+M_PG_M:
+  ATOMNAME: PG
+M_O1G_M:
+  ATOMNAME: O1G
+M_O2G_M:
+  ATOMNAME: O2G
+M_O3G_M:
+  ATOMNAME: O3G

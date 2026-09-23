@@ -1,0 +1,34 @@
+DOI: 10.17617/3.4I538Z
+
+SOFTWARE: gromacs
+TRJ: 3_dynamics-files_production_runs-G68A-ff99SB_star_ILDN_HMS_C_g_corr_tip4p2005.tar.gz/3_dynamics-files_production_runs-G68A-ff99SB_star_ILDN_HMS_C_g_corr_tip4p2005/struc_00/struc_00.xtc
+TPR: 3_dynamics-files_production_runs-G68A-ff99SB_star_ILDN_HMS_C_g_corr_tip4p2005.tar.gz/3_dynamics-files_production_runs-G68A-ff99SB_star_ILDN_HMS_C_g_corr_tip4p2005/struc_00/struc_00.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 200
+
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4P2005water.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingNAgmx.yaml
+
+DIR_WRK: /media/julianne/DATA/Lipids/IDPdatabank/downloads/
+
+PUBLICATION: https://doi.org/10.1021/acs.jctc.5c00854
+
+AUTHORS_CONTACT: Tobias Rindfleisch
+
+SYSTEM: 3_dynamics-files_production_runs-G68A-ff99SB_star_ILDN_HMS_C_g_corr_tip4p2005_struc_00
+SOFTWARE_VERSION:
+FF: ff99SBstar-ILDN-HMS-Ccorr
+FF_SOURCE:
+FF_DATE:
+CPT:
+LOG:
+TOP: 3_dynamics-files_production_runs-G68A-ff99SB_star_ILDN_HMS_C_g_corr_tip4p2005.tar.gz/3_dynamics-files_production_runs-G68A-ff99SB_star_ILDN_HMS_C_g_corr_tip4p2005/struc_00/topol.top
+TEMPERATURE: 300
+
+TYPEOFSYSTEM: protein
