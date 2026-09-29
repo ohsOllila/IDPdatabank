@@ -1,0 +1,75 @@
+AUTHORS_CONTACT: Samuli Ollila
+COMPOSITION:
+  CLA:
+    COUNT: 6
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  PROTEIN:
+    SEQUENCE: KVEEVKKEEVKK
+  SOD:
+    COUNT: 5
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 7064
+    MAPPING: mappingOPCwater.yaml
+    NAME: SOL
+CPT:
+- - DESamber_40mm_nacl_md_KVEEV40_deprot_02.cpt
+DATEOFRUNNING: 23/09/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.22848457
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: DESAMBER
+FF_DATE: null
+FF_SOURCE: null
+ID: 487
+LOG:
+- - DESamber_40mm_nacl_md_KVEEV40_deprot_02.log
+NUMBER_OF_ATOMS: 28488
+PREEQTIME: 0
+PUBLICATION: null
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: KVEEV linker, deprotonated, 40 mM NaCl
+TEMPERATURE: 298.0
+TIMELEFTOUT: 0
+TOP:
+- - DESamber_40mm_nacl_topol_deprotonated.top
+TPR:
+- - DESamber_40mm_nacl_md_KVEEV40_deprot_02.tpr
+TRAJECTORY_SIZE: 7709170288
+TRJ:
+- - DESamber_40mm_nacl_md_KVEEV40_deprot_02.xtc
+TRJLENGTH: 800010.0
+TYPEOFSYSTEM: protein

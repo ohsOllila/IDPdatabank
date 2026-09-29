@@ -1,4 +1,3 @@
-ID: 474
 AUTHORS_CONTACT: null
 COMPOSITION:
   CLA:
@@ -55,6 +54,7 @@ FF: null
 FF_DATE: null
 FF_SOURCE: null
 GRO: null
+ID: 474
 LOG:
 - - md_PA_02.log
 NUMBER_OF_ATOMS: 16491

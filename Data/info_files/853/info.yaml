@@ -1,0 +1,29 @@
+DOI: 10.5281/zenodo.22848457
+SOFTWARE: gromacs
+TRJ: amberff03ws_0mm_nacl_md_KVEEV_prot_02.xtc
+TPR: amberff03ws_0mm_nacl_md_KVEEV_prot_02.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingTIP4PSwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+DIR_WRK: /home/sosamuli/temp/tmpData/
+PUBLICATION:
+AUTHORS_CONTACT: Samuli Ollila
+SYSTEM: KVEEV linker, protonated, 0 mM NaCl
+SOFTWARE_VERSION:
+FF: amberff03ws
+FF_SOURCE:
+FF_DATE:
+CPT: amberff03ws_0mm_nacl_md_KVEEV_prot_02.cpt
+LOG: amberff03ws_0mm_nacl_md_KVEEV_prot_02.log
+TOP: amberff03ws_0mm_nacl_topol_protonated.top
+TYPEOFSYSTEM: protein

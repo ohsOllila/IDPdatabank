@@ -1,0 +1,75 @@
+AUTHORS_CONTACT: Samuli Ollila
+COMPOSITION:
+  CLA:
+    COUNT: 12
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  PROTEIN:
+    SEQUENCE: KKVEEVKKVEEVKKVEE
+  SOD:
+    COUNT: 12
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 16776
+    MAPPING: mappingOPCwater.yaml
+    NAME: SOL
+CPT:
+- - md_KKVEE40_deprot_02.cpt
+DATEOFRUNNING: 23/09/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.22862488
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: DESAMBER
+FF_DATE: null
+FF_SOURCE: null
+ID: 489
+LOG:
+- - md_KKVEE40_deprot_02.log
+NUMBER_OF_ATOMS: 329
+PREEQTIME: 0
+PUBLICATION: null
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: KKVEE linker, deprotonated, 40 mM NaCl
+TEMPERATURE: 298.0
+TIMELEFTOUT: 0
+TOP:
+- - topol_deprot.top
+TPR:
+- - md_KKVEE40_deprot_02.tpr
+TRAJECTORY_SIZE: 111128108
+TRJ:
+- - md_KKVEE40_deprot_02_nowater.xtc
+TRJLENGTH: 800010.0
+TYPEOFSYSTEM: protein
