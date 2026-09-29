@@ -27,6 +27,9 @@ import glob
 import matplotlib.image as mpimg
 
 
+from fairmd.idp import NMLDB_SIMU_PATH, NMLDB_EXP_PATH, NMLDB_ROOT_PATH
+
+
 def calculate_contact_probabilities(gro_file, xtc_file, cutoff):
     u = mda.Universe(gro_file, xtc_file)
     CAatoms = u.select_atoms("name CA")
@@ -1849,6 +1852,9 @@ def calculate_SAXS_profile_crysol(gro_file, xtc_file,dt_analysis_ps=100):
             subprocess.run("sed -i 's/HD1 ILE/HD11 ILE/'" + filName_PDB, shell=True)
             subprocess.run("sed -i 's/HD2 ILE/HD12 ILE/'"+ filName_PDB, shell=True)
             subprocess.run("sed -i 's/HD3 ILE/HD13 ILE/'"+ filName_PDB, shell=True)
+            # ILE fix
+            subprocess.run("sed -i 's/O1  LYS/O   LYS/' "+ filName_PDB, shell=True) 
+            subprocess.run("sed -i 's/O2  LYS/OXT LYS/' "+ filName_PDB, shell=True) 
             # TERMINI fix
             subprocess.run("sed -i 's/OC1/OXT/' "+ filName_PDB, shell=True)
             subprocess.run("sed -i 's/OT1/OXT/' "+ filName_PDB, shell=True)
@@ -3684,3 +3690,181 @@ def stable_contact_analysis(gro_file, xtc_file, sel="name CA", cutoff=8.0, min_s
         'n_stable_pairs': int(n_stable_pairs),
     }
 
+
+
+def compute_chi2(q_sim, I_sim, q_exp, I_exp, sigma_exp):
+    """Reduced chi-squared simulated curve onto the experimental curve's real scale with a full affine
+    (scale AND offset) least-squares fit -- same 2-parameter form as that script's
+    linear_model/curve_fit, here via lstsq -- evaluated on the full experimental
+    q-grid (same convention as compute_rmse, via cubic_interp).
+
+    chi2 = sum(((I_exp - fit) / sigma_exp)^2), reduced by (n_points - 1) degrees
+    of freedom. Note: 5.regrid_and_scaling2curves.py divides by (n-1) even though
+    it fits 2 parameters (a, b); this uses the statistically correct (n-2)."""
+    q_min, q_max = max(q_sim.min(), q_exp.min()), min(q_sim.max(), q_exp.max())
+    mask_exp = (q_exp >= q_min) & (q_exp <= q_max)
+    n = mask_exp.sum()
+    if n < 3:
+        return np.nan
+    I_sim_interp = cubic_interp(q_exp[mask_exp], q_sim, I_sim)
+    A = np.vstack([I_sim_interp, np.ones_like(I_sim_interp)]).T
+    scale, offset = np.linalg.lstsq(A, I_exp[mask_exp], rcond=None)[0]
+    residual = (I_exp[mask_exp] - (I_sim_interp * scale + offset)) / sigma_exp[mask_exp]
+    dof = n - 1
+    return np.sum(residual**2) / dof if dof > 0 else np.nan
+
+
+def read_saxs_yaml(filename):
+    """Read q[1/A], I(q), sd_I(q) from a SAXS.yaml / SAXS_MAICoS.yaml file."""
+    with open(filename) as f:
+        data = yaml.safe_load(f)
+    I_KEYS = ("mean_I(q)[a.u.]", "mean_Inten[a.u.]", "I(q)[a.u.]")
+    q, I, I_std = [], [], []
+    for d in data:
+        q_val = d.get("q[1/A]", d.get("q"))
+        if q_val is None:
+            continue
+        I_val = next((d[k] for k in I_KEYS if k in d), None)
+        if I_val is None:
+            continue
+        q.append(q_val)
+        I.append(I_val)
+        I_std.append(d.get("sd_I(q)[a.u.]", d.get("sd_Inten[a.u.]", 0.0)))
+    return np.array(q), np.array(I), np.array(I_std)
+
+
+
+def evaluate_SAXS_quality(system, databankPath, plot=False):
+    """Calculate only chi² values against BIFT-corrected experimental SAXS data."""
+
+    sim_dir = os.path.join(databankPath, "Data", "Simulations", system["path"])
+    saxs_file = os.path.join(sim_dir, "SAXS.yaml")
+    maicos_file = os.path.join(sim_dir, "SAXS_MAICoS.yaml")
+
+    #if not (os.path.exists(saxs_file) and os.path.exists(maicos_file)):
+    #    return []
+
+    q_saxs, I_saxs, I_saxs_std = read_saxs_yaml(saxs_file)
+    #q_maicos, I_maicos, I_maicos_std = read_saxs_yaml(maicos_file)
+
+    rows = []
+
+    for exp_id in system["EXPERIMENT"]["saxs"]["path"]:
+        exp_file = os.path.join(
+            databankPath, "Data", "Experiments", "saxs", exp_id, "saxs.dat"
+        )
+
+        if not os.path.exists(exp_file):
+            continue
+
+        try:
+            q_bift, I_bift, sigma_bift, correction_factor = run_bift(
+                exp_file, label=exp_id
+            )
+        except Exception as e:
+            print(f"  BIFT failed for {exp_id}: {e}")
+            continue
+
+        row = {
+            "SAXS_chi2_bift": compute_chi2(
+                q_saxs, I_saxs, q_bift, I_bift, sigma_bift
+            ),
+            #"MAICoS_chi2_bift": compute_chi2(
+            #    q_maicos, I_maicos, q_bift, I_bift, sigma_bift
+            #),
+        }
+                                               
+        rows.append(row)
+
+    return rows
+
+
+def run_bift(dat_path, label):
+    """Run BIFT on one experimental .dat file, caching results under PROCESSING_DIR/<label>
+    (label = experiment ID, e.g. 'SASDQK7'). Many simulated systems in the databank share
+    the same experimental dataset, so this cache avoids re-running BIFT for the same experimental data.
+
+    Returns the BIFT-rebinned (q, I, sigma) from rescale.dat, where sigma has already been
+    rescaled by BIFT's error-correction factor -- the same 'scale_factor.dat' correction
+    peptonebench applies in create_dataset_SAXS.ipynb, read here directly from rescale.dat
+    since we don't need to reconcile it against a separately-curated .out/.json point grid
+    the way that notebook does for raw SASBDB downloads -- we only have .dat files.
+    """
+
+
+    BIFT_INSTALL_FOLDER = os.path.join(NMLDB_ROOT_PATH, "Scratch")
+
+    # BIFT setup 
+    # check the repo for more information https://github.com/ehb54/GenApp-BayesApp 
+    BIFT_EXEC = os.path.join(BIFT_INSTALL_FOLDER, "bift")
+    if not os.path.exists(BIFT_EXEC):
+        print("BIFT executable not found. Trying to get it and install it...")
+        response = requests.get("https://raw.githubusercontent.com/ehb54/GenApp-BayesApp/main/bin/source/bift.f")
+        response.raise_for_status()
+        with open("bift.f", "wb") as f:
+            f.write(response.content)
+        subprocess.run(["gfortran", "bift.f", "-march=native", "-O2", "-o", "bift"], check=True)
+        subprocess.run(["mv", "bift", BIFT_EXEC], check=True)
+        subprocess.run(["rm", "bift.f"], check=True)
+
+
+
+    PROCESSING_DIR = os.path.join(NMLDB_ROOT_PATH, "Scratch", "bift_processing")
+    os.makedirs(PROCESSING_DIR, exist_ok=True)
+    tmp_dir = os.path.join(PROCESSING_DIR, label)
+    os.makedirs(tmp_dir, exist_ok=True)
+
+    rescale_path = os.path.join(tmp_dir, "rescale.dat")
+    scale_factor_path = os.path.join(tmp_dir, "scale_factor.dat")
+
+    if not (os.path.exists(rescale_path) and os.path.exists(scale_factor_path)):
+        q, I, sigma = read_experimental_dat(dat_path)
+        np.savetxt(os.path.join(tmp_dir, "experimental.dat"), np.column_stack([q, I, sigma]))
+        with open(os.path.join(tmp_dir, "inputfile.dat"), "w") as f:
+            f.write("experimental.dat" + 17 * "\n")  # accept all BIFT defaults
+        with open(os.path.join(tmp_dir, "inputfile.dat")) as stdin_f, \
+             open(os.path.join(tmp_dir, "bift.log"), "w") as log_f:
+            subprocess.run([BIFT_EXEC], cwd=tmp_dir, stdin=stdin_f, stdout=log_f,
+                            stderr=subprocess.STDOUT, check=True)
+
+    q_r, I_r, sigma_r = np.loadtxt(rescale_path, unpack=True)
+    correction_factor = np.loadtxt(scale_factor_path)[0, 1]
+    return q_r, I_r, sigma_r, correction_factor
+
+
+def read_experimental_dat(filename):
+    """Read q, I(q), sigma from a raw experimental SAXS .dat file (SASBDB format).
+    Converts q to 1/A if it looks like it's in 1/nm (qmax > 2)."""
+    q, I, sigma = [], [], []
+    with open(filename) as f:
+        for line in f:
+            line = line.strip()
+            if not line or not (line[0].isdigit() or line[0] in "+-."):
+                continue
+            parts = line.split()
+            try:
+                q_val, I_val = float(parts[0]), float(parts[1])
+                sigma_val = float(parts[2]) if len(parts) >= 3 else np.nan
+            except ValueError:
+                continue
+            q.append(q_val)
+            I.append(I_val)
+            sigma.append(sigma_val)
+    q, I, sigma = np.array(q), np.array(I), np.array(sigma)
+    sigma[sigma < 0] = np.nan
+    good = ~np.isnan(sigma)
+    if not good.any():
+        raise ValueError(f"no usable sigma values in {filename}")
+    if not good.all():
+        idx = np.arange(len(sigma))
+        sigma[~good] = np.interp(idx[~good], idx[good], sigma[good])
+    if q.max() > 2.0:
+        q = q / 10.0
+    return q, I, sigma
+
+
+from scipy.interpolate import griddata
+
+def cubic_interp(x_new, x_known, y_known):
+    """ this function helps to regrid the simulated curve onto the experimental curve's q-grid, using cubic interpolation."""
+    return griddata(x_known, y_known, x_new, method="cubic")

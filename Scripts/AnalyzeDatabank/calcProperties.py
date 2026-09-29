@@ -581,9 +581,33 @@ for system in systems:
     print('Calculate chemical shift quality')
     chemical_shift_quality_file =  dataFolder + 'chemical_shift_quality.yaml'
     if not os.path.exists(chemical_shift_quality_file) and ExperimentalFileShift:
-        print('Calculating')
+        print('Calculating chemical shift quality')
         evaluate_chemical_shift_quality(system, atom_accuracies)
 
+
+
+    try:
+        #print(system['EXPERIMENT']['spin_relaxation']['path'])
+        exp_spin_relax_file = os.path.join(
+            NMLDB_EXP_PATH, 'saxs',
+            system['EXPERIMENT']['saxs']['path'][0], 'saxs.dat'
+        )
+        ExperimentalFileSAXS = True
+    except:
+        print('Experimental spin relaxation data file not found')
+        ExperimentalFileSAXS = False
+
+        
+    print('Calculate SAXS quality')
+    SAXS_quality_file =  dataFolder + 'SAXS_quality.yaml'
+    print(ExperimentalFileSAXS)
+    if not os.path.exists(SAXS_quality_file) and ExperimentalFileSAXS:
+        print('Calculating SAXS quality')
+        SAXS_quality = evaluate_SAXS_quality(system, NMLDB_ROOT_PATH + '/')
+        with open(SAXS_quality_file, 'w') as f:
+            json.dump(SAXS_quality, f, indent=2)
+
+        
 
     print('Determine folding state')
     if not os.path.exists(folding_state_file):
@@ -593,4 +617,6 @@ for system in systems:
         existing[str(system['ID'])] = result
         with open(folding_state_file, 'w') as f:
             json.dump(existing, f, indent=2)
+        
+
         
