@@ -1,0 +1,29 @@
+DOI: 10.5281/zenodo.22862488
+SOFTWARE: gromacs
+TRJ: md_KKVEE40_deprot_02_nowater.xtc
+TPR: md_KKVEE40_deprot_02.tpr
+PREEQTIME: 0
+TIMELEFTOUT: 0
+COMPOSITION:
+ PROTEIN:
+ SOL:
+  NAME: SOL
+  MAPPING: mappingOPCwater.yaml
+ SOD:
+  NAME: NA
+  MAPPING: mappingSODecc.yaml
+ CLA:
+  NAME: CL
+  MAPPING: mappingCLAecc.yaml
+DIR_WRK: /home/sosamuli/temp/tmpData/
+PUBLICATION:
+AUTHORS_CONTACT: Samuli Ollila
+SYSTEM: KKVEE linker, deprotonated, 40 mM NaCl
+SOFTWARE_VERSION:
+FF: DESAMBER
+FF_SOURCE:
+FF_DATE:
+CPT: md_KKVEE40_deprot_02.cpt
+LOG: md_KKVEE40_deprot_02.log
+TOP: topol_deprot.top
+TYPEOFSYSTEM: protein

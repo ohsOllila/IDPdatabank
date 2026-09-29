@@ -1,0 +1,98 @@
+AUTHORS_CONTACT: Tobias Rindfleisch
+COMPOSITION:
+  PROTEIN:
+    SEQUENCE: AKGDGNILDDLNEATKKASDFVTDKTKEALADGEKAKDYVVEKNSETADTLGKEAEKAAAYVEEKGKEAANKAAEFAEGKAGEAKDATK
+  SOD:
+    COUNT: 6
+    MAPPING: mappingNAgmx.yaml
+    NAME: NA
+  SOL:
+    COUNT: 22214
+    MAPPING: mappingTIP4Pwater.yaml
+    NAME: SOL
+CPT: null
+DATEOFRUNNING: 25/09/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.17617/3.G8TPPM
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score:
+    - 427.0
+    ionic_strength:
+    - 0.03
+    ionic_strength_match:
+    - true
+    path:
+    - 10.1039/c9cp01768b
+    ph:
+    - 7.4
+    ph_match:
+    - true
+    sequence:
+    - MHHHHHHMAAKGDGNILDDLNEATKKASDFVTDKTKEALADGEKAKDYVVEKNSETADTLGKEAEKAAAYVEEKGKEAANKAAEFAEGKAGEAKDATK
+    temperature:
+    - 298.0
+    temperature_match:
+    - true
+  spin_relaxation:
+    alignment_score:
+    - 430.5
+    - 424.5
+    ionic_strength:
+    - 0.02
+    - 0.02
+    ionic_strength_match:
+    - true
+    - true
+    path:
+    - 10.1021/acs.jctc.5c00854/1
+    - 10.1021/acs.jctc.5c00854/2
+    ph:
+    - 7.0
+    - 7.0
+    ph_match:
+    - true
+    - true
+    sequence:
+    - MAAKGDGNILDDLNEATKKASDFVTDKTKEALADGEKAKDYVVEKNSETADTLGKEAEKAAAYVEEKGKEAANKAAEFAEGKAGEAKDATK
+    - MAAKGDGNILDDLNEATKKASDFVTDKTKEALADGEKAKDYVVEKNSETADTLGKEAEKAAAYVEEKAKEAANKAAEFAEGKAGEAKDATK
+    temperature:
+    - 298.0
+    - 298.0
+    temperature_match:
+    - true
+    - true
+FF: OPLS_AA
+FF_DATE: null
+FF_SOURCE: null
+ID: 501
+LOG: null
+NUMBER_OF_ATOMS: 90162
+PREEQTIME: 0
+PUBLICATION: https://doi.org/10.1002/pro.4989
+SOFTWARE: gromacs
+SOFTWARE_VERSION: 2018.4
+SOURCE_FILES:
+  repeat_04.tpr: COR15A_monomer.zip/COR15A_monomer/repeat_04.tpr
+  repeat_04.xtc: COR15A_monomer.zip/COR15A_monomer/repeat_04.xtc
+SYSTEM: COR15A_monomer_repeat_04
+TEMPERATURE: 300.0
+TIMELEFTOUT: 0
+TOP: null
+TPR:
+- - repeat_04.tpr
+TRAJECTORY_SIZE: 1273731820
+TRJ:
+- - repeat_04.xtc
+TRJLENGTH: 120030.0
+TYPEOFSYSTEM: protein

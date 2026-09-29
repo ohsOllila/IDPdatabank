@@ -1,0 +1,75 @@
+AUTHORS_CONTACT: Samuli Ollila
+COMPOSITION:
+  CLA:
+    COUNT: 5
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  PROTEIN:
+    SEQUENCE: KVEEVKKEEVKK
+  SOD:
+    COUNT: 0
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 4054
+    MAPPING: mappingOPCwater.yaml
+    NAME: SOL
+CPT:
+- - DESamber_0mm_nacl_md_KVEEV_prot_02.cpt
+DATEOFRUNNING: 23/09/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.22848457
+EXPERIMENT:
+  chemical_shift:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+FF: DESAMBER
+FF_DATE: null
+FF_SOURCE: null
+ID: 483
+LOG:
+- - DESamber_0mm_nacl_md_KVEEV_prot_02.log
+NUMBER_OF_ATOMS: 16446
+PREEQTIME: 0
+PUBLICATION: null
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: KVEEV linker, protonated, 0 mM NaCl
+TEMPERATURE: 298.0
+TIMELEFTOUT: 0
+TOP:
+- - DESamber_0mm_nacl_topol_protonated.top
+TPR:
+- - DESamber_0mm_nacl_md_KVEEV_prot_02.tpr
+TRAJECTORY_SIZE: 4416153112
+TRJ:
+- - DESamber_0mm_nacl_md_KVEEV_prot_02.xtc
+TRJLENGTH: 800010.0
+TYPEOFSYSTEM: protein

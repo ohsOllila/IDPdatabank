@@ -1,0 +1,13 @@
+Sample_component:
+-   Concentration_val: '2'
+    Concentration_val_units: mg/ml
+    Mol_common_name: COR15A
+    Type: null
+-   Concentration_val: '10'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: sodium phosphate
+    Type: null
+Sample_condition_variable:
+    ph: '7.4'
+    temperature: '298'
