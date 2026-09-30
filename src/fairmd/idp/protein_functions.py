@@ -3817,21 +3817,65 @@ def run_bift(dat_path, label):
     rescale_path = os.path.join(tmp_dir, "rescale.dat")
     scale_factor_path = os.path.join(tmp_dir, "scale_factor.dat")
 
+    #if not (os.path.exists(rescale_path) and os.path.exists(scale_factor_path)):
+    #    q, I, sigma = read_experimental_dat(dat_path)
+    #    np.savetxt(os.path.join(tmp_dir, "experimental.dat"), np.column_stack([q, I, sigma]))
+    #    with open(os.path.join(tmp_dir, "inputfile.dat"), "w") as f:
+    #        f.write("experimental.dat" + 17 * "\n")  # accept all BIFT defaults
+    #   with open(os.path.join(tmp_dir, "inputfile.dat")) as stdin_f, \
+    #         open(os.path.join(tmp_dir, "bift.log"), "w") as log_f:
+    #        subprocess.run([BIFT_EXEC], cwd=tmp_dir, stdin=stdin_f, stdout=log_f,
+    #                        stderr=subprocess.STDOUT, check=True)
+
+
+
+
     if not (os.path.exists(rescale_path) and os.path.exists(scale_factor_path)):
         q, I, sigma = read_experimental_dat(dat_path)
         np.savetxt(os.path.join(tmp_dir, "experimental.dat"), np.column_stack([q, I, sigma]))
+
+        # Count the points BIFT will actually keep (mirrors its reader:
+        # q >= 0.0001, sigma > 0, no NaN)
+        q_arr, I_arr, s_arr = np.asarray(q), np.asarray(I), np.asarray(sigma)
+        valid = (q_arr >= 0.0001) & (s_arr > 0) & np.isfinite(I_arr) & np.isfinite(s_arr)
+        n_valid = int(valid.sum())
+
+        # BIFT clamps the p(r) point count to 20-500 (default 70) and needs
+        # ntot <= number of data points, otherwise the smoothness term is NaN.
+        if n_valid < 20:
+            raise ValueError(f"Only {n_valid} usable points; BIFT needs at least 20")
+        ntot = min(70, n_valid)
+
+        lines = [""] * 17              # 17 lines; blank = accept default
+        lines[0] = "experimental.dat"  # line 1: data file
+        lines[11] = str(ntot)          # line 12: number of points in p(r)
+
         with open(os.path.join(tmp_dir, "inputfile.dat"), "w") as f:
-            f.write("experimental.dat" + 17 * "\n")  # accept all BIFT defaults
+            f.write("\n".join(lines) + "\n")
+
+        log_path = os.path.join(tmp_dir, "bift.log")
         with open(os.path.join(tmp_dir, "inputfile.dat")) as stdin_f, \
-             open(os.path.join(tmp_dir, "bift.log"), "w") as log_f:
+             open(log_path, "w") as log_f:
             subprocess.run([BIFT_EXEC], cwd=tmp_dir, stdin=stdin_f, stdout=log_f,
-                            stderr=subprocess.STDOUT, check=True)
+                       stderr=subprocess.STDOUT, check=True)
+
+        # BIFT exits with status 0 even when it gives up ("no usable alpha"),
+        # so check=True won't catch that. Look in the log instead.
+        with open(log_path) as f:
+            if "Problem" in f.read():
+                raise RuntimeError(f"BIFT failed, see {log_path}")    
+
+
+
+
+
+
 
     q_r, I_r, sigma_r = np.loadtxt(rescale_path, unpack=True)
     correction_factor = np.loadtxt(scale_factor_path)[0, 1]
     return q_r, I_r, sigma_r, correction_factor
 
-
+from scipy.signal import savgol_filter
 def read_experimental_dat(filename):
     """Read q, I(q), sigma from a raw experimental SAXS .dat file (SASBDB format).
     Converts q to 1/A if it looks like it's in 1/nm (qmax > 2)."""
@@ -3854,12 +3898,26 @@ def read_experimental_dat(filename):
     sigma[sigma < 0] = np.nan
     good = ~np.isnan(sigma)
     if not good.any():
-        raise ValueError(f"no usable sigma values in {filename}")
-    if not good.all():
+        # If sigma not found, guess sigma with polynomial fitting inspired by CRYSOL
+        # Not very robust
+        smooth = savgol_filter(I, window_length=11, polyorder=3)
+        resid = I - smooth
+
+        print(q)
+        print(I)
+        print(resid)
+        
+        # local RMS of the residuals in a sliding window
+        w = 11
+        sigma = np.sqrt(np.convolve(resid**2, np.ones(w)/w, mode="same"))
+        print(sigma)
+        #raise ValueError(f"no usable sigma values in {filename}")
+    elif not good.all():
         idx = np.arange(len(sigma))
         sigma[~good] = np.interp(idx[~good], idx[good], sigma[good])
     if q.max() > 2.0:
         q = q / 10.0
+    print(q,I,sigma)
     return q, I, sigma
 
 
