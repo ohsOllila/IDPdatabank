@@ -1,0 +1,57 @@
+# Membrane GP — configuration
+# Usage: python run.py --config config.toml [--index N] [--all]
+# CLI flags override values set here.
+
+[data]
+ff_x = "all_ff_x.npy"
+ff_y = "all_ff_y.npy"
+td_x = "all_td_x.npy"
+td_y = "all_td_y.npy"
+# These defaults preserve the membrane workflow; set units/cropping explicitly.
+start_index = 76
+q_scale = 10.0
+recover_sign = true
+r_min = -5.0
+r_max = 5.0
+cutoff  = 600    # max q-points per curve
+slicing = 5      # subsample every N-th q-point for training
+
+add_noise           = false  # add simulated sigmoidal noise before de-absolutizing
+max_noise_magnitude = 10.0
+
+[run]
+# indices = [238, 403]   # specific indices; overridden by --index / --all CLI flags
+noise_model = "constant"   # "constant" | "quadratic"
+inference   = "laplace"    # "laplace"  | "nuts"
+steps       = 500
+lr          = 0.01
+mean_fn     = "zero"       # GP prior mean in r-space: "zero" | "cosine" | "tophat"
+prior_fn    = "uniform"    # hyperparameter prior:     "uniform" | "gaussian"
+
+[inference]
+laplace_samples = 50    # theta samples for Laplace marginalisation
+nuts_samples    = 200   # posterior draws after warmup
+nuts_warmup     = 100   # NUTS adaptation steps (increase for better mixing)
+nuts_chains     = 1     # >1 enables R-hat convergence diagnostics
+seed            = 0
+
+[bounds]
+# [lower, upper] for each hyperparameter
+ell           = [0.1,    2.5  ]
+c             = [50.0,   200.0]
+k             = [0.1,    15.0 ]
+a             = [0.5,    5.0  ]
+sigma_n_base  = [0.01,   20.0 ]   # σ_n for constant; σ_n_base for quadratic
+sigma_n_slope = [0.0001, 2.0  ]   # quadratic only
+q_base        = [-50.0,  20.0 ]
+# Mean function params (only used when mean_fn = "cosine" or "tophat")
+# cosine: -A·cos(π·r/B), masked to |r/B| ≤ 1.5
+# tophat: center -A for |r|≤B; sides +C for B≤|r|≤B+D
+mean_A        = [0.1,    5.0  ]
+mean_B        = [0.1,    5.0  ]
+mean_C        = [0.01,   3.0  ]   # tophat only
+mean_D        = [0.1,    5.0  ]   # tophat only
+
+[output]
+out_dir  = "results"
+save_cov = false   # also write full N×N covariance matrices (large)

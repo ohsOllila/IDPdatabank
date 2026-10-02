@@ -1,0 +1,11 @@
+membrane/results/
+lipids_SAS/examples/
+Results/
+membrane/figs/
+membrane/data/
+CLAUDE.md
+membrane/__pycache__/
+__pycache__/
+.ipynb_checkpoints/
+membrane/models/
+.DS_Store

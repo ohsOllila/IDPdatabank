@@ -1,0 +1,18 @@
+{
+  "entry": "SASDNV6",
+  "source": "https://www.sasbdb.org/data/SASDNV6/",
+  "download": "https://www.sasbdb.org/media/intensities_files/SASDNV6.dat",
+  "sha256": "b6cbec8fcdd277f5ae90f80871eda0a8fe5519d142cf1b85d53009b4be941279",
+  "points": 1234,
+  "q_native_range": [
+    0.01778791,
+    0.578193
+  ],
+  "nonpositive_errors": 0,
+  "negative_intensities": 37,
+  "all_finite": true,
+  "q_strictly_increasing": true,
+  "q_units": "Native file does not declare units. Inferred inverse angstroms from Guinier scale; SASBDB web plot uses inverse nm. Confirm before fitting.",
+  "rough_Rg_in_inverse_native_q": 36.07225512323658,
+  "published_Guinier_Rg_nm": 3.6
+}

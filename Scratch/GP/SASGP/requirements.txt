@@ -1,0 +1,9 @@
+numpy>=1.26
+scipy>=1.11
+torch>=2.2
+matplotlib>=3.8
+pandas>=2.2
+jupyterlab>=4.1
+ipykernel>=6.29
+tomli>=2; python_version < '3.11'
+# For NUTS inference also install: pip install '.[nuts]'
