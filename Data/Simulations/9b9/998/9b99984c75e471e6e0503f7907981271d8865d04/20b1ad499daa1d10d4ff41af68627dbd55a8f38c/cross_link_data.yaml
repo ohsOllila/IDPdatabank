@@ -1,0 +1,97 @@
+uniprot:
+- accession: A0A8B4QCX4
+  title: A0A8B4QCX4_9BACL DNA/RNA non-specific endonuclease OS=Kurthia zopfii OX=1650
+    GN=DFR61_10323 PE=4 SV=1
+  length: 329
+  identity_%: 81.2
+  similarity_%: 93.8
+  coverage_%: 94.12
+  e_value: 1.7
+  bit_score: 33.5
+  align_length: 16
+- accession: A0ABR1T3T7
+  title: A0ABR1T3T7_9PEZI Flo11 OS=Apiospora marii OX=335849 GN=PG991_000504 PE=4
+    SV=1
+  length: 1306
+  identity_%: 86.7
+  similarity_%: 93.3
+  coverage_%: 88.24
+  e_value: 2.3
+  bit_score: 33.1
+  align_length: 15
+- accession: A0ABR1S272
+  title: A0ABR1S272_9PEZI Uncharacterized protein OS=Apiospora rasikravindrae OX=990691
+    GN=PG993_012363 PE=4 SV=1
+  length: 1290
+  identity_%: 86.7
+  similarity_%: 93.3
+  coverage_%: 88.24
+  e_value: 2.3
+  bit_score: 33.1
+  align_length: 15
+- accession: A0AAW0QT52
+  title: A0AAW0QT52_9PEZI Uncharacterized protein OS=Apiospora kogelbergensis OX=1337665
+    GN=PG999_007931 PE=4 SV=1
+  length: 1312
+  identity_%: 92.9
+  similarity_%: 92.9
+  coverage_%: 82.35
+  e_value: 3.1
+  bit_score: 32.7
+  align_length: 14
+- accession: A0ABR1VIS4
+  title: A0ABR1VIS4_9PEZI Flo11 OS=Apiospora hydei OX=1337664 GN=PG997_011343 PE=4
+    SV=1
+  length: 1282
+  identity_%: 92.9
+  similarity_%: 92.9
+  coverage_%: 82.35
+  e_value: 3.1
+  bit_score: 32.7
+  align_length: 14
+pdb:
+- accession: 9PWO_S
+  title: 9PWO mol:protein length:5035 Ryanodine receptor 1
+  length: 5035
+  identity_%: 66.7
+  similarity_%: 86.7
+  coverage_%: 88.24
+  e_value: 1.8
+  bit_score: 26.9
+  align_length: 15
+- accession: 9PWO_M
+  title: 9PWO mol:protein length:5035 Ryanodine receptor 1
+  length: 5035
+  identity_%: 66.7
+  similarity_%: 86.7
+  coverage_%: 88.24
+  e_value: 1.8
+  bit_score: 26.9
+  align_length: 15
+- accession: 9PWO_G
+  title: 9PWO mol:protein length:5035 Ryanodine receptor 1
+  length: 5035
+  identity_%: 66.7
+  similarity_%: 86.7
+  coverage_%: 88.24
+  e_value: 1.8
+  bit_score: 26.9
+  align_length: 15
+- accession: 9PWO_A
+  title: 9PWO mol:protein length:5035 Ryanodine receptor 1
+  length: 5035
+  identity_%: 66.7
+  similarity_%: 86.7
+  coverage_%: 88.24
+  e_value: 1.8
+  bit_score: 26.9
+  align_length: 15
+- accession: 6W1N_H
+  title: 6W1N mol:protein length:4624 Ryanodine Receptor
+  length: 4624
+  identity_%: 66.7
+  similarity_%: 86.7
+  coverage_%: 88.24
+  e_value: 1.8
+  bit_score: 26.9
+  align_length: 15

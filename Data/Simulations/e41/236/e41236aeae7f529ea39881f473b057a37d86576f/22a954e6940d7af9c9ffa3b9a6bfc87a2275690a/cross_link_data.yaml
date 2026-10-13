@@ -1,0 +1,98 @@
+uniprot:
+- accession: O25899
+  title: TONB_HELPY Protein TonB OS=Helicobacter pylori (strain ATCC 700392 / 26695)
+    OX=85962 GN=tonB PE=1 SV=1
+  length: 285
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 2.1e-50
+  bit_score: 168.7
+  align_length: 81
+- accession: Q9ZJP4
+  title: TONB_HELPJ Protein TonB OS=Helicobacter pylori (strain J99 / ATCC 700824)
+    OX=85963 GN=tonB PE=3 SV=1
+  length: 280
+  identity_%: 98.8
+  similarity_%: 98.8
+  coverage_%: 100.0
+  e_value: 4.8e-48
+  bit_score: 162.5
+  align_length: 81
+- accession: B5Z8Y8
+  title: B5Z8Y8_HELPG Siderophore-mediated iron transport protein OS=Helicobacter
+    pylori (strain G27) OX=563041 GN=HPG27_1289 PE=3 SV=1
+  length: 243
+  identity_%: 94.2
+  similarity_%: 97.1
+  coverage_%: 85.19
+  e_value: 2.3e-38
+  bit_score: 136.7
+  align_length: 69
+- accession: I0EKK0
+  title: I0EKK0_HELC0 Siderophore-mediated iron transport protein OS=Helicobacter
+    cetorum (strain ATCC BAA-429 / MIT 00-7128) OX=182217 GN=HCW_00880 PE=3 SV=1
+  length: 282
+  identity_%: 74.7
+  similarity_%: 81.9
+  coverage_%: 98.77
+  e_value: 1.5e-32
+  bit_score: 122.9
+  align_length: 83
+- accession: Q17Z10
+  title: Q17Z10_HELAH Siderophore-mediated iron transport protein OS=Helicobacter
+    acinonychis (strain Sheeba) OX=382638 GN=tonB PE=3 SV=1
+  length: 289
+  identity_%: 79.8
+  similarity_%: 82.1
+  coverage_%: 98.77
+  e_value: 3.4e-32
+  bit_score: 122.1
+  align_length: 84
+pdb:
+- accession: 9M8D_C
+  title: 9M8D mol:protein length:595 Dihydrolipoamide acetyltransferase component
+    of pyruvate dehydrogenase complex
+  length: 595
+  identity_%: 34.4
+  similarity_%: 47.9
+  coverage_%: 91.36
+  e_value: 1.3e-08
+  bit_score: 53.5
+  align_length: 96
+- accession: 6NCL_a0
+  title: 6NCL mol:protein length:352 P14
+  length: 352
+  identity_%: 52.3
+  similarity_%: 56.8
+  coverage_%: 53.09
+  e_value: 2.5e-06
+  bit_score: 47.0
+  align_length: 44
+- accession: 2GRX_D
+  title: 2GRX mol:protein length:229 Protein tonB
+  length: 229
+  identity_%: 46.8
+  similarity_%: 59.6
+  coverage_%: 53.09
+  e_value: 1.0e-05
+  bit_score: 45.1
+  align_length: 47
+- accession: 2GRX_C
+  title: 2GRX mol:protein length:229 Protein tonB
+  length: 229
+  identity_%: 46.8
+  similarity_%: 59.6
+  coverage_%: 53.09
+  e_value: 1.0e-05
+  bit_score: 45.1
+  align_length: 47
+- accession: 9DDQ_F
+  title: 9DDQ mol:protein length:261 Protein TonB
+  length: 261
+  identity_%: 46.8
+  similarity_%: 59.6
+  coverage_%: 53.09
+  e_value: 1.1e-05
+  bit_score: 45.1
+  align_length: 47

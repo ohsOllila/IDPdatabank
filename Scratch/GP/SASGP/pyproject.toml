@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sasgp"
+version = "0.1.0"
+description = "Minimal transform-based Gaussian-process toolkit extracted from the SASGP research notebook."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "torch>=2.2",
+  "matplotlib>=3.8",
+  "pandas>=2.2",
+  "tomli>=2; python_version < '3.11'",
+]
+
+[project.optional-dependencies]
+nuts = ["pyro-ppl>=1.9"]
+notebook = [
+  "jupyterlab>=4.1",
+  "ipykernel>=6.29",
+]
+
+[tool.setuptools]
+py-modules = ["gptransform"]
+packages = ["sasgp"]
