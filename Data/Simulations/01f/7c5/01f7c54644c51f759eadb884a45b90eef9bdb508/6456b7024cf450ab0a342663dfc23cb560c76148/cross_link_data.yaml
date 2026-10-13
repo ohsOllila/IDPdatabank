@@ -1,0 +1,98 @@
+uniprot:
+- accession: Q51368
+  title: TONB_PSEAE Protein TonB OS=Pseudomonas aeruginosa (strain ATCC 15692 / DSM
+    22644 / CIP 104116 / JCM 14847 / LMG 12228 / 1C / PRS 101 / PAO1) OX=208964 GN=tonB
+    PE=1 SV=2
+  length: 342
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 96.97
+  e_value: 6.6e-59
+  bit_score: 193.0
+  align_length: 96
+- accession: A0A2R3J1C6
+  title: A0A2R3J1C6_9PSED Protein TonB OS=Pseudomonas paraeruginosa OX=2994495 GN=CSB93_1183
+    PE=3 SV=1
+  length: 341
+  identity_%: 99.0
+  similarity_%: 99.0
+  coverage_%: 96.97
+  e_value: 5.2e-58
+  bit_score: 190.7
+  align_length: 96
+- accession: A0A0H2ZJP3
+  title: A0A0H2ZJP3_PSEAB Protein TonB OS=Pseudomonas aeruginosa (strain UCBPP-PA14)
+    OX=208963 GN=tonB PE=3 SV=1
+  length: 342
+  identity_%: 91.7
+  similarity_%: 94.8
+  coverage_%: 96.97
+  e_value: 1.4e-52
+  bit_score: 176.8
+  align_length: 96
+- accession: A0A1H0BSX9
+  title: A0A1H0BSX9_9PSED Protein TonB OS=Pseudomonas jinjuensis OX=198616 GN=SAMN05216193_103181
+    PE=3 SV=1
+  length: 350
+  identity_%: 89.6
+  similarity_%: 94.8
+  coverage_%: 96.97
+  e_value: 3.4e-52
+  bit_score: 176.0
+  align_length: 96
+- accession: A0ABS3TUN7
+  title: A0ABS3TUN7_9PSED Protein TonB OS=Pseudomonas schmalbachii OX=2816993 GN=JFY56_19330
+    PE=3 SV=1
+  length: 345
+  identity_%: 86.5
+  similarity_%: 93.8
+  coverage_%: 96.97
+  e_value: 5.3e-50
+  bit_score: 170.2
+  align_length: 96
+pdb:
+- accession: 6FIP_A
+  title: 6FIP mol:protein length:99 Protein TonB
+  length: 99
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 5.2e-67
+  bit_score: 199.5
+  align_length: 99
+- accession: 6I97_E
+  title: 6I97 mol:protein length:90 Protein TonB
+  length: 90
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 90.91
+  e_value: 5.8e-60
+  bit_score: 181.4
+  align_length: 90
+- accession: 6I97_D
+  title: 6I97 mol:protein length:90 Protein TonB
+  length: 90
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 90.91
+  e_value: 5.8e-60
+  bit_score: 181.4
+  align_length: 90
+- accession: 2GSK_B
+  title: 2GSK mol:protein length:81 protein TONB
+  length: 81
+  identity_%: 50.0
+  similarity_%: 69.4
+  coverage_%: 72.73
+  e_value: 1.1e-19
+  bit_score: 79.3
+  align_length: 72
+- accession: 1U07_B
+  title: 1U07 mol:protein length:90 TonB protein
+  length: 90
+  identity_%: 50.0
+  similarity_%: 69.4
+  coverage_%: 72.73
+  e_value: 1.4e-19
+  bit_score: 79.3
+  align_length: 72

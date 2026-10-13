@@ -1,0 +1,97 @@
+uniprot:
+- accession: A0AAV0Z0V3
+  title: A0AAV0Z0V3_VICFA ENTH domain-containing protein OS=Vicia faba OX=3906 GN=VFH_I488960
+    PE=4 SV=1
+  length: 600
+  identity_%: 60.7
+  similarity_%: 82.1
+  coverage_%: 100.0
+  e_value: 0.01
+  bit_score: 40.0
+  align_length: 28
+- accession: A0ABM0T0S3
+  title: A0ABM0T0S3_CAMSA Clathrin assembly protein At1g68110 OS=Camelina sativa OX=90675
+    GN=LOC104704724 PE=4 SV=1
+  length: 376
+  identity_%: 69.0
+  similarity_%: 79.3
+  coverage_%: 96.43
+  e_value: 0.01
+  bit_score: 40.0
+  align_length: 29
+- accession: A0A5N5TBZ4
+  title: A0A5N5TBZ4_9ALTO Uncharacterized protein (Fragment) OS=Armadillidium nasatum
+    OX=96803 GN=Anas_10804 PE=4 SV=1
+  length: 87
+  identity_%: 70.4
+  similarity_%: 85.2
+  coverage_%: 92.86
+  e_value: 0.02
+  bit_score: 38.5
+  align_length: 27
+- accession: A0A261Y2D3
+  title: A0A261Y2D3_9FUNG Uncharacterized protein OS=Bifiguratus adelaidae OX=1938954
+    GN=BZG36_01798 PE=4 SV=1
+  length: 517
+  identity_%: 59.3
+  similarity_%: 81.5
+  coverage_%: 96.43
+  e_value: 0.03
+  bit_score: 39.3
+  align_length: 27
+- accession: D8LUS6
+  title: D8LUS6_BLAHO Uncharacterized protein OS=Blastocystis hominis OX=12968 GN=GSBLH_T00000028001
+    PE=4 SV=1
+  length: 913
+  identity_%: 57.1
+  similarity_%: 82.1
+  coverage_%: 100.0
+  e_value: 0.04
+  bit_score: 38.9
+  align_length: 28
+pdb:
+- accession: 2GRX_D
+  title: 2GRX mol:protein length:229 Protein tonB
+  length: 229
+  identity_%: 72.2
+  similarity_%: 94.4
+  coverage_%: 64.29
+  e_value: 0.0085
+  bit_score: 34.3
+  align_length: 18
+- accession: 2GRX_C
+  title: 2GRX mol:protein length:229 Protein tonB
+  length: 229
+  identity_%: 72.2
+  similarity_%: 94.4
+  coverage_%: 64.29
+  e_value: 0.0085
+  bit_score: 34.3
+  align_length: 18
+- accession: 9DDQ_F
+  title: 9DDQ mol:protein length:261 Protein TonB
+  length: 261
+  identity_%: 72.2
+  similarity_%: 94.4
+  coverage_%: 64.29
+  e_value: 0.0085
+  bit_score: 34.3
+  align_length: 18
+- accession: 9DDP_F
+  title: 9DDP mol:protein length:261 Protein TonB
+  length: 261
+  identity_%: 72.2
+  similarity_%: 94.4
+  coverage_%: 64.29
+  e_value: 0.0085
+  bit_score: 34.3
+  align_length: 18
+- accession: 9DDO_F
+  title: 9DDO mol:protein length:261 Protein TonB
+  length: 261
+  identity_%: 72.2
+  similarity_%: 94.4
+  coverage_%: 64.29
+  e_value: 0.0085
+  bit_score: 34.3
+  align_length: 18

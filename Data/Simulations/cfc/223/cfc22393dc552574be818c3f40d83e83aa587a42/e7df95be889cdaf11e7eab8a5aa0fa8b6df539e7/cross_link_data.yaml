@@ -1,0 +1,103 @@
+uniprot:
+- accession: A0A8T2DT21
+  title: A0A8T2DT21_9BRAS NAD(P)-binding domain superfamily OS=Arabidopsis thaliana
+    x Arabidopsis arenosa OX=1240361 GN=ISN45_At04g005110 PE=4 SV=1
+  length: 776
+  identity_%: 99.6
+  similarity_%: 99.6
+  coverage_%: 90.97
+  e_value: 0.0
+  bit_score: 542.0
+  align_length: 282
+- accession: A0A8T2E821
+  title: A0A8T2E821_ARASU Regulator of K+ conductance N-terminal OS=Arabidopsis suecica
+    OX=45249 GN=ISN44_As04g004990 PE=4 SV=1
+  length: 776
+  identity_%: 99.6
+  similarity_%: 99.6
+  coverage_%: 90.97
+  e_value: 0.0
+  bit_score: 542.0
+  align_length: 282
+- accession: Q9M0Z3
+  title: KEA3_ARATH K(+) efflux antiporter 3, chloroplastic OS=Arabidopsis thaliana
+    OX=3702 GN=KEA3 PE=1 SV=2
+  length: 776
+  identity_%: 99.6
+  similarity_%: 99.6
+  coverage_%: 90.97
+  e_value: 0.0
+  bit_score: 542.0
+  align_length: 282
+- accession: D7M1U5
+  title: D7M1U5_ARALL RCK N-terminal domain-containing protein OS=Arabidopsis lyrata
+    subsp. lyrata OX=81972 GN=ARALYDRAFT_663482 PE=4 SV=1
+  length: 756
+  identity_%: 94.7
+  similarity_%: 96.5
+  coverage_%: 90.97
+  e_value: 6.9e-172
+  bit_score: 504.2
+  align_length: 282
+- accession: A0ACE2E6M5
+  title: A0ACE2E6M5_ARAHA RCK N-terminal domain-containing protein OS=Arabidopsis
+    halleri OX=81970 GN=ARAHAL_6.5401.1 PE=4 SV=1
+  length: 773
+  identity_%: 94.7
+  similarity_%: 96.5
+  coverage_%: 90.97
+  e_value: 1.2e-171
+  bit_score: 504.2
+  align_length: 282
+pdb:
+- accession: 3L9X_B
+  title: 3L9X mol:protein length:413 Glutathione-regulated potassium-efflux system
+    protein kefC, linker, ancillary protein kefF
+  length: 413
+  identity_%: 24.2
+  similarity_%: 43.9
+  coverage_%: 63.87
+  e_value: 2.0e-11
+  bit_score: 68.2
+  align_length: 198
+- accession: 3L9X_A
+  title: 3L9X mol:protein length:413 Glutathione-regulated potassium-efflux system
+    protein kefC, linker, ancillary protein kefF
+  length: 413
+  identity_%: 24.2
+  similarity_%: 43.9
+  coverage_%: 63.87
+  e_value: 2.0e-11
+  bit_score: 68.2
+  align_length: 198
+- accession: 3L9W_B
+  title: 3L9W mol:protein length:413 Glutathione-regulated potassium-efflux system
+    protein kefC, linker, ancillary protein kefF
+  length: 413
+  identity_%: 24.2
+  similarity_%: 43.9
+  coverage_%: 63.87
+  e_value: 2.0e-11
+  bit_score: 68.2
+  align_length: 198
+- accession: 3L9W_A
+  title: 3L9W mol:protein length:413 Glutathione-regulated potassium-efflux system
+    protein kefC, linker, ancillary protein kefF
+  length: 413
+  identity_%: 24.2
+  similarity_%: 43.9
+  coverage_%: 63.87
+  e_value: 2.0e-11
+  bit_score: 68.2
+  align_length: 198
+- accession: 3EYW_B
+  title: 3EYW mol:protein length:413 C-terminal domain of Glutathione-regulated potassium-efflux
+    system protein kefC fused to full length Glutathione-regulated potassium-efflux
+    system ancillary protein kefF
+  length: 413
+  identity_%: 24.2
+  similarity_%: 43.9
+  coverage_%: 63.87
+  e_value: 2.0e-11
+  bit_score: 68.2
+  align_length: 198

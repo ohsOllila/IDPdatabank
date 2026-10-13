@@ -1,0 +1,47 @@
+uniprot: []
+pdb:
+- accession: 9QM4_A
+  title: 9QM4 mol:protein length:566 FAD dependent monooxygenase
+  length: 566
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 3.0
+  bit_score: 25.8
+  align_length: 10
+- accession: 5VE6_A
+  title: 5VE6 mol:protein length:492 Tyrosine-protein kinase SgK223
+  length: 492
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 3.0
+  bit_score: 25.8
+  align_length: 10
+- accession: 9M8M_H
+  title: 9M8M mol:protein length:324 Photosynthetic reaction center subunit H
+  length: 324
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 3.0
+  bit_score: 25.8
+  align_length: 10
+- accession: 9YKN_K
+  title: 9YKN mol:protein length:196 Myosin light chain 3
+  length: 196
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 3.2
+  bit_score: 25.8
+  align_length: 10
+- accession: 9YKN_J
+  title: 9YKN mol:protein length:196 Myosin light chain 3
+  length: 196
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 3.2
+  bit_score: 25.8
+  align_length: 10

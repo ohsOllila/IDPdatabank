@@ -1,23 +1,96 @@
-uniprot: []
+uniprot:
+- accession: Q64K55
+  title: Q64K55_ARGTR Aciniform spidroin 1 (Fragment) OS=Argiope trifasciata OX=156845
+    PE=1 SV=1
+  length: 2834
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 2.8e-117
+  bit_score: 376.7
+  align_length: 199
+- accession: A0A8T0FCM4
+  title: A0A8T0FCM4_ARGBR Spidroin C-terminal domain-containing protein OS=Argiope
+    bruennichi OX=94029 GN=HNY73_007006 PE=4 SV=1
+  length: 567
+  identity_%: 83.2
+  similarity_%: 90.1
+  coverage_%: 98.99
+  e_value: 5.5e-98
+  bit_score: 304.3
+  align_length: 202
+- accession: E1AW40
+  title: E1AW40_9ARAC Aciniform spidroin 1 (Fragment) OS=Argiope amoena OX=216270
+    GN=AcSp1 PE=2 SV=1
+  length: 1072
+  identity_%: 80.1
+  similarity_%: 87.4
+  coverage_%: 98.99
+  e_value: 6.4e-94
+  bit_score: 305.1
+  align_length: 206
+- accession: W8FUS3
+  title: W8FUS3_9ARAC Aciniform spidroin 1 OS=Argiope argentata OX=233271 PE=4 SV=1
+  length: 4479
+  identity_%: 81.8
+  similarity_%: 87.7
+  coverage_%: 99.5
+  e_value: 1.4e-89
+  bit_score: 297.4
+  align_length: 203
+- accession: A0A6M3YE47
+  title: A0A6M3YE47_ARAVE Aciniform spidroin 1 variant 4 OS=Araneus ventricosus OX=182803
+    PE=4 SV=1
+  length: 2755
+  identity_%: 70.9
+  similarity_%: 82.3
+  coverage_%: 99.5
+  e_value: 2.7e-78
+  bit_score: 265.0
+  align_length: 203
 pdb:
-- title: pdb|2MU3|A Chain A, Aciniform spidroin 1 [Argiope trifasciata]
+- accession: 2MU3_A
+  title: 2MU3 mol:protein length:199 Aciniform spidroin 1
   length: 199
   identity_%: 100.0
   similarity_%: 100.0
   coverage_%: 100.0
-  e_value: 5.87921e-130
-  bit_score: 364.77
-- title: pdb|9LIE|A Chain A, Aciniform spidroin 1 [Latrodectus hesperus]
+  e_value: 6.6e-134
+  bit_score: 376.7
+  align_length: 199
+- accession: 9LIE_A
+  title: 9LIE mol:protein length:151 Aciniform spidroin 1
   length: 151
-  identity_%: 32.64
-  similarity_%: 58.33
-  coverage_%: 72.36
-  e_value: 8.80777e-15
-  bit_score: 70.0922
-- title: pdb|9LIF|A Chain A, Aciniform spidroin 1 [Latrodectus hesperus]
+  identity_%: 32.9
+  similarity_%: 58.4
+  coverage_%: 71.36
+  e_value: 8.5e-20
+  bit_score: 85.1
+  align_length: 149
+- accession: 9LIF_A
+  title: 9LIF mol:protein length:151 Aciniform spidroin 1
   length: 151
-  identity_%: 36.88
-  similarity_%: 56.74
-  coverage_%: 70.85
-  e_value: 5.72421e-10
-  bit_score: 56.9954
+  identity_%: 32.9
+  similarity_%: 55.5
+  coverage_%: 70.35
+  e_value: 3.1e-15
+  bit_score: 73.2
+  align_length: 146
+- accession: 2LYI_A
+  title: 2LYI mol:protein length:167 PROTEIN (entity)
+  length: 167
+  identity_%: 27.1
+  similarity_%: 49.7
+  coverage_%: 74.37
+  e_value: 1.8e-09
+  bit_score: 58.2
+  align_length: 155
+- accession: 2K3O_A
+  title: 2K3O mol:protein length:129 TuSp1
+  length: 129
+  identity_%: 32.8
+  similarity_%: 50.9
+  coverage_%: 55.78
+  e_value: 8.7e-08
+  bit_score: 52.8
+  align_length: 116

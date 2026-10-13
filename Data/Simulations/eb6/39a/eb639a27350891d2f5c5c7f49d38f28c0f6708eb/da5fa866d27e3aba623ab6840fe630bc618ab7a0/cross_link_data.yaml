@@ -1,0 +1,140 @@
+uniprot:
+- title: 'sp|P17931.5| RecName: Full=Galectin-3; Short=Gal-3; AltName: Full=35 kDa
+    lectin; AltName: Full=Carbohydrate-binding protein 35; Short=CBP 35; AltName:
+    Full=Galactose-specific lectin 3; AltName: Full=Galactoside-binding protein; Short=GALBP;
+    AltName: Full=IgE-binding protein; AltName: Full=L-31; AltName: Full=Laminin-binding
+    protein; AltName: Full=Lectin L-29; AltName: Full=Mac-2 antigen [Homo sapiens]'
+  length: 250
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 6.21746e-100
+  bit_score: 289.656
+- title: 'sp|P38486.3| RecName: Full=Galectin-3; Short=Gal-3; AltName: Full=35 kDa
+    lectin; AltName: Full=Carbohydrate-binding protein 35; Short=CBP 35; AltName:
+    Full=Galactose-specific lectin 3; AltName: Full=IgE-binding protein; AltName:
+    Full=Laminin-binding protein; AltName: Full=Lectin L-29; AltName: Full=Mac-2 antigen
+    [Canis lupus familiaris]'
+  length: 296
+  identity_%: 86.96
+  similarity_%: 94.2
+  coverage_%: 100.0
+  e_value: 3.18641e-88
+  bit_score: 261.536
+- title: 'sp|P47845.2| RecName: Full=Galectin-3; Short=Gal-3; AltName: Full=35 kDa
+    lectin; AltName: Full=Carbohydrate-binding protein 35; Short=CBP 35; AltName:
+    Full=Galactose-specific lectin 3; AltName: Full=IgE-binding protein; AltName:
+    Full=Laminin-binding protein; AltName: Full=Lectin L-29; AltName: Full=Mac-2 antigen
+    [Oryctolagus cuniculus]'
+  length: 242
+  identity_%: 86.96
+  similarity_%: 94.93
+  coverage_%: 100.0
+  e_value: 3.14849e-87
+  bit_score: 256.914
+- title: 'sp|P16110.3| RecName: Full=Galectin-3; Short=Gal-3; AltName: Full=35 kDa
+    lectin; AltName: Full=Carbohydrate-binding protein 35; Short=CBP 35; AltName:
+    Full=Galactose-specific lectin 3; AltName: Full=IgE-binding protein; AltName:
+    Full=L-34 galactoside-binding lectin; AltName: Full=Laminin-binding protein; AltName:
+    Full=Lectin L-29; AltName: Full=Mac-2 antigen [Mus musculus]'
+  length: 264
+  identity_%: 86.96
+  similarity_%: 93.48
+  coverage_%: 100.0
+  e_value: 3.32374e-87
+  bit_score: 257.684
+- title: 'sp|P08699.4| RecName: Full=Galectin-3; Short=Gal-3; AltName: Full=35 kDa
+    lectin; AltName: Full=Carbohydrate-binding protein 35; Short=CBP 35; AltName:
+    Full=Galactose-specific lectin 3; AltName: Full=IgE-binding protein; AltName:
+    Full=Laminin-binding protein; AltName: Full=Lectin L-29; AltName: Full=Mac-2 antigen
+    [Rattus norvegicus]'
+  length: 262
+  identity_%: 83.33
+  similarity_%: 91.3
+  coverage_%: 100.0
+  e_value: 6.36554e-84
+  bit_score: 249.21
+pdb:
+- title: pdb|9OT8|A Chain A, FN3con-9 - FN3con-41 fusion,Galectin-3 [synthetic construct]
+  length: 403
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 1.10017e-100
+  bit_score: 295.434
+- title: pdb|9NQO|A Chain A, Galectin-3,Galectin-3,Galectin-3 in complex FN3 [Homo
+    sapiens]
+  length: 283
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 1.1979e-100
+  bit_score: 291.197
+- title: pdb|9OT9|A Chain A, Galectin-3,FN3con-7 [synthetic construct]
+  length: 285
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 2.44134e-100
+  bit_score: 290.426
+- title: pdb|2NMN|A Chain A, Galectin-3 [Homo sapiens] >pdb|2NMO|A Chain A, Galectin-3
+    [Homo sapiens] >pdb|2NN8|A Chain A, Galectin-3 [Homo sapiens] >pdb|3ZSJ|A Chain
+    A, GALECTIN-3 [Homo sapiens] >pdb|4LBO|A Chain A, Galectin-3 [Homo sapiens] >pdb|5IUQ|A
+    Chain A, Galectin-3 [Homo sapiens] >pdb|5ODY|A Chain A, Galectin-3 [Homo sapiens]
+    >pdb|6EYM|A Chain A, Galectin-3 [Homo sapiens] >pdb|6F2Q|A Chain A, Galectin-3
+    [Homo sapiens] >pdb|6FK2|A Chain A, Galectin-3 [Homo sapiens] >pdb|6I74|A Chain
+    A, Galectin-3 [Homo sapiens] >pdb|6I75|A Chain A, Galectin-3 [Homo sapiens] >pdb|6I76|A
+    Chain A, Galectin-3 [Homo sapiens] >pdb|6I77|A Chain A, Galectin-3 [Homo sapiens]
+    >pdb|6I78|A Chain A, Galectin-3 [Homo sapiens] >pdb|6KXA|A Chain A, Galectin-3
+    [Homo sapiens] >pdb|6KXB|A Chain A, Galectin-3 [Homo sapiens] >pdb|6QGE|A Chain
+    A, Galectin-3 [Homo sapiens] >pdb|6QGF|A Chain A, Galectin-3 [Homo sapiens] >pdb|6QLN|A
+    Chain A, Galectin-3 [Homo sapiens] >pdb|6QLO|A Chain A, Galectin-3 [Homo sapiens]
+    >pdb|6QLP|A Chain A, Galectin-3 [Homo sapiens] >pdb|6QLQ|B Chain B, Galectin-3
+    [Homo sapiens] >pdb|6QLR|A Chain A, Galectin-3 [Homo sapiens] >pdb|6QLS|A Chain
+    A, Galectin-3 [Homo sapiens] >pdb|6QLT|A Chain A, Galectin-3 [Homo sapiens] >pdb|6QLU|A
+    Chain A, Galectin-3 [Homo sapiens] >pdb|6RHL|A Chain A, Galectin-3 [Homo sapiens]
+    >pdb|6RHM|A Chain A, Galectin-3 [Homo sapiens] >pdb|6RZF|A Chain A, Galectin-3
+    [Homo sapiens] >pdb|6RZG|A Chain A, Galectin-3 [Homo sapiens] >pdb|6RZH|A Chain
+    A, Galectin-3 [Homo sapiens] >pdb|6RZI|A Chain A, Galectin-3 [Homo sapiens] >pdb|6RZJ|A
+    Chain A, Galectin-3 [Homo sapiens] >pdb|6RZK|A Chain A, Galectin-3 [Homo sapiens]
+    >pdb|6RZL|A Chain A, Galectin-3 [Homo sapiens] >pdb|6RZM|A Chain A, Galectin-3
+    [Homo sapiens] >pdb|6Y4C|A Chain A, Galectin-3 [Homo sapiens] >pdb|6Y78|A Chain
+    A, Galectin-3 [Homo sapiens] >pdb|8OJI|A Chain A, Galectin-3 [Homo sapiens] >pdb|8OJK|A
+    Chain A, Galectin-3 [Homo sapiens] >pdb|8OJM|A Chain A, Galectin-3 [Homo sapiens]
+    >pdb|8OJO|A Chain A, Galectin-3 [Homo sapiens] >pdb|8PBF|A Chain A, Galectin-3
+    [Homo sapiens] >pdb|8PF9|A Chain A, Galectin-3 [Homo sapiens] >pdb|8PFF|A Chain
+    A, Galectin-3 [Homo sapiens] >pdb|8PPN|A Chain A, Galectin-3 [Homo sapiens] >pdb|8RR7|A
+    Chain A, Galectin-3 [Homo sapiens] >pdb|8RR8|A Chain A, Galectin-3 [Homo sapiens]
+    >pdb|8RR9|A Chain A, Galectin-3 [Homo sapiens] >pdb|8RRA|A Chain A, Galectin-3
+    [Homo sapiens] >pdb|8RRB|A Chain A, Galectin-3 [Homo sapiens] >pdb|8RRC|A Chain
+    A, Galectin-3 [Homo sapiens] >pdb|8RRE|A Chain A, Galectin-3 [Homo sapiens] >pdb|8RRF|A
+    Chain A, Galectin-3 [Homo sapiens] >pdb|8RRG|A Chain A, Galectin-3 [Homo sapiens]
+    >pdb|8S67|A Chain A, Galectin-3 [Homo sapiens] >pdb|9FDB|A Chain A, Galectin-3
+    [Homo sapiens] >pdb|9FDC|A Chain A, Galectin-3 [Homo sapiens] >pdb|9RQV|A Chain
+    A, Galectin-3 [Homo sapiens] >pdb|9RQW|A Chain A, Galectin-3 [Homo sapiens] >pdb|9RQX|A
+    Chain A, Galectin-3 [Homo sapiens] >pdb|9RQY|A Chain A, Galectin-3 [Homo sapiens]
+    >pdb|9RQZ|A Chain A, Galectin-3 [Homo sapiens] >pdb|9RR0|A Chain A, Galectin-3
+    [Homo sapiens] >pdb|9RR1|A Chain A, Galectin-3 [Homo sapiens] >pdb|9RR2|A Chain
+    A, Galectin-3 [Homo sapiens] >pdb|9RR3|A Chain A, Galectin-3 [Homo sapiens] >pdb|9RR4|A
+    Chain A, Galectin-3 [Homo sapiens] >pdb|9RR5|A Chain A, Galectin-3 [Homo sapiens]
+    >pdb|9RR6|A Chain A, Galectin-3 [Homo sapiens] >pdb|9RR7|A Chain A, Galectin-3
+    [Homo sapiens] >pdb|9RR8|A Chain A, Galectin-3 [Homo sapiens] >pdb|9RR9|A Chain
+    A, Galectin-3 [Homo sapiens] >pdb|9RR9|B Chain B, Galectin-3 [Homo sapiens] >pdb|9RRA|A
+    Chain A, Galectin-3 [Homo sapiens] >pdb|9RRB|A Chain A, Galectin-3 [Homo sapiens]
+    >pdb|9RRC|A Chain A, Galectin-3 [Homo sapiens] >pdb|9RRD|A Chain A, Galectin-3
+    [Homo sapiens] >pdb|9RRE|A Chain A, Galectin-3 [Homo sapiens]
+  length: 138
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 3.5038e-100
+  bit_score: 284.648
+- title: pdb|8ITZ|A Chain A, Galectin-3 [Homo sapiens] >pdb|8Z1S|A Chain A, Galectin-3
+    [Homo sapiens] >pdb|8Z1S|B Chain B, Galectin-3 [Homo sapiens] >pdb|8Z1T|A Chain
+    A, Galectin-3 [Homo sapiens] >pdb|8Z25|A Chain A, Galectin-3 [Homo sapiens]
+  length: 179
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 3.6221e-100
+  bit_score: 286.189

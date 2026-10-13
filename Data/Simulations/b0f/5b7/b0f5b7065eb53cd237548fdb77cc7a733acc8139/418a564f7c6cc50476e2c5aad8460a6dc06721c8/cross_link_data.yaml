@@ -1,0 +1,98 @@
+uniprot:
+- accession: Q9HU57
+  title: Q9HU57_PSEAE tRNA (cytidine(34)-2'-O)-methyltransferase OS=Pseudomonas aeruginosa
+    (strain ATCC 15692 / DSM 22644 / CIP 104116 / JCM 14847 / LMG 12228 / 1C / PRS
+    101 / PAO1) OX=208964 GN=trmL PE=1 SV=1
+  length: 153
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 93.83
+  e_value: 1.4e-108
+  bit_score: 315.1
+  align_length: 152
+- accession: A0A0H2ZHL8
+  title: A0A0H2ZHL8_PSEAB tRNA (cytidine(34)-2'-O)-methyltransferase OS=Pseudomonas
+    aeruginosa (strain UCBPP-PA14) OX=208963 GN=trmH PE=3 SV=1
+  length: 153
+  identity_%: 98.7
+  similarity_%: 98.7
+  coverage_%: 93.83
+  e_value: 7.8e-106
+  bit_score: 308.1
+  align_length: 152
+- accession: A0A2R3IP30
+  title: A0A2R3IP30_9PSED tRNA (cytidine(34)-2'-O)-methyltransferase OS=Pseudomonas
+    paraeruginosa OX=2994495 GN=trmL PE=3 SV=1
+  length: 153
+  identity_%: 96.7
+  similarity_%: 98.0
+  coverage_%: 93.21
+  e_value: 1.1e-103
+  bit_score: 302.8
+  align_length: 151
+- accession: A0A1G8K5Q6
+  title: A0A1G8K5Q6_9PSED tRNA (cytidine(34)-2'-O)-methyltransferase OS=Pseudomonas
+    panipatensis OX=428992 GN=trmL PE=3 SV=1
+  length: 153
+  identity_%: 89.5
+  similarity_%: 94.7
+  coverage_%: 93.83
+  e_value: 3.8e-97
+  bit_score: 286.2
+  align_length: 152
+- accession: A0ABS3TX55
+  title: A0ABS3TX55_9PSED tRNA (cytidine(34)-2'-O)-methyltransferase OS=Pseudomonas
+    schmalbachii OX=2816993 GN=trmL PE=3 SV=1
+  length: 153
+  identity_%: 88.8
+  similarity_%: 94.7
+  coverage_%: 93.83
+  e_value: 2.2e-96
+  bit_score: 284.3
+  align_length: 152
+pdb:
+- accession: 6QH8_D
+  title: 6QH8 mol:protein length:162 tRNA (cytidine(34)-2'-O)-methyltransferase
+  length: 162
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 4.0e-119
+  bit_score: 336.3
+  align_length: 162
+- accession: 6QH8_C
+  title: 6QH8 mol:protein length:162 tRNA (cytidine(34)-2'-O)-methyltransferase
+  length: 162
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 4.0e-119
+  bit_score: 336.3
+  align_length: 162
+- accession: 6QH8_B
+  title: 6QH8 mol:protein length:162 tRNA (cytidine(34)-2'-O)-methyltransferase
+  length: 162
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 4.0e-119
+  bit_score: 336.3
+  align_length: 162
+- accession: 6QH8_A
+  title: 6QH8 mol:protein length:162 tRNA (cytidine(34)-2'-O)-methyltransferase
+  length: 162
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 4.0e-119
+  bit_score: 336.3
+  align_length: 162
+- accession: 6QKV_B
+  title: 6QKV mol:protein length:155 tRNA (cytidine(34)-2'-O)-methyltransferase
+  length: 155
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 93.83
+  e_value: 7.8e-111
+  bit_score: 315.1
+  align_length: 152
