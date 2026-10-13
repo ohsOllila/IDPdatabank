@@ -1,0 +1,99 @@
+uniprot:
+- accession: O25899
+  title: TONB_HELPY Protein TonB OS=Helicobacter pylori (strain ATCC 700392 / 26695)
+    OX=85962 GN=tonB PE=1 SV=1
+  length: 285
+  identity_%: 91.1
+  similarity_%: 91.1
+  coverage_%: 100.0
+  e_value: 1.5e-59
+  bit_score: 193.0
+  align_length: 101
+- accession: B5Z8Y8
+  title: B5Z8Y8_HELPG Siderophore-mediated iron transport protein OS=Helicobacter
+    pylori (strain G27) OX=563041 GN=HPG27_1289 PE=3 SV=1
+  length: 243
+  identity_%: 86.1
+  similarity_%: 89.1
+  coverage_%: 100.0
+  e_value: 1.7e-54
+  bit_score: 178.7
+  align_length: 101
+- accession: Q9ZJP4
+  title: TONB_HELPJ Protein TonB OS=Helicobacter pylori (strain J99 / ATCC 700824)
+    OX=85963 GN=tonB PE=3 SV=1
+  length: 280
+  identity_%: 81.2
+  similarity_%: 85.1
+  coverage_%: 100.0
+  e_value: 4.2e-50
+  bit_score: 168.7
+  align_length: 101
+- accession: Q17Z10
+  title: Q17Z10_HELAH Siderophore-mediated iron transport protein OS=Helicobacter
+    acinonychis (strain Sheeba) OX=382638 GN=tonB PE=3 SV=1
+  length: 289
+  identity_%: 67.3
+  similarity_%: 72.0
+  coverage_%: 98.02
+  e_value: 1.6e-34
+  bit_score: 129.0
+  align_length: 107
+- accession: I0ESR3
+  title: I0ESR3_HELCM Siderophore-mediated iron transport protein (TonB) OS=Helicobacter
+    cetorum (strain ATCC BAA-540 / CCUG 52418 / MIT 99-5656) OX=1163745 GN=HCD_04900
+    PE=3 SV=1
+  length: 264
+  identity_%: 56.4
+  similarity_%: 65.3
+  coverage_%: 100.0
+  e_value: 4.4e-25
+  bit_score: 104.0
+  align_length: 101
+pdb:
+- accession: 6NCL_a0
+  title: 6NCL mol:protein length:352 P14
+  length: 352
+  identity_%: 48.8
+  similarity_%: 54.8
+  coverage_%: 83.17
+  e_value: 1.0e-17
+  bit_score: 79.7
+  align_length: 84
+- accession: 9M8D_C
+  title: 9M8D mol:protein length:595 Dihydrolipoamide acetyltransferase component
+    of pyruvate dehydrogenase complex
+  length: 595
+  identity_%: 55.9
+  similarity_%: 59.3
+  coverage_%: 58.42
+  e_value: 1.2e-12
+  bit_score: 65.9
+  align_length: 59
+- accession: 9RTZ_d
+  title: 9RTZ mol:protein length:1203 AP-3 complex subunit delta
+  length: 1203
+  identity_%: 34.1
+  similarity_%: 45.5
+  coverage_%: 89.11
+  e_value: 2.3e-09
+  bit_score: 56.6
+  align_length: 123
+- accession: 9RTY_d
+  title: 9RTY mol:protein length:1203 AP-3 complex subunit delta
+  length: 1203
+  identity_%: 34.1
+  similarity_%: 45.5
+  coverage_%: 89.11
+  e_value: 2.3e-09
+  bit_score: 56.6
+  align_length: 123
+- accession: 9RTX_d
+  title: 9RTX mol:protein length:1203 AP-3 complex subunit delta
+  length: 1203
+  identity_%: 34.1
+  similarity_%: 45.5
+  coverage_%: 89.11
+  e_value: 2.3e-09
+  bit_score: 56.6
+  align_length: 123

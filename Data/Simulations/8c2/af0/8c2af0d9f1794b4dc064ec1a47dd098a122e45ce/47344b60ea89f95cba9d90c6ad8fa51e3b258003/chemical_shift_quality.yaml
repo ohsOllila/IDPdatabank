@@ -1,0 +1,341 @@
+10PRO:
+  C: 0
+  CA: 0
+  CB: 0
+12THR:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.14123938030975292
+13PRO:
+  C: 0
+  CA: 0
+  CB: 0
+14ASP:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+15PRO:
+  CA: 0
+  CB: 0
+16LEU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.066658870564686
+17ASN:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+18LEU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+19ARG:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+20GLY:
+  C: 0.0007276361816745958
+  CA: 0.30257871064468134
+  H: 0
+  N: 0
+21PRO:
+  C: 0
+  CA: 0.24044677661174063
+  CB: 0
+22LEU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0.1522120757802814
+  N: 0.43912943528237625
+23ASP:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+24GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+25PRO:
+  CA: 0
+  CB: 0
+26ARG:
+  C: 0
+  CA: 0.3790509745127082
+  CB: 0
+  H: 0
+  N: 0
+27TRP:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0.09443098450784637
+28ARG:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+29ARG:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+2ASN:
+  C: 0
+  CA: 0
+  CB: 0
+30ALA:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+31GLU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+32PRO:
+  C: 0
+  CA: 0
+  CB: 0
+33ALA:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+34GLN:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+35SER:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+36ARG:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+37ARG:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+38PRO:
+  C: 0
+  CA: 0
+  CB: 0
+39GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+3ALA:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+40ARG:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+41SER:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+42ARG:
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+43PRO:
+  C: 0
+  CA: 0
+  CB: 0
+44GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+45GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+46ALA:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+47PRO:
+  C: 0
+  CA: 0
+  CB: 0
+48LEU:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+49ARG:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+4MET:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+50TYR:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+52ARG:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+53THR:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+54GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+55VAL:
+  C: 0
+  CA: 0.022342328835556202
+  CB: 0
+  H: 0
+  N: 0
+56GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+57MET:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+58SER:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+59ARG:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+5THR:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+60THR:
+  C: 0
+  CA: 0.7172088955522895
+  CB: 0
+  H: 0
+  N: 0
+61GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+63GLY:
+  C: 0
+  CA: 0
+  H: 0
+  N: 0
+64SER:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+65ARG:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+66PRO:
+  C: 0
+  CA: 0
+  CB: 0
+67VAL:
+  CA: 0.22638930534731116
+  CB: 0.030063429823553145
+  H: 0
+  N: 0.6935962018990209
+6PRO:
+  C: 0
+  CA: 0
+  CB: 0
+7VAL:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+8ARG:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0
+Averages:
+  C: 0
+  CA: 0
+  CB: 0
+  H: 0
+  N: 0

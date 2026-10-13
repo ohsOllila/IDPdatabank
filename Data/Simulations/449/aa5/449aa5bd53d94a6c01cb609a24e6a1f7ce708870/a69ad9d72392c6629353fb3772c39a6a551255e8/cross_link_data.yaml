@@ -1,0 +1,97 @@
+uniprot:
+- accession: Q42512-2
+  title: CR15A_ARATH Isoform 2 of Protein COLD-REGULATED 15A, chloroplastic OS=Arabidopsis
+    thaliana OX=3702 GN=COR15A
+  length: 127
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 1.3e-54
+  bit_score: 174.5
+  align_length: 89
+- accession: A0A8T2G9E5
+  title: A0A8T2G9E5_ARASU Cold-regulated 15 domain-containing protein OS=Arabidopsis
+    suecica OX=45249 GN=ISN44_As02g037850 PE=4 SV=1
+  length: 139
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 2.0e-54
+  bit_score: 174.5
+  align_length: 89
+- accession: Q42512
+  title: CR15A_ARATH Protein COLD-REGULATED 15A, chloroplastic OS=Arabidopsis thaliana
+    OX=3702 GN=COR15A PE=1 SV=1
+  length: 139
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 2.0e-54
+  bit_score: 174.5
+  align_length: 89
+- accession: A0A8T2FUR2
+  title: A0A8T2FUR2_9BRAS Cold-regulated 15 domain-containing protein OS=Arabidopsis
+    thaliana x Arabidopsis arenosa OX=1240361 GN=ISN45_At02g037760 PE=4 SV=1
+  length: 139
+  identity_%: 98.9
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 5.6e-54
+  bit_score: 173.3
+  align_length: 89
+- accession: A0ABM0Z045
+  title: A0ABM0Z045_CAMSA Protein COLD-REGULATED 15A, chloroplastic OS=Camelina sativa
+    OX=90675 GN=LOC104785113 PE=4 SV=1
+  length: 139
+  identity_%: 93.3
+  similarity_%: 94.4
+  coverage_%: 100.0
+  e_value: 7.3e-50
+  bit_score: 162.9
+  align_length: 89
+pdb:
+- accession: 8HK1_D
+  title: 8HK1 mol:protein length:755 HIV Tat-specific factor 1
+  length: 755
+  identity_%: 33.3
+  similarity_%: 51.7
+  coverage_%: 87.64
+  e_value: 0.06
+  bit_score: 35.0
+  align_length: 87
+- accession: 7EVO_D
+  title: 7EVO mol:protein length:755 HIV Tat-specific factor 1
+  length: 755
+  identity_%: 33.3
+  similarity_%: 51.7
+  coverage_%: 87.64
+  e_value: 0.06
+  bit_score: 35.0
+  align_length: 87
+- accession: 6Y5Q_q
+  title: 6Y5Q mol:protein length:755 HIV Tat-specific factor 1
+  length: 755
+  identity_%: 33.3
+  similarity_%: 51.7
+  coverage_%: 87.64
+  e_value: 0.06
+  bit_score: 35.0
+  align_length: 87
+- accession: 6Y53_q
+  title: 6Y53 mol:protein length:755 HIV Tat-specific factor 1
+  length: 755
+  identity_%: 33.3
+  similarity_%: 51.7
+  coverage_%: 87.64
+  e_value: 0.06
+  bit_score: 35.0
+  align_length: 87
+- accession: 6Y50_q
+  title: 6Y50 mol:protein length:755 HIV Tat-specific factor 1
+  length: 755
+  identity_%: 33.3
+  similarity_%: 51.7
+  coverage_%: 87.64
+  e_value: 0.06
+  bit_score: 35.0
+  align_length: 87

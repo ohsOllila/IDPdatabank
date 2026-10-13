@@ -1,0 +1,52 @@
+uniprot:
+- accession: A0A4U5TV66
+  title: A0A4U5TV66_COLLU Beta-1,4-galactosyltransferase 1 OS=Collichthys lucidus
+    OX=240159 GN=D9C73_027559 PE=4 SV=1
+  length: 288
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 0.36
+  bit_score: 35.4
+  align_length: 17
+- accession: A0A3P6D4B8
+  title: A0A3P6D4B8_BRACM Serine/threonine-protein OS=Brassica campestris OX=3711
+    GN=BRAPAZ1V2_A10P14490.2 PE=3 SV=1
+  length: 421
+  identity_%: 94.1
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 0.91
+  bit_score: 34.3
+  align_length: 17
+- accession: A0A078H7E7
+  title: A0A078H7E7_BRANA Serine/threonine-protein OS=Brassica napus OX=3708 GN=BnaA10g10710D
+    PE=3 SV=1
+  length: 421
+  identity_%: 94.1
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 0.91
+  bit_score: 34.3
+  align_length: 17
+- accession: A0ABQ8BPA2
+  title: A0ABQ8BPA2_BRANA Serine/threonine-protein OS=Brassica napus OX=3708 GN=HID58_038436
+    PE=3 SV=1
+  length: 421
+  identity_%: 94.1
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 0.91
+  bit_score: 34.3
+  align_length: 17
+- accession: A0A7D9CXS8
+  title: A0A7D9CXS8_DEKBR Beta-ketoacyl-acyl-carrier-protein synthase I OS=Dekkera
+    bruxellensis OX=5007 GN=FAS2 PE=3 SV=1
+  length: 1910
+  identity_%: 94.1
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 1.2
+  bit_score: 33.9
+  align_length: 17
+pdb: []

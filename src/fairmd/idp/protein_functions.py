@@ -3692,7 +3692,293 @@ def stable_contact_analysis(gro_file, xtc_file, sel="name CA", cutoff=8.0, min_s
 
 
 
-def compute_chi2(q_sim, I_sim, q_exp, I_exp, sigma_exp):
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def compute_chi2(q_sim, I_sim, q_exp, I_exp, sigma_exp, sigma_sim=None,
+                 n_eff=None, use_sim_error=True, plot=False, n_params=2,
+                 title=None, logx=False, n_iter=10):
+    """Reduced chi2 of I_sim ≈ scale * I_exp + offset on the experimental q-grid.
+
+    Total variance per point: (|scale| * sigma_exp)^2 + sim_err^2, where
+    sim_err = sigma_sim / sqrt(n_eff) if n_eff is given, else sigma_sim.
+    The affine fit is weighted by this variance and iterated, because the
+    experimental term depends on the fitted scale.
+    If sigma_sim is None or use_sim_error=False, only sigma_exp is used.
+
+    Returns chi2, or (chi2, fig) if plot=True.
+    """
+    q_sim, I_sim = np.asarray(q_sim), np.asarray(I_sim)
+    q_exp, I_exp, sigma_exp = map(np.asarray, (q_exp, I_exp, sigma_exp))
+
+    q_min = max(q_sim.min(), q_exp.min())
+    q_max = min(q_sim.max(), q_exp.max())
+    mask = (q_exp >= q_min) & (q_exp <= q_max)
+    n = mask.sum()
+    if n < 3:
+        return (np.nan, None) if plot else np.nan
+
+    q_m, Ie, se = q_exp[mask], I_exp[mask], sigma_exp[mask]
+    Is = cubic_interp(q_m, q_sim, I_sim)
+
+    if sigma_sim is not None:
+        sim_sd = np.interp(q_m, q_sim, np.asarray(sigma_sim))
+        sim_err = sim_sd / np.sqrt(n_eff) if n_eff else sim_sd
+    else:
+        sim_sd = sim_err = np.zeros(n)
+    if not use_sim_error:
+        sim_err_used = np.zeros(n)
+    else:
+        sim_err_used = sim_err
+
+    A = np.vstack([Ie, np.ones(n)]).T
+    scale, offset = np.linalg.lstsq(A, Is, rcond=None)[0]   # unweighted start
+    for _ in range(n_iter):
+        sig_tot = np.sqrt((scale * se) ** 2 + sim_err_used ** 2)
+        w = 1.0 / sig_tot
+        scale, offset = np.linalg.lstsq(A * w[:, None], Is * w, rcond=None)[0]
+
+    sigma_fit = se * abs(scale)
+    sig_tot = np.sqrt(sigma_fit ** 2 + sim_err_used ** 2)
+    I_exp_fit = Ie * scale + offset
+    residual = (Is - I_exp_fit) / sig_tot
+
+    dof = n - n_params
+    chi2 = np.sum(residual ** 2) / dof if dof > 0 else np.nan
+    if not plot:
+        return chi2
+
+    fig, (ax1, ax2, ax3) = plt.subplots(
+        3, 1, figsize=(7, 9), sharex=True,
+        gridspec_kw={"height_ratios": [3, 1.2, 1.2]})
+
+    ax1.errorbar(q_m, I_exp_fit, yerr=sigma_fit, fmt="o", ms=2.5, lw=0.6,
+                 alpha=0.6, label=f"Experiment (×{scale:.3g} {offset:+.2g})",
+                 zorder=1)
+    ax1.plot(q_m, Is, "-", lw=2, color="C1", label="Simulated", zorder=2)
+    if sigma_sim is not None:
+        ax1.fill_between(q_m, Is - sim_err, Is + sim_err, color="C1",
+                         alpha=0.3, label="Sim. error used" if n_eff else "Sim. sd")
+    ax1.set_yscale("log")
+    if logx:
+        ax1.set_xscale("log")
+    ax1.set_ylabel("I(q)")
+    ax1.set_title((title + "  " if title else "")
+                  + rf"reduced $\chi^2$ = {chi2:.2f}")
+    ax1.legend()
+
+    ax2.axhline(0, color="k", lw=0.8)
+    for y in (2, -2):
+        ax2.axhline(y, color="gray", lw=0.6, ls="--")
+    ax2.plot(q_m, residual, "o", ms=2.5)
+    ax2.set_ylabel("(sim - exp) / σ_tot")
+
+    ax3.plot(q_m, 100 * sigma_fit / np.abs(I_exp_fit), color="C2", lw=1,
+             label="σ_exp / I")
+    if sigma_sim is not None:
+        ax3.plot(q_m, 100 * sim_err / np.abs(Is), color="C1", lw=1,
+                 label="σ_sim / I")
+    ax3.plot(q_m, 100 * sig_tot / np.abs(Is), "k--", lw=1, label="σ_tot / I")
+    ax3.legend()
+    ax3.set_ylabel("σ / I (%)")
+    ax3.set_xlabel("q")
+
+    fig.tight_layout()
+    return chi2, fig
+
+
+# usage
+# chi2 = compute_chi2(q_sim, I_sim, q_exp, I_exp, sigma_exp, sigma_sim=sd_sim, n_eff=20)
+
+
+
+
+
+
+
+
+
+def compute_chi2_old(q_sim, I_sim, q_exp, I_exp, sigma_exp, sigma_sim=None,
+                 plot=False, n_params=1, title=None, logx=False,
+                 include_sim_in_chi2=False):
+    """Reduced chi-squared after an affine (scale + offset) lstsq fit of the
+    experimental curve onto the simulated one, on the experimental q-grid.
+
+    The fit is I_sim ≈ scale * I_exp + offset, so sigma_exp is rescaled by |scale|.
+    sigma_sim (optional, on the q_sim grid) is shown as error bars on the
+    simulated curve. It only enters chi2 if include_sim_in_chi2=True, in which
+    case the denominator is sqrt((|scale|*sigma_exp)^2 + sigma_sim^2).
+    dof = n - n_params (default 1 keeps the original n-1 convention;
+    use n_params=2 for n-2).
+
+    Returns chi2, or (chi2, fig) if plot=True.
+    """
+    q_sim, I_sim = np.asarray(q_sim), np.asarray(I_sim)
+    q_exp, I_exp, sigma_exp = map(np.asarray, (q_exp, I_exp, sigma_exp))
+    if sigma_sim is not None:
+        sigma_sim = np.asarray(sigma_sim)
+
+    q_min = max(q_sim.min(), q_exp.min())
+    q_max = min(q_sim.max(), q_exp.max())
+    mask_exp = (q_exp >= q_min) & (q_exp <= q_max)
+    n = mask_exp.sum()
+    if n < 3:
+        return (np.nan, None) if plot else np.nan
+
+    q_m = q_exp[mask_exp]
+    I_sim_interp = cubic_interp(q_m, q_sim, I_sim)
+    # linear interpolation for sigma so it cannot overshoot below zero
+    sigma_sim_m = (np.interp(q_m, q_sim, sigma_sim)
+                   if sigma_sim is not None else None)
+
+    A = np.vstack([I_exp[mask_exp], np.ones(n)]).T
+    scale, offset = np.linalg.lstsq(A, I_sim_interp, rcond=None)[0]
+
+    I_exp_fit = I_exp[mask_exp] * scale + offset
+    sigma_fit = sigma_exp[mask_exp] * abs(scale)
+
+    sigma_tot = sigma_fit
+    if include_sim_in_chi2 and sigma_sim_m is not None:
+        sigma_tot = np.sqrt(sigma_fit**2 + sigma_sim_m**2)
+
+    residual = (I_sim_interp - I_exp_fit) / sigma_tot
+
+    dof = n - n_params
+    chi2 = np.sum(residual**2) / dof if dof > 0 else np.nan
+
+    if not plot:
+        return chi2
+
+    fig, (ax1, ax2, ax3) = plt.subplots(
+        3, 1, figsize=(7, 9), sharex=True,
+        gridspec_kw={"height_ratios": [3, 1.2, 1.2]})
+
+    ax1.errorbar(q_m, I_exp_fit, yerr=sigma_fit, fmt="o", ms=2.5, lw=0.6,
+                 alpha=0.6, label=f"Experiment (×{scale:.3g} {offset:+.2g})",
+                 zorder=1)
+
+    if sigma_sim_m is not None:
+        # clip lower bar so it stays positive on the log axis
+        lower = np.minimum(sigma_sim_m, 0.999 * np.abs(I_sim_interp))
+        ax1.errorbar(q_m, I_sim_interp, yerr=[lower, sigma_sim_m], fmt="-",
+                     lw=2, color="C1", ecolor="C1", elinewidth=0.8,
+                     capsize=1.5, alpha=0.9, label="Simulated (± sd)",
+                     zorder=2)
+    else:
+        ax1.plot(q_m, I_sim_interp, "-", lw=2, color="C1",
+                 label="Simulated", zorder=2)
+
+    ax1.set_yscale("log")
+    if logx:
+        ax1.set_xscale("log")
+    ax1.set_ylabel("I(q)")
+    ax1.set_title((title + "  " if title else "")
+                  + rf"reduced $\chi^2$ = {chi2:.2f}")
+    ax1.legend()
+
+    ax2.axhline(0, color="k", lw=0.8)
+    ax2.axhline(2, color="gray", lw=0.6, ls="--")
+    ax2.axhline(-2, color="gray", lw=0.6, ls="--")
+    ax2.plot(q_m, residual, "o", ms=2.5)
+    ax2.set_ylabel("(sim - exp) / σ")
+
+    ax3.plot(q_m, 100 * sigma_fit / np.abs(I_exp_fit), "-", color="C2",
+             lw=1, label="σ_exp / I")
+    if sigma_sim_m is not None:
+        ax3.plot(q_m, 100 * sigma_sim_m / np.abs(I_sim_interp), "-",
+                 color="C1", lw=1, label="σ_sim / I")
+        ax3.legend()
+    ax3.set_ylabel("σ / I (%)")
+    ax3.set_xlabel("q")
+
+    fig.tight_layout()
+    return chi2, fig
+
+
+# usage
+# chi2, fig = compute_chi2(q_sim, I_sim, q_exp, I_exp, sigma_exp,
+#                          sigma_sim=sd_sim, plot=True)
+
+
+
+
+def compute_chi2_old(q_sim, I_sim, q_exp, I_exp, sigma_exp,
+                 plot=False, n_params=1, title=None, logx=False):
+    """Reduced chi-squared after an affine (scale + offset) lstsq fit of the
+    experimental curve onto the simulated one, on the experimental q-grid.
+
+    The fit is I_sim ≈ scale * I_exp + offset, so sigma is rescaled by |scale|.
+    dof = n - n_params (default 1 keeps the original n-1 convention;
+    use n_params=2 for the statistically correct n-2).
+
+    Returns chi2, or (chi2, fig) if plot=True.
+    """
+    q_sim, I_sim = np.asarray(q_sim), np.asarray(I_sim)
+    q_exp, I_exp, sigma_exp = map(np.asarray, (q_exp, I_exp, sigma_exp))
+
+    q_min = max(q_sim.min(), q_exp.min())
+    q_max = min(q_sim.max(), q_exp.max())
+    mask_exp = (q_exp >= q_min) & (q_exp <= q_max)
+    n = mask_exp.sum()
+    if n < 3:
+        return (np.nan, None) if plot else np.nan
+
+    q_m = q_exp[mask_exp]
+    I_sim_interp = cubic_interp(q_m, q_sim, I_sim)
+
+    A = np.vstack([I_exp[mask_exp], np.ones(n)]).T
+    scale, offset = np.linalg.lstsq(A, I_sim_interp, rcond=None)[0]
+
+    I_exp_fit = I_exp[mask_exp] * scale + offset
+    sigma_fit = sigma_exp[mask_exp] * abs(scale)
+    residual = (I_sim_interp - I_exp_fit) / sigma_fit
+
+    dof = n - n_params
+    chi2 = np.sum(residual**2) / dof if dof > 0 else np.nan
+
+    if not plot:
+        return chi2
+
+    fig, (ax1, ax2, ax3) = plt.subplots(
+        3, 1, figsize=(7, 9), sharex=True,
+        gridspec_kw={"height_ratios": [3, 1.2, 1.2]})
+
+    ax1.errorbar(q_m, I_exp_fit, yerr=sigma_fit, fmt="o", ms=2.5, lw=0.6,
+                 alpha=0.6, label=f"Experiment (×{scale:.3g} {offset:+.2g})",
+                 zorder=1)
+    ax1.plot(q_m, I_sim_interp, "-", lw=2, color="C1", label="Simulated",
+             zorder=2)
+    #ax1.set_yscale("log")
+    if logx:
+        ax1.set_xscale("log")
+    ax1.set_ylabel("I(q)")
+    ax1.set_title((title + "  " if title else "")
+                  + rf"reduced $\chi^2$ = {chi2:.2f}")
+    ax1.legend()
+
+    ax2.axhline(0, color="k", lw=0.8)
+    ax2.axhline(2, color="gray", lw=0.6, ls="--")
+    ax2.axhline(-2, color="gray", lw=0.6, ls="--")
+    ax2.plot(q_m, residual, "o", ms=2.5)
+    ax2.set_ylabel("(sim - exp) / σ")
+
+    ax3.plot(q_m, 100 * sigma_fit / np.abs(I_exp_fit), "-", color="C2", lw=1)
+    ax3.set_ylabel("σ / I_exp (%)")
+    ax3.set_xlabel("q")
+
+    fig.tight_layout()
+    return chi2, fig
+
+
+# usage
+# chi2, fig = compute_chi2(q_sim, I_sim, q_exp, I_exp, sigma_exp, plot=True)
+# fig.savefig("chi2_fit.png", dpi=150)
+
+
+
+
+def compute_chi2_old(q_sim, I_sim, q_exp, I_exp, sigma_exp):
     """Reduced chi-squared simulated curve onto the experimental curve's real scale with a full affine
     (scale AND offset) least-squares fit -- same 2-parameter form as that script's
     linear_model/curve_fit, here via lstsq -- evaluated on the full experimental
@@ -3707,10 +3993,28 @@ def compute_chi2(q_sim, I_sim, q_exp, I_exp, sigma_exp):
     if n < 3:
         return np.nan
     I_sim_interp = cubic_interp(q_exp[mask_exp], q_sim, I_sim)
-    A = np.vstack([I_sim_interp, np.ones_like(I_sim_interp)]).T
-    scale, offset = np.linalg.lstsq(A, I_exp[mask_exp], rcond=None)[0]
-    residual = (I_exp[mask_exp] - (I_sim_interp * scale + offset)) / sigma_exp[mask_exp]
+
+    #A = np.vstack([I_sim_interp, np.ones_like(I_sim_interp)]).T
+    #scale, offset = np.linalg.lstsq(A, I_exp[mask_exp], rcond=None)[0]
+
+    A = np.vstack([I_exp[mask_exp], np.ones(n)]).T
+    scale, offset = np.linalg.lstsq(A, I_sim_interp, rcond=None)[0]
+
+    #residual = (I_exp[mask_exp] - (I_sim_interp * scale + offset)) / sigma_exp[mask_exp]
+
+    print(I_sim_interp)
+    print(I_exp[mask_exp] * scale + offset)
+    print(sigma_exp[mask_exp] * abs(scale))
+
+    residual = (
+        I_sim_interp
+        - (I_exp[mask_exp] * scale + offset)
+    ) / (sigma_exp[mask_exp] * abs(scale))
+
+    print(residual)
+
     dof = n - 1
+    print(np.sum(residual**2) / dof)
     return np.sum(residual**2) / dof if dof > 0 else np.nan
 
 
@@ -3765,10 +4069,15 @@ def evaluate_SAXS_quality(system, databankPath, plot=False):
             print(f"  BIFT failed for {exp_id}: {e}")
             continue
 
+        chi2, fig = compute_chi2(
+                q_saxs, I_saxs, q_bift, I_bift, sigma_bift, I_saxs_std, plot=True, n_params=1, title=None, logx=False)
+
+        saxs_evaluation_figure = sim_dir + "saxs_evaluation_" + exp_id.replace("/", "_") + ".pdf"
+
+        fig.savefig(saxs_evaluation_figure)
+
         row = {
-            "SAXS_chi2_bift": compute_chi2(
-                q_saxs, I_saxs, q_bift, I_bift, sigma_bift
-            ),
+            "SAXS_chi2_bift": chi2,
             #"MAICoS_chi2_bift": compute_chi2(
             #    q_maicos, I_maicos, q_bift, I_bift, sigma_bift
             #),
@@ -3876,6 +4185,44 @@ def run_bift(dat_path, label):
     return q_r, I_r, sigma_r, correction_factor
 
 from scipy.signal import savgol_filter
+_Q_REF = np.array([0.01, 0.05, 0.10, 0.20, 0.25, 0.30, 0.40, 0.50])
+_REL_REF = np.array([0.010, 0.010, 0.030, 0.070, 0.100, 0.200, 0.400, 0.800])
+def guess_sigma(q, I, q_in_nm=None, noise_scale=1.0, min_rel=0.01,
+                max_rel=1.0, window=11, polyorder=3):
+    """
+    sigma = max(literature relative error * |I|, local RMS of SG residuals)
+    noise_scale: multiplies the literature profile (2-5 for home-source or
+                 low-flux data, 0.5 for very good data).
+    """
+    q = np.asarray(q, float)
+    I = np.asarray(I, float)
+
+    # SAXS q is normally < ~1 in 1/Angstrom; in 1/nm it goes up to ~10
+    if q_in_nm is None:
+        q_in_nm = np.nanmax(q) > 2.0
+    q_A = q / 10.0 if q_in_nm else q
+
+    # Literature profile: log-log interpolation, power-law extrapolation above
+    rel = np.exp(np.interp(np.log(np.clip(q_A, 1e-6, None)),
+                           np.log(_Q_REF), np.log(_REL_REF)))
+    hi = q_A > _Q_REF[-1]
+    if hi.any():
+        slope = (np.log(_REL_REF[-1]) - np.log(_REL_REF[-2])) / \
+                (np.log(_Q_REF[-1]) - np.log(_Q_REF[-2]))
+        rel[hi] = _REL_REF[-1] * (q_A[hi] / _Q_REF[-1]) ** slope
+    rel = np.clip(rel * noise_scale, min_rel, max_rel)
+    sigma_lit = rel * np.abs(I)
+
+    # Residual-based estimate (only meaningful where the data are noisy)
+    w = min(window, len(I) if len(I) % 2 else len(I) - 1)
+    smooth = savgol_filter(I, window_length=w, polyorder=min(polyorder, w - 1))
+    resid = I - smooth
+    sigma_res = np.sqrt(np.convolve(resid**2, np.ones(w) / w, mode="same"))
+
+    return np.maximum(sigma_lit, sigma_res)
+
+
+
 def read_experimental_dat(filename):
     """Read q, I(q), sigma from a raw experimental SAXS .dat file (SASBDB format).
     Converts q to 1/A if it looks like it's in 1/nm (qmax > 2)."""
@@ -3898,20 +4245,10 @@ def read_experimental_dat(filename):
     sigma[sigma < 0] = np.nan
     good = ~np.isnan(sigma)
     if not good.any():
-        # If sigma not found, guess sigma with polynomial fitting inspired by CRYSOL
-        # Not very robust
-        smooth = savgol_filter(I, window_length=11, polyorder=3)
-        resid = I - smooth
-
-        print(q)
-        print(I)
-        print(resid)
-        
-        # local RMS of the residuals in a sliding window
-        w = 11
-        sigma = np.sqrt(np.convolve(resid**2, np.ones(w)/w, mode="same"))
-        print(sigma)
-        #raise ValueError(f"no usable sigma values in {filename}")
+        # If sigma not found, guess q-dependent sigma from typical BioSAXS
+        # relative errors (see guess_sigma), floored by the SG residual noise
+        sigma = guess_sigma(q, I)
+        #print("GUESSED SIGMA:", sigma)
     elif not good.all():
         idx = np.arange(len(sigma))
         sigma[~good] = np.interp(idx[~good], idx[good], sigma[good])
@@ -3926,3 +4263,4 @@ from scipy.interpolate import griddata
 def cubic_interp(x_new, x_known, y_known):
     """ this function helps to regrid the simulated curve onto the experimental curve's q-grid, using cubic interpolation."""
     return griddata(x_known, y_known, x_new, method="cubic")
+

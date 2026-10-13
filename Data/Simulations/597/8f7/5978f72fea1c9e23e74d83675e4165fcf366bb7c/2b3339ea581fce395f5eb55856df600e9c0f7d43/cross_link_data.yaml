@@ -1,0 +1,97 @@
+uniprot:
+- accession: A0ABT4DFL3
+  title: A0ABT4DFL3_FUSSI Large-conductance mechanosensitive channel OS=Fusobacterium
+    simiae OX=855 GN=mscL PE=3 SV=1
+  length: 136
+  identity_%: 82.4
+  similarity_%: 88.2
+  coverage_%: 100.0
+  e_value: 1.0
+  bit_score: 33.9
+  align_length: 17
+- accession: A0A1S1V9W6
+  title: A0A1S1V9W6_9FIRM Large-conductance mechanosensitive channel OS=Andreesenia
+    angusta OX=39480 GN=mscL PE=3 SV=1
+  length: 124
+  identity_%: 82.4
+  similarity_%: 82.4
+  coverage_%: 100.0
+  e_value: 1.8
+  bit_score: 33.1
+  align_length: 17
+- accession: A0A1Z3CGV2
+  title: A0A1Z3CGV2_FUSNP Large-conductance mechanosensitive channel OS=Fusobacterium
+    nucleatum subsp. polymorphum OX=76857 GN=mscL PE=3 SV=1
+  length: 136
+  identity_%: 82.4
+  similarity_%: 82.4
+  coverage_%: 100.0
+  e_value: 2.8
+  bit_score: 32.7
+  align_length: 17
+- accession: A0ABN0H2M6
+  title: A0ABN0H2M6_9FUSO Large-conductance mechanosensitive channel OS=Fusobacterium
+    hwasookii ChDC F128 OX=1216362 GN=mscL PE=3 SV=1
+  length: 136
+  identity_%: 82.4
+  similarity_%: 82.4
+  coverage_%: 100.0
+  e_value: 2.8
+  bit_score: 32.7
+  align_length: 17
+- accession: A0AAJ1CS42
+  title: A0AAJ1CS42_FUSVC Large-conductance mechanosensitive channel OS=Fusobacterium
+    vincentii OX=155615 GN=mscL PE=3 SV=1
+  length: 137
+  identity_%: 82.4
+  similarity_%: 82.4
+  coverage_%: 100.0
+  e_value: 2.8
+  bit_score: 32.7
+  align_length: 17
+pdb:
+- accession: 9TIV_B
+  title: 9TIV mol:protein length:136 Large-conductance mechanosensitive channel
+  length: 136
+  identity_%: 70.6
+  similarity_%: 82.4
+  coverage_%: 100.0
+  e_value: 0.7
+  bit_score: 28.1
+  align_length: 17
+- accession: 9TIV_E
+  title: 9TIV mol:protein length:136 Large-conductance mechanosensitive channel
+  length: 136
+  identity_%: 70.6
+  similarity_%: 82.4
+  coverage_%: 100.0
+  e_value: 0.7
+  bit_score: 28.1
+  align_length: 17
+- accession: 9TIV_C
+  title: 9TIV mol:protein length:136 Large-conductance mechanosensitive channel
+  length: 136
+  identity_%: 70.6
+  similarity_%: 82.4
+  coverage_%: 100.0
+  e_value: 0.7
+  bit_score: 28.1
+  align_length: 17
+- accession: 9TIV_D
+  title: 9TIV mol:protein length:136 Large-conductance mechanosensitive channel
+  length: 136
+  identity_%: 70.6
+  similarity_%: 82.4
+  coverage_%: 100.0
+  e_value: 0.7
+  bit_score: 28.1
+  align_length: 17
+- accession: 9TIV_A
+  title: 9TIV mol:protein length:136 Large-conductance mechanosensitive channel
+  length: 136
+  identity_%: 70.6
+  similarity_%: 82.4
+  coverage_%: 100.0
+  e_value: 0.7
+  bit_score: 28.1
+  align_length: 17
