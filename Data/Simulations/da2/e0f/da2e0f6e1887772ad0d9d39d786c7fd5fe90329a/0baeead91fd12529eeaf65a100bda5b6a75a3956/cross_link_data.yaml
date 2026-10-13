@@ -1,0 +1,97 @@
+uniprot:
+- accession: Q9ZJP4
+  title: TONB_HELPJ Protein TonB OS=Helicobacter pylori (strain J99 / ATCC 700824)
+    OX=85963 GN=tonB PE=3 SV=1
+  length: 280
+  identity_%: 58.7
+  similarity_%: 58.7
+  coverage_%: 96.97
+  e_value: 9.6e-06
+  bit_score: 49.3
+  align_length: 46
+- accession: A0A370R571
+  title: A0A370R571_9GAMM Protein TonB OS=Enterobacillus tribolii OX=1487935 GN=C8D90_101721
+    PE=3 SV=1
+  length: 251
+  identity_%: 68.8
+  similarity_%: 78.1
+  coverage_%: 96.97
+  e_value: 1.2e-05
+  bit_score: 48.9
+  align_length: 32
+- accession: A0A1T4K129
+  title: A0A1T4K129_9FIRM TonB family C-terminal domain-containing protein OS=Selenihalanaerobacter
+    shriftii OX=142842 GN=SAMN02745118_00548 PE=3 SV=1
+  length: 344
+  identity_%: 73.3
+  similarity_%: 83.3
+  coverage_%: 90.91
+  e_value: 1.9e-05
+  bit_score: 48.5
+  align_length: 30
+- accession: A0A143HPR9
+  title: A0A143HPR9_MICTH Energy transducer TonB OS=Microbulbifer thermotolerans OX=252514
+    GN=A3224_15105 PE=4 SV=1
+  length: 324
+  identity_%: 71.4
+  similarity_%: 85.7
+  coverage_%: 84.85
+  e_value: 2.6e-05
+  bit_score: 48.1
+  align_length: 28
+- accession: B5Z8Y8
+  title: B5Z8Y8_HELPG Siderophore-mediated iron transport protein OS=Helicobacter
+    pylori (strain G27) OX=563041 GN=HPG27_1289 PE=3 SV=1
+  length: 243
+  identity_%: 69.4
+  similarity_%: 69.4
+  coverage_%: 96.97
+  e_value: 3.2e-05
+  bit_score: 47.8
+  align_length: 36
+pdb:
+- accession: 2GRX_D
+  title: 2GRX mol:protein length:229 Protein tonB
+  length: 229
+  identity_%: 64.0
+  similarity_%: 72.0
+  coverage_%: 75.76
+  e_value: 0.00086
+  bit_score: 37.4
+  align_length: 25
+- accession: 2GRX_C
+  title: 2GRX mol:protein length:229 Protein tonB
+  length: 229
+  identity_%: 64.0
+  similarity_%: 72.0
+  coverage_%: 75.76
+  e_value: 0.00086
+  bit_score: 37.4
+  align_length: 25
+- accession: 6NCL_a0
+  title: 6NCL mol:protein length:352 P14
+  length: 352
+  identity_%: 65.2
+  similarity_%: 69.6
+  coverage_%: 69.7
+  e_value: 0.00087
+  bit_score: 37.4
+  align_length: 23
+- accession: 9DDQ_F
+  title: 9DDQ mol:protein length:261 Protein TonB
+  length: 261
+  identity_%: 64.0
+  similarity_%: 72.0
+  coverage_%: 75.76
+  e_value: 0.00087
+  bit_score: 37.4
+  align_length: 25
+- accession: 9DDP_F
+  title: 9DDP mol:protein length:261 Protein TonB
+  length: 261
+  identity_%: 64.0
+  similarity_%: 72.0
+  coverage_%: 75.76
+  e_value: 0.00087
+  bit_score: 37.4
+  align_length: 25

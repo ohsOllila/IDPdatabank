@@ -1,0 +1,99 @@
+uniprot:
+- accession: O25899
+  title: TONB_HELPY Protein TonB OS=Helicobacter pylori (strain ATCC 700392 / 26695)
+    OX=85962 GN=tonB PE=1 SV=1
+  length: 285
+  identity_%: 100.0
+  similarity_%: 100.0
+  coverage_%: 100.0
+  e_value: 9.7e-68
+  bit_score: 213.8
+  align_length: 101
+- accession: B5Z8Y8
+  title: B5Z8Y8_HELPG Siderophore-mediated iron transport protein OS=Helicobacter
+    pylori (strain G27) OX=563041 GN=HPG27_1289 PE=3 SV=1
+  length: 243
+  identity_%: 93.1
+  similarity_%: 97.0
+  coverage_%: 100.0
+  e_value: 3.6e-61
+  bit_score: 195.7
+  align_length: 101
+- accession: Q9ZJP4
+  title: TONB_HELPJ Protein TonB OS=Helicobacter pylori (strain J99 / ATCC 700824)
+    OX=85963 GN=tonB PE=3 SV=1
+  length: 280
+  identity_%: 91.1
+  similarity_%: 92.1
+  coverage_%: 100.0
+  e_value: 1.3e-56
+  bit_score: 185.3
+  align_length: 101
+- accession: Q17Z10
+  title: Q17Z10_HELAH Siderophore-mediated iron transport protein OS=Helicobacter
+    acinonychis (strain Sheeba) OX=382638 GN=tonB PE=3 SV=1
+  length: 289
+  identity_%: 75.7
+  similarity_%: 80.4
+  coverage_%: 98.02
+  e_value: 1.3e-42
+  bit_score: 149.8
+  align_length: 107
+- accession: I0ESR3
+  title: I0ESR3_HELCM Siderophore-mediated iron transport protein (TonB) OS=Helicobacter
+    cetorum (strain ATCC BAA-540 / CCUG 52418 / MIT 99-5656) OX=1163745 GN=HCD_04900
+    PE=3 SV=1
+  length: 264
+  identity_%: 62.4
+  similarity_%: 71.3
+  coverage_%: 100.0
+  e_value: 6.9e-31
+  bit_score: 119.0
+  align_length: 101
+pdb:
+- accession: 6NCL_a0
+  title: 6NCL mol:protein length:352 P14
+  length: 352
+  identity_%: 50.0
+  similarity_%: 56.1
+  coverage_%: 81.19
+  e_value: 7.7e-19
+  bit_score: 82.8
+  align_length: 82
+- accession: 9M8D_C
+  title: 9M8D mol:protein length:595 Dihydrolipoamide acetyltransferase component
+    of pyruvate dehydrogenase complex
+  length: 595
+  identity_%: 61.0
+  similarity_%: 71.2
+  coverage_%: 58.42
+  e_value: 1.1e-16
+  bit_score: 77.4
+  align_length: 59
+- accession: 7TOS_PR
+  title: 7TOS mol:protein length:40 PR20, ALS/FTD dipeptide repeat protein
+  length: 40
+  identity_%: 48.5
+  similarity_%: 87.9
+  coverage_%: 32.67
+  e_value: 1.4e-11
+  bit_score: 57.8
+  align_length: 33
+- accession: 7TOQ_PR
+  title: 7TOQ mol:protein length:40 PR20, ALS/FTD dipeptide repeat protein
+  length: 40
+  identity_%: 48.5
+  similarity_%: 87.9
+  coverage_%: 32.67
+  e_value: 1.4e-11
+  bit_score: 57.8
+  align_length: 33
+- accession: 7TOP_PR
+  title: 7TOP mol:protein length:40 PR20
+  length: 40
+  identity_%: 48.5
+  similarity_%: 87.9
+  coverage_%: 32.67
+  e_value: 1.4e-11
+  bit_score: 57.8
+  align_length: 33
