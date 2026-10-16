@@ -51,7 +51,7 @@ def calculate_contact_probabilities(gro_file, xtc_file, cutoff):
 
     csv_filename = f"CA_prob_within_{cutoff}A.csv"
     df.to_csv(csv_filename)
-    print(f"Saved {csv_filename} in current directory.")
+    #print(f"Saved {csv_filename} in current directory.")
 
     return df
 
@@ -1381,17 +1381,17 @@ def get_spin_relaxations_from_BMRB(BMRBid):
     # Units
     # -------------------------------------------------------------
 
-    units = {
-        "T1": extract_units(
-            BMRBid,
-            "heteronucl_T1_relaxation"
-        ),
+    #units = {
+    #    "T1": extract_units(
+    #        BMRBid,
+    #        "heteronucl_T1_relaxation"
+    #    ),
 
-        "T2": extract_units(
-            BMRBid,
-            "heteronucl_T2_relaxation"
-        ),
-    }
+    #    "T2": extract_units(
+    #        BMRBid,
+    #        "heteronucl_T2_relaxation"
+    #    ),
+    #}
 
     # -------------------------------------------------------------
     # Construct final output
@@ -1417,13 +1417,13 @@ def get_spin_relaxations_from_BMRB(BMRBid):
             error = data["error"]
 
             # Convert ms -> s
-            if units["T1"] == "ms":
+            #if units["T1"] == "ms":
 
-                if value is not None:
-                    value *= 0.001
+            #    if value is not None:
+            #        value *= 0.001
 
-                if error is not None:
-                    error *= 0.001
+            #    if error is not None:
+            #        error *= 0.001
 
             experimental_data[residue][magnetic_field]["T1"] = {
                 "value": value,
@@ -1448,13 +1448,13 @@ def get_spin_relaxations_from_BMRB(BMRBid):
             error = data["error"]
 
             # Convert ms -> s
-            if units["T2"] == "ms":
+            #if units["T2"] == "ms":
 
-                if value is not None:
-                    value *= 0.001
+            #   if value is not None:
+            #       value *= 0.001
 
-                if error is not None:
-                    error *= 0.001
+            #   if error is not None:
+            #       error *= 0.001
 
             experimental_data[residue][magnetic_field]["T2"] = {
                 "value": value,
@@ -2135,6 +2135,108 @@ def calculate_ChemShifts_sparta(gro_file, xtc_file, dt_analysis_ps=1000):
     
     return(res)
 
+
+
+
+import re
+import yaml
+import numpy as np
+
+relaxation_accuracies = {
+    "R1": 0.18,
+    "R2": 3.8,
+    "hetNOE": 0.1,
+}
+
+
+def calculate_spin_relaxation_time_chi2(spin_relaxation_time_file, experimental_data_file):
+
+    with open(spin_relaxation_time_file, "r") as file:
+        spin_relaxation_times = yaml.safe_load(file)
+
+    with open(experimental_data_file, "r") as file:
+        experimental_data = yaml.safe_load(file)
+
+    rounded_data = {}
+    for residue, freq_dict in experimental_data.items():
+        new_freq_dict = {}
+        for freq, values in freq_dict.items():
+            rounded_freq = round(float(freq) / 10) * 10
+            new_freq_dict[rounded_freq] = values
+        rounded_data[residue] = new_freq_dict
+    experimental_data = rounded_data
+
+    differences = {}
+    for residue in spin_relaxation_times:
+
+        # --- Resolve experimental residue key ---
+        if residue in experimental_data:
+            exp_res = experimental_data[residue]
+        else:
+            res_num = int(re.sub(r"\D", "", residue))
+            if res_num in experimental_data:
+                exp_res = experimental_data[res_num]
+            else:
+                print(f"Skipping {residue}: no experimental data")
+                continue
+
+        calc_res = spin_relaxation_times[residue]
+
+        # --- Find common magnetic fields ---
+        common_fields = set(calc_res.keys()) & set(exp_res.keys())
+
+        if not common_fields:
+            print(f"Skipping {residue}: no common magnetic fields")
+            continue
+
+        differences[residue] = {}
+
+        for field in common_fields:
+            calc_data = calc_res[field]
+            exp_data = exp_res[field]
+
+            if 'T1' in calc_data and 'T1' in exp_data:
+                differences[residue]['R1'] = (
+                    1 / calc_data['T1']['value'] - 1 / exp_data['T1']['value']
+                )
+
+            if 'T2' in calc_data and 'T2' in exp_data:
+                differences[residue]['R2'] = (
+                    1 / calc_data['T2']['value'] - 1 / exp_data['T2']['value']
+                )
+
+            if 'hetNOE' in calc_data and 'hetNOE' in exp_data:
+                differences[residue]['hetNOE'] = (
+                    calc_data['hetNOE']['value'] - exp_data['hetNOE']['value']
+                )
+
+    if not differences:
+        differences = compute_differences(spin_relaxation_times, experimental_data)
+
+    # --- chi² = sum((calc - exp)² / sigma²) ---
+    chi2 = {}
+    chi2_reduced = {}
+
+    for key, sigma in relaxation_accuracies.items():
+        terms = [
+            (res[key] / sigma) ** 2
+            for res in differences.values()
+            if key in res
+        ]
+        if terms:
+            chi2[key] = float(np.sum(terms))
+            chi2_reduced[key] = chi2[key] / len(terms)   # chi² per data point
+
+    chi2['reduced'] = chi2_reduced
+    chi2['differences'] = differences
+
+    return chi2
+
+
+
+
+
+
 def calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,experimental_data_file):
 
     with open(spin_relaxation_time_file, "r") as file:
@@ -2584,20 +2686,6 @@ def calculate_chemical_shift_rmsd(
         exp_residues,
     )
 
-#def compute_rmsd_chemical_shift(sim_data, exp_data, nuclei, residues):
-#    rmsd_per_nucleus = {}
-#    for nucleus in nuclei:
-#        diff_sq = []
-#        for res in residues:
-#            sim_val = sim_data.get(res, {}).get(nucleus, None)
-#            exp_val = exp_data.get(res, {}).get(nucleus, None)
-#            if sim_val is not None and exp_val is not None:
-#                diff_sq.append((sim_val - exp_val)**2)
-#        if diff_sq:
-#            rmsd_per_nucleus[nucleus] = math.sqrt(np.mean(diff_sq))
-#        else:
-#            rmsd_per_nucleus[nucleus] = None
-#    return rmsd_per_nucleus
 
 def compute_rmsd_chemical_shift(sim_data, exp_data, nuclei, residues):
     """
@@ -2671,6 +2759,96 @@ def compute_rmsd_chemical_shift(sim_data, exp_data, nuclei, residues):
             result[nucleus] = None
 
     return result
+
+
+
+import yaml
+import numpy as np
+
+# Uncertainties in ppm. PLACEHOLDERS: replace with the values for your predictor.
+chemical_shift_accuracies = {
+    'C': 1.5,
+    'CA': 1.0,
+    'CB': 1.3,
+    'H': 0.55,
+    'HA': 0.3,
+    'N': 2.5
+}
+
+
+def calculate_chemical_shift_chi2(
+    sim_file,
+    exp_data,
+    nuclei=("C", "CA", "CB", "HA", "H", "N"),
+    accuracies=chemical_shift_accuracies,
+    outlier_cutoff=5.0,
+):
+    """
+    Calculate chemical-shift chi² per nucleus.
+
+    Parameters
+    ----------
+    sim_file : str
+        YAML file with simulated shifts: {residue: {nucleus: value}}.
+    exp_data : dict
+        Experimental shifts: {residue: {nucleus: value}}.
+    nuclei : iterable of str
+        Nuclei to evaluate.
+    accuracies : dict
+        Uncertainty (sigma, in ppm) per nucleus.
+    outlier_cutoff : float
+        Differences with |sim - exp| >= cutoff (ppm) are stored as None
+        and excluded from chi².
+
+    Returns
+    -------
+    dict
+        {
+            "<nucleus>": chi² (None if no data),
+            "reduced": {"<nucleus>": chi²/N, ...},
+            "n_points": {"<nucleus>": N, ...},
+            "differences": {residue: {nucleus: sim - exp or None}, ...}
+        }
+    """
+    with open(sim_file) as f:
+        sim_data = yaml.safe_load(f)
+
+    # Only compare residues present in both simulation and experiment
+    residues = sorted(set(sim_data) & set(exp_data))
+
+    result = {
+        "reduced": {},
+        "n_points": {},
+        "differences": {res: {} for res in residues},
+    }
+
+    for nucleus in nuclei:
+        sigma = accuracies[nucleus]
+        terms = []
+
+        for res in residues:
+            sim_val = sim_data[res].get(nucleus)
+            exp_val = exp_data[res].get(nucleus)
+
+            if sim_val is None or exp_val is None:
+                result["differences"][res][nucleus] = None
+                continue
+
+            diff = sim_val - exp_val
+            if abs(diff) < outlier_cutoff:
+                terms.append((diff / sigma) ** 2)
+                result["differences"][res][nucleus] = diff
+            else:
+                result["differences"][res][nucleus] = None
+
+        n = len(terms)
+        result[nucleus] = float(np.sum(terms)) if n else None
+        result["reduced"][nucleus] = result[nucleus] / n if n else None
+        result["n_points"][nucleus] = n
+
+    return result
+
+
 
 
 import os
@@ -4254,7 +4432,7 @@ def read_experimental_dat(filename):
         sigma[~good] = np.interp(idx[~good], idx[good], sigma[good])
     if q.max() > 2.0:
         q = q / 10.0
-    print(q,I,sigma)
+    #print(q,I,sigma)
     return q, I, sigma
 
 
@@ -4264,3 +4442,27 @@ def cubic_interp(x_new, x_known, y_known):
     """ this function helps to regrid the simulated curve onto the experimental curve's q-grid, using cubic interpolation."""
     return griddata(x_known, y_known, x_new, method="cubic")
 
+
+
+import subprocess, tempfile, os
+import numpy as np
+
+def needs_nojump(trj, tpr, group="Protein", gmx="gmx"):
+    with tempfile.TemporaryDirectory() as tmp:
+        ox = os.path.join(tmp, "coords.xvg")
+        ob = os.path.join(tmp, "box.xvg")
+        subprocess.run(
+            [gmx, "traj", "-f", trj, "-s", tpr, "-ox", ox, "-ob", ob],
+            input=f"{group}\n", text=True, check=True,
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+        )
+        # xvg comment/legend lines start with '#' or '@'
+        xyz = np.loadtxt(ox, comments=("#", "@"))[:, 1:]   # drop time column
+        box = np.loadtxt(ob, comments=("#", "@"))[:, 1:4]  # XX, YY, ZZ (nm)
+
+    if xyz.shape[0] < 2:
+        return False
+
+    # per-frame, per-coordinate displacement between consecutive frames
+    maxjump = np.abs(np.diff(xyz, axis=0)).max()
+    return maxjump > 0.5 * box[0].min()
