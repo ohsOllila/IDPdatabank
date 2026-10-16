@@ -1,0 +1,91 @@
+ID: 503
+AUTHORS_CONTACT: Samuli Ollila
+COMPOSITION:
+  CLA:
+    COUNT: 0
+    MAPPING: mappingCLAecc.yaml
+    NAME: CL
+  PROTEIN:
+    SEQUENCE: GPMELTVTTETETTQAGSNAGNQPMLWPAWVYCTRYSDRPSSGPRSRKPKKKNPNKEDKRPRTAFTAEQLQRLKAEFQTNRYLTEQRRQSLAQELGLNESQIKIWFQNKRAKIKKAT
+  SOD:
+    COUNT: 0
+    MAPPING: mappingSODecc.yaml
+    NAME: NA
+  SOL:
+    COUNT: 0
+    MAPPING: mappingTIP4PSwater.yaml
+    NAME: SOL
+CPT: null
+DATEOFRUNNING: 15/10/2026
+DIR_WRK: /home/sosamuli/temp/tmpData/
+DOI: 10.5281/zenodo.3778112
+EXPERIMENT:
+  chemical_shift:
+    alignment_score:
+    - 587.0
+    ionic_strength:
+    - 0.060231
+    ionic_strength_match:
+    - false
+    path:
+    - BMRBid17325
+    ph:
+    - 6.0
+    ph_match:
+    - false
+    sequence:
+    - GPMELSVSSDSDSSQAGSNAGNQPMLWPAWVYCTRYSDRPSSGPRSRKPKKKNPNKEDKRPRTAFTAEQLQRLKAEFQTNRYLTEQRRQSLAQELGLNESQIKIWFQNKRAKIKKAT
+    temperature:
+    - 303.0
+    temperature_match:
+    - true
+  saxs:
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
+  spin_relaxation:
+    alignment_score:
+    - 587.0
+    ionic_strength:
+    - 0.04
+    ionic_strength_match:
+    - false
+    path:
+    - 10.1016/j.bpj.2015.06.069
+    ph:
+    - 6.0
+    ph_match:
+    - false
+    sequence:
+    - GPMELSVSSDSDSSQAGSNAGNQPMLWPAWVYCTRYSDRPSSGPRSRKPKKKNPNKEDKRPRTAFTAEQLQRLKAEFQTNRYLTEQRRQSLAQELGLNESQIKIWFQNKRAKIKKAT
+    temperature:
+    - 303.0
+    temperature_match:
+    - true
+FF: amberff03ws
+FF_DATE: null
+FF_SOURCE: null
+LOG: null
+NUMBER_OF_ATOMS: 1921
+PREEQTIME: 0
+PUBLICATION: null
+SOFTWARE: gromacs
+SOFTWARE_VERSION: null
+SYSTEM: EN2 mutated
+TEMPERATURE: 310.0
+TIMELEFTOUT: 0
+TOP:
+- - topol.top
+TPR:
+- - EN2_mutated_only_protein.tpr
+TRAJECTORY_SIZE: 799612488
+TRJ:
+- - EN2_mutated_1080ns_only_protein.xtc
+TRJLENGTH: 1082010.0
+TYPEOFSYSTEM: protein

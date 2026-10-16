@@ -16,6 +16,8 @@ from fairmd.idp.databankio import *
 from fairmd.idp.plottings import plotSimulation
 #from IPython.display import display, Markdown
 
+import shlex, shutil, subprocess
+
 # This initializes the databank and stores the information of all simulations into a list.
 # Each list item contains the information from README.yaml file of the given simulation.
 systems = initialize_databank()
@@ -51,6 +53,7 @@ for system in systems:
     SAXS_file_MAICoS = dataFolder + 'SAXS_MAICoS.yaml'
     chemical_shift_file = dataFolder + 'chemical_shifts_sparta.yaml'
     Contact_map_file = dataFolder + "Contact_map.png"
+    Contact_map_file_csv = dataFolder + "Contact_map.csv"
     distance_map_file = dataFolder + "Distance_map.png"
     backbone_correlation_file = dataFolder + "Backbone_correlations.png" 
     rog_file = dataFolder + "gyrate.xvg"
@@ -66,6 +69,7 @@ for system in systems:
         # "SAXS_file_MAICoS": SAXS_file_MAICoS,
         "chemical_shift_file": chemical_shift_file,
         "Contact_map_file": Contact_map_file,
+        "Contact_map_file_csv": Contact_map_file_csv,
         "distance_map_file": distance_map_file,
         "backbone_correlation_file": backbone_correlation_file,
         "rog_file": rog_file,
@@ -89,23 +93,40 @@ for system in systems:
             pass
         
         if (not os.path.isfile(trj_fname_nojump)):
+            #if needs_nojump(trj_fname_original, top_fname):
+            #    subprocess.run(
+            #        shlex.split(trjconvCOMMAND)
+            #        + ["-f", trj_fname_original, "-s", top_fname,
+            #           "-o", trj_fname_nojump, "-pbc", "nojump"],
+            #        input="Protein\n", text=True, check=True)
+            #else:
+            #    shutil.copy(trj_fname_original, trj_fname_nojump)  # keep downstream paths working
+            
             execStr = (
                 f"echo Protein | {trjconvCOMMAND} -f {trj_fname_original} "
                 f"-s {top_fname} -o {trj_fname_nojump} -pbc nojump"
             )
-            os.system(execStr)
-
-        if (not os.path.isfile(trj_fname_fit)):
-            execStr = (
-                f"echo Protein Protein | {trjconvCOMMAND} -f {trj_fname_nojump} "
-                f"-s {top_fname} -o {trj_fname_fit} -fit rot+trans"
-            )
-            os.system(execStr)
+            os.system(execStr)     
 
         if (not os.path.isfile(trj_fname)):
             execStr = (
                 f"echo Protein Protein | {trjconvCOMMAND} -f {trj_fname_nojump} "
                 f"-s {top_fname} -o {trj_fname} -center"
+            )
+            os.system(execStr)
+
+
+        if (not os.path.isfile(trj_fname_noPBC)):
+            execStr = (
+                f"echo Protein Protein | {trjconvCOMMAND} -f {trj_fname} "
+                f"-s {top_fname} -o {trj_fname_noPBC} -center -pbc mol"
+            )
+            os.system(execStr)
+
+        if (not os.path.isfile(trj_fname_fit)):
+            execStr = (
+                f"echo Protein Protein | {trjconvCOMMAND} -f {trj_fname_noPBC} "
+                f"-s {top_fname} -o {trj_fname_fit} -fit rot+trans"
             )
             os.system(execStr)
 
@@ -174,7 +195,7 @@ for system in systems:
 
     if (not os.path.isfile(SAXS_file)):
         print('CALCULATING SAXS WITH CRYSOL')
-        SAXS = calculate_SAXS_profile_crysol(gro_fname, trj_fname,1000)
+        SAXS = calculate_SAXS_profile_crysol(gro_fname, trj_fname_noPBC,1000)
         #print(SAXS)
 
         SAXS_data = SAXS.to_dict(orient='records')
@@ -188,7 +209,7 @@ for system in systems:
     skip_maicos = True
     if (not os.path.isfile(SAXS_file_MAICoS) and not skip_maicos):
         try:
-            SAXS_MAICoS = calculate_SAXS_profile_maicos(gro_fname, trj_fname)
+            SAXS_MAICoS = calculate_SAXS_profile_maicos(gro_fname, trj_fname_noPBC)
             #print(SAXS)
     
             data_MAICoS = SAXS_MAICoS.to_dict(orient='records')
@@ -211,7 +232,7 @@ for system in systems:
             # Build the command: source GMXRC first, then run gmx
             cmd = f"""
             source /usr/local/gromacs/bin/GMXRC && \
-            echo System | gmx trjconv -f {trj_fname} -s {gro_fname} -skip {skip_value} -o {nojump_traj} -pbc nojump  && \
+            echo System | gmx trjconv -f {trj_fname_noPBC} -s {gro_fname} -skip {skip_value} -o {nojump_traj} -pbc nojump  && \
             echo -e "System\nSystem" | gmx trjconv -f {nojump_traj} -s {gro_fname} -o {trj_fname_skipped} -center
             """
             print(cmd)
@@ -251,7 +272,7 @@ for system in systems:
             # Build the command: source GMXRC first, then run gmx
             cmd = f"""
             source /usr/local/gromacs/bin/GMXRC && \
-            echo System | gmx trjconv -f {trj_fname} -s {gro_fname} -skip {skip_value} -o {nojump_traj} -pbc nojump  && \
+            echo System | gmx trjconv -f {trj_fname_noPBC} -s {gro_fname} -skip {skip_value} -o {nojump_traj} -pbc nojump  && \
             echo -e "System\nSystem" | gmx trjconv -f {nojump_traj} -s {gro_fname} -o {trj_fname_skipped} -center
             """
             print(cmd)
@@ -273,33 +294,28 @@ for system in systems:
     print('Calculate contact maps')
     # Define cutoff distance (in Angstroms)
     cutoff = 15.0  # Adjust as needed
-    if (not os.path.isfile(Contact_map_file)):
-        probabilities_df = calculate_contact_probabilities(gro_fname, trj_fname, cutoff)
+    if (not os.path.isfile(Contact_map_file)) or (not os.path.isfile(Contact_map_file_csv)):
+        probabilities_df = calculate_contact_probabilities(gro_fname, trj_fname_noPBC, cutoff)
+        probabilities_df.to_csv(Contact_map_file_csv)
+        print(f"Saved {Contact_map_file_csv} in current directory.")
         create_contact_map_plot(probabilities_df, Contact_map_file)
 
     
     print('Calculate distance maps')
     # Calculate distance maps
     if (not os.path.isfile(distance_map_file)):
-        probabilities_df = calculate_distances(gro_fname, trj_fname)
+        probabilities_df = calculate_distances(gro_fname, trj_fname_noPBC)
         create_distance_map_plot(probabilities_df, distance_map_file)
 
     print('Calculate backbone correlations')
     ## Calculate backbone correlations
     if (not os.path.isfile(backbone_correlation_file)):
-        probabilities_df = calculate_backbone_correlations(gro_fname, trj_fname,backbone_correlation_file)
+        probabilities_df = calculate_backbone_correlations(gro_fname, trj_fname_noPBC,backbone_correlation_file)
 
     print('Calculate radius of gyration')
     ## Calculate radius of gyration
     if (not os.path.isfile(rog_file)):
-
-        if (not os.path.isfile(trj_fname_noPBC)):
-            execStr = (
-                f"echo Protein Protein | {trjconvCOMMAND} -f {trj_fname} "
-                f"-s {top_fname} -o {trj_fname_noPBC} -center -pbc mol"
-            )
-            os.system(execStr)
-        
+      
         execStr = (
             f"echo Protein | gmx gyrate -s {top_fname} -f {trj_fname_noPBC} -o {rog_file}"
         )
@@ -331,7 +347,7 @@ for system in systems:
         dynamic_landscape = {}
 
 
-        list_of_correlation_functions = calculate_backbone_NH_correlation_functions(gro_fname,trj_fname,top_fname,dataFolder)        
+        list_of_correlation_functions = calculate_backbone_NH_correlation_functions(gro_fname,trj_fname_noPBC,top_fname,dataFolder)        
 
         
         for correlation_function in list_of_correlation_functions:
@@ -429,86 +445,24 @@ for system in systems:
     #print(ExperimentalFile)
         
     if not os.path.exists(spin_relaxation_rmsd_file) and ExperimentalFileSpin:
-        print(spin_relaxation_time_file,exp_spin_relax_file)
+        #print(spin_relaxation_time_file,exp_spin_relax_file)
         rmsd = calculate_spin_relaxation_time_RMSD(spin_relaxation_time_file,exp_spin_relax_file)
         clean_rmsd = convert_numpy(rmsd)
         with open(spin_relaxation_rmsd_file, 'w') as file:
             yaml.dump(clean_rmsd, file, sort_keys=False, default_flow_style=False, indent=4)
 
-#    #continue
 
-#    print('Calculate chemical shift RMSD between simulations and experiments')
-#    chemical_shift_rmsd_file =  dataFolder + 'chemical_shift_rmsd.yaml'
-
-#    print(system['EXPERIMENT']['chemical_shift']['path'])
-#    chemical_shift_paths = system['EXPERIMENT']['chemical_shift']['path']
-#    experiment_path = databankPath + 'Data/Experiments/' + chemical_shift_paths[0]
-#    chemical_shift_experimental_file = experiment_path + '/chemical_shifts.yaml'
-#    if os.path.exists(chemical_shift_experimental_file):
+    print('Calculate spin relaxation data chi^2 between simulations and experiments')
+    spin_relaxation_chi2_file =  dataFolder + 'spin_relaxation_chi2.yaml'
     
-#    if len(chemical_shift_paths) > 0:
-#        for BMRBid in chemical_shift_paths:
-#            print(BMRBid)
-#            id_number = re.search(r'\d+', BMRBid).group()
-#            bmrb_local_file = download_NMR_star_file(id_number)
-#            if BMRBid == 'BMRBid16300':
-#                break
-#    else:
-#        print("Trying to get chemical shifts from the spin relaxation data source")
-#        try:
-#            if "BMRBid" in system['EXPERIMENT']['spin_relaxation']['path'][0]:
-#                BMRBid = system['EXPERIMENT']['spin_relaxation']['path'][0].replace("BMRBid", "", 1)
-#                bmrb_local_file = download_NMR_star_file(BMRBid)
-#                ExperimentalFile = True
-#            else:
-#                pass
-#        except:
-#            print('Experimental chemical shift data file not found')
-#            ExperimentalFile = False
+    if not os.path.exists(spin_relaxation_chi2_file) and ExperimentalFileSpin:
+        #print(spin_relaxation_time_file,exp_spin_relax_file)
+        chi2 = calculate_spin_relaxation_time_chi2(spin_relaxation_time_file,exp_spin_relax_file)
+        clean_chi2 = convert_numpy(chi2)
+        with open(spin_relaxation_chi2_file, 'w') as file:
+            yaml.dump(clean_chi2, file, sort_keys=False, default_flow_style=False, indent=4)
 
-#    #print('test',  BMRBid)
-#    if not os.path.exists(chemical_shift_rmsd_file) and ExperimentalFile:
-#        sim_residues_all = set()
-#        sim_file = os.path.join(dataFolder, 'chemical_shifts_sparta.yaml')
-#        with open(sim_file) as f:
-#            raw = yaml.safe_load(f)
-#            sim_residues_all.update(k for k in raw.keys())
-#        
-
-        # ------------------------
-        # Parse NMR-STAR file
-        # ------------------------
-
-#        exp_data = parse_star_file(bmrb_local_file)
-#        print(exp_data)
-#        # Only residues present in simulation
-#        exp_data_filtered = {res: atoms for res, atoms in exp_data.items() if res in sim_residues_all}
-#        exp_residues = sorted(exp_data_filtered.keys())
-
-#        #print(exp_data)
-#        
-#        # ------------------------
-#        # Calculate RMSDs
-#        # ------------------------
-#        nuclei = ["C", "CA", "CB", "HA", "H", "N"]
-
-#        with open(sim_file) as f:
-#            raw = yaml.safe_load(f)
-
-#        # convert string keys to integers
-#        sim_data = {k: v for k, v in raw.items()}
-
-#        # compute RMSD
-#        print(sim_data, exp_data_filtered,bmrb_local_file)
-#        chemical_shift_rmsd_vals = compute_rmsd_chemical_shift(sim_data, exp_data_filtered, nuclei, exp_residues)#
-
-#        #print(rmsd_vals)
-
-#        #clean_rmsd = convert_numpy(rmsd)
-#        with open(chemical_shift_rmsd_file, 'w') as file:
-#            yaml.dump(chemical_shift_rmsd_vals, file, sort_keys=False, default_flow_style=False, indent=4)
-
-
+    
     print('Calculate chemical shift RMSD between simulations and experiments')
 
     chemical_shift_rmsd_file = (
@@ -551,6 +505,45 @@ for system in systems:
                 )
 
 
+    print('Calculate chemical shift chi² between simulations and experiments')
+
+    chemical_shift_chi2_file = (
+        dataFolder + 'chemical_shift_chi2.yaml'
+    )
+    
+    if not os.path.exists(chemical_shift_chi2_file):
+        print('Chemical shift chi² file not found, calculating')
+
+        exp_data, ExperimentalFileShift = (
+            load_experimental_chemical_shifts(
+                system,
+                NMLDB_ROOT_PATH + '/',
+            )
+        )
+
+        #print(exp_data, ExperimentalFile)
+        
+        if ExperimentalFileShift:
+
+            chemical_shift_chi2_vals = (
+                calculate_chemical_shift_chi2(
+                    sim_file,
+                    exp_data,
+                    accuracies = atom_accuracies
+                )
+            )
+
+            with open(chemical_shift_chi2_file, 'w') as file:
+                yaml.dump(
+                    chemical_shift_chi2_vals,
+                    file,
+                    sort_keys=False,
+                    default_flow_style=False,
+                    indent=4,
+                )
+
+
+                
             
 
     #Values based on Ollila et al. 2018 as calculated below
@@ -611,7 +604,7 @@ for system in systems:
 
     print('Determine folding state')
     if not os.path.exists(folding_state_file):
-        result = stable_contact_analysis(gro_fname, trj_fname)
+        result = stable_contact_analysis(gro_fname, trj_fname_noPBC)
 
         existing = {}
         existing[str(system['ID'])] = result
