@@ -31,7 +31,7 @@ def gyration_samples(r, weights, mean, covariance, samples=50000, seed=42):
 
 def fit_saxs(q, intensity, output_dir, r_max=400., points=401,
              inference='nuts', prior_fn='uniform', samples=500, warmup=500, chains=2, seed=43, reference_rg_nm=None, guinier_q_max=None):
-    """Fit intensities with an inferred constant observation-noise SD.
+    """Fit intensities with inferred constant background and observation noise.
 
     P includes the intensity scale: I(q) = integral P(r) sinc(qr) dr.
     Zero mean, no reflection, no positivity or normalization constraint.
@@ -57,7 +57,8 @@ def fit_saxs(q, intensity, output_dir, r_max=400., points=401,
     distance2 = (r[:, None] - r[None, :]) ** 2
     # R <= r_max/4 makes the envelope at the integration boundary <= exp(-16).
     bounds = np.log([(1e-5/r_max, 100/r_max), (2*dr, r_max/2),
-                     (2*dr, r_max/4), (4*dr, r_max/4), (1e-6, 1.)])
+                     (2*dr, r_max/4), (4*dr, r_max/4), (1e-6, 1.),
+                     (1e-8, .5)])
 
     def covariance(logtheta):
         amplitude, ell, r0, R = np.exp(logtheta[:4])
@@ -68,9 +69,11 @@ def fit_saxs(q, intensity, output_dir, r_max=400., points=401,
         K, _ = covariance(theta)
         C = H @ K @ H.T + (np.exp(theta[4])**2 + 1e-12)*np.eye(len(q))
         factor = cho_factor(C, lower=True)
-        return .5*yn @ cho_solve(factor, yn) + np.log(np.diag(factor[0])).sum() + .5*len(q)*np.log(2*np.pi)
+        residual = yn-np.exp(theta[5])
+        return .5*residual @ cho_solve(factor, residual) + np.log(np.diag(factor[0])).sum() + .5*len(q)*np.log(2*np.pi)
 
-    starts = [[10/r_max, r_max/20, r_max/25, r_max*f, sn] for f in (.10, .18, .24)]
+    tail = np.clip(np.median(yn[-max(3, len(yn)//10):]), 1e-7, .49)
+    starts = [[10/r_max, r_max/20, r_max/25, r_max*f, sn, tail] for f in (.10, .18, .24)]
     fits = [minimize(objective, np.clip(np.log(start), bounds[:, 0], bounds[:, 1]),
                      method='L-BFGS-B', bounds=bounds, options={'maxiter': 150}) for start in starts]
     valid = [fit for fit in fits if fit.success and np.isfinite(fit.fun)]
@@ -92,12 +95,12 @@ def fit_saxs(q, intensity, output_dir, r_max=400., points=401,
         cross = K @ H.T
         C = H @ cross + (theta[4]**2+1e-12)*np.eye(len(q))
         factor = cho_factor(C, lower=True)
-        mean = cross @ cho_solve(factor, yn)*scale
+        mean = cross @ cho_solve(factor, yn-theta[5])*scale
         posterior = (K-cross @ cho_solve(factor, cross.T))*scale**2
         posterior = (posterior+posterior.T)/2
         r_means.append(mean)
         r_variances.append(np.maximum(np.diag(posterior), 0))
-        q_means.append(H @ mean)
+        q_means.append(H @ mean + theta[5]*scale)
         q_variances.append(np.maximum(np.einsum('ij,ij->i', H @ posterior, H), 0))
         cov_sum += posterior
         prior_variance += (w*scale)**2
@@ -119,7 +122,7 @@ def fit_saxs(q, intensity, output_dir, r_max=400., points=401,
     np.savetxt(output_dir/'saxs_gp_intensity.csv', np.column_stack((q, y, predicted, intensity_sd,
                np.sqrt(intensity_sd**2+np.mean((theta_draws[:,4]*scale)**2)), q_interval.T)), delimiter=',',
                header='q_per_A,noisy_I,I_mean,I_latent_sd,I_predictive_sd,I_lower_95,I_upper_95', comments='')
-    amplitude, ell, r0, R, noise_sigma = np.median(theta_draws, axis=0)
+    amplitude, ell, r0, R, noise_sigma, background = np.median(theta_draws, axis=0)
     moments, rg, rg_valid = np.concatenate(moment_draws), np.concatenate(rg_draws), np.concatenate(valid_draws)
     rg_quantiles = np.quantile(rg[rg_valid], [.025, .5, .975]) if rg_valid.any() else None
     np.savetxt(output_dir/'saxs_gp_rg_samples.csv',
@@ -128,14 +131,17 @@ def fit_saxs(q, intensity, output_dir, r_max=400., points=401,
     report = dict(amplitude=float(amplitude*scale), ell_A=float(ell), r0_A=float(r0), R_A=float(R),
                   r_max_A=float(r_max), grid_points=points, noise_sigma=float(noise_sigma*scale),
                   noise_model="Inferred constant Gaussian observation SD",
+                  background=float(background*scale),
+                  background_interval_95=(np.quantile(theta_draws[:,5], [.025,.975])*scale).tolist(),
                   noise_sigma_interval_95=(np.quantile(theta_draws[:,4], [.025,.975])*scale).tolist(),
                   negative_log_marginal_likelihood_scaled=float(best.fun), optimizer_message=str(best.message),
                   successful_starts=len(valid),
                   mle_near_bound_parameters=[name for name, x, (lo, hi) in zip(
-                      ['amplitude', 'ell', 'r0', 'R', 'noise_sigma'], best.x, bounds) if min(x-lo, hi-x) < .01],
+                      ['amplitude', 'ell', 'r0', 'R', 'noise_sigma', 'background'], best.x, bounds) if min(x-lo, hi-x) < .01],
                   inference=inference_info, parameter_summary='Posterior medians',
                   intervals='Pointwise equal-tailed hyperparameter-mixture intervals; no positivity constraint',
-                  mean='Zero', transform='I(q) = integral P(r) sinc(qr) dr; sinc(x)=sin(x)/x')
+                  mean='Inferred constant background',
+                  transform='I(q) = background + integral P(r) sinc(qr) dr; sinc(x)=sin(x)/x')
     report['radius_of_gyration'] = dict(
         formula='Rg^2 = integral r^2 P(r) dr / (2 integral P(r) dr)',
         median_nm=float(rg_quantiles[1]) if rg_quantiles is not None else None,
@@ -188,8 +194,8 @@ def fit_saxs(q, intensity, output_dir, r_max=400., points=401,
         ax.grid(alpha=.2)
     fig.savefig(output_dir/'saxs_gp_fit.png', dpi=180)
     plt.close(fig)
-    fig, axes = plt.subplots(5, 2, figsize=(11, 12), constrained_layout=True)
-    for j, label in enumerate(['Amplitude (a.u. / Å)', 'ell (Å)', 'r0 (Å)', 'R (Å)', 'Noise SD (a.u.)']):
+    fig, axes = plt.subplots(6, 2, figsize=(11, 14), constrained_layout=True)
+    for j, label in enumerate(['Amplitude (a.u. / Å)', 'ell (Å)', 'r0 (Å)', 'R (Å)', 'Noise SD (a.u.)', 'Background (a.u.)']):
         for c, chain_values in enumerate(physical_chain):
             axes[j, 0].plot(chain_values[:, j], alpha=.7, lw=.6, label=f'Chain {c+1}')
         axes[j, 0].set(ylabel=label, xlabel='Posterior draw')

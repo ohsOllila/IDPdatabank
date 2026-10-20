@@ -53,15 +53,16 @@ class BayesianTests(unittest.TestCase):
         weights = np.ones(len(r)); weights[[0,-1]] *= .5
         H = np.sinc(np.outer(q,r)/np.pi)*weights
         y = np.exp(-q*q*100)
-        bounds = np.array([[.001,.1], [2,100], [2,25], [4,25], [.001,.1]])
+        bounds = np.array([[.001,.1], [2,100], [2,25], [4,25], [.001,.1], [.001,.5]])
         model = SAXSNUTSModel(r,H,y,bounds,'uniform')
-        raw = torch.tensor([-.5,.2,.1,-.3,.1], dtype=torch.float64, requires_grad=True)
-        a,ell,r0,R,noise = model.physical(raw).detach().numpy()
+        raw = torch.tensor([-.5,.2,.1,-.3,.1,-1.], dtype=torch.float64, requires_grad=True)
+        a,ell,r0,R,noise,background = model.physical(raw).detach().numpy()
         w = a*(-np.expm1(-(r/r0)**2))*np.exp(-(r/R)**2)
         K = np.outer(w,w)*np.exp(-(r[:,None]-r[None,:])**2/(2*ell**2))
         C = H@K@H.T+(noise**2+1e-12)*np.eye(len(q))
         factor = cho_factor(C, lower=True)
-        expected = -.5*y@cho_solve(factor,y)-np.log(np.diag(factor[0])).sum()-.5*len(q)*np.log(2*np.pi)
+        residual = y-background
+        expected = -.5*residual@cho_solve(factor,residual)-np.log(np.diag(factor[0])).sum()-.5*len(q)*np.log(2*np.pi)
         self.assertAlmostEqual(model.log_likelihood(raw).item(), expected, places=9)
         self.assertTrue(torch.autograd.gradcheck(model.log_likelihood, (raw,)))
         # Uniform physical prior has exactly the sigmoid Jacobian in raw space.

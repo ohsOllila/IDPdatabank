@@ -39,14 +39,15 @@ class SAXSNUTSModel:
         return self.bounds[:, 0] + (self.bounds[:, 1]-self.bounds[:, 0])*torch.sigmoid(raw)
 
     def log_likelihood(self, raw):
-        amplitude, ell, r0, R, noise = self.physical(raw)
+        amplitude, ell, r0, R, noise, background = self.physical(raw)
         w = amplitude*(-torch.expm1(-(self.r/r0)**2))*torch.exp(-(self.r/R)**2)
         K = w[:, None]*w[None, :]*torch.exp(-self.distance2/(2*ell**2))
         C = self.H @ K @ self.H.T + self.eye_q*(noise**2+1e-12)
         C = (C+C.T)/2
         L = torch.linalg.cholesky(C)
-        alpha = torch.cholesky_solve(self.y[:, None], L)[:, 0]
-        return -.5*self.y@alpha-torch.log(torch.diag(L)).sum()-.5*len(self.y)*np.log(2*np.pi)
+        residual = self.y-background
+        alpha = torch.cholesky_solve(residual[:, None], L)[:, 0]
+        return -.5*residual@alpha-torch.log(torch.diag(L)).sum()-.5*len(self.y)*np.log(2*np.pi)
 
     def log_prior(self, raw):
         if self.prior_fn == 'uniform':
@@ -56,8 +57,8 @@ class SAXSNUTSModel:
     def __call__(self):
         import pyro
         import pyro.distributions as dist
-        raw = pyro.sample('theta_raw', dist.Normal(torch.zeros(5, dtype=torch.float64),
-                                                   torch.full((5,), 3., dtype=torch.float64)).to_event(1))
+        raw = pyro.sample('theta_raw', dist.Normal(torch.zeros(6, dtype=torch.float64),
+                                                   torch.full((6,), 3., dtype=torch.float64)).to_event(1))
         if self.prior_fn == 'uniform':
             normal = dist.Normal(0., 3.).log_prob(raw).sum()
             pyro.factor('prior_correction', self.log_prior(raw)-normal)
@@ -82,12 +83,12 @@ def sample_hyperparameters(r, H, y, bounds, initial, output_dir, scale,
         gradient, = torch.autograd.grad(loss, t)
         return loss.item(), gradient.detach().numpy()
     fits = [minimize(objective, start, jac=True, method='BFGS', options={'gtol': 1e-5})
-            for start in (initial_raw, np.zeros(5))]
+            for start in (initial_raw, np.zeros(6))]
     best = min(fits, key=lambda f: f.fun)
     if not np.isfinite(best.fun) or np.max(np.abs(best.jac)) > 1e-3:
         raise RuntimeError(f'Raw-parameter MAP failed: {best.message}')
     info = dict(method=inference, prior_fn=prior_fn, seed=seed,
-                physical_bounds=(bounds*np.array([scale, 1, 1, 1, scale])[:, None]).tolist(),
+                physical_bounds=(bounds*np.array([scale, 1, 1, 1, scale, scale])[:, None]).tolist(),
                 prior='Uniform within physical bounds' if prior_fn == 'uniform' else 'Normal(0,3) on raw logit parameters',
                 raw_map=best.x.tolist(), raw_map_negative_log_posterior=float(best.fun))
     if inference == 'laplace':
@@ -108,7 +109,7 @@ def sample_hyperparameters(r, H, y, bounds, initial, output_dir, scale,
             pyro.set_rng_seed(seed+chain)
             print(f'NUTS chain {chain+1}/{chains}: {warmup} warmup, {samples} samples', flush=True)
             kernel = NUTS(model, adapt_step_size=True, jit_compile=True, target_accept_prob=.9)
-            start = torch.tensor(best.x + np.random.default_rng(seed+chain).normal(0, .5, 5), dtype=torch.float64)
+            start = torch.tensor(best.x + np.random.default_rng(seed+chain).normal(0, .5, 6), dtype=torch.float64)
             mcmc = MCMC(kernel, num_samples=samples, warmup_steps=warmup,
                         initial_params={'theta_raw': start}, disable_progbar=True)
             mcmc.run()
@@ -129,8 +130,8 @@ def sample_hyperparameters(r, H, y, bounds, initial, output_dir, scale,
             warnings.warn('NUTS diagnostic checks have not passed; posterior summaries are provisional.')
     with torch.no_grad():
         physical = model.physical(torch.as_tensor(raw_chain)).numpy()
-    physical_units = physical*np.array([scale, 1, 1, 1, scale])
+    physical_units = physical*np.array([scale, 1, 1, 1, scale, scale])
     np.savez_compressed(output_dir/'saxs_gp_hyperparameters.npz', raw_chain=raw_chain,
-                        chain=physical_units, names=np.array(['amplitude', 'ell_A', 'r0_A', 'R_A', 'noise_sigma']))
-    info['parameter_quantiles_025_50_975'] = np.quantile(physical_units.reshape(-1,5), [.025,.5,.975], axis=0).tolist()
-    return physical.reshape(-1, 5), info, physical_units
+                        chain=physical_units, names=np.array(['amplitude', 'ell_A', 'r0_A', 'R_A', 'noise_sigma', 'background']))
+    info['parameter_quantiles_025_50_975'] = np.quantile(physical_units.reshape(-1,6), [.025,.5,.975], axis=0).tolist()
+    return physical.reshape(-1, 6), info, physical_units

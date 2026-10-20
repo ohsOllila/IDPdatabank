@@ -1,0 +1,3 @@
+experiment,matched_simulations,spearman_rho,spearman_p,median_absolute_rank_difference,maximum_absolute_rank_difference
+SASDQJ7,30,0.8785317018909901,1.7477577041949308e-10,3.0,13.0
+SASDQK7,30,0.96440489432703,1.0323830106684231e-17,2.0,6.0

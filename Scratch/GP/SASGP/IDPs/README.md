@@ -9,9 +9,12 @@ Each unique experimental curve is fitted once with a sinc-transform GP:
 
 `I(q) = integral P(r) sin(qr)/(qr) dr`
 
-NUTS jointly samples four real-space kernel parameters and a constant Gaussian
-observation-noise SD. The model uses q and intensity; reported experimental
+NUTS jointly samples four real-space kernel parameters, a constant experimental
+background, and a constant Gaussian observation-noise SD. The background is
+excluded from the sinc transform and P(r). The model uses q and intensity; reported experimental
 error bars are not inputs.
+Non-finite and non-positive intensity rows are excluded before fitting. This
+removes the zero-valued terminal row in 10.1039/c9cp01768b.
 
 For each linked simulation, its CRYSOL curve is interpolated onto the GP q grid.
 A nonnegative intensity scale and constant background are fitted. Trapezoid q
@@ -55,6 +58,10 @@ Outputs under `IDPs/outputs/databank_quality/`:
 - `gp_quality_scores.csv`: one row per simulation–experiment comparison.
 - `<experiment>/`: GP posterior, covariance, diagnostics, and plots.
 - `residuals/`: pointwise fitted curves and standardized residuals.
+- `crps_quality/`: simulations ranked by absolute integrated CRPS/SD, saved as
+  numeric tables and high-resolution heatmaps. Each experiment uses its own
+  logarithmic color scale because instrument-specific uncertainty changes the
+  practical CRPS/SD baseline; colors should only be compared within a panel.
 
 ## Files
 
@@ -62,6 +69,13 @@ Outputs under `IDPs/outputs/databank_quality/`:
 - `bayesian_saxs.py`: NUTS inference and mixture summaries.
 - `gp_quality.py`: CRPS, coverage, residuals, and q weighting.
 - `run_gp_quality.py`: databank-wide CLI.
+- `plot_crps_quality.py`: per-experiment absolute CRPS heatmaps and fitted curves.
+- `plot_crps_bift_comparison.py`: matched GP CRPS/BIFT reduced-chi-squared
+  heatmaps, fitted curves, and rank-agreement plots. Existing BIFT results are
+  read from the saved output in `Scratch/saxs_bift_comparison_SO.ipynb`; that
+  table contains 30 matched simulations for each of SASDQJ7 and SASDQK7.
+- `plot_crps_quality.py`: absolute CRPS/SD heatmaps paired with experimental and
+  fitted simulated SAXS curves using the same quality colors.
 - `test_saxs_gp.py`: mathematical and scoring tests.
 
 ```bash

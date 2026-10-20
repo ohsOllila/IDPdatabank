@@ -80,6 +80,8 @@ def main():
     parser.add_argument("--nuts-samples", type=int, default=500)
     parser.add_argument("--nuts-chains", type=int, default=2)
     parser.add_argument("--seed", type=int, default=43)
+    parser.add_argument("--experiment", action="append",
+                        help="Refit only this experiment; may be repeated")
     parser.add_argument("--refit", action="store_true")
     parser.add_argument("--scale-only", action="store_true")
     args = parser.parse_args()
@@ -88,13 +90,21 @@ def main():
 
     links = list(linked_simulations(args.root))
     experiment_ids = sorted({item[0] for item in links})
+    if args.experiment:
+        requested = set(args.experiment)
+        missing = requested.difference(experiment_ids)
+        if missing:
+            raise ValueError(f"unknown experiment(s): {', '.join(sorted(missing))}")
+        experiment_ids = [item for item in experiment_ids if item in requested]
     for experiment_id in experiment_ids:
         source = args.root / "Data/Experiments/saxs" / experiment_id / "saxs.dat"
         destination = args.output_dir / safe_name(experiment_id)
         intensity_file = destination / "saxs_gp_intensity.csv"
         if args.refit or not intensity_file.exists():
             q, intensity = read_experiment(source)
-            use = q <= args.q_max
+            use = (q <= args.q_max) & np.isfinite(intensity) & (intensity > 0)
+            excluded_nonpositive = int(np.count_nonzero(
+                (q <= args.q_max) & (~np.isfinite(intensity) | (intensity <= 0))))
             q, intensity = thin_evenly(q[use], intensity[use], args.max_points)
             if len(q) < 3:
                 raise ValueError(f"fewer than three points at q <= {args.q_max} for {experiment_id}")
@@ -103,6 +113,7 @@ def main():
                 "source": str(source.relative_to(args.root)), "q_max_per_A": args.q_max,
                 "points_fitted": len(q), "maximum_points": args.max_points,
                 "thinning": "Evenly spaced row indices after q cutoff",
+                "excluded_nonpositive_intensity_points": excluded_nonpositive,
             }, indent=2) + "\n")
             fit_saxs(q, intensity, destination, inference="nuts",
                      warmup=args.nuts_warmup, samples=args.nuts_samples,
