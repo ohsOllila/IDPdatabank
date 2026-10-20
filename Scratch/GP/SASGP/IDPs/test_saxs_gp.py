@@ -2,6 +2,7 @@
 import unittest
 import numpy as np
 from saxs_gp import gyration_samples
+from gp_quality import gaussian_crps, q_weights, score_simulation
 
 
 class GyrationTests(unittest.TestCase):
@@ -68,6 +69,28 @@ class BayesianTests(unittest.TestCase):
         torch.testing.assert_close(model.log_prior(raw), torch.log(sigmoid*(1-sigmoid)).sum())
         model.prior_fn = 'gaussian'
         torch.testing.assert_close(model.log_prior(raw), -.5*(raw/3).square().sum())
+
+
+class QualityScoreTests(unittest.TestCase):
+    def test_q_weights_integrate_linear_function(self):
+        q = np.array([0., .1, .4, 1.])
+        np.testing.assert_allclose(np.sum(q_weights(q) * q), .5)
+
+    def test_crps_prefers_closer_value_and_penalizes_width(self):
+        self.assertLess(gaussian_crps(0., 0., 1.), gaussian_crps(2., 0., 1.))
+        self.assertLess(gaussian_crps(0., 0., .5), gaussian_crps(0., 0., 2.))
+
+    def test_affine_equivalent_curve_scores_as_covered(self):
+        q = np.linspace(.01, .4, 30)
+        simulation = np.exp(-10*q*q)
+        mean = 3*simulation + .2
+        score, detail = score_simulation(q, simulation, q, mean, np.full_like(q, .05))
+        self.assertAlmostEqual(score["scale_sim_to_experiment"], 3., places=10)
+        self.assertAlmostEqual(score["background"], .2, places=10)
+        self.assertAlmostEqual(score["gp_coverage_95"], 1.)
+        self.assertAlmostEqual(score["gp_crps_sd_units"],
+                               (np.sqrt(2.) - 1.) / np.sqrt(np.pi), places=10)
+        np.testing.assert_allclose(detail["z"], 0., atol=1e-10)
 
 
 if __name__ == '__main__':

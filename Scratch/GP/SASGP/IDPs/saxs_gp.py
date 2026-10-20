@@ -35,7 +35,7 @@ def fit_saxs(q, intensity, output_dir, r_max=400., points=401,
 
     P includes the intensity scale: I(q) = integral P(r) sinc(qr) dr.
     Zero mean, no reflection, no positivity or normalization constraint.
-    Intervals marginalize kernel hyperparameters using membrane-style NUTS or Laplace.
+    Intervals marginalize kernel hyperparameters using NUTS or Laplace.
     """
     q, y = np.asarray(q, float), np.asarray(intensity, float)
     if (q.ndim != 1 or y.shape != q.shape or len(q) < 2

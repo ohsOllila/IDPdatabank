@@ -67,7 +67,7 @@ class SAXSNUTSModel:
 def sample_hyperparameters(r, H, y, bounds, initial, output_dir, scale,
                            inference='nuts', prior_fn='uniform', samples=500,
                            warmup=500, chains=2, seed=43):
-    """Same raw-logit priors, NUTS or MAP/Hessian Laplace as membrane workflow."""
+    """Infer bounded hyperparameters with NUTS or MAP/Hessian Laplace."""
     if inference not in ('nuts', 'laplace') or prior_fn not in ('uniform', 'gaussian'):
         raise ValueError('Unknown inference or prior')
     if samples < 10 or warmup < 1 or chains < 1:
