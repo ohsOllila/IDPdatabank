@@ -1,4 +1,5 @@
 """Scores for comparing a simulated SAXS curve with a fitted GP posterior."""
+
 import numpy as np
 from scipy.optimize import lsq_linear
 from scipy.special import ndtr
@@ -26,8 +27,7 @@ def gaussian_crps(observation, mean, sd):
     return sd * (z * (2 * ndtr(z) - 1) + 2 * density - 1 / np.sqrt(np.pi))
 
 
-def score_simulation(q_sim, intensity_sim, q_gp, mean_gp, sd_gp,
-                     fit_background=True, sd_floor_fraction=1e-6):
+def score_simulation(q_sim, intensity_sim, q_gp, mean_gp, sd_gp, fit_background=True, sd_floor_fraction=1e-6):
     """Fit simulation scale/background and score it against a GP predictive marginal.
 
     The GP is treated pointwise. This deliberately avoids inversion of its strongly
@@ -38,8 +38,13 @@ def score_simulation(q_sim, intensity_sim, q_gp, mean_gp, sd_gp,
         lambda value: np.asarray(value, float),
         (q_sim, intensity_sim, q_gp, mean_gp, sd_gp),
     )
-    for name, values in (("q_sim", q_sim), ("intensity_sim", intensity_sim),
-                         ("q_gp", q_gp), ("mean_gp", mean_gp), ("sd_gp", sd_gp)):
+    for name, values in (
+        ("q_sim", q_sim),
+        ("intensity_sim", intensity_sim),
+        ("q_gp", q_gp),
+        ("mean_gp", mean_gp),
+        ("sd_gp", sd_gp),
+    ):
         if values.ndim != 1 or not np.isfinite(values).all():
             raise ValueError(f"{name} must be finite and one-dimensional")
     if len(q_sim) != len(intensity_sim) or len(q_gp) != len(mean_gp) or len(q_gp) != len(sd_gp):
@@ -66,8 +71,7 @@ def score_simulation(q_sim, intensity_sim, q_gp, mean_gp, sd_gp,
         upper.append(np.inf)
     design = np.column_stack(columns)
     whiten = np.sqrt(weights) / sd
-    fit = lsq_linear(design * whiten[:, None], mean * whiten,
-                     bounds=(lower, upper), method="bvls")
+    fit = lsq_linear(design * whiten[:, None], mean * whiten, bounds=(lower, upper), method="bvls")
     fitted = design @ fit.x
     residual = fitted - mean
     z = residual / sd
@@ -92,5 +96,4 @@ def score_simulation(q_sim, intensity_sim, q_gp, mean_gp, sd_gp,
         "q_points": int(len(q)),
         "fit_background": bool(fit_background),
     }
-    return result, {"q": q, "gp_mean": mean, "gp_sd": sd,
-                    "simulation_fitted": fitted, "z": z, "q_weight": weights}
+    return result, {"q": q, "gp_mean": mean, "gp_sd": sd, "simulation_fitted": fitted, "z": z, "q_weight": weights}
