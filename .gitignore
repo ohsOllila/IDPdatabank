@@ -27,6 +27,7 @@ wheels/
 poetry.lock
 
 # IDE
+.DS_Store
 .idea/
 .vscode/
 *.swp
