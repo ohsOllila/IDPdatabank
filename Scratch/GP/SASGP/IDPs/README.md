@@ -76,6 +76,17 @@ Outputs under `IDPs/outputs/databank_quality/`:
   table contains 30 matched simulations for each of SASDQJ7 and SASDQK7.
 - `plot_crps_quality.py`: absolute CRPS/SD heatmaps paired with experimental and
   fitted simulated SAXS curves using the same quality colors.
+- `gp_quality_draws.py`: CRPS against the full equal-weight Gaussian mixture of
+  per-draw posteriors instead of the single-Gaussian summary. The pairwise
+  mixture term is evaluated in closed form, so this is the exact expectation of
+  draw-based CRPS; components are reconstructed from saved hyperparameter
+  chains (validated against the saved mean and latent SD) and cached per
+  experiment.
+- `plot_crps_gaussian_vs_draws.py`: per-experiment comparison of single-Gaussian
+  and draw-mixture CRPS/SD, styled like `plot_crps_bift_comparison.py`. Across
+  all five datasets the two scores agree at Spearman rho >= 0.9999, with median
+  relative score changes below 6% and no rank swaps among 209 comparisons, so
+  the Gaussian summary is empirically rank-preserving here.
 - `test_saxs_gp.py`: mathematical and scoring tests.
 
 ```bash
