@@ -87,6 +87,34 @@ Outputs under `IDPs/outputs/databank_quality/`:
   all five datasets the two scores agree at Spearman rho >= 0.9999, with median
   relative score changes below 6% and no rank swaps among 209 comparisons, so
   the Gaussian summary is empirically rank-preserving here.
+- `plot_method_disagreement.py`: for the largest GP-vs-BIFT rank disagreements,
+  standardizes the same fitted simulation residual by the GP predictive SD and
+  by the reported experimental sigma, localizing whether the disagreement comes
+  from the uncertainty model (sigma ratio panel) or from low-q versus high-q
+  residual structure. Writes per-case figures and `disagreement_anatomy.csv`.
+- `run_synthetic_truth_study.py`: synthetic ground-truth robustness test. A
+  two-Gaussian coil P(r) matched to SASDQK7's fitted Rg, intensity, and
+  noise level is perturbed 19 physically graded ways (size scaling, shoulder
+  weight, tail length, compact bumps, broadening, tail tilt, large-distance
+  truncation), giving 20 simulations with an exact noise-free discrepancy
+  ranking. Four error-bar scenarios (calibrated, low-q overestimated bars,
+  counting-statistics relative bars, low-q-corrupted noise with constant bars)
+  generate synthetic experiments; the GP is refit per scenario and its ranking
+  compared with BIFT-convention reduced chi-squared. The BIFT Fortran binary is
+  not recompiled: its global error-correction factor is rank-invariant, and its
+  rebinned grid is the only unmodeled difference.
+  Headline result: with calibrated constant error bars both methods rank well
+  (GP Spearman rho 0.989 vs truth, chi_r^2 0.983), but relative
+  counting-statistics error bars against constant noise destroy chi_r^2
+  (rho 0.260, top-5 overlap 0.0, chi_r^2 ~ 1e16 even for the exact truth),
+  and low-q-overestimated bars compress its discrimination
+  (rho 0.850, top-5 0.4). The GP is invariant to reported bars by construction
+  (identical rho 0.989 in all bar scenarios) but degrades honestly when its
+  constant-noise assumption is violated (rho 0.920 in the noisy-low-q scenario,
+  where chi_r^2 retains 0.982 because its constant bars match the constant
+  noise contribution once the inflated low-q points are absorbed by the offset).
+- `test_synthetic_truth.py`: tests for the truth model, chi-squared convention,
+  and exact discrepancy.
 - `test_saxs_gp.py`: mathematical and scoring tests.
 
 ```bash
