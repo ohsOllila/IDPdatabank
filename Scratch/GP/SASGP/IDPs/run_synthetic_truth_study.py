@@ -26,11 +26,18 @@ Scenarios:
 - noisy_lowq: noise inflated 4x at low q (structure/aggregation), but reported
   bars constant everywhere -- SASDQK7's actual situation (its sigma column is
   -1 placeholders interpolated to a single constant).
+- systematic_lowq: calibrated constant noise and bars, but a smooth correlated
+  systematic error (5%-of-I(0) low-q additive excess, exp(-(q/0.08)^2)) is
+  added to the experiment, mimicking imperfect buffer subtraction or slight
+  interparticle effects. This violates both methods' iid-residual assumption
+  and tests whether inflating predictive uncertainty (GP) or residual
+  penalization (chi_r^2) handles a correlated artifact more gracefully.
 """
 
 import argparse
 import csv
 import json
+import zlib
 from pathlib import Path
 
 import matplotlib
@@ -141,14 +148,29 @@ def true_discrepancy(q, intensity_sim, q_grid, truth):
 
 
 def scenario_definitions(q, intensity_truth, noise_sigma):
-    """(name -> (noise_sd per point, reported_sigma per point)) with seeded realizations."""
+    """name -> dict(noise, sigma, systematic): per-point actual noise SD,
+    reported error bars, and a smooth q-dependent systematic error added to the
+    synthetic experiment. All entries keep the RNG realization order of earlier
+    versions, so cached fits for the original scenarios stay valid."""
     lowq = np.exp(-(q / 0.03) ** 2)
     relative = noise_sigma / np.mean(intensity_truth)
+    zero = np.zeros_like(q)
+    constant = np.full_like(q, noise_sigma)
     return {
-        "calibrated": (np.full_like(q, noise_sigma), np.full_like(q, noise_sigma)),
-        "lowq_overestimated": (np.full_like(q, noise_sigma), noise_sigma * (1 + 3 * lowq)),
-        "counting_statistics": (np.full_like(q, noise_sigma), relative * intensity_truth),
-        "noisy_lowq": (noise_sigma * (1 + 3 * lowq), np.full_like(q, noise_sigma)),
+        "calibrated": {"noise": constant, "sigma": constant, "systematic": zero},
+        "lowq_overestimated": {"noise": constant, "sigma": noise_sigma * (1 + 3 * lowq), "systematic": zero},
+        "counting_statistics": {"noise": constant, "sigma": relative * intensity_truth, "systematic": zero},
+        "noisy_lowq": {"noise": noise_sigma * (1 + 3 * lowq), "sigma": constant, "systematic": zero},
+        # Smooth, q-dependent systematic error: a 5%-of-I(0) low-q excess with a
+        # physical width like imperfect buffer subtraction or a slight
+        # interparticle/repulsion contribution. Calibrated constant noise and
+        # bars in every other respect; the systematic is correlated across
+        # points, violating both methods' iid assumptions.
+        "systematic_lowq": {
+            "noise": constant,
+            "sigma": constant,
+            "systematic": 0.05 * intensity_truth.max() * np.exp(-(q / 0.08) ** 2),
+        },
     }
 
 
@@ -164,6 +186,13 @@ def main():
     parser.add_argument("--nuts-chains", type=int, default=2)
     parser.add_argument("--seed", type=int, default=2026)
     parser.add_argument("--scenarios", action="append", help="Run only these scenarios; may be repeated")
+    parser.add_argument(
+        "--replicates",
+        type=int,
+        default=1,
+        help="Independent noise realizations per scenario; with >1 the summary reports "
+        "the median and range of each Spearman rho across realizations",
+    )
     parser.add_argument("--refit", action="store_true")
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -205,117 +234,148 @@ def main():
     if args.scenarios:
         scenarios = {name: scenarios[name] for name in args.scenarios}
 
-    rng = np.random.default_rng(args.seed)
-    scenario_realizations = {}
-    for name, (noise_sd, _) in scenarios.items():
-        scenario_realizations[name] = truth + rng.normal(0, 1, len(truth)) * noise_sd
-
-    summary, per_scenario_rows = [], []
-    for name, (noise_sd, sigma_reported) in scenarios.items():
-        destination = args.output_dir / safe_name(name)
-        intensity_file = destination / "saxs_gp_intensity.csv"
-        if args.refit or not intensity_file.exists():
-            destination.mkdir(parents=True, exist_ok=True)
-            (destination / "scenario.json").write_text(
-                json.dumps(
-                    {
-                        "noise_model": "constant" if np.ptp(noise_sd) < 1e-12 else "low-q inflated 4x, exp(-(q/0.03)^2)",
-                        "reported_sigma_model": {
-                            "calibrated": "constant = GP-inferred SASDQK7 noise",
-                            "lowq_overestimated": "4x inflated at low q",
-                            "counting_statistics": "proportional to intensity",
-                            "noisy_lowq": "constant (SASDQK7's actual case)",
-                        }[name],
-                        "seed": args.seed,
-                    },
-                    indent=2,
+    summary, per_scenario_rows, replicate_stats = [], [], {}
+    for replicate in range(args.replicates):
+        seed_replicate = args.seed + 1000 * replicate
+        for name, definition in scenarios.items():
+            scenario_rng = np.random.default_rng([seed_replicate, zlib.crc32(name.encode("utf-8"))])
+            realization = (
+                truth + definition["systematic"] + scenario_rng.normal(0, 1, len(truth)) * definition["noise"]
+            )
+            label = safe_name(name) if args.replicates == 1 else f"{safe_name(name)}_rep{replicate}"
+            destination = args.output_dir / label
+            intensity_file = destination / "saxs_gp_intensity.csv"
+            if args.refit or not intensity_file.exists():
+                destination.mkdir(parents=True, exist_ok=True)
+                (destination / "scenario.json").write_text(
+                    json.dumps(
+                        {
+                            "noise_model": "constant"
+                            if np.ptp(definition["noise"]) < 1e-12
+                            else "low-q inflated 4x, exp(-(q/0.03)^2)",
+                            "reported_sigma_model": {
+                                "calibrated": "constant = GP-inferred SASDQK7 noise",
+                                "lowq_overestimated": "4x inflated at low q",
+                                "counting_statistics": "proportional to intensity",
+                                "noisy_lowq": "constant (SASDQK7's actual case)",
+                                "systematic_lowq": "constant, honest",
+                            }[name],
+                            "systematic_error": {
+                                "none": None,
+                                "systematic_lowq": "additive 5%-of-I(0) low-q excess, exp(-(q/0.08)^2), "
+                                "mimicking imperfect buffer subtraction or slight interparticle effects",
+                            }[name if name == "systematic_lowq" else "none"],
+                            "seed": seed_replicate,
+                            "replicate": replicate,
+                        },
+                        indent=2,
+                    )
+                    + "\n"
                 )
-                + "\n"
-            )
-            fit_saxs(
-                q_grid,
-                scenario_realizations[name],
-                destination,
-                inference=args.inference,
-                warmup=args.nuts_warmup,
-                samples=args.nuts_samples,
-                chains=args.nuts_chains,
-                seed=args.seed + 17,
-            )
-        gp = np.genfromtxt(intensity_file, delimiter=",", names=True)
-        rows = []
-        for sim_name, curve in sim_curves.items():
-            gp_score, _ = score_simulation(
-                q_sim, curve, gp["q_per_A"], gp["I_mean"], gp["I_predictive_sd"], fit_background=True
-            )
-            chi2, chi2_scale = bift_style_chi2(
-                q_grid, scenario_realizations[name], sigma_reported, q_sim, curve
-            )
-            rows.append(
-                {
-                    "scenario": name,
-                    "simulation": sim_name,
-                    "label": sims_real[sim_name][0],
-                    "true_discrepancy": discrepancies[sim_name],
-                    "true_rank": truth_rank[sim_name],
-                    "gp_crps_sd_units": gp_score["gp_crps_sd_units"],
-                    "chi2_reduced": chi2,
-                }
-            )
-        for key, column in (("gp", "gp_crps_sd_units"), ("chi2", "chi2_reduced")):
-            ordered = sorted(rows, key=lambda row: row[column])
-            for rank, row in enumerate(ordered, start=1):
-                row[f"{key}_rank"] = rank
-        per_scenario_rows.extend(rows)
-        with (destination / "simulation_scores.csv").open("w", newline="") as handle:
-            writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
-            writer.writeheader()
-            writer.writerows(sorted(rows, key=lambda row: row["true_rank"]))
-        truth_order = [row["simulation"] for row in sorted(rows, key=lambda row: row["true_rank"])]
-        rho = {}
-        top5 = {}
-        for key, column in (("gp", "gp_crps_sd_units"), ("chi2", "chi2_reduced")):
-            rho[key] = spearmanr([row["true_discrepancy"] for row in rows], [row[column] for row in rows])
-            method_order = [row["simulation"] for row in sorted(rows, key=lambda row: row[f"{key}_rank"])]
-            top5[key] = len(set(truth_order[:5]) & set(method_order[:5])) / 5
-        summary.append(
-            {
-                "scenario": name,
+                fit_saxs(
+                    q_grid,
+                    realization,
+                    destination,
+                    inference=args.inference,
+                    warmup=args.nuts_warmup,
+                    samples=args.nuts_samples,
+                    chains=args.nuts_chains,
+                    seed=seed_replicate + 17,
+                )
+            gp = np.genfromtxt(intensity_file, delimiter=",", names=True)
+            rows = []
+            for sim_name, curve in sim_curves.items():
+                gp_score, _ = score_simulation(
+                    q_sim, curve, gp["q_per_A"], gp["I_mean"], gp["I_predictive_sd"], fit_background=True
+                )
+                chi2, _ = bift_style_chi2(q_grid, realization, definition["sigma"], q_sim, curve)
+                rows.append(
+                    {
+                        "scenario": label,
+                        "simulation": sim_name,
+                        "label": sims_real[sim_name][0],
+                        "true_discrepancy": discrepancies[sim_name],
+                        "true_rank": truth_rank[sim_name],
+                        "gp_crps_sd_units": gp_score["gp_crps_sd_units"],
+                        "chi2_reduced": chi2,
+                    }
+                )
+            for key, column in (("gp", "gp_crps_sd_units"), ("chi2", "chi2_reduced")):
+                ordered = sorted(rows, key=lambda row: row[column])
+                for rank, row in enumerate(ordered, start=1):
+                    row[f"{key}_rank"] = rank
+            per_scenario_rows.extend(rows)
+            with (destination / "simulation_scores.csv").open("w", newline="") as handle:
+                writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+                writer.writeheader()
+                writer.writerows(sorted(rows, key=lambda row: row["true_rank"]))
+            truth_order = [row["simulation"] for row in sorted(rows, key=lambda row: row["true_rank"])]
+            rho, top5 = {}, {}
+            for key, column in (("gp", "gp_crps_sd_units"), ("chi2", "chi2_reduced")):
+                rho[key] = spearmanr([row["true_discrepancy"] for row in rows], [row[column] for row in rows])
+                method_order = [row["simulation"] for row in sorted(rows, key=lambda row: row[f"{key}_rank"])]
+                top5[key] = len(set(truth_order[:5]) & set(method_order[:5])) / 5
+            entry = {
                 "gp_spearman_rho": rho["gp"][0],
-                "gp_spearman_p": rho["gp"][1],
                 "chi2_spearman_rho": rho["chi2"][0],
-                "chi2_spearman_p": rho["chi2"][1],
                 "gp_top5_overlap": top5["gp"],
                 "chi2_top5_overlap": top5["chi2"],
-                "chi2_dynamic_range": max(row["chi2_reduced"] for row in rows) - min(row["chi2_reduced"] for row in rows),
             }
-        )
-        chi2_values = np.array([row["chi2_reduced"] for row in sorted(rows, key=lambda row: row["true_rank"])])
-        gp_values = np.array([row["gp_crps_sd_units"] for row in sorted(rows, key=lambda row: row["true_rank"])])
-        d_values = np.array([row["true_discrepancy"] for row in sorted(rows, key=lambda row: row["true_rank"])])
-        labels = [row["simulation"] for row in sorted(rows, key=lambda row: row["true_rank"])]
-        fig, (scatter_ax, heat_ax) = plt.subplots(1, 2, figsize=(15, 7), constrained_layout=True)
-        scatter_ax.plot(d_values, gp_values, "o", color="C0", label="GP CRPS/SD")
-        scatter_ax.plot(d_values, chi2_values / chi2_values.max() * gp_values.max(), "s", color="C3",
-                        label=r"BIFT $\chi_r^2$ (rescaled)")
-        for d, g, label in zip(d_values, gp_values, labels):  # noqa: B905 -- parallel arrays
-            scatter_ax.annotate(label, (d, g), xytext=(3, 3), textcoords="offset points", fontsize=6)
-        scatter_ax.set(
-            xlabel="True discrepancy (relative q-weighted RMSE)",
-            ylabel="Score (GP CRPS/SD; chi2 rescaled)",
-            title=f"{name}: score vs truth (GP rho={rho['gp'][0]:.3f}, chi2 rho={rho['chi2'][0]:.3f})",
-        )
-        scatter_ax.grid(alpha=0.2)
-        scatter_ax.legend(frameon=False, fontsize=8)
-        stacked = np.column_stack([d_values / d_values.max(), gp_values / gp_values.max(), chi2_values / chi2_values.max()])
-        image = heat_ax.imshow(stacked, cmap="RdYlGn_r", aspect="auto", vmin=0)
-        heat_ax.set_yticks(np.arange(len(labels)), labels, fontsize=6)
-        heat_ax.set_xticks([0, 1, 2], ["truth\n(max)", "GP\n(max)", r"$\chi_r^2$" + "\n(max)"])
-        heat_ax.set_title("Scores sorted by true discrepancy (each col. own scale)")
-        fig.colorbar(image, ax=heat_ax, shrink=0.8)
-        fig.savefig(args.output_dir / f"{safe_name(name)}.png", dpi=220)
-        plt.close(fig)
-        print(f"{name}: GP rho={rho['gp'][0]:.3f}, chi2 rho={rho['chi2'][0]:.3f}", flush=True)
+            replicate_stats.setdefault(name, []).append(entry)
+            if args.replicates > 1:
+                print(f"{label}: GP rho={rho['gp'][0]:.3f}, chi2 rho={rho['chi2'][0]:.3f}", flush=True)
+            if replicate > 0:
+                continue
+
+            summary.append(
+                {
+                    "scenario": name,
+                    "gp_spearman_rho": rho["gp"][0],
+                    "gp_spearman_p": rho["gp"][1],
+                    "chi2_spearman_rho": rho["chi2"][0],
+                    "chi2_spearman_p": rho["chi2"][1],
+                    "gp_top5_overlap": top5["gp"],
+                    "chi2_top5_overlap": top5["chi2"],
+                    "chi2_dynamic_range": max(row["chi2_reduced"] for row in rows)
+                    - min(row["chi2_reduced"] for row in rows),
+                    "replicates": args.replicates,
+                }
+            )
+            chi2_values = np.array([row["chi2_reduced"] for row in sorted(rows, key=lambda row: row["true_rank"])])
+            gp_values = np.array([row["gp_crps_sd_units"] for row in sorted(rows, key=lambda row: row["true_rank"])])
+            d_values = np.array([row["true_discrepancy"] for row in sorted(rows, key=lambda row: row["true_rank"])])
+            labels = [row["simulation"] for row in sorted(rows, key=lambda row: row["true_rank"])]
+            fig, (scatter_ax, heat_ax) = plt.subplots(1, 2, figsize=(15, 7), constrained_layout=True)
+            scatter_ax.plot(d_values, gp_values, "o", color="C0", label="GP CRPS/SD")
+            scatter_ax.plot(d_values, chi2_values / chi2_values.max() * gp_values.max(), "s", color="C3",
+                            label=r"BIFT $\chi_r^2$ (rescaled)")
+            for d, g, sim_label in zip(d_values, gp_values, labels):  # noqa: B905 -- parallel arrays
+                scatter_ax.annotate(sim_label, (d, g), xytext=(3, 3), textcoords="offset points", fontsize=6)
+            scatter_ax.set(
+                xlabel="True discrepancy (relative q-weighted RMSE)",
+                ylabel="Score (GP CRPS/SD; chi2 rescaled)",
+                title=f"{name}: score vs truth (GP rho={rho['gp'][0]:.3f}, chi2 rho={rho['chi2'][0]:.3f})",
+            )
+            scatter_ax.grid(alpha=0.2)
+            scatter_ax.legend(frameon=False, fontsize=8)
+            stacked = np.column_stack([d_values / d_values.max(), gp_values / gp_values.max(), chi2_values / chi2_values.max()])
+            image = heat_ax.imshow(stacked, cmap="RdYlGn_r", aspect="auto", vmin=0)
+            heat_ax.set_yticks(np.arange(len(labels)), labels, fontsize=6)
+            heat_ax.set_xticks([0, 1, 2], ["truth\n(max)", "GP\n(max)", r"$\chi_r^2$" + "\n(max)"])
+            heat_ax.set_title("Scores sorted by true discrepancy (each col. own scale)")
+            fig.colorbar(image, ax=heat_ax, shrink=0.8)
+            fig.savefig(args.output_dir / f"{safe_name(name)}.png", dpi=220)
+            plt.close(fig)
+            print(f"{name}: GP rho={rho['gp'][0]:.3f}, chi2 rho={rho['chi2'][0]:.3f}", flush=True)
+
+    if args.replicates > 1:
+        for row in summary:
+            stats = replicate_stats[row["scenario"]]
+            for key in ("gp_spearman_rho", "chi2_spearman_rho", "gp_top5_overlap", "chi2_top5_overlap"):
+                values = [float(item[key]) for item in stats]
+                row[f"{key}_median"] = float(np.median(values))
+                row[f"{key}_min"] = min(values)
+                row[f"{key}_max"] = max(values)
 
     with (args.output_dir / "scenario_summary.csv").open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(summary[0]))

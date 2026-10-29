@@ -97,22 +97,55 @@ Outputs under `IDPs/outputs/databank_quality/`:
   noise level is perturbed 19 physically graded ways (size scaling, shoulder
   weight, tail length, compact bumps, broadening, tail tilt, large-distance
   truncation), giving 20 simulations with an exact noise-free discrepancy
-  ranking. Four error-bar scenarios (calibrated, low-q overestimated bars,
-  counting-statistics relative bars, low-q-corrupted noise with constant bars)
-  generate synthetic experiments; the GP is refit per scenario and its ranking
-  compared with BIFT-convention reduced chi-squared. The BIFT Fortran binary is
-  not recompiled: its global error-correction factor is rank-invariant, and its
-  rebinned grid is the only unmodeled difference.
-  Headline result: with calibrated constant error bars both methods rank well
-  (GP Spearman rho 0.989 vs truth, chi_r^2 0.983), but relative
-  counting-statistics error bars against constant noise destroy chi_r^2
-  (rho 0.260, top-5 overlap 0.0, chi_r^2 ~ 1e16 even for the exact truth),
-  and low-q-overestimated bars compress its discrimination
-  (rho 0.850, top-5 0.4). The GP is invariant to reported bars by construction
-  (identical rho 0.989 in all bar scenarios) but degrades honestly when its
-  constant-noise assumption is violated (rho 0.920 in the noisy-low-q scenario,
-  where chi_r^2 retains 0.982 because its constant bars match the constant
-  noise contribution once the inflated low-q points are absorbed by the offset).
+  ranking. Five scenarios (calibrated, low-q overestimated bars,
+  counting-statistics relative bars, low-q-corrupted noise with constant bars,
+  and a smooth low-q systematic error) generate synthetic experiments; the GP
+  is refit per scenario and its ranking compared with the notebook's
+  reduced-chi-squared convention (unweighted affine fit, sigma only
+  normalizing residuals). The BIFT Fortran binary is not recompiled: its
+  global error-correction factor is rank-invariant, and its rebinned grid is
+  the only unmodeled difference.
+  Because a single noise realization moves Spearman rho by +-0.2, conclusions
+  require replicated realizations: run with `--replicates 8 --inference
+  laplace --output-dir IDPs/outputs/synthetic_truth_replicates`. Replicated
+  result (median [min,max] over 8 realizations): with calibrated or inflated
+  low-q bars both methods track truth comparably (GP 0.958 [0.90,0.99] and
+  0.966 [0.80,0.99]; chi_r^2 0.953 [0.88,0.99] and 0.925 [0.72,0.97]).
+  Relative counting-statistics bars against constant noise are the one robust
+  failure: chi_r^2 collapses to 0.468 [-0.27,0.79] (top-5 overlap 0.0) while
+  the GP holds 0.929 [0.71,0.99]. Noisy low-q data degrades both comparably
+  (GP 0.843 [0.57,0.98], chi_r^2 0.890 [0.46,1.00]; no reliable difference),
+  and a smooth 5% low-q systematic error impairs both equally (GP 0.708
+  [0.51,0.92], chi_r^2 0.687 [0.46,0.92]). Single-realization numbers
+  elsewhere in outputs/synthetic_truth are NUTS fits of one draw and should
+  not be quoted without these spreads.
+- `run_bift_binary_study.py`: the definitive synthetic comparison, running the
+  REAL BIFT binary (compiled from GenApp-BayesApp bift.f; `brew install gcc`
+  then `gfortran bift.f -O2 -o bift` in Scratch/GP/SASGP/bift) on every
+  replicated synthetic experiment. Scores all simulations with the notebook's
+  exact compute_chi2 against BIFT's own output (rescale.dat: Shannon-rebinned
+  curve, error-corrected sigma), in both of BIFT's error-correction modes:
+  constant factor (the notebook's default) and non-constant q-/intensity-
+  dependent correction. GP scores reuse the cached per-realization fits;
+  nothing GP-related is recomputed. Reported sigma is floored at 1 a.u. for
+  the counting-statistics scenario because BIFT's reader rejects sigma <= 0
+  (itself notable: proportional error bars on a decaying curve crash the
+  mainstream pipeline). Over 8 realizations (median [min,max] Spearman rho vs
+  the exact ranking; GP on identical realizations):
+  calibrated: BIFT 0.963 [0.90,0.99], GP 0.958 [0.90,0.99] -- equivalent.
+  q-shaped miscalibrated bars (counting statistics): BIFT 0.641 [0.40,0.85],
+  non-constant mode 0.554 -- BIFT's Shannon rebinning softens but does not
+  fix it, and its own q-dependent error correction makes ranking WORSE --
+  while the GP holds 0.929 [0.71,0.99]. This is the single reproducible
+  advantage of the GP. Low-q inflated bars (0.922/0.941 vs 0.966), noisy
+  low-q data (0.822/0.770 vs 0.843), and smooth systematic error
+  (0.668/0.672 vs 0.708) leave the methods statistically indistinguishable.
+- `plot_bift_binary_comparison.py`: one figure per scenario from
+  `bift_scores.csv`: score-vs-truth scatter with min-max bars over the 8
+  realizations for the GP and both BIFT correction modes, a median-score
+  heatmap sorted by the exact ranking, and a per-realization GP-vs-BIFT rank
+  scatter annotated with the summary rhos. Written to
+  `outputs/synthetic_truth_bift_binary/plots/`.
 - `test_synthetic_truth.py`: tests for the truth model, chi-squared convention,
   and exact discrepancy.
 - `test_saxs_gp.py`: mathematical and scoring tests.
