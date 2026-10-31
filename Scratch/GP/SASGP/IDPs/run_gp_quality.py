@@ -1,15 +1,26 @@
-"""Fit each SAXS experiment once and score every linked CRYSOL simulation."""
+"""Fit each SAXS experiment once and score every linked CRYSOL simulation.
+
+Also exports each fit to Data/Experiments/saxs/<experiment>/gp_fit.dat via
+fairmd.idp.saxs_gp_fit.export_gp_fit, the portable artifact consumed by
+calcProperties.py scoring. The canonical fitting entry point is now
+Scripts/AnalyzeDatabank/calcSAXSGPFits.py; this Scratch runner remains for
+the Slice-style diagnostics and per-simulation score tables.
+"""
 
 import argparse
 import csv
 import json
 import os
+import sys
 from pathlib import Path
 
 import numpy as np
 import yaml
 from gp_quality import score_simulation
 from saxs_gp import fit_saxs
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "src"))
+from fairmd.idp.saxs_gp_fit import export_gp_fit
 
 
 def read_experiment(path):
@@ -134,6 +145,7 @@ def main():
                 chains=args.nuts_chains,
                 seed=args.seed,
             )
+        export_gp_fit(destination, source.parent)
 
     rows = []
     residual_dir = args.output_dir / "residuals"
