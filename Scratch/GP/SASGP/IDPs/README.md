@@ -148,6 +148,21 @@ Outputs under `IDPs/outputs/databank_quality/`:
   `outputs/synthetic_truth_bift_binary/plots/`.
 - `test_synthetic_truth.py`: tests for the truth model, chi-squared convention,
   and exact discrepancy.
+- `gp_quality_function.py` has been promoted into the main codebase and
+  removed from Scratch: the fitting code now lives in
+  `src/fairmd/idp/saxs_gp_fit.py` (run databank-wide by
+  `Scripts/AnalyzeDatabank/calcSAXSGPFits.py`), the scoring code and the
+  single `evaluate_SAXS_quality_GP(system, databankPath)` function live in
+  `src/fairmd/idp/saxs_gp_quality.py` (called from `calcProperties.py`), and
+  each experiment's portable fit is stored beside it as
+  `Data/Experiments/saxs/<experiment>/gp_fit.dat`. Scoring needs only
+  numpy/scipy/yaml; torch/pyro are required only for fitting. Tests are in
+  `tests/test_saxs_gp_quality.py`. `run_gp_quality.py` now delegates its
+  gp_fit.dat export to `fairmd.idp.saxs_gp_fit.export_gp_fit`.
+- `toy_problem_summary.md`: collaborator-facing summary of the synthetic
+  ground-truth study and its replicated results (the definitive numbers are
+  those in this file; single-realization CSVs under ignored `outputs/` are
+  working artifacts).
 - `test_saxs_gp.py`: mathematical and scoring tests.
 
 ```bash
