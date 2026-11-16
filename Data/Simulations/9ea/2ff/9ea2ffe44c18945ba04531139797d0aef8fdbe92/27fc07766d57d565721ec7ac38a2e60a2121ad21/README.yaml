@@ -75,3 +75,4 @@ TRJ:
 - - md_GGS_02_amber03ws.xtc
 TRJLENGTH: 800010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005

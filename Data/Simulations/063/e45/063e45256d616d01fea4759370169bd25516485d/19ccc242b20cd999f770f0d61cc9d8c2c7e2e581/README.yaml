@@ -71,3 +71,4 @@ TRJ:
 - - trajout.xtc
 TRJLENGTH: 400010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005s

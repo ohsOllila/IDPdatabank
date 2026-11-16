@@ -73,3 +73,4 @@ TRJ:
 - - amberff03ws_0mm_nacl_md_KVEEV_prot_02.xtc
 TRJLENGTH: 800010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005

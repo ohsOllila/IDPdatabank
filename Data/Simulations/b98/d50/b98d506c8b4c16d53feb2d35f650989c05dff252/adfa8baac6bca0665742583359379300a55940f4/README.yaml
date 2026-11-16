@@ -75,3 +75,4 @@ TRJ:
 - - KK40_d_ca2+_1000_nowater.xtc
 TRJLENGTH: 1000010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005s

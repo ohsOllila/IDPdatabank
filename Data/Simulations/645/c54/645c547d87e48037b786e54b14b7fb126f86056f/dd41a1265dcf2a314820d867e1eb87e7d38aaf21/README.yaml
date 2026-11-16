@@ -91,3 +91,4 @@ TRJ:
 - - md2_EN2_amber99SBws_model1_nojump.xtc
 TRJLENGTH: 1000010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005s

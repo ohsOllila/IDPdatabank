@@ -73,3 +73,4 @@ TRJ:
 - - repeat_03.xtc
 TRJLENGTH: 1000020.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P

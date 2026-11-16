@@ -93,3 +93,4 @@ TRJ:
 - - md_TonBCTD_amberff03ws_model10_nojump.xtc
 TRJLENGTH: 1000010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005s

@@ -87,3 +87,4 @@ TRJ:
 - - cKKEEKVP_Tris_HCl_NaCl_nowater.xtc
 TRJLENGTH: 1000010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005

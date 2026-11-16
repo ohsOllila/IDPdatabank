@@ -98,3 +98,4 @@ TRJ:
 - - ChiZ_replica_02_AMBER03WS_2000ns.xtc
 TRJLENGTH: 2000010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005s

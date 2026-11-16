@@ -71,3 +71,4 @@ TRJ:
 - - run1_300ns.xtc
 TRJLENGTH: 300010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005s

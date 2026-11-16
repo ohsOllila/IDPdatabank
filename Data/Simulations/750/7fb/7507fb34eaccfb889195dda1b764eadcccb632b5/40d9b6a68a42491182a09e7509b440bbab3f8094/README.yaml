@@ -84,3 +84,4 @@ TRJ:
 - - md_MANF_amberff03ws_model4_nojump.xtc
 TRJLENGTH: 1000010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005s

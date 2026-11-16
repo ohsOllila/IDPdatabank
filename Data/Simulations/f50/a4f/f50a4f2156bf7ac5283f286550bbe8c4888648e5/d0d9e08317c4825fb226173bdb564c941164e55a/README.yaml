@@ -98,3 +98,4 @@ TRJ:
 - - ChiZ_replica_04_DESAMBER_2000ns.xtc
 TRJLENGTH: 1642330.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P-D

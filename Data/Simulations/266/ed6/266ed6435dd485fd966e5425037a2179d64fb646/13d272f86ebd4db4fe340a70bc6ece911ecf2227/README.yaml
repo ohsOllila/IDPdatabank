@@ -76,3 +76,4 @@ TRJ:
 - - replica_03_CHARMM36M_md_2000ns.xtc
 TRJLENGTH: 2000010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P

@@ -75,3 +75,4 @@ TRJ:
 - - md_TonB_10mM_deprot_ca2+_nowater.xtc
 TRJLENGTH: 2000010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005s

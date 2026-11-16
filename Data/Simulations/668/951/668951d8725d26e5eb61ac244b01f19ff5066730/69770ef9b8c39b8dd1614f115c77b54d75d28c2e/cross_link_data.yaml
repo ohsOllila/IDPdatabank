@@ -1,0 +1,97 @@
+uniprot:
+- accession: A0A7L3KX81
+  title: A0A7L3KX81_9PASS Homeobox protein engrailed-like (Fragment) OS=Drymodes brunneopygia
+    OX=626378 GN=En2 PE=3 SV=1
+  length: 148
+  identity_%: 91.2
+  similarity_%: 99.1
+  coverage_%: 97.44
+  e_value: 6.1e-72
+  bit_score: 220.3
+  align_length: 114
+- accession: A0A7L2VKS5
+  title: A0A7L2VKS5_9AVES Homeobox protein engrailed-like (Fragment) OS=Brachypteracias
+    leptosomus OX=135165 GN=En2 PE=3 SV=1
+  length: 175
+  identity_%: 91.2
+  similarity_%: 99.1
+  coverage_%: 97.44
+  e_value: 1.5e-71
+  bit_score: 220.3
+  align_length: 114
+- accession: Q05917
+  title: HME2_CHICK Homeobox protein engrailed-2 OS=Gallus gallus OX=9031 GN=EN2 PE=1
+    SV=2
+  length: 289
+  identity_%: 93.0
+  similarity_%: 100.0
+  coverage_%: 97.44
+  e_value: 2.4e-71
+  bit_score: 223.8
+  align_length: 114
+- accession: A0A8C2SRW5
+  title: A0A8C2SRW5_COTJA Homeobox protein engrailed-like OS=Coturnix japonica OX=93934
+    GN=EN2 PE=3 SV=1
+  length: 290
+  identity_%: 93.0
+  similarity_%: 100.0
+  coverage_%: 97.44
+  e_value: 2.5e-71
+  bit_score: 223.8
+  align_length: 114
+- accession: A0A669PHI6
+  title: A0A669PHI6_PHACC Homeobox protein engrailed-like OS=Phasianus colchicus OX=9054
+    GN=EN2 PE=3 SV=1
+  length: 292
+  identity_%: 93.0
+  similarity_%: 100.0
+  coverage_%: 97.44
+  e_value: 2.7e-71
+  bit_score: 223.8
+  align_length: 114
+pdb:
+- accession: 3ZOB_A
+  title: 3ZOB mol:protein length:67 HOMEOBOX PROTEIN ENGRAILED-2
+  length: 67
+  identity_%: 95.3
+  similarity_%: 95.3
+  coverage_%: 54.7
+  e_value: 1.9e-36
+  bit_score: 122.1
+  align_length: 64
+- accession: 3HDD_B
+  title: 3HDD mol:protein length:60 ENGRAILED HOMEODOMAIN
+  length: 60
+  identity_%: 78.3
+  similarity_%: 90.0
+  coverage_%: 51.28
+  e_value: 1.5e-27
+  bit_score: 99.4
+  align_length: 60
+- accession: 3HDD_A
+  title: 3HDD mol:protein length:60 ENGRAILED HOMEODOMAIN
+  length: 60
+  identity_%: 78.3
+  similarity_%: 90.0
+  coverage_%: 51.28
+  e_value: 1.5e-27
+  bit_score: 99.4
+  align_length: 60
+- accession: 2JWT_A
+  title: 2JWT mol:protein length:61 Segmentation polarity homeobox protein engrailed
+  length: 61
+  identity_%: 76.7
+  similarity_%: 90.0
+  coverage_%: 51.28
+  e_value: 4.4e-27
+  bit_score: 98.2
+  align_length: 60
+- accession: 1HDD_D
+  title: 1HDD mol:protein length:61 PROTEIN (ENGRAILED HOMEODOMAIN)
+  length: 61
+  identity_%: 76.7
+  similarity_%: 90.0
+  coverage_%: 51.28
+  e_value: 4.4e-27
+  bit_score: 98.2
+  align_length: 60

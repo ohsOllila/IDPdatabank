@@ -75,3 +75,4 @@ TRJ:
 - - md_KAPK_02.xtc
 TRJLENGTH: 500010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P-D

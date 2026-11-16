@@ -51,6 +51,34 @@ When the package is not installed from a clone of this repository, set
 `NMLDB_ROOT_PATH` to the cloned repository folder (or `NMLDB_DATA_PATH` to its
 `Data` folder) so that the data can be found.
 
+## Quality table
+
+To create `quality_table.csv` without running the plotting notebook:
+
+```bash
+python Scripts/AnalyzeDatabank/create_quality_table.py
+```
+
+The script reads existing `spin_relaxation_chi2.yaml`,
+`chemical_shift_chi2.yaml`, `SAXS_quality.yaml`, and `stable_contacts.json`
+results. It reproduces the notebook's reduced-chi-squared table, including
+curated protein classes, sorted by `Total_quality` (spin relaxation plus
+chemical shift; SAXS is kept separate). Missing scores are left blank.
+It does not calculate new analysis results or create plots.
+
+On the first run, the existing `water_model.py` detector uses local TPR files
+and GROMACS to identify water models. The script adds `water_model` to each
+simulation's `README.yaml`, preserving the existing contents. Subsequent runs
+reuse that field without needing GROMACS or the TPR file. A saved YAML `null`
+means no water was detected; unrecognized models are also saved, with warnings.
+Detection failures are reported and are not cached. To redetect a model, remove
+its `water_model` field.
+
+Use `--gmx /path/to/gmx` for a GROMACS executable outside `PATH`,
+`--simulations /path/to/Data/Simulations` to select another simulation tree,
+or `--output /path/to/quality_table.csv` to change the output location
+(default: the current directory).
+
 ## Development
 
 Linting, tests, package build and documentation are run with [tox](https://tox.wiki/):

@@ -84,3 +84,4 @@ TRJ:
 - - model_03_DESAMBER_md_2000ns.xtc
 TRJLENGTH: 26370.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P-D

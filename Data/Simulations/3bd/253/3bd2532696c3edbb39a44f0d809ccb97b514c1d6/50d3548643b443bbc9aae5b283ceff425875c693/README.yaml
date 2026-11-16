@@ -93,3 +93,4 @@ TRJ:
 - - md_calmodulin_amber99SBws_model5_nojump.xtc
 TRJLENGTH: 1000010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005s

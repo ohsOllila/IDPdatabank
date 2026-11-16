@@ -75,3 +75,4 @@ TRJ:
 - - md_GGS40_02.xtc
 TRJLENGTH: 800010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P-D

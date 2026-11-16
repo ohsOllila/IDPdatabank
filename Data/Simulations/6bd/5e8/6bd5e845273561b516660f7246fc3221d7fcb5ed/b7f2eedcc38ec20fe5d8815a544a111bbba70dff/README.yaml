@@ -93,3 +93,4 @@ TRJ:
 - - md_TonBCTD_amber99SB-disp_model1_nojump.xtc
 TRJLENGTH: 1000010.0
 TYPEOFSYSTEM: protein
+water_model: a99SB-disp water

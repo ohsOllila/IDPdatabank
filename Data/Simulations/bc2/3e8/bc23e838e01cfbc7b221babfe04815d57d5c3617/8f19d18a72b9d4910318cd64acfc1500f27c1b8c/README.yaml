@@ -75,3 +75,4 @@ TRJ:
 - - model_03_AMBER99SBWS_md_1000ns.xtc
 TRJLENGTH: 620390.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005s

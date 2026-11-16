@@ -94,3 +94,4 @@ TRJ:
 - - replica_03_DESAMBER_md_1500ns.xtc
 TRJLENGTH: 1500010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P-D

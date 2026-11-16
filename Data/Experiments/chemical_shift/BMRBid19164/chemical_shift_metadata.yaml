@@ -6,7 +6,7 @@ NMR_spectrometer:
     Model: Avance
 Name: NOESY
 Sample_component:
--   Concentration_val: '0.7'
+-   Concentration_val: '0.65'
     Concentration_val_units: mM
     Isotopic_labeling: '[U-13C; U-15N]'
     Mol_common_name: CEREBRAL DOPAMINE NEUROTROPHIC FACTOR
@@ -14,17 +14,22 @@ Sample_component:
 -   Concentration_val: '20'
     Concentration_val_units: mM
     Isotopic_labeling: natural abundance
-    Mol_common_name: MES
+    Mol_common_name: Sodium Phosphate
     Type: null
--   Concentration_val: '150'
+-   Concentration_val: '100'
     Concentration_val_units: mM
     Isotopic_labeling: natural abundance
     Mol_common_name: NaCl
     Type: null
--   Concentration_val: '5'
+-   Concentration_val: '3'
     Concentration_val_units: mM
     Isotopic_labeling: natural abundance
     Mol_common_name: NaN3
+    Type: null
+-   Concentration_val: '1'
+    Concentration_val_units: mM
+    Isotopic_labeling: natural abundance
+    Mol_common_name: EDTA
     Type: null
 Sample_condition_variable:
     ph: '6.000'

@@ -77,3 +77,4 @@ TRJ:
 - - protonated_md_KKEEVAP40_prot_01_nowater.xtc
 TRJLENGTH: 1000010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P-D

@@ -89,3 +89,4 @@ TRJ:
 - - model01_AMBER99SB-DISP_md_2000ns.xtc
 TRJLENGTH: 2000010.0
 TYPEOFSYSTEM: protein
+water_model: a99SB-disp water

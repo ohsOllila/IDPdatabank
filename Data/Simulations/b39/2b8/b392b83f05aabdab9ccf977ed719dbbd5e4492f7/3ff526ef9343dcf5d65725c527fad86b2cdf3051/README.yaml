@@ -84,3 +84,4 @@ TRJ:
 - - model_02_CHARMM36M_md_2000ns.xtc
 TRJLENGTH: 79780.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P

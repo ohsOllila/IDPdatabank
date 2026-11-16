@@ -1,4 +1,3 @@
-ID: 503
 AUTHORS_CONTACT: Samuli Ollila
 COMPOSITION:
   CLA:
@@ -71,6 +70,7 @@ EXPERIMENT:
 FF: amberff03ws
 FF_DATE: null
 FF_SOURCE: null
+ID: 503
 LOG: null
 NUMBER_OF_ATOMS: 1921
 PREEQTIME: 0
@@ -89,3 +89,4 @@ TRJ:
 - - EN2_mutated_1080ns_only_protein.xtc
 TRJLENGTH: 1082010.0
 TYPEOFSYSTEM: protein
+water_model: null

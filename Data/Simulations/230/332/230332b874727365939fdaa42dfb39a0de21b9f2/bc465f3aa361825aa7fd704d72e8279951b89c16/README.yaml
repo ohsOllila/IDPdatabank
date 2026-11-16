@@ -172,3 +172,4 @@ TRJ:
 - - aSyn_replica_01_AMBER99SBWS_2000ns.xtc
 TRJLENGTH: 2000010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005s

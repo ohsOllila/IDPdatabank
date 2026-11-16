@@ -77,3 +77,4 @@ TRJ:
 - - md_KKEEVKP40_deprot_nowater.xtc
 TRJLENGTH: 1000010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005s

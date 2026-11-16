@@ -71,3 +71,4 @@ TRJ:
 - - md_TonB_neutralpH_40mm_nojump_nowater_2micro.xtc
 TRJLENGTH: 2000010.0
 TYPEOFSYSTEM: protein
+water_model: TIP4P/2005s
