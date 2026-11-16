@@ -1,0 +1,25 @@
+ Input file name  =  experimental.dat                                
+ qmin and qmax    =    0.0058   0.4000
+ Number of data points               =          200
+ Number of points in p(r)            =           84
+ Number of error calculations        =          491
+ Errors are too low when few error calc. are used
+
+ Convergence of algorithm OK
+
+ I(0) estimated             :  11950.93  +-   627.98 
+ Maximum diameter           :    415.13  +-    94.15 
+ Radius of gyration         :    104.11  +-    21.81 
+ Axial ratio from p(r) (pro):   3063.99  +-  1170.67 
+ Axial ratio from p(r) (obl):      0.11  +-     0.05 
+ Reduced Chi-square         :      1.67  +-     0.02 
+ Background estimated       :                7.83104
+ Log(alpha) (smoothness)    :     -1.65  +-     0.49 
+ Number of good parameters  :      5.71  +-     1.00 
+ Number of Shannon channels :     52.10
+ qmin*(dmax/pi)             :  0.77E+00
+ Evidence at maximum        : -0.17E+03  +-  0.10E+01 
+ Probability of chi-square  :  0.25E-07
+ The exp errors are probably: Underestimated
+ Correction factor          :      1.29
+ Longest run                :      7.91

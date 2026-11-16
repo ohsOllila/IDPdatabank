@@ -600,7 +600,25 @@ for system in systems:
         with open(SAXS_quality_file, 'w') as f:
             json.dump(SAXS_quality, f, indent=2)
 
-        
+
+    print('Calculate SAXS quality (GP)')
+    SAXS_quality_GP_file =  dataFolder + 'SAXS_quality_GP.yaml'
+    if not os.path.exists(SAXS_quality_GP_file) and ExperimentalFileSAXS:
+        # Scores SAXS.yaml against the sinc-transform GP fits stored next to
+        # each experiment as gp_fit.dat (produced by calcSAXSGPFits.py).
+        # Needs only numpy/scipy/yaml; torch/pyro live in the fitting step.
+        from fairmd.idp.saxs_gp_quality import evaluate_SAXS_quality_GP
+        try:
+            SAXS_GP_quality = evaluate_SAXS_quality_GP(system, NMLDB_ROOT_PATH + '/')
+        except Exception as e:
+            print('GP SAXS quality failed: ', e)
+            SAXS_GP_quality = []
+        if SAXS_GP_quality:
+            with open(SAXS_quality_GP_file, 'w') as f:
+                json.dump(SAXS_GP_quality, f, indent=2)
+
+
+
 
     print('Determine folding state')
     if not os.path.exists(folding_state_file):
