@@ -58,6 +58,18 @@ ID: 475
 LOG:
 - - md_PA40_02.log
 NUMBER_OF_ATOMS: 16473
+PH: 7.0
+PH_DETERMINATION:
+  CONSISTENT: true
+  DEPROTONATED:
+    CTERM: 1
+  METHOD: protonation states in TPR
+  PKA_SOURCE: Thurlkill et al., Protein Sci. 15, 1214 (2006)
+  PROTONATED:
+    NTERM: 1
+  RANGE:
+  - 3.67
+  - 8.0
 PREEQTIME: 0
 PUBLICATION: null
 SOFTWARE: gromacs

@@ -58,6 +58,21 @@ ID: 463
 LOG:
 - - md_EEVKP40_prot_01.log
 NUMBER_OF_ATOMS: 522
+PH: 4.25
+PH_DETERMINATION:
+  CONSISTENT: true
+  DEPROTONATED:
+    CTERM: 1
+    GLU: 1
+  METHOD: protonation states in TPR
+  PKA_SOURCE: Thurlkill et al., Protein Sci. 15, 1214 (2006)
+  PROTONATED:
+    GLU: 11
+    LYS: 5
+    NTERM: 1
+  RANGE:
+  - 4.25
+  - 4.25
 PREEQTIME: 10
 PUBLICATION: null
 SOFTWARE: gromacs

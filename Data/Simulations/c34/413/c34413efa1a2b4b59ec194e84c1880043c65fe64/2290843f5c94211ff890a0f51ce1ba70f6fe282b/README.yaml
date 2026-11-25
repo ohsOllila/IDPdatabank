@@ -57,6 +57,20 @@ ID: 489
 LOG:
 - - md_KKVEE40_deprot_02.log
 NUMBER_OF_ATOMS: 329
+PH: 7.0
+PH_DETERMINATION:
+  CONSISTENT: true
+  DEPROTONATED:
+    CTERM: 1
+    GLU: 6
+  METHOD: protonation states in TPR
+  PKA_SOURCE: Thurlkill et al., Protein Sci. 15, 1214 (2006)
+  PROTONATED:
+    LYS: 6
+    NTERM: 1
+  RANGE:
+  - 4.25
+  - 8.0
 PREEQTIME: 0
 PUBLICATION: null
 SOFTWARE: gromacs

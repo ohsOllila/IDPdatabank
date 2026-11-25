@@ -61,6 +61,20 @@ ID: 491
 LOG:
 - - md_KKEEVKP40_prot.log
 NUMBER_OF_ATOMS: 747
+PH: 3.96
+PH_DETERMINATION:
+  CONSISTENT: true
+  DEPROTONATED:
+    CTERM: 1
+  METHOD: protonation states in TPR
+  PKA_SOURCE: Thurlkill et al., Protein Sci. 15, 1214 (2006)
+  PROTONATED:
+    GLU: 8
+    LYS: 14
+    NTERM: 1
+  RANGE:
+  - 3.67
+  - 4.25
 PREEQTIME: 0
 PUBLICATION: null
 SOFTWARE: gromacs

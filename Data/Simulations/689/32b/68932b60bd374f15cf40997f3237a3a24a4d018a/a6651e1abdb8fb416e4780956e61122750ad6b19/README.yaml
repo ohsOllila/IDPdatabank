@@ -24,24 +24,15 @@ DIR_WRK: /home/sosamuli/temp/tmpData/
 DOI: 10.5281/zenodo.13236117
 EXPERIMENT:
   chemical_shift:
-    alignment_score:
-    - -1
-    ionic_strength:
-    - 0.155
-    ionic_strength_match:
-    - false
-    path:
-    - BMRBid19164
-    ph:
-    - 6.0
-    ph_match:
-    - false
-    sequence:
-    - QEAGGRPGADCEVCKEFLNRFYKSLIDRGVNFSLDTIEKELISFCLDTKGKENRLCYYLGATKDAATKILSEVTRPMSVHMPAMKICEKLKKLDSQICELKYEKTLDLASVDLRKMRVAELKQILHSWGEECRACAEKTDYVNLIQELAPKYAATHPKTEL
-    temperature:
-    - 298.0
-    temperature_match:
-    - true
+    alignment_score: []
+    ionic_strength: []
+    ionic_strength_match: []
+    path: []
+    ph: []
+    ph_match: []
+    sequence: []
+    temperature: []
+    temperature_match: []
   saxs:
     alignment_score: []
     ionic_strength: []
@@ -78,6 +69,23 @@ GRO: null
 ID: 367
 LOG: null
 NUMBER_OF_ATOMS: 2580
+PH: 7.0
+PH_DETERMINATION:
+  CONSISTENT: true
+  DEPROTONATED:
+    ASP: 9
+    CTERM: 1
+    GLU: 16
+    HIS: 3
+  METHOD: protonation states in TPR
+  PKA_SOURCE: Thurlkill et al., Protein Sci. 15, 1214 (2006)
+  PROTONATED:
+    LYS: 18
+    NTERM: 1
+    TYR: 6
+  RANGE:
+  - 6.54
+  - 8.0
 PREEQTIME: 0
 PUBLICATION: https://doi.org/10.1038/s42004-025-01623-x
 SOFTWARE: gromacs

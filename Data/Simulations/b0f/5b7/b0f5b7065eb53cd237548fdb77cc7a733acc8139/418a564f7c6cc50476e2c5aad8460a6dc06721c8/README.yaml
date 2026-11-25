@@ -56,6 +56,22 @@ GRO: null
 ID: 457
 LOG: null
 NUMBER_OF_ATOMS: 161389
+PH: 7.0
+PH_DETERMINATION:
+  CONSISTENT: true
+  DEPROTONATED:
+    ASP: 6
+    GLU: 11
+    HIS: 4
+  METHOD: protonation states in TPR
+  PKA_SOURCE: Thurlkill et al., Protein Sci. 15, 1214 (2006)
+  PROTONATED:
+    CYS: 4
+    LYS: 2
+    TYR: 6
+  RANGE:
+  - 6.54
+  - 8.55
 PREEQTIME: 10
 PUBLICATION: null
 SOFTWARE: gromacs

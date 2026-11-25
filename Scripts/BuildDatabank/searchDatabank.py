@@ -28,9 +28,13 @@ def searchDatabank():
 
     logger.info(f"IDP_DATABANK_EXPERIMENTS_PATH: {IDP_DATABANK_EXPERIMENTS_PATH}")
 
-    simulation_readmes = glob.glob(
-        os.path.join(IDP_DATABANK_SIMULATIONS_PATH, "**/README.yaml"),
-        recursive=True,
+    # glob order depends on the filesystem; sort so README.yaml output is
+    # identical on every machine.
+    simulation_readmes = sorted(
+        glob.glob(
+            os.path.join(IDP_DATABANK_SIMULATIONS_PATH, "**/README.yaml"),
+            recursive=True,
+        )
     )
     logger.info(f"Simulation readmes:\n {simulation_readmes}")
 
@@ -40,11 +44,16 @@ def searchDatabank():
     #    recursive=True,
     #)
 
-    experiment_readmes = [
-    f
-    for pattern in ["**/spin_relaxation_times.yaml", "**/chemical_shifts.yaml", "**/saxs.dat"]
-    for f in glob.glob(os.path.join(IDP_DATABANK_EXPERIMENTS_PATH, pattern), recursive=True)
-    ]
+    # Sorted by path relative to the Experiments folder so that the order of
+    # matched experiments in each README.yaml is the same on every machine.
+    experiment_readmes = sorted(
+        (
+            f
+            for pattern in ["**/spin_relaxation_times.yaml", "**/chemical_shifts.yaml", "**/saxs.dat"]
+            for f in glob.glob(os.path.join(IDP_DATABANK_EXPERIMENTS_PATH, pattern), recursive=True)
+        ),
+        key=lambda f: os.path.relpath(f, IDP_DATABANK_EXPERIMENTS_PATH),
+    )
 
 
     logger.info(f"Experiment readmes:\n {experiment_readmes}")
@@ -92,7 +101,14 @@ def searchDatabank():
         # TODO: will need to loop through all the experiment types, not just spin_relaxation
         experiment_types_dict = {}
 
-        simulation_ph = 7  # TODO: Implement pH-getter for the simulations
+        # PH is written to README.yaml by calcSimulationPH.py from the
+        # protonation states in the TPR file.
+        simulation_ph = simulation.info.get("PH")
+        if simulation_ph is None:
+            logger.warning(
+                f"No PH in {simulation.path}; assuming 7. Run calcSimulationPH.py first."
+            )
+            simulation_ph = 7
         #print()
         #print(simulation)
         #print(simulation.info)

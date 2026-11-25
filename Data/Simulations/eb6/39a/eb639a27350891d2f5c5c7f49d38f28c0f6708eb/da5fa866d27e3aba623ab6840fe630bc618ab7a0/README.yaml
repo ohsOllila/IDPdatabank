@@ -82,6 +82,24 @@ FF_SOURCE: null
 ID: 469
 LOG: null
 NUMBER_OF_ATOMS: 2282
+PH: 7.0
+PH_DETERMINATION:
+  CONSISTENT: true
+  DEPROTONATED:
+    ASP: 7
+    CTERM: 1
+    GLU: 6
+    HIS: 4
+  METHOD: protonation states in TPR
+  PKA_SOURCE: Thurlkill et al., Protein Sci. 15, 1214 (2006)
+  PROTONATED:
+    CYS: 1
+    LYS: 8
+    NTERM: 1
+    TYR: 3
+  RANGE:
+  - 6.54
+  - 8.0
 PREEQTIME: 0
 PUBLICATION: null
 SOFTWARE: gromacs
@@ -97,4 +115,5 @@ TRJ:
 - - trajectory.xtc
 TRJLENGTH: 1000010.0
 TYPEOFSYSTEM: protein
+WARNINGS: rotation removed
 water_model: null

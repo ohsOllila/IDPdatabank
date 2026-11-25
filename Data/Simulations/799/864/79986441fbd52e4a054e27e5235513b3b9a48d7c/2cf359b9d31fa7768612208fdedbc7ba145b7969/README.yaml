@@ -57,6 +57,20 @@ ID: 487
 LOG:
 - - DESamber_40mm_nacl_md_KVEEV40_deprot_02.log
 NUMBER_OF_ATOMS: 28488
+PH: 7.0
+PH_DETERMINATION:
+  CONSISTENT: true
+  DEPROTONATED:
+    CTERM: 1
+    GLU: 4
+  METHOD: protonation states in TPR
+  PKA_SOURCE: Thurlkill et al., Protein Sci. 15, 1214 (2006)
+  PROTONATED:
+    LYS: 5
+    NTERM: 1
+  RANGE:
+  - 4.25
+  - 8.0
 PREEQTIME: 0
 PUBLICATION: null
 SOFTWARE: gromacs

@@ -58,6 +58,21 @@ ID: 459
 LOG:
 - - md_TonB_linkerAP_deprot_40mm.log
 NUMBER_OF_ATOMS: 1767
+PH: 7.0
+PH_DETERMINATION:
+  CONSISTENT: true
+  DEPROTONATED:
+    ASP: 2
+    CTERM: 1
+    GLU: 24
+  METHOD: protonation states in TPR
+  PKA_SOURCE: Thurlkill et al., Protein Sci. 15, 1214 (2006)
+  PROTONATED:
+    LYS: 26
+    NTERM: 1
+  RANGE:
+  - 4.25
+  - 8.0
 PREEQTIME: 10
 PUBLICATION: null
 SOFTWARE: gromacs
